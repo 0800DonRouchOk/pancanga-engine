@@ -541,7 +541,7 @@
         console.info("RC1 date flow", data.date_debug);
         latestResult = { city, cityLabel, date, data };
         render(data);
-        statusEl.textContent = "Calculado desde el motor local.";
+        statusEl.textContent = "Calculado desde Pancanga Engine RC1.";
       } catch (error) {
         latestResult = { city, cityLabel, date, error: error.message };
         statusEl.textContent = error.message;

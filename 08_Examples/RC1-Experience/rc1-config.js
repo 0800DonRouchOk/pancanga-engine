@@ -4,8 +4,7 @@
 // http://127.0.0.1:7878/api/calculate
 //
 // For zero-cost tester deployment, set this to the hosted Render backend:
-// window.RC1_API_BASE = "https://pancanga-engine-rc1-api.onrender.com";
-window.RC1_API_BASE = "";
+window.RC1_API_BASE = "https://pancanga-engine-rc1-api.onrender.com";
 
 window.RC1_BUILD = {
   engine: "v1.0 RC1",
