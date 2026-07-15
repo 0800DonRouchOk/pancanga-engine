@@ -1,0 +1,10 @@
+[workspace]
+members = ["crates/pancanga-engine", "tools/elp2000-importer"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0-alpha.0"
+edition = "2021"
+rust-version = "1.85.0"
+license = "MIT"
+description = "An offline Gaudiya Calendar Engine."

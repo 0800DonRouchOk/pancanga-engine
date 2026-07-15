@@ -1,0 +1,1373 @@
+<html lang="es"><head>
+<meta charset="UTF-8">
+<title>Calendario Vaishnavá 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+@page { size: A4; margin: 1cm 1cm 1.2cm 1cm; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'EB Garamond', Georgia, serif; font-size: 8.5px; color: #2c1810; background: white; }
+.page { page-break-after: always; min-height: 277mm; }
+/* COVER */
+.cover { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 277mm; background: linear-gradient(160deg, #fdf6ec 0%, #f0d9b5 50%, #e8c99a 100%); padding: 30px; text-align: center; }
+.cover .om { font-size: 60px; margin-bottom: 15px; color: #8B1A1A; }
+.cover h1 { font-family: 'Cinzel', serif; font-size: 26px; color: #8B1A1A; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+.cover h2 { font-family: 'EB Garamond', serif; font-size: 16px; color: #5c3a1e; font-style: italic; margin-bottom: 5px; }
+.cover .gaura { font-size: 11px; color: #7a5c3a; margin-bottom: 30px; }
+.cover .divider { width: 200px; height: 2px; background: linear-gradient(to right, transparent, #c9a96e, transparent); margin: 15px auto; }
+.cover .verse { font-size: 11px; color: #5c3a1e; font-style: italic; max-width: 400px; line-height: 1.8; margin: 20px 0; padding: 15px; border: 1px solid #c9a96e; border-radius: 8px; background: rgba(255,255,255,0.5); }
+.cover .info { font-size: 9px; color: #7a5c3a; margin-top: 20px; padding-top: 15px; border-top: 1px solid #c9a96e; }
+.cover .note { font-size: 9px; color: #8B1A1A; margin-top: 10px; font-style: italic; }
+/* LEGEND PAGE */
+.legend-page { padding: 20px; min-height: 277mm; }
+.legend-page h2 { font-family: 'Cinzel', serif; font-size: 18px; color: #8B1A1A; text-align: center; margin-bottom: 5px; }
+.legend-page .subtitle { text-align: center; font-style: italic; color: #5c3a1e; font-size: 10px; margin-bottom: 20px; }
+.legend-section { margin-bottom: 15px; }
+.legend-section h3 { font-size: 12px; color: #8B1A1A; border-bottom: 1px solid #c9a96e; padding-bottom: 3px; margin-bottom: 8px; }
+.legend-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; font-size: 9px; }
+.legend-color { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; margin-top: 1px; }
+.legend-text strong { color: #2c1810; }
+.ekadasi-list { background: #fff5f5; border: 1px solid #e0b0b0; border-radius: 6px; padding: 10px; margin: 10px 0; }
+.ekadasi-list h3 { color: #8B1A1A; font-size: 11px; margin-bottom: 8px; }
+.ekadasi-list table { width: 100%; border-collapse: collapse; font-size: 8.5px; }
+.ekadasi-list td { padding: 3px 6px; border-bottom: 1px solid #f0d0d0; }
+.ekadasi-list td:first-child { font-weight: bold; color: #8B1A1A; width: 80px; }
+.masa-list { background: #f0f8f0; border: 1px solid #90c090; border-radius: 6px; padding: 10px; margin: 10px 0; }
+.masa-list h3 { color: #1a7245; font-size: 11px; margin-bottom: 8px; }
+.masa-list table { width: 100%; border-collapse: collapse; font-size: 8.5px; }
+.masa-list td { padding: 3px 6px; border-bottom: 1px solid #c0e0c0; }
+.masa-list td:first-child { font-weight: bold; color: #1a7245; width: 100px; }
+.catumasya-box { background: #fffbf0; border: 1px solid #e0c060; border-radius: 6px; padding: 10px; margin: 10px 0; }
+.catumasya-box h3 { color: #7a5c00; font-size: 11px; margin-bottom: 8px; }
+.catumasya-box p { font-size: 8.5px; line-height: 1.6; color: #5c3a1e; margin-bottom: 4px; }
+/* MONTH PAGES */
+.month-page { padding: 8px; page-break-before: always; }
+.month-header { background: linear-gradient(135deg, #8B1A1A 0%, #a52020 100%); color: white; text-align: center; padding: 10px 15px; border-radius: 8px 8px 0 0; border: 2px solid #6b1010; }
+.month-header h2 { font-family: 'Cinzel', serif; font-size: 18px; letter-spacing: 2px; }
+.month-header .masa-name { font-size: 9px; font-style: italic; opacity: 0.9; margin-top: 2px; }
+.month-header .paksha { font-size: 8px; opacity: 0.8; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); border: 2px solid #8B1A1A; border-top: none; }
+.dow-header { background: #f5e6d3; text-align: center; padding: 4px 2px; font-weight: bold; font-size: 8px; color: #5c3a1e; border-bottom: 1px solid #c9a96e; border-right: 1px solid #c9a96e; }
+.dow-header:last-child { border-right: none; }
+.day-cell { min-height: 62px; padding: 3px 3px 2px 3px; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; vertical-align: top; overflow: hidden; }
+.day-cell:nth-child(7n) { border-right: none; }
+.day-cell.empty { background: #f8f5f0; }
+.day-cell.ekadasi-fast { background: #fff0f0 !important; }
+.day-cell.festival { background: #f0fff0 !important; }
+.day-cell.appearance-day { background: #f0f5ff !important; }
+.day-cell.purnima { background: #f5f0ff !important; }
+.day-cell.amavasya { background: #f5f5f0 !important; }
+.day-num-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1px; }
+.day-num { font-size: 11px; font-weight: bold; color: #2c1810; line-height: 1; }
+.tithi-badge { font-size: 6.5px; color: #8B1A1A; font-style: italic; line-height: 1; max-width: 65px; overflow: hidden; }
+.event-line { font-size: 6.5px; line-height: 1.3; display: block; margin-top: 1px; overflow: hidden; }
+.ev-fast { color: #8B1A1A; font-weight: bold; }
+.ev-break { color: #117a65; font-style: italic; }
+.ev-app { color: #1a4f7a; }
+.ev-disapp { color: #7a3a1a; }
+.ev-festival { color: #1a7245; font-weight: bold; }
+.ev-special { color: #5c1a7a; font-weight: bold; }
+.ev-catumasya { color: #7a5c00; font-style: italic; font-weight: bold; }
+.ev-eclipse { color: #4a4a00; font-style: italic; }
+.month-footer { background: #f5e6d3; padding: 5px 8px; border: 2px solid #8B1A1A; border-top: 1px solid #c9a96e; border-radius: 0 0 8px 8px; font-size: 7.5px; }
+.special-notes { margin-top: 6px; padding: 6px; background: #fff9e6; border-radius: 4px; border-left: 3px solid #8B1A1A; }
+.special-notes h4 { font-size: 9px; color: #8B1A1A; margin-bottom: 3px; font-family: 'Cinzel', serif; }
+.special-notes p { font-size: 7.5px; color: #2c1810; line-height: 1.5; }
+</style>
+<style id="claude-agent-animation-styles">
+      @keyframes claude-pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+      #claude-agent-glow-border-inner {
+        animation: claude-pulse 2s ease-in-out infinite;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #claude-agent-glow-border-inner {
+          animation: none;
+        }
+      }
+    </style></head>
+<body>
+<!-- COVER PAGE -->
+<div class="page cover">
+  <div class="om">ॐ</div>
+  <h1>Calendario Vaishnavá 2026</h1>
+  <h2>Śrī Caitanya Pañjikā — Viśuddha Sārasvata</h2>
+  <div class="gaura">Śrī Gaurābda 540 — Kṛṣṇakal 0.98</div>
+  <div class="divider"></div>
+  <div class="verse">
+    <em>Bajo la autoridad de:</em><br>
+    Tridaṇḍisvāmī<br>
+    <strong>Śrī Śrīmad Bhaktivedānta Nārāyaṇa Gosvāmī Mahārāja</strong><br><br>
+    Bhaktivedānta Trust International<br>
+    Śrī Gopīnāth Bhavan, Sevā Kuñj<br>
+    Vṛndāvana (U.P.) 281121 India
+  </div>
+  <div class="divider"></div>
+  <div class="info">
+    Localización de referencia: <strong>Buenos Aires, Argentina</strong> (34°S 37' · 58°W 23')<br>
+    Zona horaria: UTC −3 (America/Argentina/Buenos_Aires)<br><br>
+    Fuente: <em>purebhakti.com</em> | Última actualización: 19 de mayo de 2026
+  </div>
+  <div class="note">
+    ✦ Este calendario cubre los meses de Mayo a Diciembre 2026 ✦<br>
+    (Meses anteriores ya transcurridos: Enero–Abril 2026)
+  </div>
+</div>
+
+<!-- LEGEND PAGE -->
+<div class="page legend-page">
+  <h2>Guía del Calendario Vaishnavá 2026</h2>
+  <div class="subtitle">Śrī Caitanya Pañjikā — Información General y Leyenda</div>
+  
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+    <div>
+      <div class="legend-section">
+        <h3>🎨 Leyenda de Colores</h3>
+        <div class="legend-item"><div class="legend-color" style="background:#fff0f0;border:1px solid #e0b0b0;"></div><div class="legend-text"><strong>Fondo rosado:</strong> Día de Ekādaśī / Ayuno</div></div>
+        <div class="legend-item"><div class="legend-color" style="background:#f0fff0;border:1px solid #90c090;"></div><div class="legend-text"><strong>Fondo verde claro:</strong> Festival importante</div></div>
+        <div class="legend-item"><div class="legend-color" style="background:#f0f5ff;border:1px solid #90a0d0;"></div><div class="legend-text"><strong>Fondo azul claro:</strong> Aparición de un Vaiṣṇava</div></div>
+        <div class="legend-item"><div class="legend-color" style="background:#f5f0ff;border:1px solid #c090d0;"></div><div class="legend-text"><strong>Fondo violeta claro:</strong> Pūrṇimā (Luna llena)</div></div>
+        <div class="legend-item"><div class="legend-color" style="background:#f5f5f0;border:1px solid #c0c0a0;"></div><div class="legend-text"><strong>Fondo grisáceo:</strong> Amāvasyā (Luna nueva)</div></div>
+      </div>
+      <div class="legend-section" style="margin-top:10px;">
+        <h3>📝 Abreviaturas de Texto</h3>
+        <div class="legend-item"><div class="legend-text"><span style="color:#8B1A1A;font-weight:bold;">🔴 AYUNO EKĀDAŚĪ:</span> Día de ayuno obligatorio</div></div>
+        <div class="legend-item"><div class="legend-text"><span style="color:#117a65;font-style:italic;">🟢 Romper ayuno:</span> Horario para romper el ayuno</div></div>
+        <div class="legend-item"><div class="legend-text"><span style="color:#1a4f7a;">🔵 Apar.:</span> Aparición de santo o avatāra</div></div>
+        <div class="legend-item"><div class="legend-text"><span style="color:#7a3a1a;">🟤 Desap.:</span> Desaparición de santo o Vaiṣṇava</div></div>
+        <div class="legend-item"><div class="legend-text"><span style="color:#1a7245;font-weight:bold;">🟩 Festival:</span> Celebración especial</div></div>
+        <div class="legend-item"><div class="legend-text"><span style="color:#7a5c00;font-style:italic;">🟡 Vrata:</span> Comienzo/fin de votos especiales</div></div>
+        <div class="legend-item"><div class="legend-text">G = Gaurapakṣa (Luna creciente) | K = Kṛṣṇapakṣa (Luna menguante)</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="ekadasi-list">
+        <h3>☽ Ekādaśīs 2026 (Mayo–Diciembre)</h3>
+        <table>
+          <tbody><tr><td>13 May</td><td>Aparā Ekādaśī (Śuddha)</td></tr>
+          <tr><td>26 May</td><td>Padminī (Kamalā) Ekādaśī — Puruṣottama Māsa</td></tr>
+          <tr><td>11 Jun</td><td>Parama (Kāmadā) Ekādaśī — Puruṣottama Māsa</td></tr>
+          <tr><td>25 Jun</td><td>Pāṇḍava Nirjala Ekādaśī ⭐</td></tr>
+          <tr><td>10 Jul</td><td>Yogini Ekādaśī</td></tr>
+          <tr><td>24 Jul</td><td>Śayana Ekādaśī</td></tr>
+          <tr><td>8 Ago</td><td>Kāmikā Ekādaśī</td></tr>
+          <tr><td>23 Ago</td><td>Pavitropana Ekādaśī</td></tr>
+          <tr><td>7 Sep</td><td>Annadā Ekādaśī (Trispṛṣā Mahādvādaśī)</td></tr>
+          <tr><td>22 Sep</td><td>Pārśva Ekādaśī</td></tr>
+          <tr><td>6 Oct</td><td>Indira Ekādaśī</td></tr>
+          <tr><td>22 Oct</td><td>Pāśānkuṣā Ekādaśī</td></tr>
+          <tr><td>4 Nov</td><td>Ramā Ekādaśī</td></tr>
+          <tr><td>20 Nov</td><td>Utthāna Ekādaśī ⭐</td></tr>
+          <tr><td>4 Dic</td><td>Utpannā Ekādaśī</td></tr>
+          <tr><td>20 Dic</td><td>Mokṣadā Ekādaśī ⭐ + Bhagavad-gītā Jayantī</td></tr>
+        </tbody></table>
+        <p style="font-size:7px;margin-top:4px;color:#666;">⭐ = Ekādaśī de especial importancia</p>
+      </div>
+    </div>
+  </div>
+  
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div class="masa-list">
+      <h3>🌙 Meses Vaisnavas (Māsas) 2026</h3>
+      <table>
+        <tbody><tr><td>Madhusūdana Māsa</td><td>continúa hasta 1 May</td></tr>
+        <tr><td>Trivikrama Māsa</td><td>2 May – 15 Jun (interrumpido)</td></tr>
+        <tr><td>Puruṣottama Māsa ⭐</td><td>17 May – 14 Jun (Mes Intercalario)</td></tr>
+        <tr><td>Trivikrama Māsa</td><td>15 Jun – 29 Jun (continúa)</td></tr>
+        <tr><td>Vāmana Māsa</td><td>30 Jun – 29 Jul</td></tr>
+        <tr><td>Śrīdhara Māsa</td><td>30 Jul – 27 Ago</td></tr>
+        <tr><td>Hṛṣīkeśa Māsa</td><td>28 Ago – 26 Sep</td></tr>
+        <tr><td>Padmanābha Māsa</td><td>27 Sep – 25 Oct</td></tr>
+        <tr><td>Dāmodara Māsa ⭐</td><td>26 Oct – 24 Nov</td></tr>
+        <tr><td>Keśava Māsa</td><td>25 Nov – 23 Dic</td></tr>
+        <tr><td>Nārāyaṇa Māsa</td><td>24 Dic – continúa en 2027</td></tr>
+      </tbody></table>
+      <p style="font-size:7px;margin-top:4px;color:#666;">⭐ = Meses de especial importancia espiritual</p>
+    </div>
+    <div class="catumasya-box">
+      <h3>🌿 Cāturmāsya-vrata 2026</h3>
+      <p><strong>Inicio:</strong> 29 Jul — Guru (Vyāsa) Pūrṇimā</p>
+      <p><strong>Fin:</strong> 24 Nov — Kṛṣṇa Rāsa-yātrā (Pūrṇimā)</p>
+      <p style="margin-top:6px;"><strong>1er mes (Jul 29–Ago 27):</strong> Ayuno de verduras de hoja verde (sāk) por un mes.</p>
+      <p><strong>2do mes (Ago 27–Sep 26):</strong> Ayuno de yogurt por un mes.</p>
+      <p><strong>3er mes (Sep 26–Oct 25):</strong> Ayuno de leche por un mes. Continuar sin berenjena, tomate, loki, parmal, urad dahl y miel.</p>
+      <p><strong>4to mes (Oct 25–Nov 24):</strong> Ayuno de semillas de sésamo, aceite de sésamo, mostaza, berenjena, tomate, loki, parmal, urad dahl y miel. No afeitarse (para brahmacārīs y sannyāsīs).</p>
+      <p style="margin-top:6px;font-style:italic;color:#7a5c00;">También conocido como Kārtika-vrata, Dāmodara-vrata, Ūrjā-vrata y Niyama-sevā para el mes de Kārtika.</p>
+      
+      <p style="margin-top:8px;"><strong>🌑 Eclipses 2026:</strong></p>
+      <p>• Eclipse Solar Total: 12 Ago 2026 (12:34–17:00 UTC-3)</p>
+      <p>• Eclipse Lunar Parcial: 27–28 Ago 2026 (22:23–04:01 UTC-3)</p>
+    </div>
+  </div>
+  
+  <div style="margin-top:10px;padding:8px;background:#fdf6ec;border:1px solid #c9a96e;border-radius:6px;font-size:8px;">
+    <strong>Nota sobre el Puruṣottama Māsa (Mes Intercalario):</strong> El mes adicional de Puruṣottama Māsa es un mes sagrado de especial significado que aparece aproximadamente cada 3 años. Durante este mes se recomienda: ayunar de tomates, berenjena, semillas de sésamo, aceite de mostaza, miel, urad dahl (como en Kārtika). Se realizan prácticas especiales de devoción, lectura de escrituras y caridad.<br>
+    <strong>Ekādaśīs especiales del Puruṣottama Māsa:</strong> Padminī (Kamalā) Ekādaśī y Parama (Kāmadā) Ekādaśī.
+  </div>
+</div>
+<div class="month-page page">
+  <div class="month-header">
+    <h2>MAYO 2026</h2>
+    <div class="masa-name">Puruṣottama Māsa (Mes Intercalario) + Trivikrama Māsa</div>
+  </div>
+  <div class="cal-grid"><div class="dow-header">Dom</div><div class="dow-header">Lun</div><div class="dow-header">Mar</div><div class="dow-header">Mié</div><div class="dow-header">Jue</div><div class="dow-header">Vie</div><div class="dow-header">Sáb</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">1</span>
+        <span class="tithi-badge">Pūrṇimā · G</span>
+      </div><span class="event-line ev-break">Romper ayuno 07:29–11:03</span><span class="event-line ev-app">Apar. Śrī Śrī Rādhā-Ramaṇa Deva Ji</span><span class="event-line ev-app">Apar. Mādhavendra Purī &amp; Śrīnivāsa Ācārya</span><span class="event-line ev-disapp">Desap. Śrī Parameśvarī Ṭhākura</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">2</span>
+        <span class="tithi-badge">Pratipat · K</span>
+      </div><span class="event-line ev-catumasya">✦ Trivikrama Māsa comienza</span><span class="event-line ev-disapp">Desap. Bhakti Sāraṅga Gosvāmī Mhj.</span></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">3</span>
+        <span class="tithi-badge">Dvitīyā · K</span>
+      </div><span class="event-line ev-app">BVNMj. comenzó 1er tour Occidente</span></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">4</span>
+        <span class="tithi-badge">Tritīyā · K</span>
+      </div><span class="event-line ev-app">Apar. Nimānanda Sevā-tīrtha Prabhu</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">5</span>
+        <span class="tithi-badge">Caturthī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">6</span>
+        <span class="tithi-badge">Pañcamī · K</span>
+      </div><span class="event-line ev-disapp">Desap. Śrī Rāmānanda Rāya</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">7</span>
+        <span class="tithi-badge">Ṣaṣṭhī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">8</span>
+        <span class="tithi-badge">Saptamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">9</span>
+        <span class="tithi-badge">Aṣṭamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">10</span>
+        <span class="tithi-badge">Navamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">11</span>
+        <span class="tithi-badge">Daśamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">12</span>
+        <span class="tithi-badge">Ekādaśī · K</span>
+      </div><span class="event-line ev-special">(No apta para ayuno, ver día siguiente)</span></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">13</span>
+        <span class="tithi-badge">Dvādaśī · K</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Aparā Ekādaśī (Śuddha)</span><span class="event-line ev-app">Apar. Vṛndāvana dāsa Ṭhākura</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">14</span>
+        <span class="tithi-badge">Trayodaśī · K</span>
+      </div><span class="event-line ev-break">Romper ayuno 07:39–11:06</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">15</span>
+        <span class="tithi-badge">Caturdaśī · K</span>
+      </div><span class="event-line ev-catumasya">Fin de Keśava-vrata (riego Tulasī)</span><span class="event-line ev-festival">Sol entra a Tauro</span></div><div class="day-cell amavasya">
+      <div class="day-num-row">
+        <span class="day-num">16</span>
+        <span class="tithi-badge">Amāvasyā · K</span>
+      </div><span class="event-line ev-catumasya">⭐ Comienza Puruṣottama Vrata</span><span class="event-line ev-catumasya">Ayuno de tomates, berenjena, sésamo, mostaza, miel, urad-dahl</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">17</span>
+        <span class="tithi-badge">Pratipat · G</span>
+      </div><span class="event-line ev-catumasya">✦ PURUṢOTTAMA MĀSA COMIENZA ✦</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">18</span>
+        <span class="tithi-badge">Dvitīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">19</span>
+        <span class="tithi-badge">Caturthī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">20</span>
+        <span class="tithi-badge">Pañcamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">21</span>
+        <span class="tithi-badge">Ṣaṣṭhī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">22</span>
+        <span class="tithi-badge">Saptamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">23</span>
+        <span class="tithi-badge">Aṣṭamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">24</span>
+        <span class="tithi-badge">Navamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">25</span>
+        <span class="tithi-badge">Daśamī · G</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">26</span>
+        <span class="tithi-badge">Ekādaśī · G</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Padminī (Kamalā) Ekādaśī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">27</span>
+        <span class="tithi-badge">Dvādaśī · G</span>
+      </div><span class="event-line ev-break">Romper ayuno 07:49–11:10</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">28</span>
+        <span class="tithi-badge">Trayodaśī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">29</span>
+        <span class="tithi-badge">Caturdaśī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">30</span>
+        <span class="tithi-badge">Pūrṇimā · G</span>
+      </div><span class="event-line ev-festival">Pūrṇimā media de Puruṣottama Māsa</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">31</span>
+        <span class="tithi-badge">Pratipat · K</span>
+      </div></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div></div>
+  <div class="special-notes">
+    <h4>✦ Notas de Mayo 2026</h4>
+    <p><strong>Puruṣottama Māsa</strong> (17 May – 14 Jun): Mes intercalario sagrado. Ayuno de: tomates, berenjena, semillas de sésamo y aceite, aceite de mostaza, miel, urad dahl. Prácticas especiales: lectura del Bhāgavatam, caridad, servicio devocional aumentado. Este mes aparece ~cada 3 años.<br>
+    <strong>Aparā Ekādaśī</strong> (13 May): Otorga gran mérito por ayunar en este día. Romper ayuno el día 14 entre 07:39–11:06.<br>
+    <strong>Padminī Ekādaśī</strong> (26 May): Ekādaśī especial del Puruṣottama Māsa.</p>
+  </div>
+</div>
+<div class="month-page page">
+  <div class="month-header">
+    <h2>JUNIO 2026</h2>
+    <div class="masa-name">Puruṣottama Māsa (cont.) → Trivikrama Māsa → Vāmana Māsa</div>
+  </div>
+  <div class="cal-grid"><div class="dow-header">Dom</div><div class="dow-header">Lun</div><div class="dow-header">Mar</div><div class="dow-header">Mié</div><div class="dow-header">Jue</div><div class="dow-header">Vie</div><div class="dow-header">Sáb</div><div class="day-cell empty"></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">1</span>
+        <span class="tithi-badge">Pratipat · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">2</span>
+        <span class="tithi-badge">Dvitīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">3</span>
+        <span class="tithi-badge">Tritīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">4</span>
+        <span class="tithi-badge">Caturthī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">5</span>
+        <span class="tithi-badge">Pañcamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">6</span>
+        <span class="tithi-badge">Ṣaṣṭhī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">7</span>
+        <span class="tithi-badge">Saptamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">8</span>
+        <span class="tithi-badge">Aṣṭamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">9</span>
+        <span class="tithi-badge">Navamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">10</span>
+        <span class="tithi-badge">Daśamī · K</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">11</span>
+        <span class="tithi-badge">Ekādaśī · K</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Parama (Kāmadā) Ekādaśī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">12</span>
+        <span class="tithi-badge">Dvādaśī · K</span>
+      </div><span class="event-line ev-break">Romper ayuno 07:58–11:09</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">13</span>
+        <span class="tithi-badge">Caturdaśī · K</span>
+      </div></div><div class="day-cell amavasya">
+      <div class="day-num-row">
+        <span class="day-num">14</span>
+        <span class="tithi-badge">Amāvasyā · K</span>
+      </div><span class="event-line ev-catumasya">Último día de Puruṣottama Māsa</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">15</span>
+        <span class="tithi-badge">Pratipat · G</span>
+      </div><span class="event-line ev-catumasya">✦ TRIVIKRAMA MĀSA REANUDA</span><span class="event-line ev-festival">Sol entra a Géminis</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">16</span>
+        <span class="tithi-badge">Dvitīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">17</span>
+        <span class="tithi-badge">Tritīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">18</span>
+        <span class="tithi-badge">Caturthī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">19</span>
+        <span class="tithi-badge">Pañcamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">20</span>
+        <span class="tithi-badge">Saptamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">21</span>
+        <span class="tithi-badge">Aṣṭamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">22</span>
+        <span class="tithi-badge">Navamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">23</span>
+        <span class="tithi-badge">Navamī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">24</span>
+        <span class="tithi-badge">Daśamī · G</span>
+      </div><span class="event-line ev-disapp">Desap. Baladeva Vidyābhūṣaṇa</span><span class="event-line ev-festival">Gaṅgā Daśahara (adoración de Gaṅgā-devī)</span><span class="event-line ev-app">Apar. Gaṅgāmātā Gosvāminī</span></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">25</span>
+        <span class="tithi-badge">Ekādaśī · G</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Pāṇḍava Nirjala Ekādaśī ⭐</span><span class="event-line ev-special">(El más importante del año — sin agua ni alimento)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">26</span>
+        <span class="tithi-badge">Dvādaśī · G</span>
+      </div><span class="event-line ev-break">Romper ayuno 08:01–11:18</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">27</span>
+        <span class="tithi-badge">Trayodaśī · G</span>
+      </div><span class="event-line ev-festival">Ciḍā-dahī Mahotsava (Pāṇihāṭī)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">28</span>
+        <span class="tithi-badge">Caturdaśī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">29</span>
+        <span class="tithi-badge">Pūrṇimā · G</span>
+      </div><span class="event-line ev-festival">Snāna-yātrā de Lord Jagannātha ⭐</span><span class="event-line ev-disapp">Desap. Mukunda Daṭṭa &amp; Śrīdhara Paṇḍita</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">30</span>
+        <span class="tithi-badge">Pratipat · K</span>
+      </div><span class="event-line ev-catumasya">✦ VĀMANA MĀSA COMIENZA</span><span class="event-line ev-disapp">Desap. Śyāmānanda Prabhu</span></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div></div>
+  <div class="special-notes">
+    <h4>✦ Notas de Junio 2026</h4>
+    <p><strong>Parama Ekādaśī</strong> (11 Jun): Segunda Ekādaśī especial del Puruṣottama Māsa. Romper ayuno 07:58–11:09.<br>
+    <strong>Pāṇḍava Nirjala Ekādaśī</strong> (25 Jun): ⭐ La Ekādaśī más importante del año. Ayuno completo sin agua ni alimento desde la puesta del sol del día anterior hasta la salida del sol del día siguiente. Equivale en mérito a observar todos los Ekādaśīs del año.<br>
+    <strong>Snāna-yātrā</strong> (29 Jun): Festival del baño de Lord Jagannātha. Inicio del período especial que conduce al Ratha-yātrā.</p>
+  </div>
+</div>
+<div class="month-page page">
+  <div class="month-header">
+    <h2>JULIO 2026</h2>
+    <div class="masa-name">Vāmana Māsa → Śrīdhara Māsa</div>
+  </div>
+  <div class="cal-grid"><div class="dow-header">Dom</div><div class="dow-header">Lun</div><div class="dow-header">Mar</div><div class="dow-header">Mié</div><div class="dow-header">Jue</div><div class="dow-header">Vie</div><div class="dow-header">Sáb</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">1</span>
+        <span class="tithi-badge">Dvitīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">2</span>
+        <span class="tithi-badge">Tritīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">3</span>
+        <span class="tithi-badge">Caturthī · K</span>
+      </div></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">4</span>
+        <span class="tithi-badge">Pañcamī · K</span>
+      </div><span class="event-line ev-app">Apar. Vakreśvara Paṇḍita</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">5</span>
+        <span class="tithi-badge">Ṣaṣṭhī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">6</span>
+        <span class="tithi-badge">Saptamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">7</span>
+        <span class="tithi-badge">Aṣṭamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">8</span>
+        <span class="tithi-badge">Navamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">9</span>
+        <span class="tithi-badge">Daśamī · K</span>
+      </div><span class="event-line ev-disapp">Desap. Śrī Śrīvāsa Paṇḍita</span></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">10</span>
+        <span class="tithi-badge">Ekādaśī · K</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Yogini Ekādaśī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">11</span>
+        <span class="tithi-badge">Dvādaśī · K</span>
+      </div><span class="event-line ev-break">Romper ayuno 08:00–11:19</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">12</span>
+        <span class="tithi-badge">Trayodaśī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">13</span>
+        <span class="tithi-badge">Caturdaśī · K</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">14</span>
+        <span class="tithi-badge">Pratipat · G</span>
+      </div><span class="event-line ev-disapp">Desap. Gadādhara Paṇḍita &amp; Bhaktivinoda Ṭhākura</span><span class="event-line ev-festival">Guṇḍicā-mārjana (limpieza del templo Guṇḍicā)</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">15</span>
+        <span class="tithi-badge">Dvitīyā · G</span>
+      </div><span class="event-line ev-festival">🎡 RATHA-YĀTRĀ de Lord Jagannātha ⭐</span><span class="event-line ev-disapp">Desap. Svarūpa Dāmodara &amp; Śivananda Sena</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">16</span>
+        <span class="tithi-badge">Tritīyā · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">17</span>
+        <span class="tithi-badge">Caturthī · G</span>
+      </div><span class="event-line ev-festival">Sol entra a Cáncer</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">18</span>
+        <span class="tithi-badge">Pañcamī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">19</span>
+        <span class="tithi-badge">Ṣaṣṭhī · G</span>
+      </div><span class="event-line ev-festival">Victoria de Śrī Lakṣmī-devī: Herā Pañcamī</span><span class="event-line ev-disapp">Desap. Vakreśvara Paṇḍita</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">20</span>
+        <span class="tithi-badge">Saptamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">21</span>
+        <span class="tithi-badge">Aṣṭamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">22</span>
+        <span class="tithi-badge">Navamī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">23</span>
+        <span class="tithi-badge">Daśamī · G</span>
+      </div><span class="event-line ev-festival">Viaje de retorno de Lord Jagannātha (fin Ratha-yātrā)</span><span class="event-line ev-disapp">Desap. Bhakti Kamal Madhusūdana Mhj.</span></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">24</span>
+        <span class="tithi-badge">Ekādaśī · G</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Śayana Ekādaśī</span><span class="event-line ev-app">Apar. Bhakti Vijñāna Bhāratī Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">25</span>
+        <span class="tithi-badge">Dvādaśī · G</span>
+      </div><span class="event-line ev-break">Romper ayuno 09:43–11:18</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">26</span>
+        <span class="tithi-badge">Trayodaśī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">27</span>
+        <span class="tithi-badge">Caturdaśī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">28</span>
+        <span class="tithi-badge">Caturdaśī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">29</span>
+        <span class="tithi-badge">Pūrṇimā · G</span>
+      </div><span class="event-line ev-festival">⭐ GURU (VYĀSA) PŪRṆIMĀ</span><span class="event-line ev-disapp">Desap. Sanātana Gosvāmī</span><span class="event-line ev-catumasya">🌿 1er mes Cāturmāsya-vrata inicia (ayuno de vegetales de hoja verde por 1 mes)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">30</span>
+        <span class="tithi-badge">Pratipat · K</span>
+      </div><span class="event-line ev-catumasya">✦ ŚRĪDHARA MĀSA COMIENZA</span><span class="event-line ev-disapp">Desap. Prabhodhānanda Sarasvatī Gosvāmī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">31</span>
+        <span class="tithi-badge">Dvitīyā · K</span>
+      </div><span class="event-line ev-disapp">Desap. Bhakti Hṛdaya Vana Mhj. &amp; Bhakti Saurabh Bhaktisāra Mhj.</span></div><div class="day-cell empty"></div></div>
+  <div class="special-notes">
+    <h4>✦ Notas de Julio 2026</h4>
+    <p><strong>Ratha-yātrā</strong> (15 Jul): ⭐ Gran festival del carro de Lord Jagannātha. Uno de los festivales más importantes del año vaiṣṇava. El retorno del Señor se celebra el 23 Jul.<br>
+    <strong>Guru Pūrṇimā / Vyāsa Pūrṇimā</strong> (29 Jul): ⭐ Luna llena dedicada a honrar al maestro espiritual (Guru) y al gran sabio Vyāsadeva. INICIO del Cāturmāsya-vrata: ayuno de verduras de hoja verde durante un mes.<br>
+    <strong>Yogini Ekādaśī</strong> (10 Jul): Romper ayuno 08:00–11:19.<br>
+    <strong>Śayana Ekādaśī</strong> (24 Jul): Ekādaśī del "reposo" del Señor. Romper ayuno 09:43–11:18.</p>
+  </div>
+</div>
+<div class="month-page page">
+  <div class="month-header">
+    <h2>AGOSTO 2026</h2>
+    <div class="masa-name">Śrīdhara Māsa → Hṛṣīkeśa Māsa</div>
+  </div>
+  <div class="cal-grid"><div class="dow-header">Dom</div><div class="dow-header">Lun</div><div class="dow-header">Mar</div><div class="dow-header">Mié</div><div class="dow-header">Jue</div><div class="dow-header">Vie</div><div class="dow-header">Sáb</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">1</span>
+        <span class="tithi-badge">Tritīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">2</span>
+        <span class="tithi-badge">Caturthī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">3</span>
+        <span class="tithi-badge">Pañcamī · K</span>
+      </div><span class="event-line ev-disapp">Desap. Gopāla Bhaṭṭa Gosvāmī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">4</span>
+        <span class="tithi-badge">Ṣaṣṭhī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">5</span>
+        <span class="tithi-badge">Saptamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">6</span>
+        <span class="tithi-badge">Aṣṭamī · K</span>
+      </div><span class="event-line ev-disapp">Desap. Lokanātha Gosvāmī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">7</span>
+        <span class="tithi-badge">Navamī · K</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">8</span>
+        <span class="tithi-badge">Ekādaśī · K</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Kāmikā Ekādaśī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">9</span>
+        <span class="tithi-badge">Dvādaśī · K</span>
+      </div><span class="event-line ev-break">Romper ayuno 07:51–11:13</span><span class="event-line ev-disapp">Desap. Bhakti Kamal Govinda Mhj. &amp; Bhaktivedānta Tīrtha Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">10</span>
+        <span class="tithi-badge">Trayodaśī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">11</span>
+        <span class="tithi-badge">Caturdaśī · K</span>
+      </div></div><div class="day-cell amavasya">
+      <div class="day-num-row">
+        <span class="day-num">12</span>
+        <span class="tithi-badge">Amāvasyā · K</span>
+      </div><span class="event-line ev-disapp">Desap. Bhakti Rakṣaka Śrīdhara Mhj.</span><span class="event-line ev-eclipse">🌑 ECLIPSE SOLAR TOTAL (12:34–17:00 UTC-3)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">13</span>
+        <span class="tithi-badge">Pratipat · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">14</span>
+        <span class="tithi-badge">Dvitīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">15</span>
+        <span class="tithi-badge">Tritīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">16</span>
+        <span class="tithi-badge">Caturthī · G</span>
+      </div><span class="event-line ev-disapp">Desap. Raghunandana Ṭhākura &amp; Vaṁsidāsa Bābājī</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">17</span>
+        <span class="tithi-badge">Pañcamī · G</span>
+      </div><span class="event-line ev-festival">Sol entra a Leo</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">18</span>
+        <span class="tithi-badge">Ṣaṣṭhī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">19</span>
+        <span class="tithi-badge">Saptamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">20</span>
+        <span class="tithi-badge">Aṣṭamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">21</span>
+        <span class="tithi-badge">Navamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">22</span>
+        <span class="tithi-badge">Daśamī · G</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">23</span>
+        <span class="tithi-badge">Ekādaśī · G</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Pavitropana Ekādaśī</span><span class="event-line ev-festival">Rādhā-Govinda Jhūlana-yātrā comienza (columpio)</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">24</span>
+        <span class="tithi-badge">Dvādaśī · G</span>
+      </div><span class="event-line ev-break">Romper ayuno 07:23–11:05</span><span class="event-line ev-festival">Kṛṣṇa Pavitropana Utsava</span><span class="event-line ev-disapp">Desap. Rūpa Gosvāmī, Gaurīdāsa Paṇḍita, Govinda dāsa</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">25</span>
+        <span class="tithi-badge">Trayodaśī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">26</span>
+        <span class="tithi-badge">Caturdaśī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">27</span>
+        <span class="tithi-badge">Pūrṇimā · G</span>
+      </div><span class="event-line ev-festival">Rādhā-Govinda Jhūlana-yātrā termina</span><span class="event-line ev-festival">⭐ APARICIÓN DE LORD BALARĀMA — Ayuno hasta mediodía</span><span class="event-line ev-festival">Rakṣā-bandhana</span><span class="event-line ev-catumasya">🌿 2do mes Cāturmāsya-vrata (ayuno de yogurt por 1 mes)</span><span class="event-line ev-eclipse">🌕 Eclipse Lunar Parcial (22:23 Aug27 – 04:01 Aug28 UTC-3)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">28</span>
+        <span class="tithi-badge">Pratipat · K</span>
+      </div><span class="event-line ev-break">Romper ayuno Balarāma 07:18–11:02</span><span class="event-line ev-catumasya">✦ HṚṢĪKEŚA MĀSA COMIENZA</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">29</span>
+        <span class="tithi-badge">Dvitīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">30</span>
+        <span class="tithi-badge">Tritīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">31</span>
+        <span class="tithi-badge">Caturthī · K</span>
+      </div></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div></div>
+  <div class="special-notes">
+    <h4>✦ Notas de Agosto 2026</h4>
+    <p><strong>Kāmikā Ekādaśī</strong> (8 Ago): Romper ayuno 07:51–11:13.<br>
+    <strong>Eclipse Solar Total</strong> (12 Ago): Verificar visibilidad desde Buenos Aires. Durante eclipses se recomienda no comer ni beber hasta después.<br>
+    <strong>Pavitropana Ekādaśī</strong> (23 Ago): Romper ayuno 07:23–11:05. Comienzo de Jhūlana-yātrā (festival del columpio).<br>
+    <strong>Aparición de Lord Balarāma</strong> (27 Ago): Ayuno hasta mediodía, luego solo preparaciones de Ekādaśī.<br>
+    <strong>Eclipse Lunar Parcial</strong> (27–28 Ago): Visible en gran parte del mundo.<br>
+    <strong>2do mes Cāturmāsya</strong> (desde 27 Ago): Ayuno de yogurt por un mes.</p>
+  </div>
+</div>
+<div class="month-page page">
+  <div class="month-header">
+    <h2>SEPTIEMBRE 2026</h2>
+    <div class="masa-name">Hṛṣīkeśa Māsa → Padmanābha Māsa</div>
+  </div>
+  <div class="cal-grid"><div class="dow-header">Dom</div><div class="dow-header">Lun</div><div class="dow-header">Mar</div><div class="dow-header">Mié</div><div class="dow-header">Jue</div><div class="dow-header">Vie</div><div class="dow-header">Sáb</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">1</span>
+        <span class="tithi-badge">Pañcamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">2</span>
+        <span class="tithi-badge">Ṣaṣṭhī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">3</span>
+        <span class="tithi-badge">Saptamī · K</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">4</span>
+        <span class="tithi-badge">Aṣṭamī · K</span>
+      </div><span class="event-line ev-fast">⭐ ŚRĪ KṚṢṆA JANMĀṢṬAMĪ — Aparición del Señor Kṛṣṇa</span><span class="event-line ev-fast">Ayuno hasta medianoche, luego solo preparaciones de Ekādaśī</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">5</span>
+        <span class="tithi-badge">Navamī · K</span>
+      </div><span class="event-line ev-break">Romper ayuno Janmāṣṭamī 07:07–10:57</span><span class="event-line ev-festival">Nandotsava (Fiesta de Nanda Mahārāja)</span><span class="event-line ev-app">⭐ Apar. Śrīla Bhaktivedānta Swāmī Mahārāja</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">6</span>
+        <span class="tithi-badge">Daśamī · K</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">7</span>
+        <span class="tithi-badge">Ekādaśī · K</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Annadā Ekādaśī (Trispṛṣā Mahādvādaśī)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">8</span>
+        <span class="tithi-badge">Trayodaśī · K</span>
+      </div><span class="event-line ev-break">Romper ayuno 07:03–10:55</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">9</span>
+        <span class="tithi-badge">Caturdaśī · K</span>
+      </div></div><div class="day-cell amavasya">
+      <div class="day-num-row">
+        <span class="day-num">10</span>
+        <span class="tithi-badge">Amāvasyā · K</span>
+      </div></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">11</span>
+        <span class="tithi-badge">Pratipat · G</span>
+      </div><span class="event-line ev-app">Apar. Gour Govinda Svāmī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">12</span>
+        <span class="tithi-badge">Dvitīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">13</span>
+        <span class="tithi-badge">Tritīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">14</span>
+        <span class="tithi-badge">Caturthī · G</span>
+      </div></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">15</span>
+        <span class="tithi-badge">Pañcamī · G</span>
+      </div><span class="event-line ev-app">Apar. Śrīmatī Sītā Ṭhākurāṇī (consorte de Śrī Advaita)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">16</span>
+        <span class="tithi-badge">Ṣaṣṭhī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">17</span>
+        <span class="tithi-badge">Saptamī · G</span>
+      </div><span class="event-line ev-festival">Sol entra a Virgo</span><span class="event-line ev-app">Aparición de Śrī Lalitā-devī ⭐</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">18</span>
+        <span class="tithi-badge">Aṣṭamī · G</span>
+      </div><span class="event-line ev-festival">⭐ RĀDHĀṢṬAMĪ — Aparición de Śrīmatī Rādhārāṇī (sin ayuno)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">19</span>
+        <span class="tithi-badge">Aṣṭamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">20</span>
+        <span class="tithi-badge">Navamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">21</span>
+        <span class="tithi-badge">Daśamī · G</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">22</span>
+        <span class="tithi-badge">Ekādaśī · G</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Pārśva Ekādaśī</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">23</span>
+        <span class="tithi-badge">Dvādaśī · G</span>
+      </div><span class="event-line ev-break">Romper ayuno 06:41–10:45</span><span class="event-line ev-festival">⭐ Vāmana Dvādaśī — Aparición de Lord Vāmanadeva</span><span class="event-line ev-app">Apar. Śrīla Jīva Gosvāmī</span></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">24</span>
+        <span class="tithi-badge">Trayodaśī · G</span>
+      </div><span class="event-line ev-app">Apar. Śrīla Bhaktivinoda Ṭhākura</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">25</span>
+        <span class="tithi-badge">Caturdaśī · G</span>
+      </div><span class="event-line ev-disapp">Desap. Nāmācārya Haridāsa Ṭhākura</span><span class="event-line ev-disapp">Desap. Bhakti Vijñāna Bhāratī Mhj.</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">26</span>
+        <span class="tithi-badge">Pūrṇimā · G</span>
+      </div><span class="event-line ev-festival">Śrī Viśvarūpa-mahotsava</span><span class="event-line ev-special">Día de sannyāsa de BPK Mhj. y BV Swāmī Mhj.</span><span class="event-line ev-catumasya">🌿 3er mes Cāturmāsya-vrata (ayuno de leche 1 mes; sin berenjena, tomate, urad dahl, miel)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">27</span>
+        <span class="tithi-badge">Pratipat · K</span>
+      </div><span class="event-line ev-catumasya">✦ PADMANĀBHA MĀSA COMIENZA</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">28</span>
+        <span class="tithi-badge">Dvitīyā · K</span>
+      </div><span class="event-line ev-disapp">Desap. Bhakti Vilāsa Tīrtha Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">29</span>
+        <span class="tithi-badge">Tritīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">30</span>
+        <span class="tithi-badge">Pañcamī · K</span>
+      </div></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div></div>
+  <div class="special-notes">
+    <h4>✦ Notas de Septiembre 2026</h4>
+    <p><strong>Śrī Kṛṣṇa Janmāṣṭamī</strong> (4 Sep): ⭐ La aparición más sagrada del año — nacimiento del Señor Kṛṣṇa. Ayuno completo hasta medianoche. Al día siguiente (5 Sep) es Nandotsava y aniversario de aparición de Śrīla Bhaktivedānta Swāmī Mahārāja.<br>
+    <strong>Rādhāṣṭamī</strong> (18 Sep): ⭐ Aparición de Śrīmatī Rādhārāṇī. No requiere ayuno formal pero es un día de gran celebración y devoción especial.<br>
+    <strong>Lalitā-devī Saptamī</strong> (17 Sep): Aparición de Lalitā-devī, la principal compañera de Rādhārāṇī.<br>
+    <strong>Vāmana Dvādaśī</strong> (23 Sep): Aparición de Lord Vāmanadeva (avatāra enano de Viṣṇu).<br>
+    <strong>3er mes Cāturmāsya</strong> (desde 26 Sep): Ayuno de leche por un mes.</p>
+  </div>
+</div>
+<div class="month-page page">
+  <div class="month-header">
+    <h2>OCTUBRE 2026</h2>
+    <div class="masa-name">Padmanābha Māsa → Dāmodara Māsa (Kārtika) ⭐</div>
+  </div>
+  <div class="cal-grid"><div class="dow-header">Dom</div><div class="dow-header">Lun</div><div class="dow-header">Mar</div><div class="dow-header">Mié</div><div class="dow-header">Jue</div><div class="dow-header">Vie</div><div class="dow-header">Sáb</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">1</span>
+        <span class="tithi-badge">Ṣaṣṭhī · K</span>
+      </div><span class="event-line ev-disapp">Desap. Bhaktiśrīrūpa Siddhānti Mhj.</span></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">2</span>
+        <span class="tithi-badge">Saptamī · K</span>
+      </div><span class="event-line ev-app">BVS Mahārāja llegó a EE.UU.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">3</span>
+        <span class="tithi-badge">Aṣṭamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">4</span>
+        <span class="tithi-badge">Navamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">5</span>
+        <span class="tithi-badge">Daśamī · K</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">6</span>
+        <span class="tithi-badge">Ekādaśī · K</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Indira Ekādaśī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">7</span>
+        <span class="tithi-badge">Dvādaśī · K</span>
+      </div><span class="event-line ev-break">Romper ayuno 06:22–10:35</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">8</span>
+        <span class="tithi-badge">Trayodaśī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">9</span>
+        <span class="tithi-badge">Caturdaśī · K</span>
+      </div></div><div class="day-cell amavasya">
+      <div class="day-num-row">
+        <span class="day-num">10</span>
+        <span class="tithi-badge">Amāvasyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">11</span>
+        <span class="tithi-badge">Pratipat · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">12</span>
+        <span class="tithi-badge">Dvitīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">13</span>
+        <span class="tithi-badge">Tritīyā · G</span>
+      </div></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">14</span>
+        <span class="tithi-badge">Caturthī · G</span>
+      </div><span class="event-line ev-app">Apar. Bhakti Pramoda Purī Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">15</span>
+        <span class="tithi-badge">Pañcamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">16</span>
+        <span class="tithi-badge">Ṣaṣṭhī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">17</span>
+        <span class="tithi-badge">Saptamī · G</span>
+      </div><span class="event-line ev-festival">Sol entra a Libra</span><span class="event-line ev-festival">Ākāśa Dīpikā comienza (lámpara al cielo, 1 mes solar)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">18</span>
+        <span class="tithi-badge">Aṣṭamī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">19</span>
+        <span class="tithi-badge">Navamī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">20</span>
+        <span class="tithi-badge">Daśamī · G</span>
+      </div><span class="event-line ev-festival">Rāmacandra Vijayotsava (Victoria de Lord Rāma)</span><span class="event-line ev-app">Apar. Madhvācārya</span><span class="event-line ev-disapp">Desap. Bhaktisvarūpa Dāmodara Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">21</span>
+        <span class="tithi-badge">Ekādaśī · G</span>
+      </div><span class="event-line ev-special">(No apta para ayuno, ver día siguiente)</span></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">22</span>
+        <span class="tithi-badge">Ekādaśī · G</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Pāśānkuṣā Ekādaśī (Śuddha)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">23</span>
+        <span class="tithi-badge">Dvādaśī · G</span>
+      </div><span class="event-line ev-break">Romper ayuno 06:02–06:08</span><span class="event-line ev-disapp">Desap. R.dāsa Gosvāmī, R.Bhaṭṭa Gosvāmī, Kṛṣṇadāsa Kavirāja Gosvāmī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">24</span>
+        <span class="tithi-badge">Caturdaśī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">25</span>
+        <span class="tithi-badge">Pūrṇimā · G</span>
+      </div><span class="event-line ev-festival">⭐ Śrī Kṛṣṇa Śaradiya Rāsa-yātrā</span><span class="event-line ev-disapp">Desap. Murāri Gupta &amp; Bhakti Prajñāna Keśava Mhj.</span><span class="event-line ev-catumasya">⭐ INICIO Ūrjā-vrata / Kārtika-vrata / Dāmodara-vrata / Niyama-sevā</span><span class="event-line ev-catumasya">🌿 4to mes Cāturmāsya: sin sésamo, mostaza y sus aceites, berenjena, tomate, loki, parmal, urad dahl, miel. Sin afeitar (brahm. y sann.)</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">26</span>
+        <span class="tithi-badge">Pratipat · K</span>
+      </div><span class="event-line ev-catumasya">✦ DĀMODARA MĀSA COMIENZA (Kārtika) ⭐</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">27</span>
+        <span class="tithi-badge">Dvitīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">28</span>
+        <span class="tithi-badge">Tritīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">29</span>
+        <span class="tithi-badge">Caturthī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">30</span>
+        <span class="tithi-badge">Pañcamī · K</span>
+      </div><span class="event-line ev-disapp">Desap. Bhaktikuśala Narasiṁha Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">31</span>
+        <span class="tithi-badge">Ṣaṣṭhī · K</span>
+      </div><span class="event-line ev-disapp">Desap. Bhakti Vicāra Yāyāvara Mhj.</span></div></div>
+  <div class="special-notes">
+    <h4>✦ Notas de Octubre 2026</h4>
+    <p><strong>Śaradiya Rāsa-yātrā</strong> (25 Oct): Festival de la danza rāsa de otoño de Lord Kṛṣṇa en Vṛndāvana.<br>
+    <strong>Dāmodara Māsa / Kārtika-vrata / Ūrjā-vrata</strong> (26 Oct–24 Nov): ⭐ El mes más sagrado del año para la devoción. Se ofrece una lámpara a Lord Dāmodara cada tarde al cantar el himno Dāmodarāṣṭakam. Se observan reglas especiales de ayuno.<br>
+    <strong>Pāśānkuṣā Ekādaśī</strong> (22 Oct): Nota: ventana de ayuno muy corta 06:02–06:08 para romper el ayuno.<br>
+    <strong>Ākāśa Dīpikā</strong> (17 Oct–16 Nov): Ofrecer una lámpara al cielo durante un mes solar.</p>
+  </div>
+</div>
+<div class="month-page page">
+  <div class="month-header">
+    <h2>NOVIEMBRE 2026</h2>
+    <div class="masa-name">Dāmodara Māsa (Kārtika) ⭐ → Keśava Māsa</div>
+  </div>
+  <div class="cal-grid"><div class="dow-header">Dom</div><div class="dow-header">Lun</div><div class="dow-header">Mar</div><div class="dow-header">Mié</div><div class="dow-header">Jue</div><div class="dow-header">Vie</div><div class="dow-header">Sáb</div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">1</span>
+        <span class="tithi-badge">Saptamī · K</span>
+      </div><span class="event-line ev-disapp">Desap. Narottama dāsa Ṭhākura</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">2</span>
+        <span class="tithi-badge">Navamī · K</span>
+      </div><span class="event-line ev-festival">⭐ Aparición de Śrī Rādhā-kuṇḍa (Bahulāṣṭamī)</span><span class="event-line ev-festival">Baño en Rādhā-kuṇḍa y dar caridad</span><span class="event-line ev-app">Apar. Vīracandra Prabhu &amp; Bhakti Rakṣaka Śrīdhara Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">3</span>
+        <span class="tithi-badge">Daśamī · K</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">4</span>
+        <span class="tithi-badge">Ekādaśī · K</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Ramā Ekādaśī</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">5</span>
+        <span class="tithi-badge">Dvādaśī · K</span>
+      </div><span class="event-line ev-break">Romper ayuno 08:07–10:21</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">6</span>
+        <span class="tithi-badge">Trayodaśī · K</span>
+      </div><span class="event-line ev-festival">Yama Dīpa-dāna (ofrecer lámpara a Yama)</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">7</span>
+        <span class="tithi-badge">Caturdaśī · K</span>
+      </div><span class="event-line ev-festival">Yama Caturdaśī (14 lámparas en el templo)</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">8</span>
+        <span class="tithi-badge">Amāvasyā · K</span>
+      </div><span class="event-line ev-festival">🪔 DĪPĀVALĪ — Festival de Luces (Dīpa-dāna, Dīpanvita)</span><span class="event-line ev-app">Aparición de Mānasī-gaṅgā</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">9</span>
+        <span class="tithi-badge">Pratipat · G</span>
+      </div><span class="event-line ev-festival">Govardhana-pūjā ⭐ (Adoración del Monte Govardhana, de las vacas)</span><span class="event-line ev-app">Apar. Rasikānanda &amp; Bhakti Kusum Śramaṇā Mhj.</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">10</span>
+        <span class="tithi-badge">Dvitīyā · G</span>
+      </div><span class="event-line ev-festival">Yama-dvitīyā (baño en Yamunā-devī con hermano/hermana)</span><span class="event-line ev-disapp">Desap. Vāsudeva Ghoṣa</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">11</span>
+        <span class="tithi-badge">Dvitīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">12</span>
+        <span class="tithi-badge">Tritīyā · G</span>
+      </div><span class="event-line ev-disapp">Desap. Bhaktivedānta Vāmana Mhj. &amp; Bhaktivedānta Trivikrama Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">13</span>
+        <span class="tithi-badge">Caturthī · G</span>
+      </div><span class="event-line ev-disapp">Desap. Tridaṇḍisvāmī Bhaktivedānta Swāmī Mahārāja ⭐</span></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">14</span>
+        <span class="tithi-badge">Pañcamī · G</span>
+      </div><span class="event-line ev-app">Apar. Bhaktiśrīrūpa Siddhānti Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">15</span>
+        <span class="tithi-badge">Ṣaṣṭhī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">16</span>
+        <span class="tithi-badge">Saptamī · G</span>
+      </div><span class="event-line ev-festival">Sol entra a Escorpio</span><span class="event-line ev-festival">Fin de Ākāśa Dīpikā</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">17</span>
+        <span class="tithi-badge">Aṣṭamī · G</span>
+      </div><span class="event-line ev-festival">Gopāṣṭamī / Goṣṭāṣṭamī ⭐ (Kṛṣṇa como pastor de vacas)</span><span class="event-line ev-disapp">Desap. Gadādhara dāsa Gosvāmī, Dhanañjaya Paṇḍita &amp; Śrīnivāsa Ācārya</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">18</span>
+        <span class="tithi-badge">Navamī · G</span>
+      </div><span class="event-line ev-festival">Śrī Kṛṣṇa mata a Kaṁsa</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">19</span>
+        <span class="tithi-badge">Daśamī · G</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">20</span>
+        <span class="tithi-badge">Ekādaśī · G</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Utthāna Ekādaśī ⭐</span><span class="event-line ev-festival">Bhīṣma-pañcaka comienza (5 días de ayuno especial)</span><span class="event-line ev-disapp">Desap. Gaura-kiśora dāsa Bābājī &amp; Bhakti Dayita Mādhava Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">21</span>
+        <span class="tithi-badge">Dvādaśī · G</span>
+      </div><span class="event-line ev-break">Romper ayuno 05:37–10:19</span></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">22</span>
+        <span class="tithi-badge">Trayodaśī · G</span>
+      </div><span class="event-line ev-app">Apar. Bhakti Suhṛt Akiñcana Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">23</span>
+        <span class="tithi-badge">Caturdaśī · G</span>
+      </div><span class="event-line ev-disapp">Desap. Bhūgarbha Gosvāmī &amp; Kāśīśvara Paṇḍita &amp; Bhakti Pramoda Purī Mhj.</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">24</span>
+        <span class="tithi-badge">Pūrṇimā · G</span>
+      </div><span class="event-line ev-festival">⭐ ŚRĪ KṚṢṆA RĀSA-YĀTRĀ (Luna llena — Rāsa-pūrṇimā)</span><span class="event-line ev-app">Apar. Nimbāditya (Nimbārka)</span><span class="event-line ev-catumasya">✦ FIN de Ūrjā-vrata, Kārtika-vrata, Dāmodara-vrata, Niyama-sevā</span><span class="event-line ev-catumasya">✦ FIN del Cāturmāsya-vrata</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">25</span>
+        <span class="tithi-badge">Pratipat · K</span>
+      </div><span class="event-line ev-catumasya">✦ KEŚAVA MĀSA COMIENZA</span><span class="event-line ev-catumasya">Kātyāyanī-vrata comienza (votos de las gopīs de Vraja)</span><span class="event-line ev-disapp">Desap. Sundarānanda Ṭhākura</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">26</span>
+        <span class="tithi-badge">Tritīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">27</span>
+        <span class="tithi-badge">Caturthī · K</span>
+      </div></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">28</span>
+        <span class="tithi-badge">Pañcamī · K</span>
+      </div><span class="event-line ev-app">Apar. Bhakti Vikāsa Hṛṣīkeśa Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">29</span>
+        <span class="tithi-badge">Ṣaṣṭhī · K</span>
+      </div></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">30</span>
+        <span class="tithi-badge">Saptamī · K</span>
+      </div><span class="event-line ev-app">Apar. Bhaktisambandha Turyāśramī Mhj.</span></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div></div>
+  <div class="special-notes">
+    <h4>✦ Notas de Noviembre 2026</h4>
+    <p><strong>Bahulāṣṭamī / Rādhā-kuṇḍa</strong> (2 Nov): Aparición del lago sagrado de Rādhā-kuṇḍa. El baño en Rādhā-kuṇḍa esta noche es sumamente auspicioso.<br>
+    <strong>Dīpāvalī</strong> (8 Nov): Festival de las luces. Se ofrecen muchas lámparas a la Deidad. También es Lakṣmī-pūjā.<br>
+    <strong>Govardhana-pūjā</strong> (9 Nov): ⭐ Adoración del Monte Govardhana. Kṛṣṇa levantó este monte para proteger a los habitantes de Vraja.<br>
+    <strong>Utthāna Ekādaśī</strong> (20 Nov): ⭐ El "Señor despierta de su reposo" — marca el fin del período de Cāturmāsya. Inicio del Bhīṣma-pañcaka (5 días de práctica intensificada).<br>
+    <strong>Śrī Kṛṣṇa Rāsa-yātrā</strong> (24 Nov): ⭐ FIN del Kārtika-vrata y del Cāturmāsya. Gran festival.<br>
+    <strong>Desap. de Bhaktivedānta Swāmī Mahārāja</strong> (13 Nov): Día conmemorativo del fundador de ISKCON.</p>
+  </div>
+</div>
+<div class="month-page page">
+  <div class="month-header">
+    <h2>DICIEMBRE 2026</h2>
+    <div class="masa-name">Keśava Māsa → Nārāyaṇa Māsa</div>
+  </div>
+  <div class="cal-grid"><div class="dow-header">Dom</div><div class="dow-header">Lun</div><div class="dow-header">Mar</div><div class="dow-header">Mié</div><div class="dow-header">Jue</div><div class="dow-header">Vie</div><div class="dow-header">Sáb</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">1</span>
+        <span class="tithi-badge">Aṣṭamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">2</span>
+        <span class="tithi-badge">Navamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">3</span>
+        <span class="tithi-badge">Daśamī · K</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">4</span>
+        <span class="tithi-badge">Ekādaśī · K</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Utpannā Ekādaśī</span><span class="event-line ev-disapp">Desap. Narahari Sarakāra Ṭhākura</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">5</span>
+        <span class="tithi-badge">Dvādaśī · K</span>
+      </div><span class="event-line ev-break">Romper ayuno 05:33–10:21</span><span class="event-line ev-disapp">Desap. Śrī Kāliyā Kṛṣṇadāsa</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">6</span>
+        <span class="tithi-badge">Trayodaśī · K</span>
+      </div><span class="event-line ev-disapp">Desap. Śrī Sāraṅga Ṭhākura</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">7</span>
+        <span class="tithi-badge">Caturdaśī · K</span>
+      </div></div><div class="day-cell amavasya">
+      <div class="day-num-row">
+        <span class="day-num">8</span>
+        <span class="tithi-badge">Amāvasyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">9</span>
+        <span class="tithi-badge">Pratipat · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">10</span>
+        <span class="tithi-badge">Dvitīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">11</span>
+        <span class="tithi-badge">Tritīyā · G</span>
+      </div><span class="event-line ev-disapp">Desap. Bhakti Jīvana Janārdana Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">12</span>
+        <span class="tithi-badge">Tritīyā · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">13</span>
+        <span class="tithi-badge">Caturthī · G</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">14</span>
+        <span class="tithi-badge">Pañcamī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">15</span>
+        <span class="tithi-badge">Ṣaṣṭhī · G</span>
+      </div><span class="event-line ev-festival">Odana Ṣaṣṭhi</span><span class="event-line ev-app">Apar. Bhaktisvarūpa Dāmodara Mhj.</span></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">16</span>
+        <span class="tithi-badge">Saptamī · G</span>
+      </div><span class="event-line ev-festival">Sol entra a Sagitario</span></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">17</span>
+        <span class="tithi-badge">Aṣṭamī · G</span>
+      </div><span class="event-line ev-app">Apar. Bhakti Jīvana Janārdana Mhj.</span></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">18</span>
+        <span class="tithi-badge">Navamī · G</span>
+      </div><span class="event-line ev-app">Apar. Bhakti Kamala Madhusūdana Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">19</span>
+        <span class="tithi-badge">Daśamī · G</span>
+      </div></div><div class="day-cell ekadasi-fast">
+      <div class="day-num-row">
+        <span class="day-num">20</span>
+        <span class="tithi-badge">Ekādaśī · G</span>
+      </div><span class="event-line ev-fast">🔴 AYUNO: Mokṣadā Ekādaśī ⭐</span><span class="event-line ev-festival">⭐ BHAGAVAD-GĪTĀ JAYANTĪ — Kṛṣṇa habló la Gītā a Arjuna</span><span class="event-line ev-disapp">Desap. Bhakti Kusum Śramaṇā Mhj.</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">21</span>
+        <span class="tithi-badge">Dvādaśī · G</span>
+      </div><span class="event-line ev-break">Romper ayuno 05:37–09:09</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">22</span>
+        <span class="tithi-badge">Trayodaśī · G</span>
+      </div></div><div class="day-cell festival">
+      <div class="day-num-row">
+        <span class="day-num">23</span>
+        <span class="tithi-badge">Pūrṇimā · G</span>
+      </div><span class="event-line ev-festival">Pūrṇimā</span><span class="event-line ev-catumasya">Fin del Kātyāyanī-vrata</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">24</span>
+        <span class="tithi-badge">Pratipat · K</span>
+      </div><span class="event-line ev-catumasya">✦ NĀRĀYAṆA MĀSA COMIENZA</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">25</span>
+        <span class="tithi-badge">Dvitīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">26</span>
+        <span class="tithi-badge">Tritīyā · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">27</span>
+        <span class="tithi-badge">Caturthī · K</span>
+      </div><span class="event-line ev-disapp">Desap. Jagad-guru Bhaktisiddhānta Sarasvatī Ṭhākura Prabhupāda ⭐</span></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">28</span>
+        <span class="tithi-badge">Pañcamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">29</span>
+        <span class="tithi-badge">Saptamī · K</span>
+      </div></div><div class="day-cell">
+      <div class="day-num-row">
+        <span class="day-num">30</span>
+        <span class="tithi-badge">Aṣṭamī · K</span>
+      </div></div><div class="day-cell appearance-day">
+      <div class="day-num-row">
+        <span class="day-num">31</span>
+        <span class="tithi-badge">Navamī · K</span>
+      </div><span class="event-line ev-app">Apar. Bhaktivedānta Vāmana Mhj.</span><span class="event-line ev-disapp">Desap. Bhaktivedānta Nārāyaṇa Gosvāmī Mahārāja</span></div><div class="day-cell empty"></div><div class="day-cell empty"></div></div>
+  <div class="special-notes">
+    <h4>✦ Notas de Diciembre 2026</h4>
+    <p><strong>Utpannā Ekādaśī</strong> (4 Dic): La Ekādaśī en que surgió la devī Ekādaśī para combatir al demonio Mura. Romper ayuno 05:33–10:21.<br>
+    <strong>Mokṣadā Ekādaśī / Bhagavad-gītā Jayantī</strong> (20 Dic): ⭐⭐ Día en que Lord Kṛṣṇa habló la Bhagavad-gītā a Arjuna. Ekādaśī que otorga liberación (mokṣa). Romper ayuno 05:37–09:09 (ventana muy corta).<br>
+    <strong>Desaparición de Bhaktisiddhānta Sarasvatī</strong> (27 Dic): ⭐ Día de conmemoración del fundador de la misión Gauḍīya Maṭha, maestro espiritual de los líderes de esta tradición.<br>
+    <strong>Kātyāyanī-vrata</strong>: Termina el 23 Dic con la Pūrṇimā. Este vrata fue observado por las gopīs de Vraja para obtener a Kṛṣṇa como su esposo.</p>
+  </div>
+</div>
+
+<!-- SUMMARY / QUICK REFERENCE PAGE -->
+<div class="page legend-page" style="page-break-before:always;">
+  <h2>Resumen Anual — Fechas Clave 2026</h2>
+  <div class="subtitle">Mayo a Diciembre 2026 · Buenos Aires, Argentina (UTC−3)</div>
+  
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;">
+    <div>
+      <div style="background:#fff0f0;border:1px solid #e0b0b0;border-radius:6px;padding:10px;margin-bottom:10px;">
+        <h3 style="color:#8B1A1A;font-size:11px;margin-bottom:8px;">☽ TODOS LOS EKĀDAŚĪS 2026</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:8px;">
+          <tbody><tr style="background:#f0d0d0;"><td style="padding:2px 4px;font-weight:bold;">Fecha</td><td style="padding:2px 4px;font-weight:bold;">Nombre</td><td style="padding:2px 4px;font-weight:bold;">Romper ayuno</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">13 May</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Aparā Ekādaśī</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">07:39–11:06</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">26 May</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Padminī (Kamalā) Ek. ✦ Puruṣottama</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">07:49–11:10</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">11 Jun</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Parama (Kāmadā) Ek. ✦ Puruṣottama</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">07:58–11:09</td></tr>
+          <tr style="background:#fff5e0;"><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">25 Jun</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;"><strong>⭐ Pāṇḍava Nirjala Ekādaśī</strong></td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">08:01–11:18</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">10 Jul</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Yogini Ekādaśī</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">08:00–11:19</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">24 Jul</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Śayana Ekādaśī</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">09:43–11:18</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">8 Ago</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Kāmikā Ekādaśī</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">07:51–11:13</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">23 Ago</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Pavitropana Ekādaśī</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">07:23–11:05</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">7 Sep</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Annadā Ek. (Trispṛṣā Mahādvādaśī)</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">07:03–10:55</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">22 Sep</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Pārśva Ekādaśī</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">06:41–10:45</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">6 Oct</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Indira Ekādaśī</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">06:22–10:35</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">22 Oct</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Pāśānkuṣā Ekādaśī (Śuddha) ⚠️</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">06:02–06:08 ⚠️</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">4 Nov</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Ramā Ekādaśī</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">08:07–10:21</td></tr>
+          <tr style="background:#fff5e0;"><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">20 Nov</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;"><strong>⭐ Utthāna Ekādaśī</strong></td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">05:37–10:19</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#8B1A1A;font-weight:bold;">4 Dic</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;">Utpannā Ekādaśī</td><td style="padding:2px 4px;border-bottom:1px solid #f0d0d0;color:#117a65;">05:33–10:21</td></tr>
+          <tr style="background:#fff5e0;"><td style="padding:2px 4px;color:#8B1A1A;font-weight:bold;">20 Dic</td><td style="padding:2px 4px;"><strong>⭐ Mokṣadā Ek. + Gītā Jayantī</strong></td><td style="padding:2px 4px;color:#117a65;">05:37–09:09 ⚠️</td></tr>
+        </tbody></table>
+        <p style="font-size:7px;margin-top:4px;color:#666;">⚠️ = Ventana para romper el ayuno muy corta — poner alarma</p>
+      </div>
+    </div>
+    <div>
+      <div style="background:#f0fff0;border:1px solid #90c090;border-radius:6px;padding:10px;margin-bottom:10px;">
+        <h3 style="color:#1a7245;font-size:11px;margin-bottom:8px;">⭐ FESTIVALES PRINCIPALES 2026</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:8px;">
+          <tbody><tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;width:60px;">13 May</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;">Aparā Ekādaśī</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">17 May</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>PURUṢOTTAMA MĀSA comienza ⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">25 Jun</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>Pāṇḍava Nirjala Ekādaśī ⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">27 Jun</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;">Ciḍā-dahī Mahotsava (Pāṇihāṭī)</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">29 Jun</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;">Snāna-yātrā de Lord Jagannātha ⭐</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">15 Jul</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>RATHA-YĀTRĀ ⭐⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">29 Jul</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>GURU PŪRṆIMĀ + inicio Cāturmāsya ⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">12 Ago</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;">Eclipse Solar Total 🌑</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">27 Ago</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>APARICIÓN DE LORD BALARĀMA ⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">4 Sep</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>ŚRĪ KṚṢṆA JANMĀṢṬAMĪ ⭐⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">17 Sep</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;">Aparición de Lalitā-devī</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">18 Sep</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>RĀDHĀṢṬAMĪ ⭐⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">23 Sep</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;">Vāmana Dvādaśī (Aparición de Vāmana)</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">25 Oct</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>INICIO Kārtika-vrata + Rāsa-yātrā ⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">2 Nov</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;">Bahulāṣṭamī / Aparición Rādhā-kuṇḍa</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">8 Nov</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;">Dīpāvalī 🪔</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">9 Nov</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>GOVARDHANA-PŪJĀ ⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">17 Nov</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;">Gopāṣṭamī / Goṣṭāṣṭamī</td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">20 Nov</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>UTTHĀNA EKĀDAŚĪ ⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">24 Nov</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>KṚṢṆA RĀSA-YĀTRĀ + Fin Kārtika ⭐</strong></td></tr>
+          <tr><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;font-weight:bold;color:#1a7245;">20 Dic</td><td style="padding:2px 4px;border-bottom:1px solid #c0e0c0;"><strong>BHAGAVAD-GĪTĀ JAYANTĪ ⭐⭐</strong></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+  
+  <div style="margin-top:10px;padding:8px;background:#fdf6ec;border:2px solid #c9a96e;border-radius:6px;text-align:center;font-size:9px;color:#5c3a1e;">
+    <strong>ॐ तत् सत् — Śrī Kṛṣṇa Śaraṇaṁ Mama</strong><br>
+    <em>Calendario elaborado a partir de la información de purebhakti.com — Bhaktivedānta Trust International</em><br>
+    Todos los horarios corresponden a Buenos Aires, Argentina (UTC−3) · Śrī Gaurābda 540
+  </div>
+</div>
+
+</body></html>

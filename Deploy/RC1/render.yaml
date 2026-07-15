@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: pancanga-engine-rc1-api
+    runtime: docker
+    plan: free
+    dockerfilePath: Deploy/RC1/Dockerfile
+    envVars:
+      - key: RC1_EXPERIENCE_ALLOWED_ORIGIN
+        value: https://pancanga-engine-rc1.pages.dev

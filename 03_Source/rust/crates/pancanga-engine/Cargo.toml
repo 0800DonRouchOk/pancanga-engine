@@ -1,0 +1,19 @@
+[package]
+name = "pancanga-engine"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description.workspace = true
+
+[lib]
+name = "pancanga_engine"
+path = "src/lib.rs"
+
+[[bench]]
+name = "core_math"
+harness = false
+
+[[bench]]
+name = "astronomy_algorithms"
+harness = false

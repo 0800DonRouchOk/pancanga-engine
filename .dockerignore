@@ -1,0 +1,6 @@
+03_Source/rust/target
+.git
+.DS_Store
+**/.DS_Store
+04_Tests/Astronomy/SwissEphemeris/ephe
+04_Tests/Astronomy/SwissEphemeris/bin

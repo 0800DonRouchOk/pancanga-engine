@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pancanga Engine RC1 Experience</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #20201d;
+      --muted: #68645d;
+      --line: #d8d0c2;
+      --paper: #fffaf1;
+      --dawn: #f6dfb7;
+      --saffron: #b35f18;
+      --green: #27745f;
+      --blue: #315e89;
+      --rose: #8c4a52;
+      --soft-green: #eef7f1;
+      --soft-gold: #fff2d7;
+      --white: #fffdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(180deg, rgba(246, 223, 183, 0.72), rgba(255, 250, 241, 0.96) 34%),
+        var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    main {
+      width: min(960px, 100%);
+      margin: 0 auto;
+      padding: 28px 18px 42px;
+    }
+
+    header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 1.28rem;
+      font-weight: 720;
+    }
+
+    .subtle {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-top: 4px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: end;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.72);
+      border-radius: 8px;
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 680;
+      text-transform: uppercase;
+    }
+
+    select,
+    input,
+    button {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+      letter-spacing: 0;
+    }
+
+    select,
+    input {
+      width: 100%;
+      padding: 0 10px;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 0 16px;
+      font-weight: 760;
+    }
+
+    .primary {
+      border-color: #9d5519;
+      background: #a85b1d;
+      color: white;
+      min-width: 132px;
+    }
+
+    .hero {
+      padding: 32px 24px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 253, 248, 0.56);
+      margin-bottom: 18px;
+    }
+
+    .date-line {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+    }
+
+    .today-label {
+      color: var(--saffron);
+      font-size: 0.86rem;
+      font-weight: 780;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .decision {
+      font-size: clamp(2.1rem, 8vw, 4.25rem);
+      line-height: 0.98;
+      font-weight: 760;
+      max-width: 820px;
+    }
+
+    .parana {
+      margin-top: 24px;
+      display: grid;
+      gap: 12px;
+      color: var(--ink);
+      max-width: 760px;
+    }
+
+    .parana-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 6px 18px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: rgba(255, 253, 248, 0.72);
+    }
+
+    .parana-row.recommended {
+      border-color: rgba(39, 116, 95, 0.28);
+      background: var(--soft-green);
+    }
+
+    .parana-copy {
+      display: grid;
+      gap: 3px;
+    }
+
+    .parana-row span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 780;
+      text-transform: uppercase;
+    }
+
+    .parana strong {
+      color: var(--green);
+      font-size: 1.36rem;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .parana .normative strong {
+      color: var(--saffron);
+      font-size: 1.08rem;
+    }
+
+    .parana-note {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .parana-helper {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .actions button {
+      background: var(--white);
+    }
+
+    .panel {
+      display: none;
+      border-top: 1px solid var(--line);
+      padding: 18px 2px 0;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .panel h2 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 10px;
+      max-width: 680px;
+    }
+
+    .step {
+      border-left: 3px solid var(--saffron);
+      padding: 8px 0 8px 12px;
+      background: rgba(255, 253, 248, 0.55);
+    }
+
+    .step small {
+      display: block;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(255, 253, 248, 0.6);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .metric strong {
+      font-size: 1.02rem;
+    }
+
+    .cert-list {
+      display: grid;
+      gap: 8px;
+      max-width: 620px;
+    }
+
+    .cert {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+    }
+
+    .ok {
+      color: var(--green);
+      font-weight: 760;
+    }
+
+    .warn {
+      color: var(--rose);
+      font-weight: 760;
+    }
+
+    .status {
+      min-height: 22px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 8px 0 0;
+    }
+
+    .error {
+      color: #8b2f25;
+    }
+
+    .rc-banner {
+      border: 1px solid rgba(140, 74, 82, 0.25);
+      background: #fff5ea;
+      color: #6b3d25;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      font-size: 0.92rem;
+      line-height: 1.42;
+    }
+
+    .report {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      display: grid;
+      gap: 10px;
+      max-width: 680px;
+    }
+
+    .report button {
+      justify-self: start;
+      background: var(--white);
+    }
+
+    .report textarea {
+      width: 100%;
+      min-height: 150px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+      padding: 10px;
+      resize: vertical;
+    }
+
+    footer {
+      margin-top: 28px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      display: grid;
+      gap: 6px;
+    }
+
+    .build-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+    }
+
+    .build-meta span {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 720px) {
+      header,
+      .controls,
+      .actions,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        display: block;
+      }
+
+      .primary {
+        width: 100%;
+      }
+
+      .parana-row {
+        grid-template-columns: 1fr;
+      }
+
+      .parana strong {
+        text-align: left;
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="rc-banner">
+      <strong>Pancanga Engine RC1 · Testing Release.</strong>
+      No usar como único calendario para observancias importantes hasta v1.0.
+    </div>
+
+    <header>
+      <div>
+        <h1>Pancanga Engine RC1 Experience</h1>
+        <p class="subtle">Una aplicación privada mínima para confiar tu Ekādaśī diario.</p>
+      </div>
+      <p class="subtle">Alcance congelado · RC1</p>
+    </header>
+
+    <section class="controls" aria-label="Calculation controls">
+      <label>
+        Lugar
+        <select id="city">
+          <option value="valencia">Valencia, España</option>
+          <option value="buenos-aires">Buenos Aires, Argentina</option>
+          <option value="nabadwip">Navadvīpa, India</option>
+        </select>
+      </label>
+      <label>
+        Fecha
+        <input id="date" type="date" value="2026-07-14">
+      </label>
+      <button id="calculate" class="primary" type="button">Calcular</button>
+    </section>
+
+    <p id="status" class="status">Elegí fecha y lugar, luego calculá.</p>
+
+    <section class="hero" aria-live="polite">
+      <p id="dateLine" class="date-line">Martes, 14 de julio de 2026 · Valencia, España</p>
+      <p class="today-label">Hoy</p>
+      <h2 id="decision" class="decision">¿Qué debo observar hoy?</h2>
+      <div class="parana">
+        <div class="parana-row recommended" id="recommendedParanaRow">
+          <div class="parana-copy">
+            <span>Parāṇa recomendado</span>
+            <p class="parana-helper">Lo ideal para el uso diario.</p>
+          </div>
+          <strong id="paranaRecommended">Calculá para ver la ventana</strong>
+        </div>
+        <div class="parana-row normative">
+          <div class="parana-copy">
+            <span>Límite normativo</span>
+            <p class="parana-helper" id="paranaNormativeFull">Ventana completa disponible tras calcular.</p>
+          </div>
+          <strong id="paranaNormative">Calculá</strong>
+        </div>
+        <p id="paranaNote" class="parana-note"></p>
+      </div>
+    </section>
+
+    <nav class="actions" aria-label="Result views">
+      <button type="button" data-panel="why">Fundamento</button>
+      <button type="button" data-panel="astronomy">Astronomía</button>
+      <button type="button" data-panel="certification">Certificación</button>
+    </nav>
+
+    <section id="why" class="panel active">
+      <h2>Fundamento</h2>
+      <div id="whyFlow" class="flow">
+        <div class="step">Calculá primero.</div>
+      </div>
+    </section>
+
+    <section id="astronomy" class="panel">
+      <h2>Astronomía</h2>
+      <div id="astronomyGrid" class="grid"></div>
+    </section>
+
+    <section id="certification" class="panel">
+      <h2>Certificación</h2>
+      <div id="certificationList" class="cert-list"></div>
+    </section>
+
+    <section class="report" aria-label="Report issue">
+      <button id="reportIssue" type="button">Reportar un problema</button>
+      <p class="subtle">Genera un resumen para enviar por correo, GitHub Issue o formulario interno de testers.</p>
+      <textarea id="reportDraft" readonly hidden></textarea>
+    </section>
+
+    <footer>
+      <div>Pancanga Engine RC1 · Testing Release</div>
+      <div class="build-meta">
+        <span id="engineVersion">Engine: v1.0 RC1</span>
+        <span id="kbVersion">Knowledge Base: HBV v1.0</span>
+        <span id="astronomyVersion">Astronomy: Swiss Certified</span>
+        <span id="buildVersion">Build: 2026.07 RC1</span>
+      </div>
+    </footer>
+  </main>
+
+  <script src="./rc1-config.js"></script>
+  <script>
+    const API_BASE = window.RC1_API_BASE || "";
+    const statusEl = document.getElementById("status");
+    const decisionEl = document.getElementById("decision");
+    const dateLineEl = document.getElementById("dateLine");
+    const recommendedParanaRowEl = document.getElementById("recommendedParanaRow");
+    const paranaRecommendedEl = document.getElementById("paranaRecommended");
+    const paranaNormativeEl = document.getElementById("paranaNormative");
+    const paranaNormativeFullEl = document.getElementById("paranaNormativeFull");
+    const paranaNoteEl = document.getElementById("paranaNote");
+    const whyFlowEl = document.getElementById("whyFlow");
+    const astronomyGridEl = document.getElementById("astronomyGrid");
+    const certificationListEl = document.getElementById("certificationList");
+    const reportDraftEl = document.getElementById("reportDraft");
+    let latestResult = null;
+
+    renderBuildMeta();
+
+    document.querySelectorAll("[data-panel]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".panel").forEach((panel) => panel.classList.remove("active"));
+        document.getElementById(button.dataset.panel).classList.add("active");
+      });
+    });
+
+    document.getElementById("calculate").addEventListener("click", calculate);
+    document.getElementById("reportIssue").addEventListener("click", reportIssue);
+
+    async function calculate() {
+      const city = document.getElementById("city").value;
+      const date = document.getElementById("date").value;
+      const cityLabel = document.getElementById("city").selectedOptions[0]?.textContent || city;
+      statusEl.textContent = "Calculando con Pancanga Engine...";
+      statusEl.classList.remove("error");
+      resetResultForPending(date, cityLabel);
+
+      try {
+        const response = await fetch(`${API_BASE}/api/calculate?city=${encodeURIComponent(city)}&date=${encodeURIComponent(date)}`);
+        const data = await response.json();
+        if (!response.ok || data.error) {
+          throw new Error(data.error || "Calculation failed");
+        }
+        console.info("RC1 date flow", data.date_debug);
+        latestResult = { city, cityLabel, date, data };
+        render(data);
+        statusEl.textContent = "Calculado desde el motor local.";
+      } catch (error) {
+        latestResult = { city, cityLabel, date, error: error.message };
+        statusEl.textContent = error.message;
+        statusEl.classList.add("error");
+        clearResultAfterError(date, cityLabel, error.message);
+      }
+    }
+
+    function render(data) {
+      dateLineEl.textContent = `${data.weekday}, ${data.display_date} · ${data.location}`;
+      decisionEl.textContent = data.decision;
+      if (data.parana_recommended) {
+        recommendedParanaRowEl.style.display = "grid";
+        paranaRecommendedEl.textContent = data.parana_recommended;
+      } else {
+        recommendedParanaRowEl.style.display = "none";
+      }
+      paranaNormativeEl.textContent = data.parana_normative_limit || "Sin Parāṇa";
+      paranaNormativeFullEl.textContent = data.parana_normative || "Sin ventana de Parāṇa para hoy";
+      paranaNoteEl.textContent = data.parana_note || "";
+
+      whyFlowEl.innerHTML = data.why.map((step) => `
+        <div class="step">
+          ${escapeHtml(step.text)}
+          ${step.ref ? `<small>${escapeHtml(step.ref)}</small>` : ""}
+        </div>
+      `).join("");
+
+      astronomyGridEl.innerHTML = Object.entries(data.astronomy).map(([label, value]) => `
+        <div class="metric">
+          <span>${escapeHtml(label)}</span>
+          <strong>${escapeHtml(String(value))}</strong>
+        </div>
+      `).join("");
+
+      certificationListEl.innerHTML = data.certification.map((item) => `
+        <div class="cert">
+          <span>${escapeHtml(item.name)}</span>
+          <strong class="${item.status === "PASS" ? "ok" : "warn"}">${escapeHtml(item.label)}</strong>
+        </div>
+      `).join("");
+    }
+
+    function resetResultForPending(date, cityLabel) {
+      dateLineEl.textContent = `${formatInputDate(date)} · ${cityLabel}`;
+      decisionEl.textContent = "Calculando...";
+      recommendedParanaRowEl.style.display = "none";
+      paranaNormativeEl.textContent = "Calculando";
+      paranaNormativeFullEl.textContent = "Esperando respuesta del motor local.";
+      paranaNoteEl.textContent = "";
+      whyFlowEl.innerHTML = `<div class="step">Calculando con la fecha seleccionada.</div>`;
+      astronomyGridEl.innerHTML = "";
+      certificationListEl.innerHTML = "";
+    }
+
+    function clearResultAfterError(date, cityLabel, message) {
+      dateLineEl.textContent = `${formatInputDate(date)} · ${cityLabel}`;
+      decisionEl.textContent = "No se pudo completar el cálculo";
+      recommendedParanaRowEl.style.display = "none";
+      paranaNormativeEl.textContent = "Pendiente";
+      paranaNormativeFullEl.textContent = "No se conserva ningún resultado anterior.";
+      paranaNoteEl.textContent = message;
+      whyFlowEl.innerHTML = `
+        <div class="step">
+          La beta recibió la fecha seleccionada, pero el cálculo no se completó.
+          <small>No se muestra un resultado anterior para evitar confusión.</small>
+        </div>
+      `;
+      astronomyGridEl.innerHTML = "";
+      certificationListEl.innerHTML = "";
+      console.info("RC1 date flow", { input: date, rendered: formatInputDate(date), error: message });
+    }
+
+    function reportIssue() {
+      const city = document.getElementById("city").value;
+      const cityLabel = document.getElementById("city").selectedOptions[0]?.textContent || city;
+      const date = document.getElementById("date").value;
+      const body = [
+        "Pancanga Engine RC1 issue report",
+        "",
+        `Ciudad: ${cityLabel}`,
+        `Fecha seleccionada: ${date || "sin fecha"}`,
+        `Estado visible: ${statusEl.textContent}`,
+        `Resultado visible: ${decisionEl.textContent}`,
+        `Parāṇa recomendado: ${paranaRecommendedEl.textContent}`,
+        `Límite normativo: ${paranaNormativeEl.textContent}`,
+        `Engine: ${document.getElementById("engineVersion").textContent}`,
+        `Knowledge Base: ${document.getElementById("kbVersion").textContent}`,
+        `Astronomy: ${document.getElementById("astronomyVersion").textContent}`,
+        `Build: ${document.getElementById("buildVersion").textContent}`,
+        "",
+        "Qué esperaba:",
+        "",
+        "Qué ocurrió:",
+        "",
+        "Captura de pantalla:",
+        "",
+        "Datos técnicos:",
+        JSON.stringify(latestResult, null, 2),
+      ].join("\n");
+
+      reportDraftEl.hidden = false;
+      reportDraftEl.value = body;
+      reportDraftEl.focus();
+      reportDraftEl.select();
+      navigator.clipboard?.writeText(body).catch(() => {});
+    }
+
+    function renderBuildMeta() {
+      const build = window.RC1_BUILD || {};
+      document.getElementById("engineVersion").textContent = `Engine: ${build.engine || "v1.0 RC1"}`;
+      document.getElementById("kbVersion").textContent = `Knowledge Base: ${build.knowledgeBase || "HBV v1.0"}`;
+      document.getElementById("astronomyVersion").textContent = `Astronomy: ${build.astronomy || "Swiss Certified"}`;
+      document.getElementById("buildVersion").textContent = `Build: ${build.build || "2026.07 RC1"}`;
+    }
+
+    function formatInputDate(value) {
+      const parts = value.split("-");
+      if (parts.length !== 3) {
+        return value || "Fecha sin seleccionar";
+      }
+      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+
+    function escapeHtml(value) {
+      return value
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+  </script>
+</body>
+</html>

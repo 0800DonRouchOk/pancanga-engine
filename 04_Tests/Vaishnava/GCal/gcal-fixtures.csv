@@ -1,0 +1,13 @@
+case_id,category,civil_date,location,timezone,sunrise,ekadasi,viddha,mahadvadasi,parana,gcal_source,status,notes
+GCAL-001,Ekadasi normal,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture
+GCAL-002,Ekadasi viddha,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture
+GCAL-003,Observancia desplazada,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture
+GCAL-004,Unmilani,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture
+GCAL-005,Vyanjuli,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture and ISSUE-VAI-001 tracking if difference appears
+GCAL-006,Trisprsa,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture
+GCAL-007,Paksavardhini,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture
+GCAL-008,Jaya,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture
+GCAL-009,Vijaya,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture
+GCAL-010,Jayanti,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture
+GCAL-011,Papanasini,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture
+GCAL-012,Dvadasi corta,,,,,,,,,,EXTERNAL_ORACLE_PENDING,Requires real GCal fixture

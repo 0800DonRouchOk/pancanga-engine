@@ -1,0 +1,6 @@
+validation_layer,input_file,status,difference_classification,critical_engine_bugs,notes
+Swiss Ephemeris,04_Tests/Astronomy/SwissEphemeris/swiss-validation.csv,PASS,PASS,0,"1000 cases generated after AST-L006; 1000 PASS; 0 astronomy differences; 0 tithi mismatches"
+PureBhakti,04_Tests/PureBhakti/purebhakti-validation.csv,PASS,DOCUMENTED EDITORIAL DIFFERENCES,0,"16 real fixtures imported; 16/16 observance dates PASS; 0 engine bugs; Parana differences documented as 13 Editorial Policy and 2 Rounding Difference cases"
+SCS Math,04_Tests/SCSMath/scsmath-validation.csv,OPEN,DIFFERENCES ANALYZED,0,"26 real fixtures imported from Sri Gaudiya Calendar 2026-2027; 11/26 observance dates PASS; 15 observance differences analyzed as 14 configuration differences and 1 tradition difference; 11 Parana configuration/editorial differences; no confirmed engine bugs"
+GCal,04_Tests/Vaishnava/GCal/gcal-fixtures.csv,EXTERNAL_ORACLE_PENDING,UNRESOLVED,0,"GCal importer ready; real GCal fixtures are not available yet"
+Full External Validation,04_Tests/Validation/validation-results.csv,OPEN,UNRESOLVED,0,"Campaign 46C cannot close until SCS Math follow-up configuration audit is resolved/documented and GCal fixtures are populated from real oracles"

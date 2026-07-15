@@ -1,0 +1,193 @@
+{
+  "theory": "ELP2000-82B",
+  "import_version": "1",
+  "importer_version": "1.0.0",
+  "source": "IMCCE / Observatoire de Paris",
+  "files": 36,
+  "records": 37872,
+  "dataset_fingerprint": "0x3aa7ebfdd62d91dc",
+  "generated_rust_fingerprint": "0x338c91efeeaee125",
+  "timestamp_policy": "omitted for reproducibility",
+  "source_files": [
+    {
+      "name": "ELP1",
+      "records": 1023,
+      "fingerprint": "0xa460f0ac886bf342"
+    },
+    {
+      "name": "ELP2",
+      "records": 918,
+      "fingerprint": "0x11972849da0646e4"
+    },
+    {
+      "name": "ELP3",
+      "records": 704,
+      "fingerprint": "0x102bb79770078872"
+    },
+    {
+      "name": "ELP4",
+      "records": 347,
+      "fingerprint": "0xd2fda15c8974356c"
+    },
+    {
+      "name": "ELP5",
+      "records": 316,
+      "fingerprint": "0xa3af791b49e6461d"
+    },
+    {
+      "name": "ELP6",
+      "records": 237,
+      "fingerprint": "0xabfafca729bb6a4c"
+    },
+    {
+      "name": "ELP7",
+      "records": 14,
+      "fingerprint": "0x5888fc21d23ea7e3"
+    },
+    {
+      "name": "ELP8",
+      "records": 11,
+      "fingerprint": "0xf4aaa64993fb9e38"
+    },
+    {
+      "name": "ELP9",
+      "records": 8,
+      "fingerprint": "0xd4e51d70a39b3016"
+    },
+    {
+      "name": "ELP10",
+      "records": 14328,
+      "fingerprint": "0xe41a700ef0fd8670"
+    },
+    {
+      "name": "ELP11",
+      "records": 5233,
+      "fingerprint": "0x2d9a24038baa5540"
+    },
+    {
+      "name": "ELP12",
+      "records": 6631,
+      "fingerprint": "0x9b2a50131674a103"
+    },
+    {
+      "name": "ELP13",
+      "records": 4384,
+      "fingerprint": "0x29e8d9d3341cf8ca"
+    },
+    {
+      "name": "ELP14",
+      "records": 833,
+      "fingerprint": "0xf964215971a2cd80"
+    },
+    {
+      "name": "ELP15",
+      "records": 1715,
+      "fingerprint": "0xace7330e070552c6"
+    },
+    {
+      "name": "ELP16",
+      "records": 170,
+      "fingerprint": "0x2f6955b6d14b9800"
+    },
+    {
+      "name": "ELP17",
+      "records": 150,
+      "fingerprint": "0x37bbdad26ead7411"
+    },
+    {
+      "name": "ELP18",
+      "records": 114,
+      "fingerprint": "0x246cbe7204a14641"
+    },
+    {
+      "name": "ELP19",
+      "records": 226,
+      "fingerprint": "0xaddb8e810d2db3ac"
+    },
+    {
+      "name": "ELP20",
+      "records": 188,
+      "fingerprint": "0xd11f0d91badcc0d5"
+    },
+    {
+      "name": "ELP21",
+      "records": 169,
+      "fingerprint": "0x83d6b769ea69dc67"
+    },
+    {
+      "name": "ELP22",
+      "records": 3,
+      "fingerprint": "0xbbaea299541be7bc"
+    },
+    {
+      "name": "ELP23",
+      "records": 2,
+      "fingerprint": "0xf0dd6d2127fc084e"
+    },
+    {
+      "name": "ELP24",
+      "records": 2,
+      "fingerprint": "0x0b08515000c068b5"
+    },
+    {
+      "name": "ELP25",
+      "records": 6,
+      "fingerprint": "0x050ff7e309aa7745"
+    },
+    {
+      "name": "ELP26",
+      "records": 4,
+      "fingerprint": "0x24d3be9028513a29"
+    },
+    {
+      "name": "ELP27",
+      "records": 5,
+      "fingerprint": "0x12c27723317d93bd"
+    },
+    {
+      "name": "ELP28",
+      "records": 20,
+      "fingerprint": "0x1692eacfcb2c7f24"
+    },
+    {
+      "name": "ELP29",
+      "records": 12,
+      "fingerprint": "0x181fe9cff50c1ba9"
+    },
+    {
+      "name": "ELP30",
+      "records": 14,
+      "fingerprint": "0xf0e152560bd60a86"
+    },
+    {
+      "name": "ELP31",
+      "records": 11,
+      "fingerprint": "0xcce49df4de871031"
+    },
+    {
+      "name": "ELP32",
+      "records": 4,
+      "fingerprint": "0x960eb1edd5e93bd4"
+    },
+    {
+      "name": "ELP33",
+      "records": 10,
+      "fingerprint": "0xb35bdb7c78752356"
+    },
+    {
+      "name": "ELP34",
+      "records": 28,
+      "fingerprint": "0xa929f53e92fc356e"
+    },
+    {
+      "name": "ELP35",
+      "records": 13,
+      "fingerprint": "0xf43bb3915ace116d"
+    },
+    {
+      "name": "ELP36",
+      "records": 19,
+      "fingerprint": "0x652273e37c8131fe"
+    }
+  ]
+}

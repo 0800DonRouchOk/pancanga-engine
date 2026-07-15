@@ -1,0 +1,15 @@
+[package]
+name = "elp2000-importer"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Reproducible ELP2000 lunar coefficient importer for Pancanga Engine."
+
+[lib]
+name = "elp2000_importer"
+path = "src/lib.rs"
+
+[[bin]]
+name = "elp2000-importer"
+path = "src/main.rs"
