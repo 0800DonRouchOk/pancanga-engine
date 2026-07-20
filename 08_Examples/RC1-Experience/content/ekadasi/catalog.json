@@ -1,0 +1,224 @@
+{
+  "schema": "pancanga-engine-ekadasi-catalog-v1",
+  "scope": "RC1 content catalog. This file identifies observance content. It does not define calculation rules.",
+  "ordinary_ekadasis": [
+    {
+      "id": "kamada",
+      "display_name": "Kāmadā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Chaitra",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "papamocani",
+      "display_name": "Pāpamocanī Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Chaitra",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "mohini",
+      "display_name": "Mohinī Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Vaiśākha",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "varuthini",
+      "display_name": "Varūthinī Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Vaiśākha",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "nirjala",
+      "display_name": "Nirjalā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Jyeṣṭha",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "apara",
+      "display_name": "Aparā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Jyeṣṭha",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "sayana",
+      "display_name": "Śayanā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Āṣāḍha",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "yogini",
+      "display_name": "Yoginī Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Āṣāḍha",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "pavitropana",
+      "display_name": "Putradā - Pavitraropani Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Śrāvaṇa",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "kamika",
+      "display_name": "Kāmikā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Śrāvaṇa",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "parsva",
+      "display_name": "Pārśva Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Bhādrapada",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "aja",
+      "display_name": "Ajā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Bhādrapada",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "pasankusa",
+      "display_name": "Pāśāṅkuśā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Āśvina",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "indira",
+      "display_name": "Indirā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Āśvina",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "utthana",
+      "display_name": "Utthāna Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Kārtika",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "rama",
+      "display_name": "Rāmā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Kārtika",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "mokshada",
+      "display_name": "Mokṣadā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Mārgaśīrṣa",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "utpanna",
+      "display_name": "Utpannā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Mārgaśīrṣa",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "putrada_pausa",
+      "display_name": "Putradā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Pauṣa",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "saphala",
+      "display_name": "Saphalā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Pauṣa",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "jaya",
+      "display_name": "Jayā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Māgha",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "sattila",
+      "display_name": "Ṣaṭ-tilā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Māgha",
+      "paksha": "Kṛṣṇa"
+    },
+    {
+      "id": "amalaki",
+      "display_name": "Āmalakī Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Phālguna",
+      "paksha": "Śukla"
+    },
+    {
+      "id": "vijaya",
+      "display_name": "Vijayā Ekādaśī",
+      "type": "ekadasi",
+      "masa": "Phālguna",
+      "paksha": "Kṛṣṇa"
+    }
+  ],
+  "mahadvadasis": [
+    {
+      "id": "unmilani",
+      "display_name": "Unmīlanī Mahādvādaśī",
+      "type": "mahadvadasi",
+      "basis": "tithi"
+    },
+    {
+      "id": "vyanjuli",
+      "display_name": "Vyañjulī Mahādvādaśī",
+      "type": "mahadvadasi",
+      "basis": "tithi"
+    },
+    {
+      "id": "trisprsa",
+      "display_name": "Triṣpṛṣā Mahādvādaśī",
+      "type": "mahadvadasi",
+      "basis": "tithi"
+    },
+    {
+      "id": "paksavardhini",
+      "display_name": "Pakṣavardhinī Mahādvādaśī",
+      "type": "mahadvadasi",
+      "basis": "tithi"
+    },
+    {
+      "id": "jaya_mahadvadasi",
+      "display_name": "Jayā Mahādvādaśī",
+      "type": "mahadvadasi",
+      "basis": "nakṣatra"
+    },
+    {
+      "id": "vijaya_mahadvadasi",
+      "display_name": "Vijayā Mahādvādaśī",
+      "type": "mahadvadasi",
+      "basis": "nakṣatra"
+    },
+    {
+      "id": "jayanti",
+      "display_name": "Jayantī Mahādvādaśī",
+      "type": "mahadvadasi",
+      "basis": "nakṣatra"
+    },
+    {
+      "id": "papanasini",
+      "display_name": "Pāpanāśinī Mahādvādaśī",
+      "type": "mahadvadasi",
+      "basis": "nakṣatra"
+    }
+  ]
+}

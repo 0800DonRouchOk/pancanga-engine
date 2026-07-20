@@ -25,6 +25,8 @@ use pancanga_engine::vaishnava::{
 
 const DEFAULT_ADDRESS: &str = "127.0.0.1:7878";
 const HTML: &str = include_str!("../../../../../08_Examples/RC1-Experience/index.html");
+const EKADASI_CATALOG: &str =
+    include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/catalog.json");
 const SAYANA_CONTENT: &str =
     include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/sayana.json");
 const KAMIKA_CONTENT: &str =
@@ -76,26 +78,63 @@ struct ParanaPresentation {
 struct EkadasiNameEntry {
     content_id: &'static str,
     display_name: &'static str,
+    observance_type: &'static str,
     masa: Rc1EkadasiMasa,
     paksha: Paksha,
 }
 
 #[derive(Clone, Copy)]
 enum Rc1EkadasiMasa {
+    Chaitra,
+    Vaisakha,
+    Jyestha,
     Asadha,
     Sravana,
+    Bhadrapada,
+    Asvina,
+    Kartika,
+    Margasirsa,
+    Pausa,
+    Magha,
+    Phalguna,
 }
+
+const RC1_EKADASI_MASAS: [Rc1EkadasiMasa; 12] = [
+    Rc1EkadasiMasa::Chaitra,
+    Rc1EkadasiMasa::Vaisakha,
+    Rc1EkadasiMasa::Jyestha,
+    Rc1EkadasiMasa::Asadha,
+    Rc1EkadasiMasa::Sravana,
+    Rc1EkadasiMasa::Bhadrapada,
+    Rc1EkadasiMasa::Asvina,
+    Rc1EkadasiMasa::Kartika,
+    Rc1EkadasiMasa::Margasirsa,
+    Rc1EkadasiMasa::Pausa,
+    Rc1EkadasiMasa::Magha,
+    Rc1EkadasiMasa::Phalguna,
+];
 
 impl Rc1EkadasiMasa {
     fn label(self) -> &'static str {
         match self {
+            Self::Chaitra => "Chaitra",
+            Self::Vaisakha => "Vaiśākha",
+            Self::Jyestha => "Jyeṣṭha",
             Self::Asadha => "Āṣāḍha",
             Self::Sravana => "Śrāvaṇa",
+            Self::Bhadrapada => "Bhādrapada",
+            Self::Asvina => "Āśvina",
+            Self::Kartika => "Kārtika",
+            Self::Margasirsa => "Mārgaśīrṣa",
+            Self::Pausa => "Pauṣa",
+            Self::Magha => "Māgha",
+            Self::Phalguna => "Phālguna",
         }
     }
 }
 
 fn main() -> std::io::Result<()> {
+    debug_assert_eq!(RC1_EKADASI_MASAS.len(), 12);
     let address = rc1_listen_address();
     let listener = TcpListener::bind(&address)?;
     println!("Pancanga Engine RC1 Experience");
@@ -168,6 +207,11 @@ fn handle_connection(stream: &mut TcpStream) {
 
     if path == "/content/ekadasi/pavitropana.json" {
         respond(stream, "200 OK", "application/json", PAVITROPANA_CONTENT);
+        return;
+    }
+
+    if path == "/content/ekadasi/catalog.json" {
+        respond(stream, "200 OK", "application/json", EKADASI_CATALOG);
         return;
     }
 
@@ -261,6 +305,13 @@ fn calculate_response(query: &str) -> Result<String, String> {
             \"festival_name\":\"{}\",\
             \"festival_masa\":\"{}\",\
             \"festival_paksha\":\"{}\",\
+            \"observance_content\":{{\
+                \"type\":\"{}\",\
+                \"id\":\"{}\",\
+                \"display_name\":\"{}\",\
+                \"masa\":\"{}\",\
+                \"paksha\":\"{}\"\
+            }},\
             \"parana_recommended\":\"{}\",\
             \"parana_normative\":\"{}\",\
             \"parana_normative_limit\":\"{}\",\
@@ -276,6 +327,19 @@ fn calculate_response(query: &str) -> Result<String, String> {
         json_escape(&iso_date(date)),
         json_escape(city.name),
         json_escape(&decision),
+        json_escape(ekadasi_name.map(|entry| entry.content_id).unwrap_or("")),
+        json_escape(ekadasi_name.map(|entry| entry.display_name).unwrap_or("")),
+        json_escape(ekadasi_name.map(|entry| entry.masa.label()).unwrap_or("")),
+        json_escape(
+            ekadasi_name
+                .map(|entry| paksha_label(entry.paksha))
+                .unwrap_or("")
+        ),
+        json_escape(
+            ekadasi_name
+                .map(|entry| entry.observance_type)
+                .unwrap_or("")
+        ),
         json_escape(ekadasi_name.map(|entry| entry.content_id).unwrap_or("")),
         json_escape(ekadasi_name.map(|entry| entry.display_name).unwrap_or("")),
         json_escape(ekadasi_name.map(|entry| entry.masa.label()).unwrap_or("")),
@@ -356,27 +420,42 @@ fn ekadasi_name_for_observance(
 }
 
 fn resolve_ekadasi_name(masa: Rc1EkadasiMasa, paksha: Paksha) -> Option<EkadasiNameEntry> {
-    match (masa, paksha) {
-        (Rc1EkadasiMasa::Asadha, Paksha::Sukla) => Some(EkadasiNameEntry {
-            content_id: "sayana",
-            display_name: "Śayanā Ekādaśī",
-            masa,
-            paksha,
-        }),
-        (Rc1EkadasiMasa::Sravana, Paksha::Sukla) => Some(EkadasiNameEntry {
-            content_id: "pavitropana",
-            display_name: "Putrada - Pavitraropani Ekādaśī",
-            masa,
-            paksha,
-        }),
-        (Rc1EkadasiMasa::Sravana, Paksha::Krsna) => Some(EkadasiNameEntry {
-            content_id: "kamika",
-            display_name: "Kāmikā Ekādaśī",
-            masa,
-            paksha,
-        }),
-        _ => None,
-    }
+    let (content_id, display_name) = match (masa, paksha) {
+        (Rc1EkadasiMasa::Chaitra, Paksha::Sukla) => ("kamada", "Kāmadā Ekādaśī"),
+        (Rc1EkadasiMasa::Chaitra, Paksha::Krsna) => ("papamocani", "Pāpamocanī Ekādaśī"),
+        (Rc1EkadasiMasa::Vaisakha, Paksha::Sukla) => ("mohini", "Mohinī Ekādaśī"),
+        (Rc1EkadasiMasa::Vaisakha, Paksha::Krsna) => ("varuthini", "Varūthinī Ekādaśī"),
+        (Rc1EkadasiMasa::Jyestha, Paksha::Sukla) => ("nirjala", "Nirjalā Ekādaśī"),
+        (Rc1EkadasiMasa::Jyestha, Paksha::Krsna) => ("apara", "Aparā Ekādaśī"),
+        (Rc1EkadasiMasa::Asadha, Paksha::Sukla) => ("sayana", "Śayanā Ekādaśī"),
+        (Rc1EkadasiMasa::Asadha, Paksha::Krsna) => ("yogini", "Yoginī Ekādaśī"),
+        (Rc1EkadasiMasa::Sravana, Paksha::Sukla) => {
+            ("pavitropana", "Putrada - Pavitraropani Ekādaśī")
+        }
+        (Rc1EkadasiMasa::Sravana, Paksha::Krsna) => ("kamika", "Kāmikā Ekādaśī"),
+        (Rc1EkadasiMasa::Bhadrapada, Paksha::Sukla) => ("parsva", "Pārśva Ekādaśī"),
+        (Rc1EkadasiMasa::Bhadrapada, Paksha::Krsna) => ("aja", "Ajā Ekādaśī"),
+        (Rc1EkadasiMasa::Asvina, Paksha::Sukla) => ("pasankusa", "Pāśāṅkuśā Ekādaśī"),
+        (Rc1EkadasiMasa::Asvina, Paksha::Krsna) => ("indira", "Indirā Ekādaśī"),
+        (Rc1EkadasiMasa::Kartika, Paksha::Sukla) => ("utthana", "Utthāna Ekādaśī"),
+        (Rc1EkadasiMasa::Kartika, Paksha::Krsna) => ("rama", "Rāmā Ekādaśī"),
+        (Rc1EkadasiMasa::Margasirsa, Paksha::Sukla) => ("mokshada", "Mokṣadā Ekādaśī"),
+        (Rc1EkadasiMasa::Margasirsa, Paksha::Krsna) => ("utpanna", "Utpannā Ekādaśī"),
+        (Rc1EkadasiMasa::Pausa, Paksha::Sukla) => ("putrada_pausa", "Putradā Ekādaśī"),
+        (Rc1EkadasiMasa::Pausa, Paksha::Krsna) => ("saphala", "Saphalā Ekādaśī"),
+        (Rc1EkadasiMasa::Magha, Paksha::Sukla) => ("jaya", "Jayā Ekādaśī"),
+        (Rc1EkadasiMasa::Magha, Paksha::Krsna) => ("sattila", "Ṣaṭ-tilā Ekādaśī"),
+        (Rc1EkadasiMasa::Phalguna, Paksha::Sukla) => ("amalaki", "Āmalakī Ekādaśī"),
+        (Rc1EkadasiMasa::Phalguna, Paksha::Krsna) => ("vijaya", "Vijayā Ekādaśī"),
+    };
+
+    Some(EkadasiNameEntry {
+        content_id,
+        display_name,
+        observance_type: "ekadasi",
+        masa,
+        paksha,
+    })
 }
 
 fn rc1_content_masa(date: CivilDate) -> Option<Rc1EkadasiMasa> {
