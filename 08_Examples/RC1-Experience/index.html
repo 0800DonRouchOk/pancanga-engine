@@ -227,7 +227,7 @@
 
     .actions {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
       margin: 18px 0;
     }
@@ -299,6 +299,47 @@
       display: grid;
       gap: 8px;
       max-width: 620px;
+    }
+
+    .library-entry {
+      display: grid;
+      gap: 14px;
+      max-width: 760px;
+      line-height: 1.5;
+    }
+
+    .library-entry header {
+      display: grid;
+      gap: 4px;
+      margin: 0;
+    }
+
+    .library-entry h3 {
+      font-size: 1.28rem;
+      margin: 0;
+    }
+
+    .library-entry h4 {
+      margin: 4px 0 6px;
+      font-size: 0.92rem;
+      color: var(--saffron);
+      text-transform: uppercase;
+    }
+
+    .library-entry ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .library-entry li {
+      margin-bottom: 5px;
+    }
+
+    .source-note {
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     .cert {
@@ -480,6 +521,7 @@
 
     <nav class="actions" aria-label="Result views">
       <button type="button" data-panel="why">Fundamento</button>
+      <button type="button" data-panel="story">Historia</button>
       <button type="button" data-panel="astronomy">Astronomía</button>
       <button type="button" data-panel="certification">Certificación</button>
     </nav>
@@ -488,6 +530,13 @@
       <h2>Fundamento</h2>
       <div id="whyFlow" class="flow">
         <div class="step">Calculá primero.</div>
+      </div>
+    </section>
+
+    <section id="story" class="panel">
+      <h2>Historia del Ekādaśī</h2>
+      <div id="festivalStory" class="library-entry">
+        <div class="step">Cargando biblioteca de Ekādaśī.</div>
       </div>
     </section>
 
@@ -530,12 +579,14 @@
     const paranaNormativeFullEl = document.getElementById("paranaNormativeFull");
     const paranaNoteEl = document.getElementById("paranaNote");
     const whyFlowEl = document.getElementById("whyFlow");
+    const festivalStoryEl = document.getElementById("festivalStory");
     const astronomyGridEl = document.getElementById("astronomyGrid");
     const certificationListEl = document.getElementById("certificationList");
     const reportDraftEl = document.getElementById("reportDraft");
     let latestResult = null;
 
     renderBuildMeta();
+    loadFestivalLibrary();
 
     document.querySelectorAll("[data-panel]").forEach((button) => {
       button.addEventListener("click", () => {
@@ -623,6 +674,59 @@
       }
       console.info("RC1 date flow", data.date_debug);
       return data;
+    }
+
+    async function loadFestivalLibrary() {
+      try {
+        const response = await fetch("./content/ekadasi/pavitropana.json");
+        const entry = await response.json();
+        if (!response.ok || entry.error) {
+          throw new Error(entry.error || "No se pudo cargar la biblioteca.");
+        }
+        renderFestivalEntry(entry);
+      } catch (error) {
+        festivalStoryEl.innerHTML = `
+          <div class="step">
+            La biblioteca de Ekādaśī no pudo cargarse en esta sesión.
+            <small>${escapeHtml(error.message)}</small>
+          </div>
+        `;
+      }
+    }
+
+    function renderFestivalEntry(entry) {
+      festivalStoryEl.innerHTML = `
+        <header>
+          <h3>${escapeHtml(entry.name)}</h3>
+          <p class="subtle">${escapeHtml(entry.calendar_context.vedic_month)} · ${escapeHtml(entry.calendar_context.paksha)} · ${escapeHtml(entry.calendar_context.vaishnava_month)}</p>
+        </header>
+        <section>
+          <h4>Historia tradicional</h4>
+          <ul>
+            ${entry.story_summary.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          </ul>
+        </section>
+        <section>
+          <h4>Enseñanza principal</h4>
+          <p>${escapeHtml(entry.main_teaching)}</p>
+        </section>
+        <section>
+          <h4>Observancia</h4>
+          <ul>
+            ${entry.observance_notes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          </ul>
+        </section>
+        <section>
+          <h4>Glorias descritas</h4>
+          <ul>
+            ${entry.benefits_summary.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+          </ul>
+        </section>
+        <p class="source-note">
+          Fuente: ${escapeHtml(entry.source.primary_text)} · PDF local páginas ${escapeHtml(entry.source.pages)}.
+          ${escapeHtml(entry.rc1_scope_note)}
+        </p>
+      `;
     }
 
     function isObservance(data) {

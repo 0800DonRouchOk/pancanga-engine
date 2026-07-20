@@ -25,6 +25,8 @@ use pancanga_engine::vaishnava::{
 
 const DEFAULT_ADDRESS: &str = "127.0.0.1:7878";
 const HTML: &str = include_str!("../../../../../08_Examples/RC1-Experience/index.html");
+const PAVITROPANA_CONTENT: &str =
+    include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/pavitropana.json");
 const LOCAL_CONFIG: &str = r#"window.RC1_API_BASE = "";
 window.RC1_BUILD = {
   engine: "v1.0 RC1",
@@ -134,6 +136,11 @@ fn handle_connection(stream: &mut TcpStream) {
 
     if path == "/rc1-config.js" {
         respond(stream, "200 OK", "application/javascript", LOCAL_CONFIG);
+        return;
+    }
+
+    if path == "/content/ekadasi/pavitropana.json" {
+        respond(stream, "200 OK", "application/json", PAVITROPANA_CONTENT);
         return;
     }
 

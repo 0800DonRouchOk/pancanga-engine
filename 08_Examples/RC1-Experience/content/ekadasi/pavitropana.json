@@ -1,0 +1,40 @@
+{
+  "id": "pavitropana",
+  "name": "Putrada - Pavitraropani Ekādaśī",
+  "aliases": [
+    "Pavitropana Ekādaśī",
+    "Pavitraropani Ekādaśī",
+    "Śrāvaṇa Śukla Ekādaśī"
+  ],
+  "source": {
+    "primary_text": "Bhaviṣya-uttara Purāṇa",
+    "local_pdf": "07_Sources/Vaishnava/204176529-Ekadashi-Es-Ramanuja-Dasa.pdf",
+    "pages": "60-62",
+    "note": "Entrada estructurada a partir del PDF local incorporado al repositorio. El texto de la historia fue resumido, no copiado literalmente."
+  },
+  "calendar_context": {
+    "vedic_month": "Śrāvaṇa",
+    "paksha": "Śukla",
+    "vaishnava_month": "Śrīdhara Māsa",
+    "western_period": "julio-agosto / fase creciente"
+  },
+  "story_summary": [
+    "Maharaja Yudhiṣṭhira pregunta a Śrī Kṛṣṇa por la Ekādaśī de la quincena brillante del mes de Śrāvaṇa.",
+    "Kṛṣṇa relata la historia del rey Mahijita de Mahismati Puri, un gobernante virtuoso que no tenía heredero y sufría por ello junto con su reino.",
+    "Los consejeros del rey buscan la guía de Lomasa Ṛṣi, quien comprende que la dificultad del rey proviene de una acción egoísta cometida en una vida anterior.",
+    "Lomasa Ṛṣi instruye que el rey, sus consejeros y los ciudadanos observen Putrada Ekādaśī con ayuno y vigilia, ofreciendo luego el mérito al rey.",
+    "Por la fuerza de esa observancia, la reina concibe y nace un hijo. Kṛṣṇa concluye que esta Ekādaśī es conocida por otorgar bendiciones y remover pecados."
+  ],
+  "main_teaching": "La historia presenta la observancia de Ekādaśī como una práctica de purificación, reparación y servicio colectivo. El mérito no aparece como un mecanismo aislado, sino conectado con humildad, guía de los sādhus y beneficio para otros.",
+  "observance_notes": [
+    "Ayunar de granos y legumbres según la capacidad de cada practicante.",
+    "Recordar y escuchar las glorias de la Ekādaśī cuando no se pueda observar el ayuno completo.",
+    "Mantener la observancia como una práctica ofrecida a Hari, no como una técnica material independiente."
+  ],
+  "benefits_summary": [
+    "Se describe como destructora de pecados.",
+    "Se asocia con la bendición de obtener un buen hijo en la narración tradicional.",
+    "Escuchar sus glorias es presentado como espiritualmente meritorio."
+  ],
+  "rc1_scope_note": "Esta biblioteca es una capa de contenido. No modifica el cálculo de tithi, Viddhā, Mahādvādaśī ni Parāṇa."
+}
