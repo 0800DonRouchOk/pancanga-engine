@@ -76,9 +76,11 @@ struct ParanaPresentation {
 
 #[derive(Clone, Copy)]
 struct EkadasiNameEntry {
-    content_id: &'static str,
+    stable_id: &'static str,
+    slug: &'static str,
     display_name: &'static str,
     observance_type: &'static str,
+    source: &'static str,
     masa: Rc1EkadasiMasa,
     paksha: Paksha,
 }
@@ -308,7 +310,9 @@ fn calculate_response(query: &str) -> Result<String, String> {
             \"observance_content\":{{\
                 \"type\":\"{}\",\
                 \"id\":\"{}\",\
+                \"slug\":\"{}\",\
                 \"display_name\":\"{}\",\
+                \"source\":\"{}\",\
                 \"masa\":\"{}\",\
                 \"paksha\":\"{}\"\
             }},\
@@ -327,7 +331,7 @@ fn calculate_response(query: &str) -> Result<String, String> {
         json_escape(&iso_date(date)),
         json_escape(city.name),
         json_escape(&decision),
-        json_escape(ekadasi_name.map(|entry| entry.content_id).unwrap_or("")),
+        json_escape(ekadasi_name.map(|entry| entry.slug).unwrap_or("")),
         json_escape(ekadasi_name.map(|entry| entry.display_name).unwrap_or("")),
         json_escape(ekadasi_name.map(|entry| entry.masa.label()).unwrap_or("")),
         json_escape(
@@ -340,8 +344,10 @@ fn calculate_response(query: &str) -> Result<String, String> {
                 .map(|entry| entry.observance_type)
                 .unwrap_or("")
         ),
-        json_escape(ekadasi_name.map(|entry| entry.content_id).unwrap_or("")),
+        json_escape(ekadasi_name.map(|entry| entry.stable_id).unwrap_or("")),
+        json_escape(ekadasi_name.map(|entry| entry.slug).unwrap_or("")),
         json_escape(ekadasi_name.map(|entry| entry.display_name).unwrap_or("")),
+        json_escape(ekadasi_name.map(|entry| entry.source).unwrap_or("")),
         json_escape(ekadasi_name.map(|entry| entry.masa.label()).unwrap_or("")),
         json_escape(
             ekadasi_name
@@ -420,39 +426,41 @@ fn ekadasi_name_for_observance(
 }
 
 fn resolve_ekadasi_name(masa: Rc1EkadasiMasa, paksha: Paksha) -> Option<EkadasiNameEntry> {
-    let (content_id, display_name) = match (masa, paksha) {
-        (Rc1EkadasiMasa::Chaitra, Paksha::Sukla) => ("kamada", "Kāmadā Ekādaśī"),
-        (Rc1EkadasiMasa::Chaitra, Paksha::Krsna) => ("papamocani", "Pāpamocanī Ekādaśī"),
-        (Rc1EkadasiMasa::Vaisakha, Paksha::Sukla) => ("mohini", "Mohinī Ekādaśī"),
-        (Rc1EkadasiMasa::Vaisakha, Paksha::Krsna) => ("varuthini", "Varūthinī Ekādaśī"),
-        (Rc1EkadasiMasa::Jyestha, Paksha::Sukla) => ("nirjala", "Nirjalā Ekādaśī"),
-        (Rc1EkadasiMasa::Jyestha, Paksha::Krsna) => ("apara", "Aparā Ekādaśī"),
-        (Rc1EkadasiMasa::Asadha, Paksha::Sukla) => ("sayana", "Śayanā Ekādaśī"),
-        (Rc1EkadasiMasa::Asadha, Paksha::Krsna) => ("yogini", "Yoginī Ekādaśī"),
+    let (stable_id, slug, display_name) = match (masa, paksha) {
+        (Rc1EkadasiMasa::Chaitra, Paksha::Sukla) => ("EK-001", "kamada", "Kāmadā Ekādaśī"),
+        (Rc1EkadasiMasa::Chaitra, Paksha::Krsna) => ("EK-002", "papamocani", "Pāpamocanī Ekādaśī"),
+        (Rc1EkadasiMasa::Vaisakha, Paksha::Sukla) => ("EK-003", "mohini", "Mohinī Ekādaśī"),
+        (Rc1EkadasiMasa::Vaisakha, Paksha::Krsna) => ("EK-004", "varuthini", "Varūthinī Ekādaśī"),
+        (Rc1EkadasiMasa::Jyestha, Paksha::Sukla) => ("EK-005", "nirjala", "Nirjalā Ekādaśī"),
+        (Rc1EkadasiMasa::Jyestha, Paksha::Krsna) => ("EK-006", "apara", "Aparā Ekādaśī"),
+        (Rc1EkadasiMasa::Asadha, Paksha::Sukla) => ("EK-007", "sayana", "Śayanā Ekādaśī"),
+        (Rc1EkadasiMasa::Asadha, Paksha::Krsna) => ("EK-008", "yogini", "Yoginī Ekādaśī"),
         (Rc1EkadasiMasa::Sravana, Paksha::Sukla) => {
-            ("pavitropana", "Putrada - Pavitraropani Ekādaśī")
+            ("EK-009", "pavitropana", "Putradā - Pavitraropani Ekādaśī")
         }
-        (Rc1EkadasiMasa::Sravana, Paksha::Krsna) => ("kamika", "Kāmikā Ekādaśī"),
-        (Rc1EkadasiMasa::Bhadrapada, Paksha::Sukla) => ("parsva", "Pārśva Ekādaśī"),
-        (Rc1EkadasiMasa::Bhadrapada, Paksha::Krsna) => ("aja", "Ajā Ekādaśī"),
-        (Rc1EkadasiMasa::Asvina, Paksha::Sukla) => ("pasankusa", "Pāśāṅkuśā Ekādaśī"),
-        (Rc1EkadasiMasa::Asvina, Paksha::Krsna) => ("indira", "Indirā Ekādaśī"),
-        (Rc1EkadasiMasa::Kartika, Paksha::Sukla) => ("utthana", "Utthāna Ekādaśī"),
-        (Rc1EkadasiMasa::Kartika, Paksha::Krsna) => ("rama", "Rāmā Ekādaśī"),
-        (Rc1EkadasiMasa::Margasirsa, Paksha::Sukla) => ("mokshada", "Mokṣadā Ekādaśī"),
-        (Rc1EkadasiMasa::Margasirsa, Paksha::Krsna) => ("utpanna", "Utpannā Ekādaśī"),
-        (Rc1EkadasiMasa::Pausa, Paksha::Sukla) => ("putrada_pausa", "Putradā Ekādaśī"),
-        (Rc1EkadasiMasa::Pausa, Paksha::Krsna) => ("saphala", "Saphalā Ekādaśī"),
-        (Rc1EkadasiMasa::Magha, Paksha::Sukla) => ("jaya", "Jayā Ekādaśī"),
-        (Rc1EkadasiMasa::Magha, Paksha::Krsna) => ("sattila", "Ṣaṭ-tilā Ekādaśī"),
-        (Rc1EkadasiMasa::Phalguna, Paksha::Sukla) => ("amalaki", "Āmalakī Ekādaśī"),
-        (Rc1EkadasiMasa::Phalguna, Paksha::Krsna) => ("vijaya", "Vijayā Ekādaśī"),
+        (Rc1EkadasiMasa::Sravana, Paksha::Krsna) => ("EK-010", "kamika", "Kāmikā Ekādaśī"),
+        (Rc1EkadasiMasa::Bhadrapada, Paksha::Sukla) => ("EK-011", "parsva", "Pārśva Ekādaśī"),
+        (Rc1EkadasiMasa::Bhadrapada, Paksha::Krsna) => ("EK-012", "aja", "Ajā Ekādaśī"),
+        (Rc1EkadasiMasa::Asvina, Paksha::Sukla) => ("EK-013", "pasankusa", "Pāśāṅkuśā Ekādaśī"),
+        (Rc1EkadasiMasa::Asvina, Paksha::Krsna) => ("EK-014", "indira", "Indirā Ekādaśī"),
+        (Rc1EkadasiMasa::Kartika, Paksha::Sukla) => ("EK-015", "utthana", "Utthāna Ekādaśī"),
+        (Rc1EkadasiMasa::Kartika, Paksha::Krsna) => ("EK-016", "rama", "Rāmā Ekādaśī"),
+        (Rc1EkadasiMasa::Margasirsa, Paksha::Sukla) => ("EK-017", "mokshada", "Mokṣadā Ekādaśī"),
+        (Rc1EkadasiMasa::Margasirsa, Paksha::Krsna) => ("EK-018", "utpanna", "Utpannā Ekādaśī"),
+        (Rc1EkadasiMasa::Pausa, Paksha::Sukla) => ("EK-019", "putrada_pausa", "Putradā Ekādaśī"),
+        (Rc1EkadasiMasa::Pausa, Paksha::Krsna) => ("EK-020", "saphala", "Saphalā Ekādaśī"),
+        (Rc1EkadasiMasa::Magha, Paksha::Sukla) => ("EK-021", "jaya", "Jayā Ekādaśī"),
+        (Rc1EkadasiMasa::Magha, Paksha::Krsna) => ("EK-022", "sattila", "Ṣaṭ-tilā Ekādaśī"),
+        (Rc1EkadasiMasa::Phalguna, Paksha::Sukla) => ("EK-023", "amalaki", "Āmalakī Ekādaśī"),
+        (Rc1EkadasiMasa::Phalguna, Paksha::Krsna) => ("EK-024", "vijaya", "Vijayā Ekādaśī"),
     };
 
     Some(EkadasiNameEntry {
-        content_id,
+        stable_id,
+        slug,
         display_name,
         observance_type: "ekadasi",
+        source: "masa_paksha",
         masa,
         paksha,
     })

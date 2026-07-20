@@ -1,224 +1,449 @@
 {
-  "schema": "pancanga-engine-ekadasi-catalog-v1",
-  "scope": "RC1 content catalog. This file identifies observance content. It does not define calculation rules.",
+  "schema": "pancanga-engine-festival-catalog-v1",
+  "scope": "RC1 festival content catalog. This file identifies observance content. It does not define calculation rules.",
   "ordinary_ekadasis": [
     {
-      "id": "kamada",
+      "id": "EK-001",
       "display_name": "Kāmadā Ekādaśī",
       "type": "ekadasi",
       "masa": "Chaitra",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "kamada",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Kāmadā Ekādaśī",
+        "es": "Kāmadā Ekādaśī",
+        "en": "Kāmadā Ekadashi"
+      }
     },
     {
-      "id": "papamocani",
+      "id": "EK-002",
       "display_name": "Pāpamocanī Ekādaśī",
       "type": "ekadasi",
       "masa": "Chaitra",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "papamocani",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Pāpamocanī Ekādaśī",
+        "es": "Pāpamocanī Ekādaśī",
+        "en": "Pāpamocanī Ekadashi"
+      }
     },
     {
-      "id": "mohini",
+      "id": "EK-003",
       "display_name": "Mohinī Ekādaśī",
       "type": "ekadasi",
       "masa": "Vaiśākha",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "mohini",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Mohinī Ekādaśī",
+        "es": "Mohinī Ekādaśī",
+        "en": "Mohinī Ekadashi"
+      }
     },
     {
-      "id": "varuthini",
+      "id": "EK-004",
       "display_name": "Varūthinī Ekādaśī",
       "type": "ekadasi",
       "masa": "Vaiśākha",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "varuthini",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Varūthinī Ekādaśī",
+        "es": "Varūthinī Ekādaśī",
+        "en": "Varūthinī Ekadashi"
+      }
     },
     {
-      "id": "nirjala",
+      "id": "EK-005",
       "display_name": "Nirjalā Ekādaśī",
       "type": "ekadasi",
       "masa": "Jyeṣṭha",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "nirjala",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Nirjalā Ekādaśī",
+        "es": "Nirjalā Ekādaśī",
+        "en": "Nirjalā Ekadashi"
+      }
     },
     {
-      "id": "apara",
+      "id": "EK-006",
       "display_name": "Aparā Ekādaśī",
       "type": "ekadasi",
       "masa": "Jyeṣṭha",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "apara",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Aparā Ekādaśī",
+        "es": "Aparā Ekādaśī",
+        "en": "Aparā Ekadashi"
+      }
     },
     {
-      "id": "sayana",
+      "id": "EK-007",
       "display_name": "Śayanā Ekādaśī",
       "type": "ekadasi",
       "masa": "Āṣāḍha",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "sayana",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Śayanā Ekādaśī",
+        "es": "Śayanā Ekādaśī",
+        "en": "Śayanā Ekadashi"
+      }
     },
     {
-      "id": "yogini",
+      "id": "EK-008",
       "display_name": "Yoginī Ekādaśī",
       "type": "ekadasi",
       "masa": "Āṣāḍha",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "yogini",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Yoginī Ekādaśī",
+        "es": "Yoginī Ekādaśī",
+        "en": "Yoginī Ekadashi"
+      }
     },
     {
-      "id": "pavitropana",
+      "id": "EK-009",
       "display_name": "Putradā - Pavitraropani Ekādaśī",
       "type": "ekadasi",
       "masa": "Śrāvaṇa",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "pavitropana",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Putradā - Pavitraropani Ekādaśī",
+        "es": "Putradā - Pavitraropani Ekādaśī",
+        "en": "Putradā - Pavitraropani Ekadashi"
+      }
     },
     {
-      "id": "kamika",
+      "id": "EK-010",
       "display_name": "Kāmikā Ekādaśī",
       "type": "ekadasi",
       "masa": "Śrāvaṇa",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "kamika",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Kāmikā Ekādaśī",
+        "es": "Kāmikā Ekādaśī",
+        "en": "Kāmikā Ekadashi"
+      }
     },
     {
-      "id": "parsva",
+      "id": "EK-011",
       "display_name": "Pārśva Ekādaśī",
       "type": "ekadasi",
       "masa": "Bhādrapada",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "parsva",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Pārśva Ekādaśī",
+        "es": "Pārśva Ekādaśī",
+        "en": "Pārśva Ekadashi"
+      }
     },
     {
-      "id": "aja",
+      "id": "EK-012",
       "display_name": "Ajā Ekādaśī",
       "type": "ekadasi",
       "masa": "Bhādrapada",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "aja",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Ajā Ekādaśī",
+        "es": "Ajā Ekādaśī",
+        "en": "Ajā Ekadashi"
+      }
     },
     {
-      "id": "pasankusa",
+      "id": "EK-013",
       "display_name": "Pāśāṅkuśā Ekādaśī",
       "type": "ekadasi",
       "masa": "Āśvina",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "pasankusa",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Pāśāṅkuśā Ekādaśī",
+        "es": "Pāśāṅkuśā Ekādaśī",
+        "en": "Pāśāṅkuśā Ekadashi"
+      }
     },
     {
-      "id": "indira",
+      "id": "EK-014",
       "display_name": "Indirā Ekādaśī",
       "type": "ekadasi",
       "masa": "Āśvina",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "indira",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Indirā Ekādaśī",
+        "es": "Indirā Ekādaśī",
+        "en": "Indirā Ekadashi"
+      }
     },
     {
-      "id": "utthana",
+      "id": "EK-015",
       "display_name": "Utthāna Ekādaśī",
       "type": "ekadasi",
       "masa": "Kārtika",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "utthana",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Utthāna Ekādaśī",
+        "es": "Utthāna Ekādaśī",
+        "en": "Utthāna Ekadashi"
+      }
     },
     {
-      "id": "rama",
+      "id": "EK-016",
       "display_name": "Rāmā Ekādaśī",
       "type": "ekadasi",
       "masa": "Kārtika",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "rama",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Rāmā Ekādaśī",
+        "es": "Rāmā Ekādaśī",
+        "en": "Rāmā Ekadashi"
+      }
     },
     {
-      "id": "mokshada",
+      "id": "EK-017",
       "display_name": "Mokṣadā Ekādaśī",
       "type": "ekadasi",
       "masa": "Mārgaśīrṣa",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "mokshada",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Mokṣadā Ekādaśī",
+        "es": "Mokṣadā Ekādaśī",
+        "en": "Mokṣadā Ekadashi"
+      }
     },
     {
-      "id": "utpanna",
+      "id": "EK-018",
       "display_name": "Utpannā Ekādaśī",
       "type": "ekadasi",
       "masa": "Mārgaśīrṣa",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "utpanna",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Utpannā Ekādaśī",
+        "es": "Utpannā Ekādaśī",
+        "en": "Utpannā Ekadashi"
+      }
     },
     {
-      "id": "putrada_pausa",
+      "id": "EK-019",
       "display_name": "Putradā Ekādaśī",
       "type": "ekadasi",
       "masa": "Pauṣa",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "putrada_pausa",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Putradā Ekādaśī",
+        "es": "Putradā Ekādaśī",
+        "en": "Putradā Ekadashi"
+      }
     },
     {
-      "id": "saphala",
+      "id": "EK-020",
       "display_name": "Saphalā Ekādaśī",
       "type": "ekadasi",
       "masa": "Pauṣa",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "saphala",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Saphalā Ekādaśī",
+        "es": "Saphalā Ekādaśī",
+        "en": "Saphalā Ekadashi"
+      }
     },
     {
-      "id": "jaya",
+      "id": "EK-021",
       "display_name": "Jayā Ekādaśī",
       "type": "ekadasi",
       "masa": "Māgha",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "jaya",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Jayā Ekādaśī",
+        "es": "Jayā Ekādaśī",
+        "en": "Jayā Ekadashi"
+      }
     },
     {
-      "id": "sattila",
+      "id": "EK-022",
       "display_name": "Ṣaṭ-tilā Ekādaśī",
       "type": "ekadasi",
       "masa": "Māgha",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "sattila",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Ṣaṭ-tilā Ekādaśī",
+        "es": "Ṣaṭ-tilā Ekādaśī",
+        "en": "Ṣaṭ-tilā Ekadashi"
+      }
     },
     {
-      "id": "amalaki",
+      "id": "EK-023",
       "display_name": "Āmalakī Ekādaśī",
       "type": "ekadasi",
       "masa": "Phālguna",
-      "paksha": "Śukla"
+      "paksha": "Śukla",
+      "slug": "amalaki",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Āmalakī Ekādaśī",
+        "es": "Āmalakī Ekādaśī",
+        "en": "Āmalakī Ekadashi"
+      }
     },
     {
-      "id": "vijaya",
+      "id": "EK-024",
       "display_name": "Vijayā Ekādaśī",
       "type": "ekadasi",
       "masa": "Phālguna",
-      "paksha": "Kṛṣṇa"
+      "paksha": "Kṛṣṇa",
+      "slug": "vijaya",
+      "source": "masa_paksha",
+      "display": {
+        "sa": "Vijayā Ekādaśī",
+        "es": "Vijayā Ekādaśī",
+        "en": "Vijayā Ekadashi"
+      }
     }
   ],
   "mahadvadasis": [
     {
-      "id": "unmilani",
+      "id": "MD-001",
       "display_name": "Unmīlanī Mahādvādaśī",
       "type": "mahadvadasi",
-      "basis": "tithi"
+      "basis": "tithi",
+      "slug": "unmilani",
+      "source": "mahadvadasi_rule",
+      "display": {
+        "sa": "Unmīlanī Mahādvādaśī",
+        "es": "Unmīlanī Mahādvādaśī",
+        "en": "Unmīlanī Mahadvadasi"
+      }
     },
     {
-      "id": "vyanjuli",
+      "id": "MD-002",
       "display_name": "Vyañjulī Mahādvādaśī",
       "type": "mahadvadasi",
-      "basis": "tithi"
+      "basis": "tithi",
+      "slug": "vyanjuli",
+      "source": "mahadvadasi_rule",
+      "display": {
+        "sa": "Vyañjulī Mahādvādaśī",
+        "es": "Vyañjulī Mahādvādaśī",
+        "en": "Vyañjulī Mahadvadasi"
+      }
     },
     {
-      "id": "trisprsa",
+      "id": "MD-003",
       "display_name": "Triṣpṛṣā Mahādvādaśī",
       "type": "mahadvadasi",
-      "basis": "tithi"
+      "basis": "tithi",
+      "slug": "trisprsa",
+      "source": "mahadvadasi_rule",
+      "display": {
+        "sa": "Triṣpṛṣā Mahādvādaśī",
+        "es": "Triṣpṛṣā Mahādvādaśī",
+        "en": "Triṣpṛṣā Mahadvadasi"
+      }
     },
     {
-      "id": "paksavardhini",
+      "id": "MD-004",
       "display_name": "Pakṣavardhinī Mahādvādaśī",
       "type": "mahadvadasi",
-      "basis": "tithi"
+      "basis": "tithi",
+      "slug": "paksavardhini",
+      "source": "mahadvadasi_rule",
+      "display": {
+        "sa": "Pakṣavardhinī Mahādvādaśī",
+        "es": "Pakṣavardhinī Mahādvādaśī",
+        "en": "Pakṣavardhinī Mahadvadasi"
+      }
     },
     {
-      "id": "jaya_mahadvadasi",
+      "id": "MD-005",
       "display_name": "Jayā Mahādvādaśī",
       "type": "mahadvadasi",
-      "basis": "nakṣatra"
+      "basis": "nakṣatra",
+      "slug": "jaya_mahadvadasi",
+      "source": "mahadvadasi_rule",
+      "display": {
+        "sa": "Jayā Mahādvādaśī",
+        "es": "Jayā Mahādvādaśī",
+        "en": "Jayā Mahadvadasi"
+      }
     },
     {
-      "id": "vijaya_mahadvadasi",
+      "id": "MD-006",
       "display_name": "Vijayā Mahādvādaśī",
       "type": "mahadvadasi",
-      "basis": "nakṣatra"
+      "basis": "nakṣatra",
+      "slug": "vijaya_mahadvadasi",
+      "source": "mahadvadasi_rule",
+      "display": {
+        "sa": "Vijayā Mahādvādaśī",
+        "es": "Vijayā Mahādvādaśī",
+        "en": "Vijayā Mahadvadasi"
+      }
     },
     {
-      "id": "jayanti",
+      "id": "MD-007",
       "display_name": "Jayantī Mahādvādaśī",
       "type": "mahadvadasi",
-      "basis": "nakṣatra"
+      "basis": "nakṣatra",
+      "slug": "jayanti",
+      "source": "mahadvadasi_rule",
+      "display": {
+        "sa": "Jayantī Mahādvādaśī",
+        "es": "Jayantī Mahādvādaśī",
+        "en": "Jayantī Mahadvadasi"
+      }
     },
     {
-      "id": "papanasini",
+      "id": "MD-008",
       "display_name": "Pāpanāśinī Mahādvādaśī",
       "type": "mahadvadasi",
-      "basis": "nakṣatra"
+      "basis": "nakṣatra",
+      "slug": "papanasini",
+      "source": "mahadvadasi_rule",
+      "display": {
+        "sa": "Pāpanāśinī Mahādvādaśī",
+        "es": "Pāpanāśinī Mahādvādaśī",
+        "en": "Pāpanāśinī Mahadvadasi"
+      }
     }
-  ]
+  ],
+  "future_scope_note": "The schema is intentionally usable by a future Festival Engine; v1.0 RC1 currently consumes Ekādaśī and Mahādvādaśī entries only."
 }

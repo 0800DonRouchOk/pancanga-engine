@@ -832,7 +832,7 @@
         </div>
       `).join("");
 
-      await loadFestivalLibrary(data.observance_content?.id || data.festival_content_id);
+      await loadFestivalLibrary(data.observance_content?.slug || data.festival_content_id);
     }
 
     function resetResultForPending(date, cityLabel) {
