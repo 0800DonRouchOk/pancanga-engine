@@ -23,6 +23,13 @@ use pancanga_engine::vaishnava::{
 
 const DEFAULT_ADDRESS: &str = "127.0.0.1:7878";
 const HTML: &str = include_str!("../../../../../08_Examples/RC1-Experience/index.html");
+const LOCAL_CONFIG: &str = r#"window.RC1_API_BASE = "";
+window.RC1_BUILD = {
+  engine: "v1.0 RC1",
+  knowledgeBase: "HBV v1.0",
+  astronomy: "Swiss Certified",
+  build: "2026.07 RC1",
+};"#;
 const OFFICIAL_ZENITH_DEGREES: f64 = 90.833;
 const SCAN_STEP_DAYS: f64 = 1.0 / 96.0;
 const REFINEMENT_STEPS: usize = 48;
@@ -101,6 +108,7 @@ fn handle_connection(stream: &mut TcpStream) {
     let mut parts = first_line.split_whitespace();
     let method = parts.next().unwrap_or("");
     let target = parts.next().unwrap_or("/");
+    let path = target.split('?').next().unwrap_or(target);
 
     if method != "GET" {
         respond(
@@ -112,8 +120,18 @@ fn handle_connection(stream: &mut TcpStream) {
         return;
     }
 
-    if target == "/" || target == "/index.html" {
+    if path == "/" || path == "/index.html" {
         respond(stream, "200 OK", "text/html", HTML);
+        return;
+    }
+
+    if path == "/rc1-config.js" {
+        respond(stream, "200 OK", "application/javascript", LOCAL_CONFIG);
+        return;
+    }
+
+    if path == "/favicon.ico" {
+        respond(stream, "204 No Content", "text/plain", "");
         return;
     }
 
