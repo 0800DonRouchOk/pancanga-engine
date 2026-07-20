@@ -569,7 +569,9 @@
 
   <script src="./rc1-config.js"></script>
   <script>
-    const API_BASE = window.RC1_API_BASE || "";
+    const API_BASE = normalizeBase(window.RC1_API_BASE || "");
+    const LOCAL_API_BASES = ["http://127.0.0.1:7878", "http://127.0.0.1:7879"];
+    const API_BASES = apiBaseCandidates();
     const statusEl = document.getElementById("status");
     const decisionEl = document.getElementById("decision");
     const dateLineEl = document.getElementById("dateLine");
@@ -667,10 +669,10 @@
     }
 
     async function fetchCalculation(city, date) {
-      const response = await fetch(`${API_BASE}/api/calculate?city=${encodeURIComponent(city)}&date=${encodeURIComponent(date)}`);
-      const data = await response.json();
-      if (!response.ok || data.error) {
-        throw new Error(data.error || "Calculation failed");
+      const path = `/api/calculate?city=${encodeURIComponent(city)}&date=${encodeURIComponent(date)}`;
+      const data = await fetchJsonFromCandidates(apiUrlCandidates(path));
+      if (data.error) {
+        throw new Error(data.error);
       }
       console.info("RC1 date flow", data.date_debug);
       return data;
@@ -678,11 +680,7 @@
 
     async function loadFestivalLibrary() {
       try {
-        const response = await fetch("./content/ekadasi/pavitropana.json");
-        const entry = await response.json();
-        if (!response.ok || entry.error) {
-          throw new Error(entry.error || "No se pudo cargar la biblioteca.");
-        }
+        const entry = await fetchJsonFromCandidates(contentUrlCandidates("/content/ekadasi/pavitropana.json"));
         renderFestivalEntry(entry);
       } catch (error) {
         festivalStoryEl.innerHTML = `
@@ -692,6 +690,53 @@
           </div>
         `;
       }
+    }
+
+    async function fetchJsonFromCandidates(urls) {
+      const errors = [];
+
+      for (const url of urls) {
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          if (!response.ok || data.error) {
+            throw new Error(data.error || `HTTP ${response.status}`);
+          }
+          return data;
+        } catch (error) {
+          errors.push(`${url}: ${error.message}`);
+        }
+      }
+
+      throw new Error(`No se pudo conectar con Pancanga Engine local. Abrí la RC1 desde http://127.0.0.1:7879/ o dejá corriendo el servidor local. Detalle: ${errors.join(" | ")}`);
+    }
+
+    function apiUrlCandidates(path) {
+      return API_BASES.map((base) => `${base}${path}`);
+    }
+
+    function contentUrlCandidates(path) {
+      if (window.location.protocol === "file:") {
+        return LOCAL_API_BASES.map((base) => `${base}${path}`);
+      }
+
+      return [path];
+    }
+
+    function apiBaseCandidates() {
+      if (window.location.protocol === "file:") {
+        const candidates = [...LOCAL_API_BASES];
+        if (API_BASE && !candidates.includes(API_BASE)) {
+          candidates.push(API_BASE);
+        }
+        return candidates;
+      }
+
+      return [API_BASE];
+    }
+
+    function normalizeBase(value) {
+      return String(value || "").replace(/\/$/, "");
     }
 
     function renderFestivalEntry(entry) {
