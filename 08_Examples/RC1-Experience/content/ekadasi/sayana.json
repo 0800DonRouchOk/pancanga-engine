@@ -1,0 +1,40 @@
+{
+  "id": "sayana",
+  "name": "Śayanā Ekādaśī",
+  "aliases": [
+    "Padma Ekādaśī",
+    "Deva-śayanī Ekādaśī",
+    "Āṣāḍha Śukla Ekādaśī"
+  ],
+  "source": {
+    "primary_text": "Bhaviṣya-uttara Purāṇa",
+    "local_pdf": "07_Sources/Vaishnava/204176529-Ekadashi-Es-Ramanuja-Dasa.pdf",
+    "pages": "55-57",
+    "note": "Entrada estructurada a partir del PDF local incorporado al repositorio. El texto de la historia fue resumido, no copiado literalmente."
+  },
+  "calendar_context": {
+    "vedic_month": "Āṣāḍha",
+    "paksha": "Śukla",
+    "vaishnava_month": "Vāmana Māsa",
+    "western_period": "junio-julio / fase creciente"
+  },
+  "story_summary": [
+    "Maharaja Yudhiṣṭhira pregunta a Śrī Kṛṣṇa por la Ekādaśī de la quincena brillante del mes de Āṣāḍha.",
+    "Kṛṣṇa relata una enseñanza que Brahmā había dado a Nārada sobre esta Ekādaśī, conocida como Padma o Deva-śayanī.",
+    "La narración presenta al rey Mandhātā, un gobernante piadoso cuyo reino sufre una sequía prolongada.",
+    "Buscando la causa y el remedio, el rey acude al sabio Aṅgirā Ṛṣi, quien le indica la observancia de Āṣāḍha Śukla Ekādaśī como medio de purificación y alivio para el reino.",
+    "La tradición identifica esta fecha como el día en que el Señor Viṣṇu entra en Su descanso, marcando el comienzo del periodo asociado con Cāturmāsya."
+  ],
+  "main_teaching": "Śayanā Ekādaśī enseña que la observancia de Hari-vāsara no es sólo una práctica individual, sino una forma de restaurar armonía espiritual cuando una comunidad atraviesa dificultad.",
+  "observance_notes": [
+    "Ayunar en honor al Señor Hari según la capacidad del practicante.",
+    "Recordar que esta Ekādaśī inaugura el periodo en que el Señor Viṣṇu es descrito como entrando en descanso.",
+    "Evitar iniciar ceremonias auspiciosas nuevas durante el periodo tradicionalmente asociado con el descanso de los devas, hasta Utthāna Ekādaśī."
+  ],
+  "benefits_summary": [
+    "Se describe como purificadora de pecados.",
+    "Se asocia con la satisfacción del Señor Hṛṣīkeśa.",
+    "Su observancia es presentada como favorable para remover obstáculos en el camino espiritual."
+  ],
+  "rc1_scope_note": "Esta biblioteca es una capa de contenido. No modifica el cálculo de tithi, Viddhā, Mahādvādaśī ni Parāṇa."
+}

@@ -25,6 +25,8 @@ use pancanga_engine::vaishnava::{
 
 const DEFAULT_ADDRESS: &str = "127.0.0.1:7878";
 const HTML: &str = include_str!("../../../../../08_Examples/RC1-Experience/index.html");
+const SAYANA_CONTENT: &str =
+    include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/sayana.json");
 const PAVITROPANA_CONTENT: &str =
     include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/pavitropana.json");
 const LOCAL_CONFIG: &str = r#"window.RC1_API_BASE = "";
@@ -144,6 +146,11 @@ fn handle_connection(stream: &mut TcpStream) {
         return;
     }
 
+    if path == "/content/ekadasi/sayana.json" {
+        respond(stream, "200 OK", "application/json", SAYANA_CONTENT);
+        return;
+    }
+
     if path == "/favicon.ico" {
         respond(stream, "204 No Content", "text/plain", "");
         return;
@@ -193,6 +200,8 @@ fn calculate_response(query: &str) -> Result<String, String> {
         Some((_, ObservanceKind::DisplacedFromYesterday)) => "✓ Observá Ekādaśī hoy".to_string(),
         None => "No se observa Ekādaśī hoy".to_string(),
     };
+    let festival_content_id = observance
+        .and_then(|(evaluation, _)| ekadasi_content_id(date, evaluation.tithi_at_sunrise));
 
     let parana = observance.map(|_| {
         parana_presentation(next_day(date), location, offset_hours).unwrap_or_else(|error| {
@@ -218,6 +227,7 @@ fn calculate_response(query: &str) -> Result<String, String> {
             \"processed_date\":\"{}\",\
             \"location\":\"{}\",\
             \"decision\":\"{}\",\
+            \"festival_content_id\":\"{}\",\
             \"parana_recommended\":\"{}\",\
             \"parana_normative\":\"{}\",\
             \"parana_normative_limit\":\"{}\",\
@@ -233,6 +243,7 @@ fn calculate_response(query: &str) -> Result<String, String> {
         json_escape(&iso_date(date)),
         json_escape(city.name),
         json_escape(&decision),
+        json_escape(festival_content_id.unwrap_or("")),
         json_escape(
             &parana
                 .as_ref()
@@ -290,6 +301,20 @@ fn evaluate_day(date: CivilDate, location: GeoLocation) -> Result<DayEvaluation,
         tithi_at_sunrise: tithi_at_sunrise_value,
         disposition,
     })
+}
+
+fn ekadasi_content_id(date: CivilDate, tithi: AstronomicalTithi) -> Option<&'static str> {
+    if tithi.traditional_number() != 11 || tithi.paksha() != Paksha::Sukla {
+        return None;
+    }
+
+    // RC1 content-library routing only. This does not define observance rules.
+    match (date.month(), date.day()) {
+        (6, _) => Some("sayana"),
+        (7, _) => Some("sayana"),
+        (8, _) => Some("pavitropana"),
+        _ => None,
+    }
 }
 
 fn parana_presentation(
