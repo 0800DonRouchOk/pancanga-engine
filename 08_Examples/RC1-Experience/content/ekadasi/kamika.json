@@ -1,0 +1,39 @@
+{
+  "id": "kamika",
+  "name": "Kāmikā Ekādaśī",
+  "aliases": [
+    "Kamika Ekadashi",
+    "Śrāvaṇa Kṛṣṇa Ekādaśī"
+  ],
+  "source": {
+    "primary_text": "Brahma-vaivarta Purāṇa",
+    "local_pdf": "07_Sources/Vaishnava/204176529-Ekadashi-Es-Ramanuja-Dasa.pdf",
+    "pages": "57-58",
+    "note": "Entrada estructurada a partir del PDF local incorporado al repositorio. El texto de la historia fue resumido, no copiado literalmente."
+  },
+  "calendar_context": {
+    "vedic_month": "Śrāvaṇa",
+    "paksha": "Kṛṣṇa",
+    "vaishnava_month": "Śrīdhara Māsa",
+    "western_period": "julio-agosto / fase menguante"
+  },
+  "story_summary": [
+    "Maharaja Yudhiṣṭhira pide a Śrī Kṛṣṇa que describa la Ekādaśī de la quincena oscura del mes de Śrāvaṇa.",
+    "Kṛṣṇa relata una enseñanza en la que Nārada Muni pregunta al Señor Brahmā por el nombre, la deidad, la observancia y los méritos de esta fecha.",
+    "Brahmā identifica esta observancia como Kāmikā Ekādaśī y la presenta como un día especialmente auspicioso para adorar al Señor Hari.",
+    "La narración subraya la adoración al Señor Gadhādhara, Śrīdhara, Hari, Viṣṇu, Mādhava y Madhusūdana, y destaca el valor devocional de ofrecer Tulasī.",
+    "El texto concluye describiendo a Kāmikā Ekādaśī como una observancia purificadora que remueve pecados y conduce hacia la morada del Señor Viṣṇu."
+  ],
+  "main_teaching": "Kāmikā Ekādaśī pone el acento en la adoración sencilla y sincera al Señor Hari, especialmente mediante Tulasī, mostrando que el servicio devocional ofrecido con fe supera la mera acumulación externa de méritos.",
+  "observance_notes": [
+    "Ayunar en honor al Señor Hari según la capacidad del practicante.",
+    "Adorar al Señor Viṣṇu y recordar Sus nombres como Śrīdhara, Mādhava y Madhusūdana.",
+    "Ofrecer respeto y servicio a Śrīmatī Tulasī Devī, cuya presencia ocupa un lugar central en la narración tradicional."
+  ],
+  "benefits_summary": [
+    "Se describe como una observancia poderosa para remover pecados.",
+    "Escuchar sus glorias con fe es presentado como espiritualmente purificador.",
+    "La adoración con hojas o mañjarīs de Tulasī es glorificada como muy querida para el Señor Hari."
+  ],
+  "rc1_scope_note": "Esta biblioteca es una capa de contenido. No modifica el cálculo de tithi, Viddhā, Mahādvādaśī ni Parāṇa."
+}

@@ -27,6 +27,8 @@ const DEFAULT_ADDRESS: &str = "127.0.0.1:7878";
 const HTML: &str = include_str!("../../../../../08_Examples/RC1-Experience/index.html");
 const SAYANA_CONTENT: &str =
     include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/sayana.json");
+const KAMIKA_CONTENT: &str =
+    include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/kamika.json");
 const PAVITROPANA_CONTENT: &str =
     include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/pavitropana.json");
 const LOCAL_CONFIG: &str = r#"window.RC1_API_BASE = "";
@@ -171,6 +173,11 @@ fn handle_connection(stream: &mut TcpStream) {
 
     if path == "/content/ekadasi/sayana.json" {
         respond(stream, "200 OK", "application/json", SAYANA_CONTENT);
+        return;
+    }
+
+    if path == "/content/ekadasi/kamika.json" {
+        respond(stream, "200 OK", "application/json", KAMIKA_CONTENT);
         return;
     }
 
@@ -359,6 +366,12 @@ fn resolve_ekadasi_name(masa: Rc1EkadasiMasa, paksha: Paksha) -> Option<EkadasiN
         (Rc1EkadasiMasa::Sravana, Paksha::Sukla) => Some(EkadasiNameEntry {
             content_id: "pavitropana",
             display_name: "Putrada - Pavitraropani Ekādaśī",
+            masa,
+            paksha,
+        }),
+        (Rc1EkadasiMasa::Sravana, Paksha::Krsna) => Some(EkadasiNameEntry {
+            content_id: "kamika",
+            display_name: "Kāmikā Ekādaśī",
             masa,
             paksha,
         }),
