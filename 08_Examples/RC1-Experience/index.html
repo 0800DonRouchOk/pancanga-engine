@@ -119,6 +119,22 @@
       min-width: 132px;
     }
 
+    .observance-nav {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 10px;
+      margin: 0 0 14px;
+    }
+
+    .observance-nav button {
+      background: var(--white);
+      min-width: 0;
+    }
+
+    .observance-nav .today-button {
+      min-width: 96px;
+    }
+
     .hero {
       padding: 32px 24px;
       border-top: 1px solid var(--line);
@@ -375,6 +391,7 @@
     @media (max-width: 720px) {
       header,
       .controls,
+      .observance-nav,
       .actions,
       .grid {
         grid-template-columns: 1fr;
@@ -429,6 +446,12 @@
       </label>
       <button id="calculate" class="primary" type="button">Calcular</button>
     </section>
+
+    <nav class="observance-nav" aria-label="Ekādaśī navigation">
+      <button id="previousEkadasi" type="button">◀ Ekādaśī anterior</button>
+      <button id="today" class="today-button" type="button">Hoy</button>
+      <button id="nextEkadasi" type="button">Próximo Ekādaśī ▶</button>
+    </nav>
 
     <p id="status" class="status">Elegí fecha y lugar, luego calculá.</p>
 
@@ -522,6 +545,9 @@
     });
 
     document.getElementById("calculate").addEventListener("click", calculate);
+    document.getElementById("previousEkadasi").addEventListener("click", () => navigateEkadasi(-1));
+    document.getElementById("today").addEventListener("click", goToToday);
+    document.getElementById("nextEkadasi").addEventListener("click", () => navigateEkadasi(1));
     document.getElementById("reportIssue").addEventListener("click", reportIssue);
 
     async function calculate() {
@@ -533,12 +559,7 @@
       resetResultForPending(date, cityLabel);
 
       try {
-        const response = await fetch(`${API_BASE}/api/calculate?city=${encodeURIComponent(city)}&date=${encodeURIComponent(date)}`);
-        const data = await response.json();
-        if (!response.ok || data.error) {
-          throw new Error(data.error || "Calculation failed");
-        }
-        console.info("RC1 date flow", data.date_debug);
+        const data = await fetchCalculation(city, date);
         latestResult = { city, cityLabel, date, data };
         render(data);
         statusEl.textContent = "Calculado desde Pancanga Engine RC1.";
@@ -548,6 +569,70 @@
         statusEl.classList.add("error");
         clearResultAfterError(date, cityLabel, error.message);
       }
+    }
+
+    async function navigateEkadasi(direction) {
+      const city = document.getElementById("city").value;
+      const cityLabel = document.getElementById("city").selectedOptions[0]?.textContent || city;
+      const dateInput = document.getElementById("date");
+      const startDate = parseInputDate(dateInput.value);
+      const label = direction > 0 ? "próxima observancia" : "observancia anterior";
+      statusEl.textContent = `Buscando ${label} con Pancanga Engine...`;
+      statusEl.classList.remove("error");
+      setNavigationDisabled(true);
+
+      try {
+        for (let offset = direction; Math.abs(offset) <= 45; offset += direction) {
+          const candidateDate = addDays(startDate, offset);
+          const isoDate = toIsoDate(candidateDate);
+          resetResultForPending(isoDate, cityLabel);
+          const data = await fetchCalculation(city, isoDate);
+
+          if (isObservance(data)) {
+            dateInput.value = isoDate;
+            latestResult = { city, cityLabel, date: isoDate, data };
+            render(data);
+            statusEl.textContent = direction > 0
+              ? "Próxima observancia encontrada."
+              : "Observancia anterior encontrada.";
+            return;
+          }
+        }
+
+        throw new Error("No se encontró una observancia en la ventana de búsqueda de 45 días.");
+      } catch (error) {
+        latestResult = { city, cityLabel, date: dateInput.value, error: error.message };
+        statusEl.textContent = error.message;
+        statusEl.classList.add("error");
+        clearResultAfterError(dateInput.value, cityLabel, error.message);
+      } finally {
+        setNavigationDisabled(false);
+      }
+    }
+
+    async function goToToday() {
+      document.getElementById("date").value = toIsoDate(new Date());
+      await calculate();
+    }
+
+    async function fetchCalculation(city, date) {
+      const response = await fetch(`${API_BASE}/api/calculate?city=${encodeURIComponent(city)}&date=${encodeURIComponent(date)}`);
+      const data = await response.json();
+      if (!response.ok || data.error) {
+        throw new Error(data.error || "Calculation failed");
+      }
+      console.info("RC1 date flow", data.date_debug);
+      return data;
+    }
+
+    function isObservance(data) {
+      return !data.decision.startsWith("No se observa");
+    }
+
+    function setNavigationDisabled(disabled) {
+      document.querySelectorAll("#calculate, #previousEkadasi, #today, #nextEkadasi").forEach((button) => {
+        button.disabled = disabled;
+      });
     }
 
     function render(data) {
@@ -664,6 +749,27 @@
         return value || "Fecha sin seleccionar";
       }
       return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+
+    function parseInputDate(value) {
+      const parts = value.split("-").map(Number);
+      if (parts.length !== 3 || parts.some((part) => Number.isNaN(part))) {
+        throw new Error("Fecha inválida.");
+      }
+      return new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+    }
+
+    function addDays(date, days) {
+      const next = new Date(date.getTime());
+      next.setUTCDate(next.getUTCDate() + days);
+      return next;
+    }
+
+    function toIsoDate(date) {
+      const year = date.getUTCFullYear();
+      const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+      const day = String(date.getUTCDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
     }
 
     function escapeHtml(value) {
