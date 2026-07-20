@@ -2,6 +2,8 @@ use std::collections::HashMap;
 use std::env;
 use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
+use std::thread;
+use std::time::Duration;
 
 use pancanga_engine::astronomy::{
     lunar_solar_elongation, moon, nakshatra, solar, AstronomicalTithi, Paksha,
@@ -72,7 +74,9 @@ fn main() -> std::io::Result<()> {
 
     for stream in listener.incoming() {
         match stream {
-            Ok(mut stream) => handle_connection(&mut stream),
+            Ok(mut stream) => {
+                thread::spawn(move || handle_connection(&mut stream));
+            }
             Err(error) => eprintln!("Connection error: {error}"),
         }
     }
@@ -93,6 +97,9 @@ fn rc1_listen_address() -> String {
 }
 
 fn handle_connection(stream: &mut TcpStream) {
+    let _ = stream.set_read_timeout(Some(Duration::from_secs(2)));
+    let _ = stream.set_write_timeout(Some(Duration::from_secs(5)));
+
     let mut buffer = [0; 8192];
     let Ok(bytes_read) = stream.read(&mut buffer) else {
         respond(stream, "400 Bad Request", "text/plain", "Bad request");
