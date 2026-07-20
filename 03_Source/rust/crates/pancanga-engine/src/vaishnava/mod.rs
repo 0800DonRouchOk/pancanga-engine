@@ -5,6 +5,7 @@
 //! Mahadvadasi, parana, nakshatra, or festivals.
 
 mod ekadasi;
+mod observance;
 
 pub use ekadasi::{
     arunodaya_start, classify_mahadvadasi, classify_vaishnava_day, ekadasi_candidate_at_sunrise,
@@ -14,4 +15,8 @@ pub use ekadasi::{
     ParanaWindow, ParanaWindowError, TithiMahadvadasiCondition, VaishnavaDayClassification,
     VaishnavaDayInput, VaishnavaEngineError, ViddhaCandidateStatus,
     ARUNODAYA_BEFORE_SUNRISE_MINUTES,
+};
+pub use observance::{
+    resolve_mahadvadasi_observance, resolve_ordinary_ekadasi_observance, Observance,
+    ObservanceSource, ObservanceType, VaishnavaMasa,
 };

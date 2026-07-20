@@ -11,6 +11,9 @@ use crate::astronomy::{AstronomicalTithi, NakshatraIndex, Paksha};
 use crate::calendar::CivilDayTithiPresence;
 use crate::core::{DurationDays, JulianDate};
 
+use super::observance::{resolve_mahadvadasi_observance, resolve_ordinary_ekadasi_observance};
+use super::{Observance, VaishnavaMasa};
+
 const DASAMI_TRADITIONAL_NUMBER: u8 = 10;
 const EKADASI_TRADITIONAL_NUMBER: u8 = 11;
 const DVADASI_TRADITIONAL_NUMBER: u8 = 12;
@@ -257,6 +260,7 @@ impl ParanaInput {
 pub struct VaishnavaDayInput {
     tithi_at_sunrise: AstronomicalTithi,
     tithi_at_arunodaya: AstronomicalTithi,
+    observance_masa: Option<VaishnavaMasa>,
     mahadvadasi_facts: Option<MahadvadasiFacts>,
     parana: Option<ParanaInput>,
 }
@@ -267,9 +271,16 @@ impl VaishnavaDayInput {
         Self {
             tithi_at_sunrise,
             tithi_at_arunodaya,
+            observance_masa: None,
             mahadvadasi_facts: None,
             parana: None,
         }
+    }
+
+    /// Adds the lunar month already calculated by the calendar layer.
+    pub fn with_observance_masa(mut self, masa: VaishnavaMasa) -> Self {
+        self.observance_masa = Some(masa);
+        self
     }
 
     /// Adds optional Mahadvadasi facts.
@@ -299,6 +310,9 @@ pub struct VaishnavaDayClassification {
 
     /// HBV-EK-004 result.
     pub mahadvadasi: Option<MahadvadasiType>,
+
+    /// Catalog-backed observance identity, when the required facts are present.
+    pub observance_content: Option<Observance>,
 
     /// HBV-EK-005 result.
     pub parana: Option<ParanaWindow>,
@@ -464,6 +478,7 @@ pub fn classify_vaishnava_day(
             viddha_status: ViddhaCandidateStatus::NotCandidate,
             observance: EkadasiObservanceDisposition::NoObservanceCandidate,
             mahadvadasi: None,
+            observance_content: None,
             parana: None,
         });
     }
@@ -473,6 +488,14 @@ pub fn classify_vaishnava_day(
     let mahadvadasi = input
         .mahadvadasi_facts
         .and_then(|facts| classify_mahadvadasi(facts.classification(observance)));
+    let observance_content = match (mahadvadasi, input.observance_masa) {
+        (Some(mahadvadasi), _) => Some(resolve_mahadvadasi_observance(mahadvadasi)),
+        (None, Some(masa)) => Some(resolve_ordinary_ekadasi_observance(
+            masa,
+            input.tithi_at_sunrise.paksha(),
+        )),
+        (None, None) => None,
+    };
 
     let parana_input = input
         .parana
@@ -489,6 +512,7 @@ pub fn classify_vaishnava_day(
         viddha_status,
         observance,
         mahadvadasi,
+        observance_content,
         parana: Some(parana),
     })
 }
@@ -506,6 +530,7 @@ mod tests {
     use crate::astronomy::{AstronomicalTithi, NakshatraIndex};
     use crate::calendar::CivilDayTithiPresence;
     use crate::core::JulianDate;
+    use crate::vaishnava::{ObservanceSource, ObservanceType, VaishnavaMasa};
 
     #[test]
     fn dasami_at_sunrise_is_not_candidate() {
@@ -817,6 +842,23 @@ mod tests {
     }
 
     #[test]
+    fn integrated_ordinary_observance_content_comes_from_masa_and_paksha() {
+        let result = classify_vaishnava_day(
+            base_input(tithi(25), tithi(25))
+                .with_observance_masa(VaishnavaMasa::Sravana)
+                .with_parana(parana_input()),
+        )
+        .expect("valid classification");
+        let observance = result.observance_content.expect("observance content");
+
+        assert_eq!(observance.id, "EK-010");
+        assert_eq!(observance.slug, "kamika");
+        assert_eq!(observance.display_name, "Kāmikā Ekādaśī");
+        assert_eq!(observance.observance_type, ObservanceType::Ekadasi);
+        assert_eq!(observance.source, ObservanceSource::MasaPaksha);
+    }
+
+    #[test]
     fn integrated_tithi_based_mahadvadasi_is_classified() {
         let facts =
             MahadvadasiFacts::new().with_tithi_condition(TithiMahadvadasiCondition::Unmilani);
@@ -829,6 +871,27 @@ mod tests {
 
         assert_eq!(result.mahadvadasi, Some(MahadvadasiType::Unmilani));
         assert_eq!(result.parana.expect("parana").mode, ParanaMode::Standard);
+    }
+
+    #[test]
+    fn integrated_mahadvadasi_observance_content_comes_from_rule_output() {
+        let facts =
+            MahadvadasiFacts::new().with_tithi_condition(TithiMahadvadasiCondition::Trisprsa);
+        let result = classify_vaishnava_day(
+            base_input(tithi(10), tithi(9))
+                .with_observance_masa(VaishnavaMasa::Magha)
+                .with_mahadvadasi_facts(facts)
+                .with_parana(parana_input()),
+        )
+        .expect("valid classification");
+        let observance = result.observance_content.expect("observance content");
+
+        assert_eq!(result.mahadvadasi, Some(MahadvadasiType::Trisprsa));
+        assert_eq!(observance.id, "MD-003");
+        assert_eq!(observance.slug, "trisprsa");
+        assert_eq!(observance.display_name, "Triṣpṛṣā Mahādvādaśī");
+        assert_eq!(observance.observance_type, ObservanceType::Mahadvadasi);
+        assert_eq!(observance.source, ObservanceSource::MahadvadasiRule);
     }
 
     #[test]

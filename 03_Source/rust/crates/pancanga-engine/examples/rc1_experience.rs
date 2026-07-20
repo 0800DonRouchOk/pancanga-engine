@@ -20,7 +20,8 @@ use pancanga_engine::core::{
 };
 use pancanga_engine::vaishnava::{
     arunodaya_start, ekadasi_candidate_at_sunrise, hari_vasara_end, invalidate_viddha_candidate,
-    observance_displacement, parana_window, EkadasiObservanceDisposition, ParanaMode,
+    observance_displacement, parana_window, resolve_ordinary_ekadasi_observance,
+    EkadasiObservanceDisposition, Observance, ParanaMode, VaishnavaMasa,
 };
 
 const DEFAULT_ADDRESS: &str = "127.0.0.1:7878";
@@ -74,69 +75,7 @@ struct ParanaPresentation {
     note: String,
 }
 
-#[derive(Clone, Copy)]
-struct EkadasiNameEntry {
-    stable_id: &'static str,
-    slug: &'static str,
-    display_name: &'static str,
-    observance_type: &'static str,
-    source: &'static str,
-    masa: Rc1EkadasiMasa,
-    paksha: Paksha,
-}
-
-#[derive(Clone, Copy)]
-enum Rc1EkadasiMasa {
-    Chaitra,
-    Vaisakha,
-    Jyestha,
-    Asadha,
-    Sravana,
-    Bhadrapada,
-    Asvina,
-    Kartika,
-    Margasirsa,
-    Pausa,
-    Magha,
-    Phalguna,
-}
-
-const RC1_EKADASI_MASAS: [Rc1EkadasiMasa; 12] = [
-    Rc1EkadasiMasa::Chaitra,
-    Rc1EkadasiMasa::Vaisakha,
-    Rc1EkadasiMasa::Jyestha,
-    Rc1EkadasiMasa::Asadha,
-    Rc1EkadasiMasa::Sravana,
-    Rc1EkadasiMasa::Bhadrapada,
-    Rc1EkadasiMasa::Asvina,
-    Rc1EkadasiMasa::Kartika,
-    Rc1EkadasiMasa::Margasirsa,
-    Rc1EkadasiMasa::Pausa,
-    Rc1EkadasiMasa::Magha,
-    Rc1EkadasiMasa::Phalguna,
-];
-
-impl Rc1EkadasiMasa {
-    fn label(self) -> &'static str {
-        match self {
-            Self::Chaitra => "Chaitra",
-            Self::Vaisakha => "Vaiśākha",
-            Self::Jyestha => "Jyeṣṭha",
-            Self::Asadha => "Āṣāḍha",
-            Self::Sravana => "Śrāvaṇa",
-            Self::Bhadrapada => "Bhādrapada",
-            Self::Asvina => "Āśvina",
-            Self::Kartika => "Kārtika",
-            Self::Margasirsa => "Mārgaśīrṣa",
-            Self::Pausa => "Pauṣa",
-            Self::Magha => "Māgha",
-            Self::Phalguna => "Phālguna",
-        }
-    }
-}
-
 fn main() -> std::io::Result<()> {
-    debug_assert_eq!(RC1_EKADASI_MASAS.len(), 12);
     let address = rc1_listen_address();
     let listener = TcpListener::bind(&address)?;
     println!("Pancanga Engine RC1 Experience");
@@ -333,25 +272,33 @@ fn calculate_response(query: &str) -> Result<String, String> {
         json_escape(&decision),
         json_escape(ekadasi_name.map(|entry| entry.slug).unwrap_or("")),
         json_escape(ekadasi_name.map(|entry| entry.display_name).unwrap_or("")),
-        json_escape(ekadasi_name.map(|entry| entry.masa.label()).unwrap_or("")),
         json_escape(
-            ekadasi_name
-                .map(|entry| paksha_label(entry.paksha))
+            rc1_content_masa(date)
+                .map(|masa| masa.label())
                 .unwrap_or("")
         ),
         json_escape(
             ekadasi_name
-                .map(|entry| entry.observance_type)
+                .map(|_| paksha_label(observance_tithi_paksha(observance)))
                 .unwrap_or("")
         ),
-        json_escape(ekadasi_name.map(|entry| entry.stable_id).unwrap_or("")),
+        json_escape(
+            ekadasi_name
+                .map(|entry| entry.observance_type.label())
+                .unwrap_or("")
+        ),
+        json_escape(ekadasi_name.map(|entry| entry.id).unwrap_or("")),
         json_escape(ekadasi_name.map(|entry| entry.slug).unwrap_or("")),
         json_escape(ekadasi_name.map(|entry| entry.display_name).unwrap_or("")),
-        json_escape(ekadasi_name.map(|entry| entry.source).unwrap_or("")),
-        json_escape(ekadasi_name.map(|entry| entry.masa.label()).unwrap_or("")),
+        json_escape(ekadasi_name.map(|entry| entry.source.label()).unwrap_or("")),
+        json_escape(
+            rc1_content_masa(date)
+                .map(|masa| masa.label())
+                .unwrap_or("")
+        ),
         json_escape(
             ekadasi_name
-                .map(|entry| paksha_label(entry.paksha))
+                .map(|_| paksha_label(observance_tithi_paksha(observance)))
                 .unwrap_or("")
         ),
         json_escape(
@@ -413,66 +360,28 @@ fn evaluate_day(date: CivilDate, location: GeoLocation) -> Result<DayEvaluation,
     })
 }
 
-fn ekadasi_name_for_observance(
-    date: CivilDate,
-    tithi: AstronomicalTithi,
-) -> Option<EkadasiNameEntry> {
+fn ekadasi_name_for_observance(date: CivilDate, tithi: AstronomicalTithi) -> Option<Observance> {
     if tithi.traditional_number() != 11 {
         return None;
     }
 
     let masa = rc1_content_masa(date)?;
-    resolve_ekadasi_name(masa, tithi.paksha())
+    Some(resolve_ordinary_ekadasi_observance(masa, tithi.paksha()))
 }
 
-fn resolve_ekadasi_name(masa: Rc1EkadasiMasa, paksha: Paksha) -> Option<EkadasiNameEntry> {
-    let (stable_id, slug, display_name) = match (masa, paksha) {
-        (Rc1EkadasiMasa::Chaitra, Paksha::Sukla) => ("EK-001", "kamada", "Kāmadā Ekādaśī"),
-        (Rc1EkadasiMasa::Chaitra, Paksha::Krsna) => ("EK-002", "papamocani", "Pāpamocanī Ekādaśī"),
-        (Rc1EkadasiMasa::Vaisakha, Paksha::Sukla) => ("EK-003", "mohini", "Mohinī Ekādaśī"),
-        (Rc1EkadasiMasa::Vaisakha, Paksha::Krsna) => ("EK-004", "varuthini", "Varūthinī Ekādaśī"),
-        (Rc1EkadasiMasa::Jyestha, Paksha::Sukla) => ("EK-005", "nirjala", "Nirjalā Ekādaśī"),
-        (Rc1EkadasiMasa::Jyestha, Paksha::Krsna) => ("EK-006", "apara", "Aparā Ekādaśī"),
-        (Rc1EkadasiMasa::Asadha, Paksha::Sukla) => ("EK-007", "sayana", "Śayanā Ekādaśī"),
-        (Rc1EkadasiMasa::Asadha, Paksha::Krsna) => ("EK-008", "yogini", "Yoginī Ekādaśī"),
-        (Rc1EkadasiMasa::Sravana, Paksha::Sukla) => {
-            ("EK-009", "pavitropana", "Putradā - Pavitraropani Ekādaśī")
-        }
-        (Rc1EkadasiMasa::Sravana, Paksha::Krsna) => ("EK-010", "kamika", "Kāmikā Ekādaśī"),
-        (Rc1EkadasiMasa::Bhadrapada, Paksha::Sukla) => ("EK-011", "parsva", "Pārśva Ekādaśī"),
-        (Rc1EkadasiMasa::Bhadrapada, Paksha::Krsna) => ("EK-012", "aja", "Ajā Ekādaśī"),
-        (Rc1EkadasiMasa::Asvina, Paksha::Sukla) => ("EK-013", "pasankusa", "Pāśāṅkuśā Ekādaśī"),
-        (Rc1EkadasiMasa::Asvina, Paksha::Krsna) => ("EK-014", "indira", "Indirā Ekādaśī"),
-        (Rc1EkadasiMasa::Kartika, Paksha::Sukla) => ("EK-015", "utthana", "Utthāna Ekādaśī"),
-        (Rc1EkadasiMasa::Kartika, Paksha::Krsna) => ("EK-016", "rama", "Rāmā Ekādaśī"),
-        (Rc1EkadasiMasa::Margasirsa, Paksha::Sukla) => ("EK-017", "mokshada", "Mokṣadā Ekādaśī"),
-        (Rc1EkadasiMasa::Margasirsa, Paksha::Krsna) => ("EK-018", "utpanna", "Utpannā Ekādaśī"),
-        (Rc1EkadasiMasa::Pausa, Paksha::Sukla) => ("EK-019", "putrada_pausa", "Putradā Ekādaśī"),
-        (Rc1EkadasiMasa::Pausa, Paksha::Krsna) => ("EK-020", "saphala", "Saphalā Ekādaśī"),
-        (Rc1EkadasiMasa::Magha, Paksha::Sukla) => ("EK-021", "jaya", "Jayā Ekādaśī"),
-        (Rc1EkadasiMasa::Magha, Paksha::Krsna) => ("EK-022", "sattila", "Ṣaṭ-tilā Ekādaśī"),
-        (Rc1EkadasiMasa::Phalguna, Paksha::Sukla) => ("EK-023", "amalaki", "Āmalakī Ekādaśī"),
-        (Rc1EkadasiMasa::Phalguna, Paksha::Krsna) => ("EK-024", "vijaya", "Vijayā Ekādaśī"),
-    };
-
-    Some(EkadasiNameEntry {
-        stable_id,
-        slug,
-        display_name,
-        observance_type: "ekadasi",
-        source: "masa_paksha",
-        masa,
-        paksha,
-    })
+fn observance_tithi_paksha(observance: Option<(DayEvaluation, ObservanceKind)>) -> Paksha {
+    observance
+        .map(|(evaluation, _)| evaluation.tithi_at_sunrise.paksha())
+        .unwrap_or(Paksha::Sukla)
 }
 
-fn rc1_content_masa(date: CivilDate) -> Option<Rc1EkadasiMasa> {
+fn rc1_content_masa(date: CivilDate) -> Option<VaishnavaMasa> {
     // RC1 content-library routing only. This does not define observance rules.
-    // The resolver itself is masa + paksha based; this temporary adapter feeds
-    // the two story entries currently present in the beta library.
+    // The Observance Engine owns name resolution; this temporary adapter exists
+    // only until the Calendar Engine exposes a formal Vaishnava masa.
     match date.month() {
-        6 | 7 => Some(Rc1EkadasiMasa::Asadha),
-        8 => Some(Rc1EkadasiMasa::Sravana),
+        6 | 7 => Some(VaishnavaMasa::Asadha),
+        8 => Some(VaishnavaMasa::Sravana),
         _ => None,
     }
 }
