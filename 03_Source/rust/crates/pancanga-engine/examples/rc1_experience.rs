@@ -70,6 +70,29 @@ struct ParanaPresentation {
     note: String,
 }
 
+#[derive(Clone, Copy)]
+struct EkadasiNameEntry {
+    content_id: &'static str,
+    display_name: &'static str,
+    masa: Rc1EkadasiMasa,
+    paksha: Paksha,
+}
+
+#[derive(Clone, Copy)]
+enum Rc1EkadasiMasa {
+    Asadha,
+    Sravana,
+}
+
+impl Rc1EkadasiMasa {
+    fn label(self) -> &'static str {
+        match self {
+            Self::Asadha => "Āṣāḍha",
+            Self::Sravana => "Śrāvaṇa",
+        }
+    }
+}
+
 fn main() -> std::io::Result<()> {
     let address = rc1_listen_address();
     let listener = TcpListener::bind(&address)?;
@@ -200,8 +223,8 @@ fn calculate_response(query: &str) -> Result<String, String> {
         Some((_, ObservanceKind::DisplacedFromYesterday)) => "✓ Observá Ekādaśī hoy".to_string(),
         None => "No se observa Ekādaśī hoy".to_string(),
     };
-    let festival_content_id = observance
-        .and_then(|(evaluation, _)| ekadasi_content_id(date, evaluation.tithi_at_sunrise));
+    let ekadasi_name = observance
+        .and_then(|(evaluation, _)| ekadasi_name_for_observance(date, evaluation.tithi_at_sunrise));
 
     let parana = observance.map(|_| {
         parana_presentation(next_day(date), location, offset_hours).unwrap_or_else(|error| {
@@ -228,6 +251,9 @@ fn calculate_response(query: &str) -> Result<String, String> {
             \"location\":\"{}\",\
             \"decision\":\"{}\",\
             \"festival_content_id\":\"{}\",\
+            \"festival_name\":\"{}\",\
+            \"festival_masa\":\"{}\",\
+            \"festival_paksha\":\"{}\",\
             \"parana_recommended\":\"{}\",\
             \"parana_normative\":\"{}\",\
             \"parana_normative_limit\":\"{}\",\
@@ -243,7 +269,14 @@ fn calculate_response(query: &str) -> Result<String, String> {
         json_escape(&iso_date(date)),
         json_escape(city.name),
         json_escape(&decision),
-        json_escape(festival_content_id.unwrap_or("")),
+        json_escape(ekadasi_name.map(|entry| entry.content_id).unwrap_or("")),
+        json_escape(ekadasi_name.map(|entry| entry.display_name).unwrap_or("")),
+        json_escape(ekadasi_name.map(|entry| entry.masa.label()).unwrap_or("")),
+        json_escape(
+            ekadasi_name
+                .map(|entry| paksha_label(entry.paksha))
+                .unwrap_or("")
+        ),
         json_escape(
             &parana
                 .as_ref()
@@ -303,16 +336,43 @@ fn evaluate_day(date: CivilDate, location: GeoLocation) -> Result<DayEvaluation,
     })
 }
 
-fn ekadasi_content_id(date: CivilDate, tithi: AstronomicalTithi) -> Option<&'static str> {
-    if tithi.traditional_number() != 11 || tithi.paksha() != Paksha::Sukla {
+fn ekadasi_name_for_observance(
+    date: CivilDate,
+    tithi: AstronomicalTithi,
+) -> Option<EkadasiNameEntry> {
+    if tithi.traditional_number() != 11 {
         return None;
     }
 
+    let masa = rc1_content_masa(date)?;
+    resolve_ekadasi_name(masa, tithi.paksha())
+}
+
+fn resolve_ekadasi_name(masa: Rc1EkadasiMasa, paksha: Paksha) -> Option<EkadasiNameEntry> {
+    match (masa, paksha) {
+        (Rc1EkadasiMasa::Asadha, Paksha::Sukla) => Some(EkadasiNameEntry {
+            content_id: "sayana",
+            display_name: "Śayanā Ekādaśī",
+            masa,
+            paksha,
+        }),
+        (Rc1EkadasiMasa::Sravana, Paksha::Sukla) => Some(EkadasiNameEntry {
+            content_id: "pavitropana",
+            display_name: "Putrada - Pavitraropani Ekādaśī",
+            masa,
+            paksha,
+        }),
+        _ => None,
+    }
+}
+
+fn rc1_content_masa(date: CivilDate) -> Option<Rc1EkadasiMasa> {
     // RC1 content-library routing only. This does not define observance rules.
-    match (date.month(), date.day()) {
-        (6, _) => Some("sayana"),
-        (7, _) => Some("sayana"),
-        (8, _) => Some("pavitropana"),
+    // The resolver itself is masa + paksha based; this temporary adapter feeds
+    // the two story entries currently present in the beta library.
+    match date.month() {
+        6 | 7 => Some(Rc1EkadasiMasa::Asadha),
+        8 => Some(Rc1EkadasiMasa::Sravana),
         _ => None,
     }
 }
@@ -615,12 +675,16 @@ fn is_dvadasi(jd: JulianDate) -> bool {
     tithi_at_sunrise(jd).traditional_number() == 12
 }
 
-fn tithi_name(tithi: AstronomicalTithi) -> String {
-    let number = tithi.traditional_number();
-    let paksha = match tithi.paksha() {
+fn paksha_label(paksha: Paksha) -> &'static str {
+    match paksha {
         Paksha::Sukla => "Śukla",
         Paksha::Krsna => "Kṛṣṇa",
-    };
+    }
+}
+
+fn tithi_name(tithi: AstronomicalTithi) -> String {
+    let number = tithi.traditional_number();
+    let paksha = paksha_label(tithi.paksha());
     let name = match number {
         1 => "Pratipat",
         2 => "Dvitīyā",
