@@ -203,15 +203,22 @@ OPEN
 Campaign 50.1 Native Vaiṣṇava Māsa Engine:
 STOP
 
+Campaign 50.2 Vaiṣṇava Māsa Specification:
+STOP - specification boundary documented
+
 Motivo:
 el repositorio todavía no contiene una especificación implementable de māsa,
 adhika māsa y kṣaya māsa. No se permite sustituirla por fechas hardcodeadas,
-listas cronológicas ni inferencias de RC1.
+listas cronológicas ni inferencias de RC1. Campaign 50.2 creó KB-CAL-001 como
+frontera técnica y lista de reglas faltantes, pero no desbloqueó
+implementación.
 ```
 
 Informe:
 
 - [Campaign 50.1 - Native Vaiṣṇava Māsa Engine](00_Project/Campaign-50.1-Native-Vaishnava-Masa-Engine.md)
+- [Campaign 50.2 - Vaiṣṇava Māsa Specification](00_Project/Campaign-50.2-Vaishnava-Masa-Specification.md)
+- [KB-CAL-001 - Vaiṣṇava Māsa Specification](05_Documentation/Knowledge-Base/KB-CAL-001-Vaishnava-Masa-Specification.md)
 
 ## Arquitectura Congelada
 
@@ -420,6 +427,11 @@ Informe:
   v1.0 READY. No se detectaron reglas normativas implícitas fuera de la
   Knowledge Base. Documento:
   [Campaign 39.10](05_Documentation/Knowledge-Base/Campaign-39.10-Knowledge-Base-Audit.md).
+- KB-CAL-001 - Vaiṣṇava Māsa Specification: 🟡 draft / blocked. Campaign 50.2
+  documentó la frontera técnica para Māsa, Adhika Māsa y Kṣaya Māsa, pero no
+  desbloqueó implementación porque el repositorio todavía no contiene una regla
+  normativa local completa para ese cálculo. Documento:
+  [KB-CAL-001](05_Documentation/Knowledge-Base/KB-CAL-001-Vaishnava-Masa-Specification.md).
 - Campaign 39.5 - HBV-EK-001 Candidate Ekādaśī: ✅ cerrada. Regla normativa:
   un día civil entra como candidato inicial cuando el tithi presente en su
   amanecer local es Ekādaśī. No resuelve viddhā, Mahādvādaśī, Hari-vāsara,

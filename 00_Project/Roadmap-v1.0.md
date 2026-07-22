@@ -167,6 +167,8 @@ Hari-bhakti-vilāsa
 - ✅ Campaign 49.0 - Observance resolution movida al Vaiṣṇava Engine;
   la RC1 consume `Observance` del motor y conserva sólo un adaptador temporal
   de māsa para el contenido beta
+- 🟡 Campaign 50.2 - Vaiṣṇava Māsa Specification: frontera técnica documentada;
+  implementación bloqueada hasta definir la autoridad normativa de māsa
 - 🔴 Campaign 46R - Release Audit
 - 🔴 Campaign 47 - v1.0 Release
 - 🟡 Final Certification Stage - [criterio de salida](Final-Certification-Stage.md)
@@ -229,6 +231,10 @@ OPEN
 
 50.1 Native Vaiṣṇava Māsa Engine:
 STOP - missing implementable local specification
+
+50.2 Vaiṣṇava Māsa Specification:
+STOP - specification boundary documented; normative implementation rule still
+missing
 ```
 
 Objective:
@@ -318,6 +324,13 @@ Campaign 50.1 audit:
 
 ```text
 00_Project/Campaign-50.1-Native-Vaishnava-Masa-Engine.md
+```
+
+Campaign 50.2 specification:
+
+```text
+00_Project/Campaign-50.2-Vaishnava-Masa-Specification.md
+05_Documentation/Knowledge-Base/KB-CAL-001-Vaishnava-Masa-Specification.md
 ```
 
 ## Metodología desde M5
