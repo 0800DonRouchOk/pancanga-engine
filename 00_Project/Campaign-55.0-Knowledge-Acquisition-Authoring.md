@@ -96,26 +96,43 @@ Public API
 For each observance:
 
 ```text
-1. Identify available accepted sources.
+1. Create a research dossier.
 
-2. Extract relevant information.
+2. Identify available accepted sources.
 
-3. Classify each source according to KB-REF-001.
+3. Extract relevant information.
 
-4. Record provenance.
+4. Classify each source according to KB-REF-001.
 
-5. Complete the JSON entry according to observance.schema.json.
+5. Record an evidence log for every significant claim.
 
-6. Apply KB-OBS-001 editorial discipline.
+6. Record preliminary provenance.
 
 7. Mark unsupported sections as pending.
 
-8. Review source alignment.
+8. Complete the JSON entry according to observance.schema.json.
 
-9. Approve only when every claim is traceable.
+9. Apply KB-OBS-001 editorial discipline.
 
-10. Publish only after review and approval.
+10. Review source alignment.
+
+11. Approve only when every completed claim is traceable.
+
+12. Publish only after review and approval.
 ```
+
+Authoring is split into two mandatory stages:
+
+```text
+Research dossier
+↓
+Evidence log
+↓
+JSON authoring
+```
+
+No observance JSON may be expanded until its research dossier and evidence log
+are complete enough to support the intended content.
 
 ## Prohibited Content
 
@@ -212,12 +229,28 @@ clear provenance
 clear review path
 ```
 
+The golden sample is divided into two subcampaigns:
+
+```text
+Campaign 55.1A
+Golden Sample Research Dossier
+
+Campaign 55.1B
+Golden Sample Authoring
+```
+
+Campaign 55.1A must pass before Campaign 55.1B begins.
+
 The golden sample should prove the entire authoring pipeline:
 
 ```text
-sources collected
+research
 ↓
-sources classified
+evidence collection
+↓
+research dossier
+↓
+evidence log
 ↓
 content drafted
 ↓
@@ -233,6 +266,10 @@ published
 After the golden sample is approved, the same standard may be applied to the
 remaining observances.
 
+See:
+
+- [Campaign 55.1: Golden Sample Workflow](Campaign-55.1-Golden-Sample-Workflow.md)
+
 ## Proposed Content Campaign Sequence
 
 ```text
@@ -240,7 +277,13 @@ Campaign 55.0
 Knowledge Acquisition & Authoring mission change
 
 Campaign 55.1
-Golden Sample Observance
+Golden Sample Workflow
+
+Campaign 55.1A
+Golden Sample Research Dossier
+
+Campaign 55.1B
+Golden Sample Authoring
 
 Campaign 55.2
 Complete Ekādaśī Collection

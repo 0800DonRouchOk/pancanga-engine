@@ -142,7 +142,9 @@ Trabajo restante antes de v1.0:
 Trabajo de Knowledge Library:
 
 - Campaign 55.0 - Knowledge Acquisition & Authoring mission change.
-- Campaign 55.1 - Golden Sample Observance.
+- Campaign 55.1 - Golden Sample Workflow.
+- Campaign 55.1A - Golden Sample Research Dossier.
+- Campaign 55.1B - Golden Sample Authoring.
 - Campaign 55.2 - Complete Ekādaśī Collection.
 - Campaign 55.3 - Complete Mahādvādaśī Collection.
 

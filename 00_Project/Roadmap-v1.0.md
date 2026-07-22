@@ -194,6 +194,8 @@ Hari-bhakti-vilāsa
   referencias y provenance obligatorio
 - ✅ Campaign 55.0 - Knowledge Acquisition & Authoring mission change; la fase
   principal pasa de infraestructura a contenido auditado
+- ✅ Campaign 55.1 - Golden Sample Workflow definido; la primera observancia se
+  divide obligatoriamente en dossier de investigación y autoría desde evidencia
 - 🔴 Campaign 46R - Release Audit
 - 🔴 Campaign 47 - v1.0 Release
 - 🟡 Final Certification Stage - [criterio de salida](Final-Certification-Stage.md)
