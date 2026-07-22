@@ -198,6 +198,8 @@ Hari-bhakti-vilāsa
   divide obligatoriamente en dossier de investigación y autoría desde evidencia
 - ✅ Campaign 55.1A - Golden Sample Research Dossier; EK-010 Kāmikā Ekādaśī
   aprobado para autoría 55.1B sin modificar el JSON
+- ✅ Campaign 55.1B - Golden Sample Authoring; EK-010 Kāmikā Ekādaśī publicado
+  como implementación de referencia del pipeline editorial
 - 🔴 Campaign 46R - Release Audit
 - 🔴 Campaign 47 - v1.0 Release
 - 🟡 Final Certification Stage - [criterio de salida](Final-Certification-Stage.md)

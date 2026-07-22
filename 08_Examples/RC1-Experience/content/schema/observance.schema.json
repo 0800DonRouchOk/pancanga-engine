@@ -64,6 +64,15 @@
             "minLength": 1
           },
           "description": "Optional language-specific display names keyed by BCP-47 language code such as es, en, or sa."
+        },
+        "evidence_claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^C-[0-9]{3}$"
+          },
+          "description": "Claim IDs from the observance evidence log supporting this identity block.",
+          "default": []
         }
       }
     },
@@ -124,6 +133,15 @@
           ],
           "pattern": "^(EK|MD|FT)-[0-9]{3}$",
           "description": "Typed ObservanceId relationship. Used by Mahādvādaśī when the fast is for an Ekādaśī identity."
+        },
+        "evidence_claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^C-[0-9]{3}$"
+          },
+          "description": "Claim IDs from the observance evidence log supporting this classification block.",
+          "default": []
         }
       }
     },
@@ -153,6 +171,15 @@
         "hero_quote": {
           "type": "string",
           "description": "Optional short phrase for expressive presentation. Empty string is allowed when no quote is approved."
+        },
+        "evidence_claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^C-[0-9]{3}$"
+          },
+          "description": "Claim IDs from the observance evidence log supporting this presentation block.",
+          "default": []
         }
       }
     },
@@ -367,8 +394,10 @@
           "type": "string",
           "enum": [
             "draft",
+            "sources_collected",
             "review",
             "approved",
+            "published",
             "deprecated"
           ],
           "default": "draft"
@@ -469,6 +498,15 @@
             "type": "string"
           },
           "default": []
+        },
+        "evidence_claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^C-[0-9]{3}$"
+          },
+          "description": "Claim IDs from the observance evidence log supporting this section.",
+          "default": []
         }
       }
     },
@@ -502,6 +540,15 @@
         },
         "summary": {
           "type": "string"
+        },
+        "evidence_claims": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^C-[0-9]{3}$"
+          },
+          "description": "Claim IDs from the observance evidence log supporting this scriptural basis item.",
+          "default": []
         }
       }
     },

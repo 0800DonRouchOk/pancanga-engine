@@ -1,6 +1,6 @@
 # Campaign 55.1: Golden Sample Workflow
 
-Status: DEFINED
+Status: GOLDEN SAMPLE PUBLISHED
 
 Phase: Knowledge Acquisition & Authoring
 
@@ -26,7 +26,7 @@ dossier.
 
 ## Campaign 55.1A: Golden Sample Research Dossier
 
-Status: NEXT
+Status: PASS
 
 Mode: RESEARCH ONLY
 
@@ -192,7 +192,7 @@ Invented Doctrine:
 
 ## Campaign 55.1B: Golden Sample Authoring
 
-Status: BLOCKED UNTIL 55.1A PASS
+Status: PASS
 
 Mode: AUTHORING FROM APPROVED DOSSIER ONLY
 
@@ -299,7 +299,7 @@ Publish
 
 ## Campaign 55.1 Definition
 
-Campaign 55.1 is complete only when both subcampaigns are complete:
+Campaign 55.1 is complete because both subcampaigns are complete:
 
 ```text
 Campaign 55.1A:
@@ -309,10 +309,11 @@ Campaign 55.1B:
 PASS
 
 Golden Sample:
-PUBLISHED
+EK-010 Kāmikā Ekādaśī
 
 Invented Doctrine:
 0
 ```
 
-Until then, Campaign 55.1 remains open.
+EK-010 Kāmikā Ekādaśī is the reference implementation for the Observance
+Library authoring workflow.
