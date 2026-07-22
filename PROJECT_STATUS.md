@@ -125,6 +125,66 @@ Hitos de certificación cerrados:
 - Campaign 46STRESS - certificación de consistencia interna: 73.414 días
   consecutivos, 1900-01-01 a 2100-12-31, 0 contradicciones lógicas y 0
   ENGINE BUG confirmados.
+- Campaign 49.0 - resolución de identidad de observancias movida al
+  Vaiṣṇava Engine. La RC1 ya no contiene una tabla propia de nombres de
+  Ekādaśī; consume `Observance` del motor.
+
+## Deuda Técnica Explícita Post-v1.0
+
+### Native Vaiṣṇava Māsa
+
+Estado RC1:
+
+```text
+Astronomy
+↓
+Calendar Engine
+↓
+temporary māsa adapter
+↓
+Observance Engine
+↓
+Festival Catalog
+↓
+RC1
+```
+
+Este estado es aceptado sólo como solución transitoria de RC1. No redefine la
+arquitectura congelada ni amplía el alcance de v1.0.
+
+Estado objetivo para v2:
+
+```text
+Astronomy
+↓
+Calendar Engine
+↓
+Vaiṣṇava Māsa
+↓
+Pakṣa
+↓
+Mahādvādaśī Rules
+↓
+Observance Engine
+↓
+Festival Catalog
+↓
+API / Web / Mobile
+```
+
+Campaign 50.0 queda registrada como trabajo post-v1.0:
+
+```text
+Native Vaiṣṇava Māsa
+
+Objetivo:
+el Calendar Engine debe proveer el māsa vaiṣṇava formal, incluyendo los casos
+que el proyecto decida soportar para māsa normal, adhika māsa y kṣaya māsa.
+
+Resultado:
+el adaptador temporal de RC1 desaparece y el Observance Engine resuelve nombres
+de observancia sólo desde hechos calendáricos calculados.
+```
 
 ## Arquitectura Congelada
 

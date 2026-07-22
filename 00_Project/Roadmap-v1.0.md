@@ -164,6 +164,9 @@ Hari-bhakti-vilāsa
 - 🟡 Campaign 46BETA.7 - Deploy RC1 Experience para testers cerrados
 - ✅ Campaign 46BETA.8 - Public RC1 Testing infrastructure prepared
 - 🟡 Campaign 46BETA.10 - Zero Cost Deploy (Cloudflare Pages Free + Render Free)
+- ✅ Campaign 49.0 - Observance resolution movida al Vaiṣṇava Engine;
+  la RC1 consume `Observance` del motor y conserva sólo un adaptador temporal
+  de māsa para el contenido beta
 - 🔴 Campaign 46R - Release Audit
 - 🔴 Campaign 47 - v1.0 Release
 - 🟡 Final Certification Stage - [criterio de salida](Final-Certification-Stage.md)
@@ -205,6 +208,83 @@ Hari-bhakti-vilāsa
 - ⬜ Mahadvadasi
 - ⬜ Parana
 - ⬜ Festivals
+
+## Post-v1.0 / v2 Backlog
+
+Estas campañas no pertenecen a v1.0. Quedan registradas para evitar deuda
+técnica implícita durante la RC1.
+
+### Campaign 50.0 - Native Vaiṣṇava Māsa
+
+Priority: HIGH for v2 planning.
+
+Objective:
+
+```text
+Implement native Vaiṣṇava Māsa calculation inside the Calendar Engine so the
+Observance Engine can resolve ordinary Ekādaśī identities without any RC1
+adapter.
+```
+
+Current RC1 state:
+
+```text
+Astronomy
+↓
+Calendar Engine
+↓
+temporary māsa adapter
+↓
+Observance Engine
+↓
+Festival Catalog
+↓
+RC1
+```
+
+Target v2 state:
+
+```text
+Astronomy
+↓
+Calendar Engine
+↓
+Vaiṣṇava Māsa
+↓
+Pakṣa
+↓
+Mahādvādaśī Rules
+↓
+Observance Engine
+↓
+Festival Catalog
+↓
+API / RC1 / Web / Mobile
+```
+
+Required scope:
+
+```text
+Māsa normal
+Adhika Māsa
+Kṣaya Māsa, if supported by the engine
+Compatibility with Ekādaśī observance naming
+```
+
+Exit criterion:
+
+```text
+The RC1/content-layer māsa adapter is removed.
+The Calendar Engine supplies formal Vaiṣṇava Māsa.
+The Observance Engine resolves Ekādaśī identity from calendar facts only.
+```
+
+v1.0 rule:
+
+```text
+Do not implement Campaign 50.0 during the v1.0 release freeze unless a
+confirmed ENGINE BUG makes it release-blocking.
+```
 
 ## Metodología desde M5
 

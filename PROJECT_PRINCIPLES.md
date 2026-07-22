@@ -169,3 +169,6 @@ v1.0 remains officially stable
 11. The greatest victory of Pancanga Engine is not that it contains code, but
     that every important code decision can be justified by walking the path
     backward to śāstra.
+
+12. Temporary adapters are allowed only when they are explicitly documented as
+    temporary and have a named future campaign for removal.
