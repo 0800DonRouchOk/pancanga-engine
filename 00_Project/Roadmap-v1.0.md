@@ -113,7 +113,7 @@ documentos.
 - ⬜ Nakshatra
 - ⬜ Yoga
 - ⬜ Karana
-- ⬜ Masa
+- ✅ Masa - Vaiṣṇava Māsa nativo provisional (Campaign 51.0)
 - ⬜ Gaurabda
 
 ## Fase 3 - Gaudiya Engine
@@ -169,6 +169,9 @@ Hari-bhakti-vilāsa
   de māsa para el contenido beta
 - 🟡 Campaign 50.2 - Vaiṣṇava Māsa Specification: frontera técnica documentada;
   implementación bloqueada hasta definir la autoridad normativa de māsa
+- ✅ Campaign 50.4 - Provisional Vaiṣṇava Māsa Hypothesis Incorporation
+- ✅ Campaign 51.0 - Native Vaiṣṇava Māsa Implementation (provisional);
+  Calendar Engine expone māsa nativo y la RC1 ya no usa adaptador temporal
 - 🔴 Campaign 46R - Release Audit
 - 🔴 Campaign 47 - v1.0 Release
 - 🟡 Final Certification Stage - [criterio de salida](Final-Certification-Stage.md)
@@ -241,6 +244,10 @@ STOP - local HBV/Gauḍīya research did not find an implementable māsa algorit
 
 50.4 Provisional Vaiṣṇava Māsa Hypothesis Incorporation:
 PASS - provisional pūrṇimānta / saṅkrānti-count specification incorporated
+
+51.0 Native Vaiṣṇava Māsa Implementation:
+PASS - Calendar Engine supplies native Vaiṣṇava Māsa from the provisional
+specification and the RC1/content-layer adapter is removed
 ```
 
 Objective:
@@ -266,7 +273,7 @@ Missing ordinary Ekādaśī māsa:
 explicit error, never silent fallback.
 ```
 
-Current RC1 state:
+Previous RC1 state:
 
 ```text
 Astronomy
@@ -282,24 +289,20 @@ Festival Catalog
 RC1
 ```
 
-Target v2 state:
+Current state after 51.0:
 
 ```text
 Astronomy
 ↓
 Calendar Engine
 ↓
-Vaiṣṇava Māsa
-↓
-Pakṣa
-↓
-Mahādvādaśī Rules
+Native Vaiṣṇava Māsa
 ↓
 Observance Engine
 ↓
 Festival Catalog
 ↓
-API / RC1 / Web / Mobile
+API / RC1
 ```
 
 Required scope:
@@ -328,7 +331,7 @@ Kṣaya Māsa Ekādaśī identity behavior
 exact bibliographic source for the technical rule
 ```
 
-Exit criterion:
+51.0 result:
 
 ```text
 The RC1/content-layer māsa adapter is removed.
@@ -336,11 +339,12 @@ The Calendar Engine supplies formal Vaiṣṇava Māsa.
 The Observance Engine resolves Ekādaśī identity from calendar facts only.
 ```
 
-v1.0 rule:
+Remaining provisional certification points:
 
 ```text
-Do not implement Campaign 50.0 during the v1.0 release freeze unless a
-confirmed ENGINE BUG makes it release-blocking.
+exact ayanāṁśa / zodiac frame
+Kṣaya Māsa Ekādaśī identity behavior
+exact bibliographic source for the technical rule
 ```
 
 Campaign 50.1 audit:
@@ -367,6 +371,12 @@ Campaign 50.4 provisional incorporation:
 
 ```text
 00_Project/Campaign-50.4-Provisional-Vaishnava-Masa-Hypothesis-Incorporation.md
+```
+
+Campaign 51.0 provisional implementation:
+
+```text
+00_Project/Campaign-51.0-Native-Vaishnava-Masa-Implementation-Provisional.md
 ```
 
 ## Metodología desde M5

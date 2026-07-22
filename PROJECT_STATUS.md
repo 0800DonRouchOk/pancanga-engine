@@ -133,12 +133,15 @@ Hitos de certificación cerrados:
   están cubiertas por tests de resolución. Si una Ekādaśī ordinaria requiere
   identidad pero no recibe māsa formal, el motor devuelve un error explícito en
   vez de usar fallback silencioso.
+- Campaign 51.0 - Native Vaiṣṇava Māsa implementado sobre la especificación
+  provisional de KB-CAL-001/002. El Calendar Engine expone `VaishnavaMasaInfo`
+  y la RC1 ya no usa el adaptador temporal por mes civil.
 
 ## Deuda Técnica Explícita Post-v1.0
 
 ### Native Vaiṣṇava Māsa
 
-Estado RC1:
+Estado anterior:
 
 ```text
 Astronomy
@@ -146,49 +149,22 @@ Astronomy
 Calendar Engine
 ↓
 temporary māsa adapter
-↓
-Observance Engine
-↓
-Festival Catalog
-↓
-RC1
 ```
 
-Este estado es aceptado sólo como solución transitoria de RC1. No redefine la
-arquitectura congelada ni amplía el alcance de v1.0.
-
-Estado objetivo para v2:
+Estado actual después de Campaign 51.0:
 
 ```text
 Astronomy
 ↓
 Calendar Engine
 ↓
-Vaiṣṇava Māsa
-↓
-Pakṣa
-↓
-Mahādvādaśī Rules
+Native Vaiṣṇava Māsa
 ↓
 Observance Engine
 ↓
 Festival Catalog
 ↓
-API / Web / Mobile
-```
-
-Campaign 50.0B queda registrada como trabajo post-v1.0:
-
-```text
-Native Vaiṣṇava Māsa
-
-Objetivo:
-el Calendar Engine debe proveer el māsa vaiṣṇava formal, incluyendo los casos
-que el proyecto decida soportar para māsa normal, adhika māsa y kṣaya māsa.
-
-Resultado:
-el adaptador temporal de RC1 desaparece y el Observance Engine resuelve nombres
-de observancia sólo desde hechos calendáricos calculados.
+RC1
 ```
 
 Estado:
@@ -198,7 +174,7 @@ Observance identity resolver:
 PASS
 
 Native Vaiṣṇava Māsa in Calendar Engine:
-OPEN
+PASS - provisional implementation
 
 Campaign 50.1 Native Vaiṣṇava Māsa Engine:
 STOP
@@ -211,6 +187,9 @@ STOP - local HBV/Gauḍīya research did not find an implementable māsa algorit
 
 Campaign 50.4 Provisional Vaiṣṇava Māsa Hypothesis Incorporation:
 PASS - provisional pūrṇimānta / saṅkrānti-count specification incorporated
+
+Campaign 51.0 Native Vaiṣṇava Māsa Implementation:
+PASS - Calendar Engine implementation and RC1 adapter removal
 
 Motivo:
 Campaign 50.4 incorporó una hipótesis técnica local suficiente para abrir una
@@ -231,6 +210,7 @@ Informe:
 - [Campaign 50.2 - Vaiṣṇava Māsa Specification](00_Project/Campaign-50.2-Vaishnava-Masa-Specification.md)
 - [Campaign 50.3 - HBV Vaiṣṇava Māsa Research](00_Project/Campaign-50.3-HBV-Vaishnava-Masa-Research.md)
 - [Campaign 50.4 - Provisional Vaiṣṇava Māsa Hypothesis Incorporation](00_Project/Campaign-50.4-Provisional-Vaishnava-Masa-Hypothesis-Incorporation.md)
+- [Campaign 51.0 - Native Vaiṣṇava Māsa Implementation](00_Project/Campaign-51.0-Native-Vaishnava-Masa-Implementation-Provisional.md)
 - [KB-CAL-001 - Vaiṣṇava Māsa Specification](05_Documentation/Knowledge-Base/KB-CAL-001-Vaishnava-Masa-Specification.md)
 - [KB-CAL-002 - HBV Vaiṣṇava Māsa Rules](05_Documentation/Knowledge-Base/KB-CAL-002-HBV-Vaishnava-Masa-Rules.md)
 

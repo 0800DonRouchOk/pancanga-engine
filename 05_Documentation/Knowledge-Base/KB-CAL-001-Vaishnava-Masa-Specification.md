@@ -6,7 +6,7 @@ Status:
 PROVISIONAL SPECIFICATION
 
 Implementation readiness:
-PROVISIONAL
+IMPLEMENTED PROVISIONALLY
 
 Certification readiness:
 BLOCKED
@@ -32,7 +32,8 @@ Kṣaya Māsa, if supported
 Ekādaśī māsa ownership
 ```
 
-This document does not implement code.
+Campaign 51.0 implemented this provisional specification in the Calendar
+Engine. Final certification remains blocked by the pending items listed below.
 
 ## Authority Decision
 
@@ -92,6 +93,13 @@ resolves the ordinary Ekādaśī identity from that pair.
 
 If a valid ordinary Ekādaśī observance does not have a formal māsa, the engine
 now fails explicitly instead of inventing an identity.
+
+Campaign 51.0 update:
+
+```text
+Calendar Engine now exposes native VaishnavaMasaInfo.
+The RC1 temporary civil-month adapter has been removed.
+```
 
 ## Required Data Model
 

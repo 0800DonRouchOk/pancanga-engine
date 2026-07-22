@@ -12,7 +12,7 @@ Status:
 PROVISIONAL HYPOTHESIS INCORPORATED
 
 Implementable rule:
-AVAILABLE FOR PROVISIONAL IMPLEMENTATION
+IMPLEMENTED PROVISIONALLY
 
 Final certification:
 PENDING VALIDATION
@@ -41,6 +41,13 @@ Campaign 50.4 update:
 ```text
 A provisional technical hypothesis has been incorporated locally.
 It may support provisional implementation, but it is not final certification.
+```
+
+Campaign 51.0 update:
+
+```text
+The provisional hypothesis is implemented in the Calendar Engine.
+Kṣaya Māsa identity behavior remains explicitly pending certification.
 ```
 
 ## Method

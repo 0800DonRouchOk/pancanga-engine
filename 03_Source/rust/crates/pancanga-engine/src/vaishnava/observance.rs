@@ -5,6 +5,7 @@
 //! tithi, masa, Viddha, Mahadvadasi, Hari-vasara, or Parana.
 
 use crate::astronomy::Paksha;
+pub use crate::calendar::VaishnavaMasa;
 
 use super::ekadasi::MahadvadasiType;
 
@@ -51,43 +52,6 @@ impl ObservanceSource {
         match self {
             Self::MasaPaksha => "masa_paksha",
             Self::MahadvadasiRule => "mahadvadasi_rule",
-        }
-    }
-}
-
-/// Lunar month identifier used by the observance catalog.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum VaishnavaMasa {
-    Chaitra,
-    Vaisakha,
-    Jyestha,
-    Asadha,
-    Sravana,
-    Bhadrapada,
-    Asvina,
-    Kartika,
-    Margasirsa,
-    Pausa,
-    Magha,
-    Phalguna,
-}
-
-impl VaishnavaMasa {
-    /// Display label used by the RC1 API.
-    pub fn label(self) -> &'static str {
-        match self {
-            Self::Chaitra => "Chaitra",
-            Self::Vaisakha => "Vaiśākha",
-            Self::Jyestha => "Jyeṣṭha",
-            Self::Asadha => "Āṣāḍha",
-            Self::Sravana => "Śrāvaṇa",
-            Self::Bhadrapada => "Bhādrapada",
-            Self::Asvina => "Āśvina",
-            Self::Kartika => "Kārtika",
-            Self::Margasirsa => "Mārgaśīrṣa",
-            Self::Pausa => "Pauṣa",
-            Self::Magha => "Māgha",
-            Self::Phalguna => "Phālguna",
         }
     }
 }

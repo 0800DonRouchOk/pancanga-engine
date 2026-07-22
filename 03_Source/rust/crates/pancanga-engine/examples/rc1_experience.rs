@@ -8,7 +8,7 @@ use std::time::Duration;
 use pancanga_engine::astronomy::{
     lunar_solar_elongation, moon, nakshatra, solar, AstronomicalTithi, Paksha,
 };
-use pancanga_engine::calendar::{sunrise, tithi_at_sunrise};
+use pancanga_engine::calendar::{sunrise, tithi_at_sunrise, vaishnava_masa_at, VaishnavaMasaInfo};
 use pancanga_engine::core::math::{
     acos_deg, asin_deg, atan_deg, cos_deg, normalize_360, normalize_hours, sin_deg, tan_deg,
 };
@@ -21,7 +21,7 @@ use pancanga_engine::core::{
 use pancanga_engine::vaishnava::{
     arunodaya_start, ekadasi_candidate_at_sunrise, hari_vasara_end, invalidate_viddha_candidate,
     observance_displacement, parana_window, resolve_ordinary_ekadasi_observance,
-    EkadasiObservanceDisposition, Observance, ParanaMode, VaishnavaMasa,
+    EkadasiObservanceDisposition, Observance, ParanaMode,
 };
 
 const DEFAULT_ADDRESS: &str = "127.0.0.1:7878";
@@ -73,6 +73,13 @@ struct ParanaPresentation {
     normative: String,
     normative_limit: String,
     note: String,
+}
+
+#[derive(Clone, Copy)]
+struct ObservanceIdentity {
+    observance: Observance,
+    masa: VaishnavaMasaInfo,
+    paksha: Paksha,
 }
 
 fn main() -> std::io::Result<()> {
@@ -215,8 +222,12 @@ fn calculate_response(query: &str) -> Result<String, String> {
         Some((_, ObservanceKind::DisplacedFromYesterday)) => "✓ Observá Ekādaśī hoy".to_string(),
         None => "No se observa Ekādaśī hoy".to_string(),
     };
-    let ekadasi_name = observance
-        .and_then(|(evaluation, _)| ekadasi_name_for_observance(date, evaluation.tithi_at_sunrise));
+    let ekadasi_identity = match observance {
+        Some((evaluation, _)) => {
+            ekadasi_name_for_observance(today.sunrise, evaluation.tithi_at_sunrise)?
+        }
+        None => None,
+    };
 
     let parana = observance.map(|_| {
         parana_presentation(next_day(date), location, offset_hours).unwrap_or_else(|error| {
@@ -270,35 +281,59 @@ fn calculate_response(query: &str) -> Result<String, String> {
         json_escape(&iso_date(date)),
         json_escape(city.name),
         json_escape(&decision),
-        json_escape(ekadasi_name.map(|entry| entry.slug).unwrap_or("")),
-        json_escape(ekadasi_name.map(|entry| entry.display_name).unwrap_or("")),
         json_escape(
-            rc1_content_masa(date)
-                .map(|masa| masa.label())
+            ekadasi_identity
+                .map(|identity| identity.observance.slug)
                 .unwrap_or("")
         ),
         json_escape(
-            ekadasi_name
-                .map(|_| paksha_label(observance_tithi_paksha(observance)))
+            ekadasi_identity
+                .map(|identity| identity.observance.display_name)
                 .unwrap_or("")
         ),
         json_escape(
-            ekadasi_name
-                .map(|entry| entry.observance_type.label())
-                .unwrap_or("")
-        ),
-        json_escape(ekadasi_name.map(|entry| entry.id).unwrap_or("")),
-        json_escape(ekadasi_name.map(|entry| entry.slug).unwrap_or("")),
-        json_escape(ekadasi_name.map(|entry| entry.display_name).unwrap_or("")),
-        json_escape(ekadasi_name.map(|entry| entry.source.label()).unwrap_or("")),
-        json_escape(
-            rc1_content_masa(date)
-                .map(|masa| masa.label())
+            ekadasi_identity
+                .map(|identity| identity.masa.masa().label())
                 .unwrap_or("")
         ),
         json_escape(
-            ekadasi_name
-                .map(|_| paksha_label(observance_tithi_paksha(observance)))
+            ekadasi_identity
+                .map(|identity| paksha_label(identity.paksha))
+                .unwrap_or("")
+        ),
+        json_escape(
+            ekadasi_identity
+                .map(|identity| identity.observance.observance_type.label())
+                .unwrap_or("")
+        ),
+        json_escape(
+            ekadasi_identity
+                .map(|identity| identity.observance.id)
+                .unwrap_or("")
+        ),
+        json_escape(
+            ekadasi_identity
+                .map(|identity| identity.observance.slug)
+                .unwrap_or("")
+        ),
+        json_escape(
+            ekadasi_identity
+                .map(|identity| identity.observance.display_name)
+                .unwrap_or("")
+        ),
+        json_escape(
+            ekadasi_identity
+                .map(|identity| identity.observance.source.label())
+                .unwrap_or("")
+        ),
+        json_escape(
+            ekadasi_identity
+                .map(|identity| identity.masa.masa().label())
+                .unwrap_or("")
+        ),
+        json_escape(
+            ekadasi_identity
+                .map(|identity| paksha_label(identity.paksha))
                 .unwrap_or("")
         ),
         json_escape(
@@ -360,30 +395,24 @@ fn evaluate_day(date: CivilDate, location: GeoLocation) -> Result<DayEvaluation,
     })
 }
 
-fn ekadasi_name_for_observance(date: CivilDate, tithi: AstronomicalTithi) -> Option<Observance> {
+fn ekadasi_name_for_observance(
+    observance_sunrise: JulianDate,
+    tithi: AstronomicalTithi,
+) -> Result<Option<ObservanceIdentity>, String> {
     if tithi.traditional_number() != 11 {
-        return None;
+        return Ok(None);
     }
 
-    let masa = rc1_content_masa(date)?;
-    Some(resolve_ordinary_ekadasi_observance(masa, tithi.paksha()))
-}
+    let masa = vaishnava_masa_at(observance_sunrise)
+        .map_err(|error| format!("No se pudo determinar el Vaiṣṇava Māsa nativo: {error:?}"))?;
+    let paksha = tithi.paksha();
+    let observance = resolve_ordinary_ekadasi_observance(masa.masa(), paksha);
 
-fn observance_tithi_paksha(observance: Option<(DayEvaluation, ObservanceKind)>) -> Paksha {
-    observance
-        .map(|(evaluation, _)| evaluation.tithi_at_sunrise.paksha())
-        .unwrap_or(Paksha::Sukla)
-}
-
-fn rc1_content_masa(date: CivilDate) -> Option<VaishnavaMasa> {
-    // RC1 content-library routing only. This does not define observance rules.
-    // The Observance Engine owns name resolution; this temporary adapter exists
-    // only until the Calendar Engine exposes a formal Vaishnava masa.
-    match date.month() {
-        6 | 7 => Some(VaishnavaMasa::Asadha),
-        8 => Some(VaishnavaMasa::Sravana),
-        _ => None,
-    }
+    Ok(Some(ObservanceIdentity {
+        observance,
+        masa,
+        paksha,
+    }))
 }
 
 fn parana_presentation(
