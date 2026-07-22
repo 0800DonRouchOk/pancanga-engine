@@ -1,0 +1,400 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pancanga-engine.local/schema/observance.schema.json",
+  "title": "Pancanga Engine Observance Knowledge Base Entry",
+  "description": "Canonical content contract for observances displayed by Pancanga Engine clients. This schema describes content only; it does not define calculation rules.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "identity",
+    "classification",
+    "content",
+    "references",
+    "related_observances",
+    "metadata"
+  ],
+  "properties": {
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "slug",
+        "display_name",
+        "observance_type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^(EK|MD|FT)-[0-9]{3}$",
+          "description": "Stable ObservanceId. This is the cross-language identifier and must not change after publication."
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$",
+          "description": "Stable file and API content key. The RC1 content file is expected at content/ekadasi/{slug}.json while Ekadasi content remains under the RC1 path."
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Default display name used by clients when no translation override is selected."
+        },
+        "observance_type": {
+          "type": "string",
+          "enum": [
+            "ekadasi",
+            "mahadvadasi",
+            "festival"
+          ]
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "default": []
+        },
+        "display": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Optional language-specific display names keyed by BCP-47 language code such as es, en, or sa."
+        }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "masa",
+        "paksha",
+        "source"
+      ],
+      "properties": {
+        "masa": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Vaiṣṇava Māsa label when applicable. Mahādvādaśī and future observances may use null when the resolver source is not masa/paksha."
+        },
+        "paksha": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "Śukla",
+            "Kṛṣṇa",
+            null
+          ]
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "masa_paksha",
+            "mahadvadasi_rule",
+            "festival_rule",
+            "manual_reference"
+          ],
+          "description": "Diagnostic source of identity selection. This does not modify the engine rule."
+        },
+        "masa_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "normal_masa",
+            "adhika_masa",
+            "ksaya_masa",
+            null
+          ],
+          "default": null
+        },
+        "fasting_for": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^(EK|MD|FT)-[0-9]{3}$",
+          "description": "Typed ObservanceId relationship. Used by Mahādvādaśī when the fast is for an Ekādaśī identity."
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "history",
+        "scriptural_basis",
+        "observance",
+        "benefits",
+        "procedure",
+        "parana",
+        "astronomy",
+        "certification"
+      ],
+      "properties": {
+        "summary": {
+          "$ref": "#/$defs/textSection"
+        },
+        "history": {
+          "$ref": "#/$defs/textSection"
+        },
+        "scriptural_basis": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scripturalBasis"
+          }
+        },
+        "observance": {
+          "$ref": "#/$defs/textSection"
+        },
+        "benefits": {
+          "$ref": "#/$defs/textSection"
+        },
+        "procedure": {
+          "$ref": "#/$defs/textSection"
+        },
+        "parana": {
+          "$ref": "#/$defs/textSection"
+        },
+        "astronomy": {
+          "$ref": "#/$defs/textSection"
+        },
+        "certification": {
+          "$ref": "#/$defs/textSection"
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/reference"
+      }
+    },
+    "related_observances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "relationship"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^(EK|MD|FT)-[0-9]{3}$"
+          },
+          "relationship": {
+            "type": "string",
+            "enum": [
+              "fasting_for",
+              "same_story_cycle",
+              "same_masa",
+              "same_paksha",
+              "compared_oracle",
+              "see_also"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "default": []
+    },
+    "translations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "summary"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "history": {
+            "type": "string"
+          },
+          "observance": {
+            "type": "string"
+          },
+          "benefits": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "language",
+        "last_updated"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "language": {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "review",
+            "approved",
+            "deprecated"
+          ],
+          "default": "draft"
+        },
+        "content_source": {
+          "type": "string",
+          "enum": [
+            "local_source_summary",
+            "direct_translation",
+            "editorial_summary",
+            "placeholder"
+          ],
+          "default": "editorial_summary"
+        },
+        "schema_version": {
+          "type": "string",
+          "const": "observance.schema.v1"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "textSection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "text"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "present",
+            "not_applicable",
+            "pending"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "description": "Plain text or concise Markdown-compatible prose. Use an empty string only when status is not_applicable or pending."
+        },
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "scripturalBasis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "status",
+        "summary"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "chapter": {
+          "type": "string"
+        },
+        "verses": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "confirmed",
+            "derived",
+            "pending",
+            "not_applicable"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "reference_type"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_type": {
+          "type": "string",
+          "enum": [
+            "scripture",
+            "commentary",
+            "calendar_oracle",
+            "local_pdf",
+            "project_document",
+            "certification_report"
+          ]
+        },
+        "chapter": {
+          "type": "string"
+        },
+        "verses": {
+          "type": "string"
+        },
+        "pages": {
+          "type": "string"
+        },
+        "local_path": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
