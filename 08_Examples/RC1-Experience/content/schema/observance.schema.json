@@ -8,6 +8,7 @@
   "required": [
     "identity",
     "classification",
+    "presentation",
     "content",
     "references",
     "related_observances",
@@ -122,6 +123,35 @@
           ],
           "pattern": "^(EK|MD|FT)-[0-9]{3}$",
           "description": "Typed ObservanceId relationship. Used by Mahādvādaśī when the fast is for an Ekādaśī identity."
+        }
+      }
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "subtitle",
+        "short_description",
+        "hero_quote"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Client-facing title for the current presentation surface."
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "Short contextual line, such as the māsa and pakṣa or Mahādvādaśī category."
+        },
+        "short_description": {
+          "type": "string",
+          "description": "Brief presentation copy suitable for cards, lists, and mobile summaries."
+        },
+        "hero_quote": {
+          "type": "string",
+          "description": "Optional short phrase for expressive presentation. Empty string is allowed when no quote is approved."
         }
       }
     },
@@ -287,6 +317,58 @@
           "const": "observance.schema.v1"
         }
       }
+    },
+    "id": {
+      "type": "string",
+      "description": "Temporary RC1 compatibility field. Mirrors identity.slug until the frontend reads the canonical identity object directly."
+    },
+    "name": {
+      "type": "string",
+      "description": "Temporary RC1 compatibility field. Mirrors identity.display_name."
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Temporary RC1 compatibility field. Mirrors identity.aliases."
+    },
+    "source": {
+      "type": "object",
+      "description": "Temporary RC1 compatibility field. Canonical references live in references[]."
+    },
+    "calendar_context": {
+      "type": "object",
+      "description": "Temporary RC1 compatibility field. Canonical classification lives in classification."
+    },
+    "story_summary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Temporary RC1 compatibility field. Canonical prose lives in content.history."
+    },
+    "main_teaching": {
+      "type": "string",
+      "description": "Temporary RC1 compatibility field. Canonical prose lives in content.summary."
+    },
+    "observance_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Temporary RC1 compatibility field. Canonical prose lives in content.observance and content.procedure."
+    },
+    "benefits_summary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Temporary RC1 compatibility field. Canonical prose lives in content.benefits."
+    },
+    "rc1_scope_note": {
+      "type": "string",
+      "description": "Temporary RC1 compatibility field."
     }
   },
   "$defs": {

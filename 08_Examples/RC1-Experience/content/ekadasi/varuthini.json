@@ -1,0 +1,159 @@
+{
+  "identity": {
+    "id": "EK-004",
+    "slug": "varuthini",
+    "display_name": "Varūthinī Ekādaśī",
+    "observance_type": "ekadasi",
+    "aliases": [
+      "Varūthinī Ekadashi"
+    ],
+    "display": {
+      "sa": "Varūthinī Ekādaśī",
+      "es": "Varūthinī Ekādaśī",
+      "en": "Varūthinī Ekadashi"
+    }
+  },
+  "classification": {
+    "masa": "Vaiśākha",
+    "paksha": "Kṛṣṇa",
+    "source": "masa_paksha",
+    "masa_type": "normal_masa",
+    "fasting_for": null
+  },
+  "presentation": {
+    "title": "Varūthinī Ekādaśī",
+    "subtitle": "Vaiśākha · Kṛṣṇa",
+    "short_description": "Contenido en preparación. El cálculo de la observancia ya proviene del Pancanga Engine.",
+    "hero_quote": ""
+  },
+  "content": {
+    "summary": {
+      "status": "pending",
+      "text": "",
+      "points": [
+        "Resumen pendiente de estructurar desde fuentes locales aprobadas."
+      ]
+    },
+    "history": {
+      "status": "pending",
+      "text": "",
+      "points": [
+        "Historia pendiente de estructurar desde fuentes locales aprobadas."
+      ]
+    },
+    "scriptural_basis": [
+      {
+        "source": "PENDING",
+        "chapter": "",
+        "verses": "",
+        "status": "pending",
+        "summary": "Pendiente de confirmar desde fuente local aprobada."
+      }
+    ],
+    "observance": {
+      "status": "pending",
+      "text": "",
+      "points": [
+        "Notas de observancia pendientes de estructurar; el cálculo normativo permanece en el motor."
+      ]
+    },
+    "benefits": {
+      "status": "pending",
+      "text": "",
+      "points": [
+        "Beneficios pendientes de estructurar desde fuentes locales aprobadas."
+      ]
+    },
+    "procedure": {
+      "status": "present",
+      "text": "Seguir la guía calculada por Pancanga Engine para la fecha y ubicación seleccionadas. La biblioteca de contenido no modifica la regla de cálculo.",
+      "points": [
+        "La decisión de ayuno, Mahādvādaśī y Parāṇa se calcula fuera de este archivo de contenido."
+      ]
+    },
+    "parana": {
+      "status": "present",
+      "text": "La ventana de Parāṇa se calcula dinámicamente por Pancanga Engine para cada fecha y ubicación.",
+      "points": [
+
+      ]
+    },
+    "astronomy": {
+      "status": "present",
+      "text": "Los datos astronómicos se calculan dinámicamente por Pancanga Engine y no se almacenan en este archivo.",
+      "points": [
+
+      ]
+    },
+    "certification": {
+      "status": "present",
+      "text": "La certificación vive en los informes del proyecto. Este archivo sólo aporta contenido descriptivo asociado al ObservanceId.",
+      "points": [
+
+      ]
+    }
+  },
+  "references": [
+    {
+      "source": "Observance Content Catalog Integrity Certification",
+      "reference_type": "certification_report",
+      "local_path": "04_Tests/Vaishnava/Observance-Content-Catalog-Integrity.md",
+      "note": "Campaign 52.5 identified this content file as missing. Campaign 53.1 creates a schema-valid placeholder without inventing doctrine or history."
+    },
+    {
+      "source": "Festival Catalog",
+      "reference_type": "project_document",
+      "local_path": "08_Examples/RC1-Experience/content/ekadasi/catalog.json",
+      "note": "Identity and slug source for this observance content entry."
+    }
+  ],
+  "related_observances": [
+
+  ],
+  "translations": {
+    "es": {
+      "title": "Varūthinī Ekādaśī",
+      "summary": "Contenido pendiente de revisión editorial."
+    },
+    "en": {
+      "title": "Varūthinī Ekadashi",
+      "summary": "Content pending editorial review."
+    }
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "language": "es",
+    "last_updated": "2026-07-22",
+    "status": "draft",
+    "content_source": "placeholder",
+    "schema_version": "observance.schema.v1"
+  },
+  "id": "varuthini",
+  "name": "Varūthinī Ekādaśī",
+  "aliases": [
+    "Varūthinī Ekadashi"
+  ],
+  "source": {
+    "primary_text": "PENDING",
+    "local_pdf": "PENDING",
+    "pages": "PENDING",
+    "note": "Contenido pendiente de estructurar desde fuentes locales aprobadas."
+  },
+  "calendar_context": {
+    "vedic_month": "Vaiśākha",
+    "paksha": "Kṛṣṇa",
+    "vaishnava_month": "Pendiente de presentación",
+    "western_period": "Variable según año y ubicación"
+  },
+  "story_summary": [
+    "Historia pendiente de estructurar desde fuentes locales aprobadas."
+  ],
+  "main_teaching": "Contenido pendiente de revisión editorial.",
+  "observance_notes": [
+    "La observancia concreta y la ventana de Parāṇa se calculan por Pancanga Engine para cada fecha y ubicación."
+  ],
+  "benefits_summary": [
+    "Glorias y beneficios pendientes de estructurar desde fuentes locales aprobadas."
+  ],
+  "rc1_scope_note": "Esta biblioteca es una capa de contenido. No modifica el cálculo de tithi, Viddhā, Mahādvādaśī ni Parāṇa."
+}
