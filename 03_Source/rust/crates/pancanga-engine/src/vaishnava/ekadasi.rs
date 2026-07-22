@@ -11,7 +11,7 @@ use crate::astronomy::{AstronomicalTithi, NakshatraIndex, Paksha};
 use crate::calendar::CivilDayTithiPresence;
 use crate::core::{DurationDays, JulianDate};
 
-use super::observance::{resolve_mahadvadasi_observance, resolve_ordinary_ekadasi_observance};
+use super::observance::{resolve_observance, ObservanceResolutionError};
 use super::{Observance, VaishnavaMasa};
 
 const DASAMI_TRADITIONAL_NUMBER: u8 = 10;
@@ -124,6 +124,9 @@ pub enum ParanaWindowError {
 /// Errors returned by the integrated Vaishnava Engine facade.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum VaishnavaEngineError {
+    /// An observance exists, but formal observance identity inputs are missing.
+    ObservanceResolution(ObservanceResolutionError),
+
     /// An observance exists, but the Parana interval inputs were not supplied.
     MissingParanaInput,
 
@@ -488,14 +491,12 @@ pub fn classify_vaishnava_day(
     let mahadvadasi = input
         .mahadvadasi_facts
         .and_then(|facts| classify_mahadvadasi(facts.classification(observance)));
-    let observance_content = match (mahadvadasi, input.observance_masa) {
-        (Some(mahadvadasi), _) => Some(resolve_mahadvadasi_observance(mahadvadasi)),
-        (None, Some(masa)) => Some(resolve_ordinary_ekadasi_observance(
-            masa,
-            input.tithi_at_sunrise.paksha(),
-        )),
-        (None, None) => None,
-    };
+    let observance_content = resolve_observance(
+        mahadvadasi,
+        input.observance_masa,
+        input.tithi_at_sunrise.paksha(),
+    )
+    .map_err(VaishnavaEngineError::ObservanceResolution)?;
 
     let parana_input = input
         .parana
@@ -512,7 +513,7 @@ pub fn classify_vaishnava_day(
         viddha_status,
         observance,
         mahadvadasi,
-        observance_content,
+        observance_content: Some(observance_content),
         parana: Some(parana),
     })
 }
@@ -530,7 +531,10 @@ mod tests {
     use crate::astronomy::{AstronomicalTithi, NakshatraIndex};
     use crate::calendar::CivilDayTithiPresence;
     use crate::core::JulianDate;
-    use crate::vaishnava::{ObservanceSource, ObservanceType, VaishnavaMasa};
+    use crate::vaishnava::{
+        ObservanceResolutionError, ObservanceSource, ObservanceType, VaishnavaEngineError,
+        VaishnavaMasa,
+    };
 
     #[test]
     fn dasami_at_sunrise_is_not_candidate() {
@@ -811,9 +815,12 @@ mod tests {
 
     #[test]
     fn integrated_valid_ekadasi_observes_on_ekadasi_with_parana() {
-        let result =
-            classify_vaishnava_day(base_input(tithi(10), tithi(10)).with_parana(parana_input()))
-                .expect("valid classification");
+        let result = classify_vaishnava_day(
+            base_input(tithi(10), tithi(10))
+                .with_observance_masa(VaishnavaMasa::Asadha)
+                .with_parana(parana_input()),
+        )
+        .expect("valid classification");
 
         assert_eq!(result.candidate, EkadasiCandidate::CandidateEkadasi);
         assert_eq!(result.viddha_status, ViddhaCandidateStatus::ValidCandidate);
@@ -827,9 +834,12 @@ mod tests {
 
     #[test]
     fn integrated_viddha_ekadasi_observes_on_dvadasi_with_parana() {
-        let result =
-            classify_vaishnava_day(base_input(tithi(10), tithi(9)).with_parana(parana_input()))
-                .expect("valid classification");
+        let result = classify_vaishnava_day(
+            base_input(tithi(10), tithi(9))
+                .with_observance_masa(VaishnavaMasa::Asadha)
+                .with_parana(parana_input()),
+        )
+        .expect("valid classification");
 
         assert_eq!(result.candidate, EkadasiCandidate::CandidateEkadasi);
         assert_eq!(result.viddha_status, ViddhaCandidateStatus::InvalidViddha);
@@ -839,6 +849,19 @@ mod tests {
         );
         assert_eq!(result.mahadvadasi, None);
         assert_eq!(result.parana.expect("parana").mode, ParanaMode::Standard);
+    }
+
+    #[test]
+    fn integrated_observance_requires_masa_when_no_mahadvadasi_rule_applies() {
+        let result =
+            classify_vaishnava_day(base_input(tithi(10), tithi(10)).with_parana(parana_input()));
+
+        assert_eq!(
+            result,
+            Err(VaishnavaEngineError::ObservanceResolution(
+                ObservanceResolutionError::MissingMasa
+            ))
+        );
     }
 
     #[test]
@@ -864,6 +887,7 @@ mod tests {
             MahadvadasiFacts::new().with_tithi_condition(TithiMahadvadasiCondition::Unmilani);
         let result = classify_vaishnava_day(
             base_input(tithi(10), tithi(9))
+                .with_observance_masa(VaishnavaMasa::Magha)
                 .with_mahadvadasi_facts(facts)
                 .with_parana(parana_input()),
         )
@@ -901,6 +925,7 @@ mod tests {
             .with_nakshatra_at_observance(NakshatraIndex::PUNARVASU);
         let result = classify_vaishnava_day(
             base_input(tithi(10), tithi(9))
+                .with_observance_masa(VaishnavaMasa::Magha)
                 .with_mahadvadasi_facts(facts)
                 .with_parana(parana_input()),
         )

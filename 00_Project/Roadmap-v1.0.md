@@ -218,12 +218,37 @@ técnica implícita durante la RC1.
 
 Priority: HIGH for v2 planning.
 
+Status:
+
+```text
+50.0A Observance identity contract:
+PASS
+
+50.0B Native Calendar Engine Vaiṣṇava Māsa:
+OPEN
+```
+
 Objective:
 
 ```text
 Implement native Vaiṣṇava Māsa calculation inside the Calendar Engine so the
 Observance Engine can resolve ordinary Ekādaśī identities without any RC1
 adapter.
+```
+
+Completed in 50.0A:
+
+```text
+The Vaiṣṇava Engine now centralizes observance identity resolution.
+
+Ordinary Ekādaśī:
+resolved from formal Vaiṣṇava Māsa + Pakṣa.
+
+Mahādvādaśī:
+resolved from HBV-EK-004 rule output.
+
+Missing ordinary Ekādaśī māsa:
+explicit error, never silent fallback.
 ```
 
 Current RC1 state:

@@ -128,6 +128,11 @@ Hitos de certificación cerrados:
 - Campaign 49.0 - resolución de identidad de observancias movida al
   Vaiṣṇava Engine. La RC1 ya no contiene una tabla propia de nombres de
   Ekādaśī; consume `Observance` del motor.
+- Campaign 50.0A - contrato nativo de identidad de observancia reforzado en el
+  Vaiṣṇava Engine. Las 24 Ekādaśīs ordinarias y las 8 Mahādvādaśīs soportadas
+  están cubiertas por tests de resolución. Si una Ekādaśī ordinaria requiere
+  identidad pero no recibe māsa formal, el motor devuelve un error explícito en
+  vez de usar fallback silencioso.
 
 ## Deuda Técnica Explícita Post-v1.0
 
@@ -172,7 +177,7 @@ Festival Catalog
 API / Web / Mobile
 ```
 
-Campaign 50.0 queda registrada como trabajo post-v1.0:
+Campaign 50.0B queda registrada como trabajo post-v1.0:
 
 ```text
 Native Vaiṣṇava Māsa
@@ -184,6 +189,21 @@ que el proyecto decida soportar para māsa normal, adhika māsa y kṣaya māsa.
 Resultado:
 el adaptador temporal de RC1 desaparece y el Observance Engine resuelve nombres
 de observancia sólo desde hechos calendáricos calculados.
+```
+
+Estado:
+
+```text
+Observance identity resolver:
+PASS
+
+Native Vaiṣṇava Māsa in Calendar Engine:
+OPEN
+
+Motivo:
+el repositorio todavía no contiene una especificación implementable de māsa,
+adhika māsa y kṣaya māsa. No se permite sustituirla por fechas hardcodeadas,
+listas cronológicas ni inferencias de RC1.
 ```
 
 ## Arquitectura Congelada

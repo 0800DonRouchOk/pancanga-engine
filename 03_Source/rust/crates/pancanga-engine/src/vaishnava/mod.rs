@@ -17,6 +17,6 @@ pub use ekadasi::{
     ARUNODAYA_BEFORE_SUNRISE_MINUTES,
 };
 pub use observance::{
-    resolve_mahadvadasi_observance, resolve_ordinary_ekadasi_observance, Observance,
-    ObservanceSource, ObservanceType, VaishnavaMasa,
+    resolve_mahadvadasi_observance, resolve_observance, resolve_ordinary_ekadasi_observance,
+    Observance, ObservanceResolutionError, ObservanceSource, ObservanceType, VaishnavaMasa,
 };
