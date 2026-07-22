@@ -235,6 +235,9 @@ STOP - missing implementable local specification
 50.2 Vaiṣṇava Māsa Specification:
 STOP - specification boundary documented; normative implementation rule still
 missing
+
+50.3 HBV Vaiṣṇava Māsa Research:
+STOP - local HBV/Gauḍīya research did not find an implementable māsa algorithm
 ```
 
 Objective:
@@ -331,6 +334,13 @@ Campaign 50.2 specification:
 ```text
 00_Project/Campaign-50.2-Vaishnava-Masa-Specification.md
 05_Documentation/Knowledge-Base/KB-CAL-001-Vaishnava-Masa-Specification.md
+```
+
+Campaign 50.3 research:
+
+```text
+00_Project/Campaign-50.3-HBV-Vaishnava-Masa-Research.md
+05_Documentation/Knowledge-Base/KB-CAL-002-HBV-Vaishnava-Masa-Rules.md
 ```
 
 ## Metodología desde M5

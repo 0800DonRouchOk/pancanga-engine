@@ -206,19 +206,26 @@ STOP
 Campaign 50.2 Vaiṣṇava Māsa Specification:
 STOP - specification boundary documented
 
+Campaign 50.3 HBV Vaiṣṇava Māsa Research:
+STOP - local HBV/Gauḍīya research did not find an implementable māsa algorithm
+
 Motivo:
 el repositorio todavía no contiene una especificación implementable de māsa,
 adhika māsa y kṣaya māsa. No se permite sustituirla por fechas hardcodeadas,
 listas cronológicas ni inferencias de RC1. Campaign 50.2 creó KB-CAL-001 como
 frontera técnica y lista de reglas faltantes, pero no desbloqueó
-implementación.
+implementación. Campaign 50.3 confirmó que la dependencia faltante es
+normativa/algorítmica: GCal, PureBhakti y SCS Math son oráculos de validación,
+no autoridades normativas bajo la decisión actual.
 ```
 
 Informe:
 
 - [Campaign 50.1 - Native Vaiṣṇava Māsa Engine](00_Project/Campaign-50.1-Native-Vaishnava-Masa-Engine.md)
 - [Campaign 50.2 - Vaiṣṇava Māsa Specification](00_Project/Campaign-50.2-Vaishnava-Masa-Specification.md)
+- [Campaign 50.3 - HBV Vaiṣṇava Māsa Research](00_Project/Campaign-50.3-HBV-Vaishnava-Masa-Research.md)
 - [KB-CAL-001 - Vaiṣṇava Māsa Specification](05_Documentation/Knowledge-Base/KB-CAL-001-Vaishnava-Masa-Specification.md)
+- [KB-CAL-002 - HBV Vaiṣṇava Māsa Rules](05_Documentation/Knowledge-Base/KB-CAL-002-HBV-Vaishnava-Masa-Rules.md)
 
 ## Arquitectura Congelada
 
@@ -432,6 +439,10 @@ Informe:
   desbloqueó implementación porque el repositorio todavía no contiene una regla
   normativa local completa para ese cálculo. Documento:
   [KB-CAL-001](05_Documentation/Knowledge-Base/KB-CAL-001-Vaishnava-Masa-Specification.md).
+- KB-CAL-002 - HBV Vaiṣṇava Māsa Rules: 🟡 research stop. Campaign 50.3
+  verificó que las fuentes locales no contienen todavía un algoritmo
+  implementable HBV/Gauḍīya para Māsa, Adhika Māsa y Kṣaya Māsa. Documento:
+  [KB-CAL-002](05_Documentation/Knowledge-Base/KB-CAL-002-HBV-Vaishnava-Masa-Rules.md).
 - Campaign 39.5 - HBV-EK-001 Candidate Ekādaśī: ✅ cerrada. Regla normativa:
   un día civil entra como candidato inicial cuando el tithi presente en su
   amanecer local es Ekādaśī. No resuelve viddhā, Mahādvādaśī, Hari-vāsara,
