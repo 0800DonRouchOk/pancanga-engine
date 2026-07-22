@@ -174,6 +174,26 @@ Hari-bhakti-vilāsa
   Calendar Engine expone māsa nativo y la RC1 ya no usa adaptador temporal
 - ✅ Campaign 52.0 - Native Observance Resolver; salida única
   `ObservanceContent`, `ObservanceId` tipado y `fasting_for` como relación
+- ✅ Campaign 52.1 - Native Observance Resolver Certification; 24 / 24
+  Ekādaśīs y 8 / 8 Mahādvādaśīs alcanzadas por el dominio implementado
+- ✅ Campaign 52.2 - Normative Observance Certification; diferencias
+  clasificadas, 0 ENGINE BUG confirmados
+- ✅ Campaign 52.3 - Observance Content Binding Certification; binding
+  resolver → contenido PASS; discrepancia atribuida a instancia local vieja
+- ✅ Campaign 52.4 - Development Runtime Hygiene; la RC1 muestra commit,
+  puerto y hora de arranque
+- 🟢 Campaign 52.5 - Observance Content Catalog Integrity; 32 referencias,
+  3 archivos presentes al inicio, faltantes clasificados como contenido
+- ✅ Campaign 53.0 - Observance Knowledge Base Schema; contrato canónico de
+  observancia definido
+- ✅ Campaign 53.1 - Populate Native Observance Library; 32 / 32 archivos
+  estructurales presentes, 0 doctrina inventada
+- ✅ Campaign 54.0 - KB-OBS-001 Observance Authoring Guidelines; manual
+  editorial activo
+- ✅ Campaign 54.1 - KB-REF-001 Reference Classification; política de
+  referencias y provenance obligatorio
+- ✅ Campaign 55.0 - Knowledge Acquisition & Authoring mission change; la fase
+  principal pasa de infraestructura a contenido auditado
 - 🔴 Campaign 46R - Release Audit
 - 🔴 Campaign 47 - v1.0 Release
 - 🟡 Final Certification Stage - [criterio de salida](Final-Certification-Stage.md)

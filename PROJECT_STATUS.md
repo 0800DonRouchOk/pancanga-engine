@@ -43,6 +43,25 @@ Status:
 READY FOR FINAL CERTIFICATION
 ```
 
+Knowledge Library phase:
+
+```text
+Phase:
+Knowledge Acquisition & Authoring
+
+Mission:
+Complete observance content from accepted, classified, and traceable sources.
+
+Infrastructure status:
+Sufficiently mature
+
+New infrastructure:
+Not primary work
+
+Invented doctrine:
+0
+```
+
 El objetivo original de v1.0 está definido como:
 
 ```text
@@ -119,6 +138,13 @@ Trabajo restante antes de v1.0:
 - Campaign 46BETA - Pancanga Engine RC1 Experience.
 - Campaign 46R - auditoría final de release.
 - Campaign 47 - release v1.0.
+
+Trabajo de Knowledge Library:
+
+- Campaign 55.0 - Knowledge Acquisition & Authoring mission change.
+- Campaign 55.1 - Golden Sample Observance.
+- Campaign 55.2 - Complete Ekādaśī Collection.
+- Campaign 55.3 - Complete Mahādvādaśī Collection.
 
 Hitos de certificación cerrados:
 
