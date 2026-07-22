@@ -200,11 +200,18 @@ PASS
 Native Vaiṣṇava Māsa in Calendar Engine:
 OPEN
 
+Campaign 50.1 Native Vaiṣṇava Māsa Engine:
+STOP
+
 Motivo:
 el repositorio todavía no contiene una especificación implementable de māsa,
 adhika māsa y kṣaya māsa. No se permite sustituirla por fechas hardcodeadas,
 listas cronológicas ni inferencias de RC1.
 ```
+
+Informe:
+
+- [Campaign 50.1 - Native Vaiṣṇava Māsa Engine](00_Project/Campaign-50.1-Native-Vaishnava-Masa-Engine.md)
 
 ## Arquitectura Congelada
 

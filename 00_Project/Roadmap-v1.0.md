@@ -226,6 +226,9 @@ PASS
 
 50.0B Native Calendar Engine Vaiṣṇava Māsa:
 OPEN
+
+50.1 Native Vaiṣṇava Māsa Engine:
+STOP - missing implementable local specification
 ```
 
 Objective:
@@ -309,6 +312,12 @@ v1.0 rule:
 ```text
 Do not implement Campaign 50.0 during the v1.0 release freeze unless a
 confirmed ENGINE BUG makes it release-blocking.
+```
+
+Campaign 50.1 audit:
+
+```text
+00_Project/Campaign-50.1-Native-Vaishnava-Masa-Engine.md
 ```
 
 ## Metodología desde M5
