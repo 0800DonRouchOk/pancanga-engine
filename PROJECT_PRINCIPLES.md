@@ -141,6 +141,36 @@ If no confirmed ENGINE BUG appears:
 v1.0 remains officially stable
 ```
 
+## Single Source Of Truth
+
+Every system datum must have one authoritative owner.
+
+```text
+Astronomy Engine
+source of truth for astronomical calculations
+
+Calendar Engine
+source of truth for calendar elements:
+tithi, māsa, pakṣa, sunrise, and related calendar facts
+
+Observance Engine
+source of truth for identifying observances from calculated calendar facts
+
+Festival Catalog
+source of truth for observance metadata:
+ID, slug, display name, and type
+
+Festival Library
+source of truth for observance content:
+stories, glories, references, and practice notes
+
+RC1 Experience
+presentation only
+```
+
+The RC1 Experience must never duplicate business logic. It consumes engine
+output, catalog metadata, and library content, then presents them to the user.
+
 ## Principles
 
 1. The Knowledge Base governs the implementation.
