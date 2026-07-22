@@ -2,7 +2,7 @@
 
 Campaign: 55.1A
 
-Status: READY FOR REVIEW
+Status: APPROVED FOR 55.1B AUTHORING
 
 Mode: RESEARCH ONLY
 
@@ -378,5 +378,15 @@ Invented Doctrine:
 0
 
 Status:
-READY FOR REVIEW
+APPROVED FOR 55.1B AUTHORING
+```
+
+## Review
+
+Campaign 55.1A was reviewed and approved for authoring.
+
+Review file:
+
+```text
+05_Documentation/Observances/Dossiers/EK-010-Kamika-55.1A-Review.md
 ```

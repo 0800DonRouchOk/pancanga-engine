@@ -2,7 +2,7 @@
 
 Campaign: 55.1A
 
-Status: READY FOR REVIEW
+Status: APPROVED FOR 55.1B AUTHORING
 
 Mode: RESEARCH ONLY
 
@@ -82,8 +82,8 @@ Invented doctrine:
 
 ## 55.1B Authoring Gate
 
-Campaign 55.1B may begin only after this evidence log and the corresponding
-research dossier are reviewed.
+Campaign 55.1B may begin. This evidence log and the corresponding research
+dossier passed 55.1A review.
 
 Authoring must use only:
 
@@ -95,3 +95,9 @@ Rejected-claim exclusions
 
 No claim may be added directly to `kamika.json` unless it first appears in this
 evidence log.
+
+Review file:
+
+```text
+05_Documentation/Observances/Dossiers/EK-010-Kamika-55.1A-Review.md
+```

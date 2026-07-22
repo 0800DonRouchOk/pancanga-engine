@@ -143,8 +143,8 @@ Trabajo de Knowledge Library:
 
 - Campaign 55.0 - Knowledge Acquisition & Authoring mission change.
 - Campaign 55.1 - Golden Sample Workflow.
-- Campaign 55.1A - Golden Sample Research Dossier: EK-010 Kāmikā ready for
-  review.
+- Campaign 55.1A - Golden Sample Research Dossier: EK-010 Kāmikā approved for
+  55.1B authoring.
 - Campaign 55.1B - Golden Sample Authoring.
 - Campaign 55.2 - Complete Ekādaśī Collection.
 - Campaign 55.3 - Complete Mahādvādaśī Collection.
