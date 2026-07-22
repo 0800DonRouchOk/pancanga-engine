@@ -563,6 +563,9 @@
         <span id="kbVersion">Knowledge Base: HBV v1.0</span>
         <span id="astronomyVersion">Astronomy: Swiss Certified</span>
         <span id="buildVersion">Build: 2026.07 RC1</span>
+        <span id="commitVersion">Commit: local</span>
+        <span id="portVersion">Port: local</span>
+        <span id="startedVersion">Started: local session</span>
       </div>
     </footer>
   </main>
@@ -884,6 +887,9 @@
         `Knowledge Base: ${document.getElementById("kbVersion").textContent}`,
         `Astronomy: ${document.getElementById("astronomyVersion").textContent}`,
         `Build: ${document.getElementById("buildVersion").textContent}`,
+        `Commit: ${document.getElementById("commitVersion").textContent}`,
+        `Port: ${document.getElementById("portVersion").textContent}`,
+        `Started: ${document.getElementById("startedVersion").textContent}`,
         "",
         "Qué esperaba:",
         "",
@@ -908,6 +914,9 @@
       document.getElementById("kbVersion").textContent = `Knowledge Base: ${build.knowledgeBase || "HBV v1.0"}`;
       document.getElementById("astronomyVersion").textContent = `Astronomy: ${build.astronomy || "Swiss Certified"}`;
       document.getElementById("buildVersion").textContent = `Build: ${build.build || "2026.07 RC1"}`;
+      document.getElementById("commitVersion").textContent = `Commit: ${build.commit || "local"}`;
+      document.getElementById("portVersion").textContent = `Port: ${build.port || "local"}`;
+      document.getElementById("startedVersion").textContent = `Started: ${build.startedAt || "local session"}`;
     }
 
     function formatInputDate(value) {

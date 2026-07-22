@@ -1,9 +1,11 @@
 use std::collections::HashMap;
 use std::env;
 use std::io::{Read, Write};
-use std::net::{TcpListener, TcpStream};
+use std::net::{SocketAddr, TcpListener, TcpStream};
+use std::process::Command;
+use std::sync::OnceLock;
 use std::thread;
-use std::time::Duration;
+use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
 use pancanga_engine::astronomy::{
     lunar_solar_elongation, moon, nakshatra, solar, AstronomicalTithi, Paksha,
@@ -34,13 +36,6 @@ const KAMIKA_CONTENT: &str =
     include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/kamika.json");
 const PAVITROPANA_CONTENT: &str =
     include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/pavitropana.json");
-const LOCAL_CONFIG: &str = r#"window.RC1_API_BASE = "";
-window.RC1_BUILD = {
-  engine: "v1.0 RC1",
-  knowledgeBase: "HBV v1.0",
-  astronomy: "Swiss Certified",
-  build: "2026.07 RC1",
-};"#;
 const OFFICIAL_ZENITH_DEGREES: f64 = 90.833;
 const SCAN_STEP_DAYS: f64 = 1.0 / 96.0;
 const REFINEMENT_STEPS: usize = 48;
@@ -149,7 +144,12 @@ fn handle_connection(stream: &mut TcpStream) {
     }
 
     if path == "/rc1-config.js" {
-        respond(stream, "200 OK", "application/javascript", LOCAL_CONFIG);
+        respond(
+            stream,
+            "200 OK",
+            "application/javascript",
+            &local_config(stream.local_addr().ok()),
+        );
         return;
     }
 
@@ -192,6 +192,87 @@ fn handle_connection(stream: &mut TcpStream) {
     }
 
     respond(stream, "404 Not Found", "text/plain", "Not found");
+}
+
+fn local_config(local_addr: Option<SocketAddr>) -> String {
+    let port = local_addr
+        .map(|addr| addr.port().to_string())
+        .unwrap_or_else(|| "unknown".to_string());
+
+    format!(
+        r#"window.RC1_API_BASE = "";
+window.RC1_BUILD = {{
+  engine: "v1.0 RC1",
+  knowledgeBase: "HBV v1.0",
+  astronomy: "Swiss Certified",
+  build: "2026.07 RC1",
+  commit: "{}",
+  port: "{}",
+  startedAt: "{}",
+}};"#,
+        json_escape(runtime_commit()),
+        json_escape(&port),
+        json_escape(runtime_started_at())
+    )
+}
+
+fn runtime_commit() -> &'static str {
+    static COMMIT: OnceLock<String> = OnceLock::new();
+    COMMIT
+        .get_or_init(|| {
+            env::var("RC1_COMMIT")
+                .ok()
+                .or_else(|| env::var("GIT_COMMIT").ok())
+                .or_else(current_git_commit)
+                .unwrap_or_else(|| "unknown".to_string())
+        })
+        .as_str()
+}
+
+fn current_git_commit() -> Option<String> {
+    let output = Command::new("git")
+        .args(["rev-parse", "--short", "HEAD"])
+        .current_dir(env!("CARGO_MANIFEST_DIR"))
+        .output()
+        .ok()?;
+
+    if !output.status.success() {
+        return None;
+    }
+
+    let commit = String::from_utf8(output.stdout).ok()?;
+    let commit = commit.trim();
+    if commit.is_empty() {
+        None
+    } else {
+        Some(commit.to_string())
+    }
+}
+
+fn runtime_started_at() -> &'static str {
+    static STARTED_AT: OnceLock<String> = OnceLock::new();
+    STARTED_AT.get_or_init(current_utc_timestamp).as_str()
+}
+
+fn current_utc_timestamp() -> String {
+    let unix_seconds = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|duration| duration.as_secs_f64())
+        .unwrap_or(0.0);
+    let jd = JulianDate::new(2_440_587.5 + unix_seconds / 86_400.0);
+    let date_time =
+        jd_to_gregorian(jd, TimeScale::Utc).expect("current time should convert to Gregorian");
+    let date = date_time.date();
+    let time = date_time.time();
+
+    format!(
+        "{:04}-{:02}-{:02} {:02}:{:02} UTC",
+        date.year(),
+        date.month(),
+        date.day(),
+        time.hour(),
+        time.minute()
+    )
 }
 
 fn calculate_response(query: &str) -> Result<String, String> {
