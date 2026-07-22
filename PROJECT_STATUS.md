@@ -60,6 +60,12 @@ Not primary work
 
 Invented doctrine:
 0
+
+Golden Sample:
+EK-010 Kāmikā Ekādaśī
+
+Content release:
+1 / 24 Ekādaśī published
 ```
 
 El objetivo original de v1.0 está definido como:
@@ -147,8 +153,27 @@ Trabajo de Knowledge Library:
 - Campaign 55.1A - Golden Sample Research Dossier: EK-010 Kāmikā approved for
   55.1B authoring.
 - Campaign 55.1B - Golden Sample Authoring: PASS.
-- Campaign 55.2 - Complete Ekādaśī Collection.
+- Campaign 55.2 - Ekādaśī Production: 1 / 24 published.
 - Campaign 55.3 - Complete Mahādvādaśī Collection.
+
+Knowledge Library coverage:
+
+```text
+Golden Sample:
+1 / 1
+
+Ekādaśī published:
+1 / 24
+
+Ekādaśī remaining:
+23 / 24
+
+Mahādvādaśī published:
+0 / 8
+
+Invented doctrine:
+0
+```
 
 Hitos de certificación cerrados:
 

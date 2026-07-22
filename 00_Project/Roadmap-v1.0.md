@@ -200,6 +200,8 @@ Hari-bhakti-vilāsa
   aprobado para autoría 55.1B sin modificar el JSON
 - ✅ Campaign 55.1B - Golden Sample Authoring; EK-010 Kāmikā Ekādaśī publicado
   como implementación de referencia del pipeline editorial
+- 🟡 Campaign 55.2 - Ekādaśī Production; 1 / 24 Ekādaśīs publicadas, EK-010
+  congelada como Golden Sample
 - 🔴 Campaign 46R - Release Audit
 - 🔴 Campaign 47 - v1.0 Release
 - 🟡 Final Certification Stage - [criterio de salida](Final-Certification-Stage.md)

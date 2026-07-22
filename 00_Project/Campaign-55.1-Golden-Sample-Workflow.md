@@ -317,3 +317,19 @@ Invented Doctrine:
 
 EK-010 Kāmikā Ekādaśī is the reference implementation for the Observance
 Library authoring workflow.
+
+## Reference Freeze
+
+EK-010 is frozen as the Golden Sample.
+
+Future production campaigns must treat it as the standard to match, not as a
+draft to adjust casually.
+
+Any future EK-010 change must:
+
+```text
+update the dossier or evidence log
+preserve section-level evidence_claims
+record why the reference implementation changed
+avoid silent drift
+```
