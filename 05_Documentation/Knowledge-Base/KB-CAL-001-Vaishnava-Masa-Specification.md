@@ -3,9 +3,12 @@
 Status:
 
 ```text
-SPECIFICATION DRAFT
+PROVISIONAL SPECIFICATION
 
 Implementation readiness:
+PROVISIONAL
+
+Certification readiness:
 BLOCKED
 ```
 
@@ -50,23 +53,22 @@ Purāṇas cited by Hari-bhakti-vilāsa as context
 For Ekādaśī observance rules, this hierarchy is sufficient and already frozen
 in KB-VAI-002.
 
-For native Vaiṣṇava Māsa calculation, the repository does not yet contain an
-implementable local specification. The local Hari-bhakti-vilāsa material
-explains the general relation between lunar months, solar months, tithi, and
-adhika-māsa, but it does not by itself define a complete project rule for:
+For native Vaiṣṇava Māsa calculation, Campaign 50.4 incorporated a provisional
+implementation hypothesis into the local Knowledge Base. The local
+Hari-bhakti-vilāsa material explains the general relation between lunar months,
+solar months, tithi, and adhika-māsa, but it does not by itself define every
+technical detail needed for final certification.
+
+The following items remain pending validation:
 
 ```text
-month-boundary ownership
-saṅkrānti ownership
-sidereal solar sign calculation
-Adhika Māsa detection
-Kṣaya Māsa detection
-Ekādaśī naming in intercalary months
+exact bibliographic source for the algorithmic hypothesis
+exact ayanāṁśa / zodiac frame
+Ekādaśī identity behavior in Kṣaya Māsa
 ```
 
-Therefore Pancanga Engine cannot implement native Vaiṣṇava Māsa until the
-missing rules are supplied by local project sources or an explicit documented
-authority decision.
+Therefore Pancanga Engine may implement native Vaiṣṇava Māsa only as a
+provisional, validation-pending feature until those items are closed.
 
 ## What Is Already Established
 
@@ -127,63 +129,54 @@ The final Rust names may differ, but the semantic fields must remain explicit.
 
 ## Determination Of Māsa
 
-Implementation requires a documented rule for:
+Campaign 50.4 records the following provisional rule:
 
 ```text
-1. the lunar month boundary;
-2. the solar sign or solar month relation used for naming;
-3. the event that assigns a lunar month its name;
-4. the moment at which that assignment becomes operative for civil-day
-   calculations;
-5. how the observance day inherits the māsa.
+1. Use a pūrṇimānta lunar month.
+2. Determine the māsa name from the saṅkrānti occurring inside that lunar month.
+3. A normal lunar month contains exactly 1 saṅkrānti.
+4. Adhika Māsa is a lunar month containing 0 saṅkrāntis.
+5. Kṣaya Māsa is a lunar month containing 2 saṅkrāntis.
 ```
 
-Local source status:
+Evidence status:
 
 ```text
 General lunar-month explanation:
 AVAILABLE
 
-Operational month-boundary rule:
-MISSING
+Pūrṇimānta month system:
+PROVISIONAL - pending exact source citation
 
-Operational month-naming rule:
-MISSING
+Māsa by saṅkrānti:
+PROVISIONAL - pending exact source citation
+
+Saṅkrānti count classification:
+PROVISIONAL - pending validation
 ```
 
 The local source material states the general principle that lunar months are
 based on the Moon's relation to the Sun and that an additional lunar month is
-periodically inserted to reconcile the lunar and solar years. This is
-insufficient for implementation because it does not specify the exact rule
-Pancanga Engine must use to assign a Vaiṣṇava māsa name to a calculated
-observance.
+periodically inserted to reconcile the lunar and solar years. Campaign 50.4
+adds the provisional technical rule above so implementation work can proceed
+without relying on conversation context.
 
 ## Adhika Māsa
 
-Implementation requires a documented rule for:
+Campaign 50.4 records the following provisional rule:
 
 ```text
-1. when Adhika Māsa appears;
-2. which astronomical event or missing event identifies it;
-3. how the intercalary month is named;
-4. how ordinary Ekādaśī identities behave inside Adhika Māsa;
-5. whether Adhika Māsa Ekādaśīs use separate observance identities.
+Adhika Māsa
+=
+pūrṇimānta lunar month containing 0 saṅkrāntis
 ```
 
-Local source status:
+Still pending:
 
 ```text
-General existence of adhika-māsa:
-AVAILABLE
-
-Detection rule:
-MISSING
-
-Naming rule:
-MISSING
-
-Ekādaśī identity rule inside adhika-māsa:
-MISSING
+exact naming convention for the intercalary month;
+complete ordinary/ad hoc Ekādaśī identity behavior inside Adhika Māsa;
+validation against adopted Gauḍīya/GCal/Navadvīpa examples.
 ```
 
 No implementation may infer Adhika Māsa from date lists, fixtures, or a
@@ -191,31 +184,25 @@ chronological Ekādaśī sequence.
 
 ## Kṣaya Māsa
 
-Implementation requires a documented project decision for:
+Campaign 50.4 records the following provisional detection rule:
 
 ```text
-1. whether v1/v2 Calendar Engine supports Kṣaya Māsa;
-2. when Kṣaya Māsa can occur;
-3. how it is detected;
-4. how it affects the sequence and naming of months;
-5. how it affects Ekādaśī identity.
+Kṣaya Māsa
+=
+pūrṇimānta lunar month containing 2 saṅkrāntis
 ```
 
-Local source status:
+Still pending:
 
 ```text
-Kṣaya Māsa support decision:
-MISSING
-
-Detection rule:
-MISSING
-
-Observance impact rule:
-MISSING
+whether the provisional implementation supports Kṣaya Māsa fully;
+how Kṣaya Māsa affects month naming;
+how Kṣaya Māsa affects Ekādaśī observance identity.
 ```
 
-If the project chooses not to support Kṣaya Māsa in the next implementation
-cycle, that limitation must be explicit in the API and documentation.
+If the project chooses not to support Kṣaya Māsa observance identity in the
+next implementation cycle, that limitation must be explicit in the API and
+documentation.
 
 ## Relation With Ekādaśī
 
@@ -262,7 +249,9 @@ project-defined scale.
 ```
 
 Without this decision, month naming through solar sign relation is not
-implementation-ready.
+certification-ready. A provisional implementation may proceed only if the
+chosen ayanāṁśa / zodiac frame is explicitly marked pending validation and kept
+configurable or isolated.
 
 ## Prohibited Shortcuts
 
@@ -283,22 +272,21 @@ They may not define the rule.
 
 ## Implementation Readiness Gate
 
-Campaign 50.1 may resume only when this document or a successor document
-contains:
+Campaign 50.1 may resume as a provisional implementation only with:
 
 ```text
-source authority for Vaiṣṇava Māsa;
-normal māsa rule;
-Adhika Māsa rule;
-Kṣaya Māsa decision;
+pūrṇimānta lunar month boundary;
+māsa by saṅkrānti;
+Adhika Māsa = 0 saṅkrāntis;
+Kṣaya Māsa = 2 saṅkrāntis;
 Ekādaśī māsa ownership rule;
-ayanāṁśa / saṅkrānti configuration, if required;
+ayanāṁśa / saṅkrānti configuration marked pending validation;
 data model;
 minimum tests;
-oracle cases.
+oracle cases for normal and adhika behavior.
 ```
 
-Until then, the correct engine behavior is:
+If any required fact cannot be determined, the correct engine behavior remains:
 
 ```text
 Missing formal māsa
@@ -326,23 +314,28 @@ shifted observance due to viddhā;
 Mahādvādaśī observance identity.
 ```
 
-## Current Decision
+## Campaign 50.4 Provisional Decision
 
-Campaign 50.2 does not unlock implementation.
+Campaign 50.4 updates the Campaign 50.2 / 50.3 STOP state.
 
 Result:
 
 ```text
-STOP
+PROVISIONAL IMPLEMENTATION MAY PROCEED
 
-Vaiṣṇava Māsa cannot be implemented from the current local specification
-without adding undocumented calendar logic.
+Native Vaiṣṇava Māsa may be implemented as validation-pending logic based on
+the provisional pūrṇimānta / saṅkrānti-count hypothesis.
 ```
 
-Required next action:
+Still not final:
 
 ```text
-Select and document the normative authority for Vaiṣṇava Māsa calculation.
-Then extend KB-CAL-001 with the exact normal, adhika, and kṣaya rules.
-```
+Exact ayanāṁśa:
+PENDING VALIDATION
 
+Kṣaya Māsa Ekādaśī identity:
+PENDING VALIDATION
+
+Bibliographic source:
+PENDING LOCAL CITATION
+```

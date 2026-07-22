@@ -209,14 +209,20 @@ STOP - specification boundary documented
 Campaign 50.3 HBV Vaiṣṇava Māsa Research:
 STOP - local HBV/Gauḍīya research did not find an implementable māsa algorithm
 
+Campaign 50.4 Provisional Vaiṣṇava Māsa Hypothesis Incorporation:
+PASS - provisional pūrṇimānta / saṅkrānti-count specification incorporated
+
 Motivo:
-el repositorio todavía no contiene una especificación implementable de māsa,
-adhika māsa y kṣaya māsa. No se permite sustituirla por fechas hardcodeadas,
-listas cronológicas ni inferencias de RC1. Campaign 50.2 creó KB-CAL-001 como
-frontera técnica y lista de reglas faltantes, pero no desbloqueó
-implementación. Campaign 50.3 confirmó que la dependencia faltante es
-normativa/algorítmica: GCal, PureBhakti y SCS Math son oráculos de validación,
-no autoridades normativas bajo la decisión actual.
+Campaign 50.4 incorporó una hipótesis técnica local suficiente para abrir una
+implementación provisional: mes lunar pūrṇimānta, māsa por saṅkrānti, Adhika
+Māsa cuando el mes contiene 0 saṅkrāntis y Kṣaya Māsa cuando contiene 2
+saṅkrāntis. No se permite sustituirla por fechas hardcodeadas, listas
+cronológicas ni inferencias de RC1. GCal, PureBhakti y SCS Math siguen siendo
+oráculos de validación bajo la decisión actual.
+
+Pendiente para certificación:
+ayanāṁśa exacto, comportamiento de Ekādaśī en Kṣaya Māsa y fuente bibliográfica
+exacta de la regla técnica.
 ```
 
 Informe:
@@ -224,6 +230,7 @@ Informe:
 - [Campaign 50.1 - Native Vaiṣṇava Māsa Engine](00_Project/Campaign-50.1-Native-Vaishnava-Masa-Engine.md)
 - [Campaign 50.2 - Vaiṣṇava Māsa Specification](00_Project/Campaign-50.2-Vaishnava-Masa-Specification.md)
 - [Campaign 50.3 - HBV Vaiṣṇava Māsa Research](00_Project/Campaign-50.3-HBV-Vaishnava-Masa-Research.md)
+- [Campaign 50.4 - Provisional Vaiṣṇava Māsa Hypothesis Incorporation](00_Project/Campaign-50.4-Provisional-Vaishnava-Masa-Hypothesis-Incorporation.md)
 - [KB-CAL-001 - Vaiṣṇava Māsa Specification](05_Documentation/Knowledge-Base/KB-CAL-001-Vaishnava-Masa-Specification.md)
 - [KB-CAL-002 - HBV Vaiṣṇava Māsa Rules](05_Documentation/Knowledge-Base/KB-CAL-002-HBV-Vaishnava-Masa-Rules.md)
 
@@ -443,6 +450,10 @@ Informe:
   verificó que las fuentes locales no contienen todavía un algoritmo
   implementable HBV/Gauḍīya para Māsa, Adhika Māsa y Kṣaya Māsa. Documento:
   [KB-CAL-002](05_Documentation/Knowledge-Base/KB-CAL-002-HBV-Vaishnava-Masa-Rules.md).
+- Campaign 50.4 - Provisional Vaiṣṇava Māsa Hypothesis Incorporation: 🟡 PASS
+  provisional. Incorporó al repositorio la hipótesis pūrṇimānta /
+  saṅkrānti-count como base implementable pendiente de validación. Documento:
+  [Campaign 50.4](00_Project/Campaign-50.4-Provisional-Vaishnava-Masa-Hypothesis-Incorporation.md).
 - Campaign 39.5 - HBV-EK-001 Candidate Ekādaśī: ✅ cerrada. Regla normativa:
   un día civil entra como candidato inicial cuando el tithi presente en su
   amanecer local es Ekādaśī. No resuelve viddhā, Mahādvādaśī, Hari-vāsara,

@@ -238,6 +238,9 @@ missing
 
 50.3 HBV Vaiṣṇava Māsa Research:
 STOP - local HBV/Gauḍīya research did not find an implementable māsa algorithm
+
+50.4 Provisional Vaiṣṇava Māsa Hypothesis Incorporation:
+PASS - provisional pūrṇimānta / saṅkrānti-count specification incorporated
 ```
 
 Objective:
@@ -308,6 +311,23 @@ Kṣaya Māsa, if supported by the engine
 Compatibility with Ekādaśī observance naming
 ```
 
+Provisional algorithm recorded in 50.4:
+
+```text
+pūrṇimānta lunar month
+māsa by saṅkrānti inside the lunar month
+Adhika Māsa = 0 saṅkrāntis
+Kṣaya Māsa = 2 saṅkrāntis
+```
+
+Pending validation:
+
+```text
+exact ayanāṁśa / zodiac frame
+Kṣaya Māsa Ekādaśī identity behavior
+exact bibliographic source for the technical rule
+```
+
 Exit criterion:
 
 ```text
@@ -341,6 +361,12 @@ Campaign 50.3 research:
 ```text
 00_Project/Campaign-50.3-HBV-Vaishnava-Masa-Research.md
 05_Documentation/Knowledge-Base/KB-CAL-002-HBV-Vaishnava-Masa-Rules.md
+```
+
+Campaign 50.4 provisional incorporation:
+
+```text
+00_Project/Campaign-50.4-Provisional-Vaishnava-Masa-Hypothesis-Incorporation.md
 ```
 
 ## Metodología desde M5

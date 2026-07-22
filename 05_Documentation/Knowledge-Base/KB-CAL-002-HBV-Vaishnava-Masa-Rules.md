@@ -9,10 +9,13 @@ Campaign:
 Status:
 
 ```text
-RESEARCH STOP
+PROVISIONAL HYPOTHESIS INCORPORATED
 
 Implementable rule:
-NOT FOUND IN LOCAL REPOSITORY
+AVAILABLE FOR PROVISIONAL IMPLEMENTATION
+
+Final certification:
+PENDING VALIDATION
 ```
 
 ## Purpose
@@ -27,10 +30,17 @@ Does the local repository contain an HBV/Gauḍīya rule precise enough to
 implement native Vaiṣṇava Māsa, Adhika Māsa, and Kṣaya Māsa?
 ```
 
-Current answer:
+Campaign 50.3 answer:
 
 ```text
 NO
+```
+
+Campaign 50.4 update:
+
+```text
+A provisional technical hypothesis has been incorporated locally.
+It may support provisional implementation, but it is not final certification.
 ```
 
 ## Method
@@ -65,8 +75,10 @@ Navadvīpa Pañjikā
 Tradition Notes
 ```
 
-For Vaiṣṇava Māsa, the project has not yet incorporated a local source that
-turns this hierarchy into an implementable calendar algorithm.
+For Vaiṣṇava Māsa, Campaign 50.4 incorporates a project-local provisional
+technical hypothesis. This hypothesis does not override the source hierarchy.
+It marks the rule as implementable for provisional development and pending
+validation for certification.
 
 GCal, PureBhakti, and SCS Math are external validation oracles in the current
 project state. They do not define normative rules unless a later campaign
@@ -76,10 +88,17 @@ explicitly changes the authority decision.
 
 ### 1. How Does HBV Determine The Name Of The Vaiṣṇava Māsa?
 
-Local finding:
+Campaign 50.3 local finding:
 
 ```text
 NOT IMPLEMENTABLE FROM CURRENT LOCAL SOURCES
+```
+
+Campaign 50.4 provisional rule:
+
+```text
+Use a pūrṇimānta lunar month.
+The māsa name is determined by the saṅkrānti occurring inside that lunar month.
 ```
 
 The local Hari-bhakti-vilāsa material explains that the project calendar uses
@@ -90,27 +109,32 @@ name to a calculated observance.
 Missing:
 
 ```text
-lunar month boundary rule
-month naming rule
-solar-sign relation, if used
-saṅkrānti ownership rule, if used
-ayanāṁśa / zodiac frame, if used
+exact bibliographic citation for the provisional rule
+exact ayanāṁśa / zodiac frame
+saṅkrānti calculation configuration
 ```
 
 ### 2. What Is The Exact Rule For Adhika Māsa?
 
-Local finding:
+Campaign 50.3 local finding:
 
 ```text
 GENERAL CONCEPT AVAILABLE
 IMPLEMENTABLE RULE MISSING
 ```
 
+Campaign 50.4 provisional rule:
+
+```text
+Adhika Māsa
+=
+pūrṇimānta lunar month containing 0 saṅkrāntis
+```
+
 The local appendix explains that an extra lunar month is periodically added to
 reconcile lunar and solar years. It does not define the project rule for:
 
 ```text
-detecting Adhika Māsa
 naming Adhika Māsa
 assigning Ekādaśī identities inside Adhika Māsa
 deciding whether intercalary Ekādaśīs receive separate catalog identities
@@ -120,17 +144,23 @@ No implementation may infer this from external calendar rows.
 
 ### 3. What Is The Exact Rule For Kṣaya Māsa?
 
-Local finding:
+Campaign 50.3 local finding:
 
 ```text
 NOT FOUND
 ```
 
+Campaign 50.4 provisional rule:
+
+```text
+Kṣaya Māsa
+=
+pūrṇimānta lunar month containing 2 saṅkrāntis
+```
+
 The repository does not currently contain a normative or technical rule for:
 
 ```text
-when Kṣaya Māsa occurs
-how it is detected
 whether Pancanga Engine supports it
 how it affects month naming
 how it affects Ekādaśī observance identity
@@ -214,9 +244,69 @@ Therefore Pancanga Engine cannot claim that HBV adopts the GCal algorithm unless
 the exact GCal/HBV algorithm is incorporated locally and the authority decision
 is explicitly updated.
 
-## Required Source To Continue
+## Provisional Algorithm
 
-Campaign 50.3 cannot produce implementable rules until one of the following
+Campaign 50.4 records the following local provisional algorithm:
+
+```text
+1. Identify pūrṇimānta lunar month boundaries.
+
+2. Count saṅkrāntis inside that lunar month.
+
+3. If exactly 1 saṅkrānti occurs:
+   classify as normal māsa and name the māsa from that saṅkrānti.
+
+4. If 0 saṅkrāntis occur:
+   classify as Adhika Māsa.
+
+5. If 2 saṅkrāntis occur:
+   classify as Kṣaya Māsa.
+```
+
+This is sufficient to open a provisional implementation campaign if the code
+keeps the unresolved items explicit.
+
+## Evidence Layers
+
+```text
+Confirmed by existing project architecture:
+Calendar Engine must own māsa.
+Observance Engine must receive formal māsa.
+RC1 must not infer māsa as business logic.
+
+Derived from technical hypothesis:
+pūrṇimānta month boundary.
+māsa by saṅkrānti.
+Adhika = 0 saṅkrāntis.
+Kṣaya = 2 saṅkrāntis.
+
+Pending validation:
+exact ayanāṁśa / zodiac frame.
+exact bibliographic source for the technical rule.
+Ekādaśī identity behavior in Kṣaya Māsa.
+```
+
+## Bibliographic References
+
+Exact bibliographic references for the provisional technical hypothesis are
+not yet closed.
+
+Current status:
+
+```text
+HBV general lunar-calendar context:
+local source available
+
+Technical pūrṇimānta / saṅkrānti-count algorithm:
+pending exact local citation
+
+GCal / Gauḍīya algorithm documentation:
+pending local source incorporation
+```
+
+## Required Source To Close Provisional Status
+
+Native Vaiṣṇava Māsa cannot be certified as final until one of the following
 exists locally:
 
 ```text
@@ -271,26 +361,25 @@ The engine must return explicit MissingMasa / UnsupportedMasa errors.
 The RC1 temporary adapter remains presentation-only and cannot become normative.
 ```
 
-## Current Decision
+## Campaign 50.4 Decision
 
-No rule was added.
+The provisional rule was added to the local Knowledge Base.
 
-No implementation was unlocked.
+Provisional implementation is unlocked.
 
 No motor behavior changed.
 
 Result:
 
 ```text
-STOP
+PROVISIONAL PASS
 
-The missing dependency is normative, not technical.
+The missing dependency is now narrowed to validation of ayanāṁśa,
+bibliographic source, and Kṣaya Māsa Ekādaśī behavior.
 ```
 
-Next required campaign:
+Next allowed campaign:
 
 ```text
-Select and incorporate the normative/algorithmic source for Vaiṣṇava Māsa.
-Then revise KB-CAL-001 and KB-CAL-002 into an implementable specification.
+Campaign 51.0 - Native Vaiṣṇava Māsa Implementation (Provisional)
 ```
-

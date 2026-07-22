@@ -28,8 +28,8 @@ proyecto.
 | ID | Título | Estado |
 |---|---|---|
 | [KB-v1.0-Release](Knowledge-Base-v1.0-Release.md) | Knowledge Base v1.0 Release | 🔒 FROZEN |
-| [KB-CAL-001](KB-CAL-001-Vaishnava-Masa-Specification.md) | Vaiṣṇava Māsa Specification | 🟡 Draft / blocked |
-| [KB-CAL-002](KB-CAL-002-HBV-Vaishnava-Masa-Rules.md) | HBV Vaiṣṇava Māsa Rules | 🟡 Research stop |
+| [KB-CAL-001](KB-CAL-001-Vaishnava-Masa-Specification.md) | Vaiṣṇava Māsa Specification | 🟡 Provisional / validation pending |
+| [KB-CAL-002](KB-CAL-002-HBV-Vaishnava-Masa-Rules.md) | HBV Vaiṣṇava Māsa Rules | 🟡 Provisional hypothesis |
 | [KB-VAI-002](KB-VAI-002-Hari-bhakti-vilasa-Ekadasi-Rules.md) | Hari-bhakti-vilāsa - Ekādaśī Rules | 🔒 v1.0 - congelada |
 | [Campaign 39.10](Campaign-39.10-Knowledge-Base-Audit.md) | Knowledge Base Audit | ✅ PASS |
 | [HBV-Protocol](HBV-Extraction-Protocol.md) | HBV Extraction Protocol | 🔒 Activo |
