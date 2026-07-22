@@ -155,5 +155,44 @@
   "benefits_summary": [
     "Glorias y beneficios pendientes de estructurar desde fuentes locales aprobadas."
   ],
-  "rc1_scope_note": "Esta biblioteca es una capa de contenido. No modifica el cálculo de tithi, Viddhā, Mahādvādaśī ni Parāṇa."
+  "rc1_scope_note": "Esta biblioteca es una capa de contenido. No modifica el cálculo de tithi, Viddhā, Mahādvādaśī ni Parāṇa.",
+  "provenance": {
+    "primary_sources": [
+
+    ],
+    "secondary_sources": [
+
+    ],
+    "operational_sources": [
+      {
+        "source": "Observance Content Catalog Integrity Certification",
+        "level": "C",
+        "use": "content file coverage and missing-content identification",
+        "local_path": "04_Tests/Vaishnava/Observance-Content-Catalog-Integrity.md",
+        "note": "This source justifies creating a schema-valid placeholder. It does not provide doctrinal or historical content."
+      },
+      {
+        "source": "Festival Catalog",
+        "level": "C",
+        "use": "ObservanceId, slug, display name, and classification metadata",
+        "local_path": "08_Examples/RC1-Experience/content/ekadasi/catalog.json",
+        "note": "Catalog identifies content associated with resolver output; it does not calculate observances."
+      }
+    ],
+    "technical_sources": [
+
+    ],
+    "editorial_sources": [
+      {
+        "source": "Campaign 53.1 placeholder generation",
+        "level": "E",
+        "use": "structural placeholder only",
+        "local_path": "04_Tests/Vaishnava/Populate-Native-Observance-Library.md",
+        "note": "No doctrine, narrative, benefits, or ritual details were generated."
+      }
+    ],
+    "reviewed_by": null,
+    "approved_by": null,
+    "verification_date": null
+  }
 }

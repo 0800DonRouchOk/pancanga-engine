@@ -11,6 +11,7 @@
     "presentation",
     "content",
     "references",
+    "provenance",
     "related_observances",
     "metadata"
   ],
@@ -207,6 +208,76 @@
       "minItems": 1,
       "items": {
         "$ref": "#/$defs/reference"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_sources",
+        "secondary_sources",
+        "operational_sources",
+        "technical_sources",
+        "editorial_sources",
+        "reviewed_by",
+        "approved_by",
+        "verification_date"
+      ],
+      "properties": {
+        "primary_sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/provenanceSource"
+          },
+          "description": "Level A sources used to build the entry."
+        },
+        "secondary_sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/provenanceSource"
+          },
+          "description": "Level B sources used to build the entry."
+        },
+        "operational_sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/provenanceSource"
+          },
+          "description": "Level C sources used to build the entry."
+        },
+        "technical_sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/provenanceSource"
+          },
+          "description": "Level D sources used to build the entry."
+        },
+        "editorial_sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/provenanceSource"
+          },
+          "description": "Level E sources used to build the entry."
+        },
+        "reviewed_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "approved_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verification_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        }
       }
     },
     "related_observances": {
@@ -472,6 +543,56 @@
         "url": {
           "type": "string",
           "format": "uri"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "provenanceSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "level",
+        "use"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "level": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+          ]
+        },
+        "use": {
+          "type": "string",
+          "minLength": 1
+        },
+        "local_path": {
+          "type": "string"
+        },
+        "chapter": {
+          "type": "string"
+        },
+        "verses": {
+          "type": "string"
+        },
+        "pages": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "edition": {
+          "type": "string"
         },
         "note": {
           "type": "string"

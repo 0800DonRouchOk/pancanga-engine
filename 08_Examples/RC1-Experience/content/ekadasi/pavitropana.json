@@ -176,5 +176,46 @@
     "Se asocia con la bendición de obtener un buen hijo en la narración tradicional.",
     "Escuchar sus glorias es presentado como espiritualmente meritorio."
   ],
-  "rc1_scope_note": "Esta biblioteca es una capa de contenido. No modifica el cálculo de tithi, Viddhā, Mahādvādaśī ni Parāṇa."
+  "rc1_scope_note": "Esta biblioteca es una capa de contenido. No modifica el cálculo de tithi, Viddhā, Mahādvādaśī ni Parāṇa.",
+  "provenance": {
+    "primary_sources": [
+      {
+        "source": "Bhaviṣya-uttara Purāṇa",
+        "level": "A",
+        "use": "observance history, benefits, and narrative summary",
+        "local_path": "07_Sources/Vaishnava/204176529-Ekadashi-Es-Ramanuja-Dasa.pdf",
+        "pages": "60-62",
+        "language": "es",
+        "edition": "local PDF",
+        "note": "Entrada estructurada a partir del PDF local incorporado al repositorio. El texto de la historia fue resumido, no copiado literalmente."
+      }
+    ],
+    "secondary_sources": [
+
+    ],
+    "operational_sources": [
+      {
+        "source": "Festival Catalog",
+        "level": "C",
+        "use": "ObservanceId, slug, display name, and classification metadata",
+        "local_path": "08_Examples/RC1-Experience/content/ekadasi/catalog.json",
+        "note": "Catalog identifies content associated with resolver output; it does not calculate observances."
+      }
+    ],
+    "technical_sources": [
+
+    ],
+    "editorial_sources": [
+      {
+        "source": "Campaign 53.1 canonical migration",
+        "level": "E",
+        "use": "schema migration and editorial summary structure",
+        "local_path": "04_Tests/Vaishnava/Populate-Native-Observance-Library.md",
+        "note": "Existing approved RC1 content was migrated into canonical fields without changing calculation rules."
+      }
+    ],
+    "reviewed_by": null,
+    "approved_by": null,
+    "verification_date": null
+  }
 }
