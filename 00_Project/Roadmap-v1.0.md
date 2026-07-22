@@ -196,6 +196,8 @@ Hari-bhakti-vilāsa
   principal pasa de infraestructura a contenido auditado
 - ✅ Campaign 55.1 - Golden Sample Workflow definido; la primera observancia se
   divide obligatoriamente en dossier de investigación y autoría desde evidencia
+- 🟡 Campaign 55.1A - Golden Sample Research Dossier; EK-010 Kāmikā Ekādaśī
+  producido como dossier/evidence log y pendiente de revisión
 - 🔴 Campaign 46R - Release Audit
 - 🔴 Campaign 47 - v1.0 Release
 - 🟡 Final Certification Stage - [criterio de salida](Final-Certification-Stage.md)
