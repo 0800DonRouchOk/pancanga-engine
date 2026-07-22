@@ -264,7 +264,8 @@ fn calculate_response(query: &str) -> Result<String, String> {
                 \"display_name\":\"{}\",\
                 \"source\":\"{}\",\
                 \"masa\":\"{}\",\
-                \"paksha\":\"{}\"\
+                \"paksha\":\"{}\",\
+                \"fasting_for\":\"{}\"\
             }},\
             \"parana_recommended\":\"{}\",\
             \"parana_normative\":\"{}\",\
@@ -308,7 +309,7 @@ fn calculate_response(query: &str) -> Result<String, String> {
         ),
         json_escape(
             ekadasi_identity
-                .map(|identity| identity.observance.id)
+                .map(|identity| identity.observance.id.label())
                 .unwrap_or("")
         ),
         json_escape(
@@ -334,6 +335,12 @@ fn calculate_response(query: &str) -> Result<String, String> {
         json_escape(
             ekadasi_identity
                 .map(|identity| paksha_label(identity.paksha))
+                .unwrap_or("")
+        ),
+        json_escape(
+            ekadasi_identity
+                .and_then(|identity| identity.observance.fasting_for)
+                .map(|id| id.label())
                 .unwrap_or("")
         ),
         json_escape(

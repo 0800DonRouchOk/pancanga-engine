@@ -136,6 +136,10 @@ Hitos de certificación cerrados:
 - Campaign 51.0 - Native Vaiṣṇava Māsa implementado sobre la especificación
   provisional de KB-CAL-001/002. El Calendar Engine expone `VaishnavaMasaInfo`
   y la RC1 ya no usa el adaptador temporal por mes civil.
+- Campaign 52.0 - Native Observance Resolver consolidado. La salida de dominio
+  `ObservanceContent` usa `ObservanceId` tipado, incluye māsa/pakṣa cuando
+  corresponden y modela `fasting_for` como relación entre observancias, no como
+  texto.
 
 ## Deuda Técnica Explícita Post-v1.0
 
@@ -191,6 +195,9 @@ PASS - provisional pūrṇimānta / saṅkrānti-count specification incorporate
 Campaign 51.0 Native Vaiṣṇava Māsa Implementation:
 PASS - Calendar Engine implementation and RC1 adapter removal
 
+Campaign 52.0 Native Observance Resolver:
+PASS - unified ObservanceContent, typed ObservanceId and fasting_for relation
+
 Motivo:
 Campaign 50.4 incorporó una hipótesis técnica local suficiente para abrir una
 implementación provisional: mes lunar pūrṇimānta, māsa por saṅkrānti, Adhika
@@ -211,6 +218,7 @@ Informe:
 - [Campaign 50.3 - HBV Vaiṣṇava Māsa Research](00_Project/Campaign-50.3-HBV-Vaishnava-Masa-Research.md)
 - [Campaign 50.4 - Provisional Vaiṣṇava Māsa Hypothesis Incorporation](00_Project/Campaign-50.4-Provisional-Vaishnava-Masa-Hypothesis-Incorporation.md)
 - [Campaign 51.0 - Native Vaiṣṇava Māsa Implementation](00_Project/Campaign-51.0-Native-Vaishnava-Masa-Implementation-Provisional.md)
+- [Campaign 52.0 - Native Observance Resolver](00_Project/Campaign-52.0-Native-Observance-Resolver.md)
 - [KB-CAL-001 - Vaiṣṇava Māsa Specification](05_Documentation/Knowledge-Base/KB-CAL-001-Vaishnava-Masa-Specification.md)
 - [KB-CAL-002 - HBV Vaiṣṇava Māsa Rules](05_Documentation/Knowledge-Base/KB-CAL-002-HBV-Vaishnava-Masa-Rules.md)
 

@@ -18,5 +18,6 @@ pub use ekadasi::{
 };
 pub use observance::{
     resolve_mahadvadasi_observance, resolve_observance, resolve_ordinary_ekadasi_observance,
-    Observance, ObservanceResolutionError, ObservanceSource, ObservanceType, VaishnavaMasa,
+    Observance, ObservanceContent, ObservanceId, ObservanceResolutionError, ObservanceSource,
+    ObservanceType, VaishnavaMasa,
 };

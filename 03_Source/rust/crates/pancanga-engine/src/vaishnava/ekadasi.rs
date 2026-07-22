@@ -532,8 +532,8 @@ mod tests {
     use crate::calendar::CivilDayTithiPresence;
     use crate::core::JulianDate;
     use crate::vaishnava::{
-        ObservanceResolutionError, ObservanceSource, ObservanceType, VaishnavaEngineError,
-        VaishnavaMasa,
+        ObservanceId, ObservanceResolutionError, ObservanceSource, ObservanceType,
+        VaishnavaEngineError, VaishnavaMasa,
     };
 
     #[test]
@@ -874,10 +874,13 @@ mod tests {
         .expect("valid classification");
         let observance = result.observance_content.expect("observance content");
 
-        assert_eq!(observance.id, "EK-010");
+        assert_eq!(observance.id, ObservanceId::Ek010);
         assert_eq!(observance.slug, "kamika");
         assert_eq!(observance.display_name, "Kāmikā Ekādaśī");
         assert_eq!(observance.observance_type, ObservanceType::Ekadasi);
+        assert_eq!(observance.masa, Some(VaishnavaMasa::Sravana));
+        assert_eq!(observance.paksha, Some(crate::astronomy::Paksha::Krsna));
+        assert_eq!(observance.fasting_for, None);
         assert_eq!(observance.source, ObservanceSource::MasaPaksha);
     }
 
@@ -911,10 +914,11 @@ mod tests {
         let observance = result.observance_content.expect("observance content");
 
         assert_eq!(result.mahadvadasi, Some(MahadvadasiType::Trisprsa));
-        assert_eq!(observance.id, "MD-003");
+        assert_eq!(observance.id, ObservanceId::Md003);
         assert_eq!(observance.slug, "trisprsa");
         assert_eq!(observance.display_name, "Triṣpṛṣā Mahādvādaśī");
         assert_eq!(observance.observance_type, ObservanceType::Mahadvadasi);
+        assert_eq!(observance.fasting_for, Some(ObservanceId::Ek021));
         assert_eq!(observance.source, ObservanceSource::MahadvadasiRule);
     }
 

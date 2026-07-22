@@ -172,6 +172,8 @@ Hari-bhakti-vilāsa
 - ✅ Campaign 50.4 - Provisional Vaiṣṇava Māsa Hypothesis Incorporation
 - ✅ Campaign 51.0 - Native Vaiṣṇava Māsa Implementation (provisional);
   Calendar Engine expone māsa nativo y la RC1 ya no usa adaptador temporal
+- ✅ Campaign 52.0 - Native Observance Resolver; salida única
+  `ObservanceContent`, `ObservanceId` tipado y `fasting_for` como relación
 - 🔴 Campaign 46R - Release Audit
 - 🔴 Campaign 47 - v1.0 Release
 - 🟡 Final Certification Stage - [criterio de salida](Final-Certification-Stage.md)
@@ -248,6 +250,10 @@ PASS - provisional pūrṇimānta / saṅkrānti-count specification incorporate
 51.0 Native Vaiṣṇava Māsa Implementation:
 PASS - Calendar Engine supplies native Vaiṣṇava Māsa from the provisional
 specification and the RC1/content-layer adapter is removed
+
+52.0 Native Observance Resolver:
+PASS - one domain output for supported observances, with typed IDs and
+fasting_for relationships
 ```
 
 Objective:
@@ -377,6 +383,12 @@ Campaign 51.0 provisional implementation:
 
 ```text
 00_Project/Campaign-51.0-Native-Vaishnava-Masa-Implementation-Provisional.md
+```
+
+Campaign 52.0 observance consolidation:
+
+```text
+00_Project/Campaign-52.0-Native-Observance-Resolver.md
 ```
 
 ## Metodología desde M5
