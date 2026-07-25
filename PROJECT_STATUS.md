@@ -161,6 +161,9 @@ Trabajo de Knowledge Library:
   ordinary Ekādaśī entries were authored from the local Ekādaśī book with
   evidence logs and provenance; EK-010 remained unchanged as golden sample.
 - Campaign 55.3 - Complete Mahādvādaśī Collection.
+- Campaign 60.0 - RC1 Desktop macOS: PACKAGING RC1. A local
+  `Pancanga Engine.app` bundle can start the embedded RC1 backend and open the
+  interface without Terminal or manual localhost entry.
 
 Knowledge Library coverage:
 

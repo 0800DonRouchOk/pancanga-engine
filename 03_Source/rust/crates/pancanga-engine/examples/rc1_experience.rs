@@ -202,7 +202,9 @@ fn ekadasi_content_slug(path: &str) -> Option<&str> {
 }
 
 fn read_ekadasi_content(slug: &str) -> std::io::Result<String> {
-    fs::read_to_string(Path::new(EKADASI_CONTENT_DIR).join(format!("{slug}.json")))
+    let content_dir =
+        env::var("RC1_CONTENT_DIR").unwrap_or_else(|_| EKADASI_CONTENT_DIR.to_string());
+    fs::read_to_string(Path::new(&content_dir).join(format!("{slug}.json")))
 }
 
 fn local_config(local_addr: Option<SocketAddr>) -> String {
