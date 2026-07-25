@@ -1,7 +1,9 @@
 use std::collections::HashMap;
 use std::env;
+use std::fs;
 use std::io::{Read, Write};
 use std::net::{SocketAddr, TcpListener, TcpStream};
+use std::path::Path;
 use std::process::Command;
 use std::sync::OnceLock;
 use std::thread;
@@ -30,12 +32,10 @@ const DEFAULT_ADDRESS: &str = "127.0.0.1:7878";
 const HTML: &str = include_str!("../../../../../08_Examples/RC1-Experience/index.html");
 const EKADASI_CATALOG: &str =
     include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/catalog.json");
-const SAYANA_CONTENT: &str =
-    include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/sayana.json");
-const KAMIKA_CONTENT: &str =
-    include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/kamika.json");
-const PAVITROPANA_CONTENT: &str =
-    include_str!("../../../../../08_Examples/RC1-Experience/content/ekadasi/pavitropana.json");
+const EKADASI_CONTENT_DIR: &str = concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/../../../../08_Examples/RC1-Experience/content/ekadasi"
+);
 const OFFICIAL_ZENITH_DEGREES: f64 = 90.833;
 const SCAN_STEP_DAYS: f64 = 1.0 / 96.0;
 const REFINEMENT_STEPS: usize = 48;
@@ -153,23 +153,16 @@ fn handle_connection(stream: &mut TcpStream) {
         return;
     }
 
-    if path == "/content/ekadasi/pavitropana.json" {
-        respond(stream, "200 OK", "application/json", PAVITROPANA_CONTENT);
-        return;
-    }
-
     if path == "/content/ekadasi/catalog.json" {
         respond(stream, "200 OK", "application/json", EKADASI_CATALOG);
         return;
     }
 
-    if path == "/content/ekadasi/sayana.json" {
-        respond(stream, "200 OK", "application/json", SAYANA_CONTENT);
-        return;
-    }
-
-    if path == "/content/ekadasi/kamika.json" {
-        respond(stream, "200 OK", "application/json", KAMIKA_CONTENT);
+    if let Some(slug) = ekadasi_content_slug(path) {
+        match read_ekadasi_content(slug) {
+            Ok(content) => respond(stream, "200 OK", "application/json", &content),
+            Err(_) => respond(stream, "404 Not Found", "text/plain", "Not found"),
+        }
         return;
     }
 
@@ -192,6 +185,24 @@ fn handle_connection(stream: &mut TcpStream) {
     }
 
     respond(stream, "404 Not Found", "text/plain", "Not found");
+}
+
+fn ekadasi_content_slug(path: &str) -> Option<&str> {
+    let slug = path
+        .strip_prefix("/content/ekadasi/")
+        .and_then(|path| path.strip_suffix(".json"))?;
+
+    if slug.chars().all(|character| {
+        character.is_ascii_lowercase() || character.is_ascii_digit() || character == '_'
+    }) {
+        Some(slug)
+    } else {
+        None
+    }
+}
+
+fn read_ekadasi_content(slug: &str) -> std::io::Result<String> {
+    fs::read_to_string(Path::new(EKADASI_CONTENT_DIR).join(format!("{slug}.json")))
 }
 
 fn local_config(local_addr: Option<SocketAddr>) -> String {

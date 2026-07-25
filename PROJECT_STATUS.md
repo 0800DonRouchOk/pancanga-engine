@@ -153,7 +153,10 @@ Trabajo de Knowledge Library:
 - Campaign 55.1A - Golden Sample Research Dossier: EK-010 Kāmikā approved for
   55.1B authoring.
 - Campaign 55.1B - Golden Sample Authoring: PASS.
-- Campaign 55.2 - Ekādaśī Production: 1 / 24 published.
+- Campaign 55.2 - Ekādaśī Production: ACTIVE.
+- Campaign 55.2A - Resolver Completion: PASS. The resolver covers 24 / 24
+  Ekādaśīs and 8 / 8 Mahādvādaśīs; the RC1 local content server now exposes
+  32 / 32 cataloged JSON routes.
 - Campaign 55.3 - Complete Mahādvādaśī Collection.
 
 Knowledge Library coverage:
@@ -170,6 +173,13 @@ Ekādaśī remaining:
 
 Mahādvādaśī published:
 0 / 8
+
+Resolver coverage:
+24 / 24 Ekādaśīs
+8 / 8 Mahādvādaśīs
+
+RC1 content route coverage:
+32 / 32
 
 Invented doctrine:
 0

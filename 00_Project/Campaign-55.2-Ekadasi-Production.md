@@ -1,6 +1,6 @@
 # Campaign 55.2: Ekādaśī Production
 
-Status: DEFINED
+Status: ACTIVE
 
 Phase: Knowledge Acquisition & Authoring
 
@@ -13,6 +13,54 @@ the reference implementation for editorial quality, evidence traceability, and
 publication discipline.
 
 Campaign 55.2 is a production campaign, not a process-design campaign.
+
+## Campaign 55.2A: Resolver Completion
+
+Status: PASS
+
+Before continuing content production, the resolver/content access chain was
+audited because the RC1 Experience appeared to load only a small subset of
+Ekādaśī histories.
+
+Result:
+
+```text
+Native Observance Resolver:
+24 / 24 Ekādaśīs
+8 / 8 Mahādvādaśīs
+
+Festival Catalog:
+32 / 32 entries
+
+Content JSON files:
+32 / 32 present
+
+RC1 local content routes:
+32 / 32 accessible
+
+ENGINE BUG:
+0
+```
+
+Cause:
+
+```text
+RC1 local server was serving only the original three demonstration content
+files. The resolver was already complete for the supported domain.
+```
+
+Correction:
+
+```text
+RC1 local server now serves cataloged observance content dynamically by slug.
+```
+
+Next:
+
+```text
+55.2B
+Content Production
+```
 
 ## Reference Implementation
 
@@ -148,6 +196,15 @@ Remaining:
 ```text
 Golden Sample:
 1 / 1
+
+Resolver coverage:
+24 / 24 Ekādaśīs
+
+Mahādvādaśī resolver coverage:
+8 / 8
+
+RC1 content route coverage:
+32 / 32
 
 Ekādaśī published:
 1 / 24

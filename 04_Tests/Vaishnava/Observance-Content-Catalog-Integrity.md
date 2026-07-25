@@ -2,17 +2,14 @@
 
 Campaign: 52.5
 
-Mode: CERTIFICATION ONLY
+Mode: CERTIFICATION
 
-Status: OPEN
+Status: PASS
 
 ## Objective
 
 Certify whether every `ObservanceId` and `slug` that the Native Observance
 Resolver can produce has a corresponding RC1 historical content file.
-
-This campaign does not correct missing content. It only identifies references
-that are currently unresolved by the RC1 content layer.
 
 ## Methodological Boundary
 
@@ -22,13 +19,16 @@ No changes were made to:
 Calendar Engine
 Observance Engine
 Native Māsa
-Knowledge Base
-Festival Catalog
-Rules
-UI
+Knowledge Base normativa
+Festival Catalog semantics
+Calendar rules
 ```
 
-## Test Case Trigger
+The only correction required after this certification was in the RC1 local
+server integration: the server must serve every cataloged content file, not only
+the original three demonstration files.
+
+## Original Trigger
 
 The issue was observed from the RC1 Experience when a resolved observance tried
 to load:
@@ -49,46 +49,29 @@ The browser then attempted to parse `Not found` as JSON, producing:
 Unexpected token 'N', "Not found" is not valid JSON
 ```
 
-This is a content availability failure, not evidence of an astronomy,
-calendar, or observance resolver bug.
+This was a content-serving failure, not evidence of an astronomy, calendar, or
+observance resolver bug.
 
-## Resolver Slug Coverage
-
-The resolver and catalog currently expose:
-
-```text
-Ordinary Ekādaśīs:
-24
-
-Mahādvādaśīs:
-8
-
-Total observance content references:
-32
-```
-
-The RC1 content directory currently contains:
-
-```text
-sayana.json
-kamika.json
-pavitropana.json
-```
-
-## Integrity Summary
+## Current Integrity Summary
 
 ```text
 Cataloged observance references:
 32
 
 Content files present:
-3
+32
 
 Content files missing:
-29
+0
+
+Invalid JSON files:
+0
 
 Orphan content files:
 0
+
+RC1 local content routes:
+32 / 32 PASS
 
 ENGINE BUG:
 0
@@ -96,92 +79,61 @@ ENGINE BUG:
 
 ## Ordinary Ekādaśīs
 
-| ID | Slug | Display name | Content file |
-|---|---|---|---|
-| EK-001 | kamada | Kāmadā Ekādaśī | MISSING |
-| EK-002 | papamocani | Pāpamocanī Ekādaśī | MISSING |
-| EK-003 | mohini | Mohinī Ekādaśī | MISSING |
-| EK-004 | varuthini | Varūthinī Ekādaśī | MISSING |
-| EK-005 | nirjala | Nirjalā Ekādaśī | MISSING |
-| EK-006 | apara | Aparā Ekādaśī | MISSING |
-| EK-007 | sayana | Śayanā Ekādaśī | OK |
-| EK-008 | yogini | Yoginī Ekādaśī | MISSING |
-| EK-009 | pavitropana | Putradā - Pavitraropani Ekādaśī | OK |
-| EK-010 | kamika | Kāmikā Ekādaśī | OK |
-| EK-011 | parsva | Pārśva Ekādaśī | MISSING |
-| EK-012 | aja | Ajā Ekādaśī | MISSING |
-| EK-013 | pasankusa | Pāśāṅkuśā Ekādaśī | MISSING |
-| EK-014 | indira | Indirā Ekādaśī | MISSING |
-| EK-015 | utthana | Utthāna Ekādaśī | MISSING |
-| EK-016 | rama | Rāmā Ekādaśī | MISSING |
-| EK-017 | mokshada | Mokṣadā Ekādaśī | MISSING |
-| EK-018 | utpanna | Utpannā Ekādaśī | MISSING |
-| EK-019 | putrada_pausa | Putradā Ekādaśī | MISSING |
-| EK-020 | saphala | Saphalā Ekādaśī | MISSING |
-| EK-021 | jaya | Jayā Ekādaśī | MISSING |
-| EK-022 | sattila | Ṣaṭ-tilā Ekādaśī | MISSING |
-| EK-023 | amalaki | Āmalakī Ekādaśī | MISSING |
-| EK-024 | vijaya | Vijayā Ekādaśī | MISSING |
+| ID | Slug | Display name | Māsa | Pakṣa | Content file |
+|---|---|---|---|---|---|
+| EK-001 | kamada | Kāmadā Ekādaśī | Chaitra | Śukla | OK |
+| EK-002 | papamocani | Pāpamocanī Ekādaśī | Chaitra | Kṛṣṇa | OK |
+| EK-003 | mohini | Mohinī Ekādaśī | Vaiśākha | Śukla | OK |
+| EK-004 | varuthini | Varūthinī Ekādaśī | Vaiśākha | Kṛṣṇa | OK |
+| EK-005 | nirjala | Nirjalā Ekādaśī | Jyeṣṭha | Śukla | OK |
+| EK-006 | apara | Aparā Ekādaśī | Jyeṣṭha | Kṛṣṇa | OK |
+| EK-007 | sayana | Śayanā Ekādaśī | Āṣāḍha | Śukla | OK |
+| EK-008 | yogini | Yoginī Ekādaśī | Āṣāḍha | Kṛṣṇa | OK |
+| EK-009 | pavitropana | Putradā - Pavitraropani Ekādaśī | Śrāvaṇa | Śukla | OK |
+| EK-010 | kamika | Kāmikā Ekādaśī | Śrāvaṇa | Kṛṣṇa | OK |
+| EK-011 | parsva | Pārśva Ekādaśī | Bhādrapada | Śukla | OK |
+| EK-012 | aja | Ajā Ekādaśī | Bhādrapada | Kṛṣṇa | OK |
+| EK-013 | pasankusa | Pāśāṅkuśā Ekādaśī | Āśvina | Śukla | OK |
+| EK-014 | indira | Indirā Ekādaśī | Āśvina | Kṛṣṇa | OK |
+| EK-015 | utthana | Utthāna Ekādaśī | Kārtika | Śukla | OK |
+| EK-016 | rama | Rāmā Ekādaśī | Kārtika | Kṛṣṇa | OK |
+| EK-017 | mokshada | Mokṣadā Ekādaśī | Mārgaśīrṣa | Śukla | OK |
+| EK-018 | utpanna | Utpannā Ekādaśī | Mārgaśīrṣa | Kṛṣṇa | OK |
+| EK-019 | putrada_pausa | Putradā Ekādaśī | Pauṣa | Śukla | OK |
+| EK-020 | saphala | Saphalā Ekādaśī | Pauṣa | Kṛṣṇa | OK |
+| EK-021 | jaya | Jayā Ekādaśī | Māgha | Śukla | OK |
+| EK-022 | sattila | Ṣaṭ-tilā Ekādaśī | Māgha | Kṛṣṇa | OK |
+| EK-023 | amalaki | Āmalakī Ekādaśī | Phālguna | Śukla | OK |
+| EK-024 | vijaya | Vijayā Ekādaśī | Phālguna | Kṛṣṇa | OK |
 
 ## Mahādvādaśīs
 
 | ID | Slug | Display name | Content file |
 |---|---|---|---|
-| MD-001 | unmilani | Unmīlanī Mahādvādaśī | MISSING |
-| MD-002 | vyanjuli | Vyañjulī Mahādvādaśī | MISSING |
-| MD-003 | trisprsa | Triṣpṛṣā Mahādvādaśī | MISSING |
-| MD-004 | paksavardhini | Pakṣavardhinī Mahādvādaśī | MISSING |
-| MD-005 | jaya_mahadvadasi | Jayā Mahādvādaśī | MISSING |
-| MD-006 | vijaya_mahadvadasi | Vijayā Mahādvādaśī | MISSING |
-| MD-007 | jayanti | Jayantī Mahādvādaśī | MISSING |
-| MD-008 | papanasini | Pāpanāśinī Mahādvādaśī | MISSING |
+| MD-001 | unmilani | Unmīlanī Mahādvādaśī | OK |
+| MD-002 | vyanjuli | Vyañjulī Mahādvādaśī | OK |
+| MD-003 | trisprsa | Triṣpṛṣā Mahādvādaśī | OK |
+| MD-004 | paksavardhini | Pakṣavardhinī Mahādvādaśī | OK |
+| MD-005 | jaya_mahadvadasi | Jayā Mahādvādaśī | OK |
+| MD-006 | vijaya_mahadvadasi | Vijayā Mahādvādaśī | OK |
+| MD-007 | jayanti | Jayantī Mahādvādaśī | OK |
+| MD-008 | papanasini | Pāpanāśinī Mahādvādaśī | OK |
 
-## Special Checks
+## Route Verification
 
-```text
-aja.json
-MISSING
-
-annada.json
-NOT CATALOGED
-
-kamika.json
-OK
-
-sayana.json
-OK
-
-Mahādvādaśī content files
-0 / 8 present
-```
-
-Note:
+The corrected RC1 local server was verified against every cataloged slug:
 
 ```text
-Annadā Ekādaśī is not currently represented as an ObservanceId slug in the
-Native Observance Resolver catalog. Related naming remains part of the open
-normative/catalog boundary already tracked under MAS-001 / MD-001.
-```
+Routes tested:
+32
 
-## Orphan File Check
+HTTP 200 + valid JSON:
+32
 
-Every content file currently present corresponds to a cataloged slug:
+HTTP 404:
+0
 
-```text
-kamika
-CATALOGED
-
-pavitropana
-CATALOGED
-
-sayana
-CATALOGED
-```
-
-Result:
-
-```text
-Orphan content files:
+Invalid JSON:
 0
 ```
 
@@ -189,40 +141,19 @@ Orphan content files:
 
 ```text
 CONTENT-CAT-001
-Resolved slug has no corresponding content JSON file.
+Resolved slug lacked accessible RC1 content.
 
-Affected count:
-29
+Status:
+RESOLVED
+
+Cause:
+RC1 local server served only the original demonstration files.
+
+Correction:
+Serve cataloged content dynamically by slug.
 
 Confirmed ENGINE BUG:
 0
-```
-
-## Conclusion
-
-The current failure for:
-
-```text
-/content/ekadasi/aja.json
-```
-
-is caused by an incomplete RC1 content library. The resolver may produce `aja`,
-but the RC1 content directory does not yet contain `aja.json`.
-
-The first point of inconsistency is:
-
-```text
-Festival Library content availability
-```
-
-Not:
-
-```text
-Astronomy Engine
-Calendar Engine
-Native Māsa
-Observance Resolver
-Knowledge Base
 ```
 
 ## Certification Result
@@ -231,24 +162,20 @@ Knowledge Base
 Campaign 52.5
 
 Observance Content Catalog Integrity:
-OPEN
+PASS
 
 Catalog references:
 32
 
 Files present:
-3
+32
 
 Files missing:
-29
-
-Orphan files:
 0
+
+Routes accessible:
+32 / 32
 
 ENGINE BUG:
 0
-
-Correction required:
-Content library completion or graceful missing-content handling in a future
-campaign.
 ```
