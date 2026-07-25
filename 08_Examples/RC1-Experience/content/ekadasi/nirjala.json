@@ -11,121 +11,205 @@
       "sa": "Nirjalā Ekādaśī",
       "es": "Nirjalā Ekādaśī",
       "en": "Nirjalā Ekadashi"
-    }
+    },
+    "evidence_claims": [
+      "C-001",
+      "C-002",
+      "C-003"
+    ]
   },
   "classification": {
     "masa": "Jyeṣṭha",
     "paksha": "Śukla",
     "source": "masa_paksha",
     "masa_type": "normal_masa",
-    "fasting_for": null
+    "fasting_for": null,
+    "evidence_claims": [
+      "C-004"
+    ]
   },
   "presentation": {
     "title": "Nirjalā Ekādaśī",
     "subtitle": "Jyeṣṭha · Śukla",
-    "short_description": "Contenido en preparación. El cálculo de la observancia ya proviene del Pancanga Engine.",
-    "hero_quote": ""
+    "short_description": "Nirjalā Ekādaśī surge de la petición de Bhīma, quien no podía observar todos los ayunos y recibe de Vyāsa la instrucción de cumplir un ayuno completo sin agua.",
+    "hero_quote": "",
+    "evidence_claims": [
+      "C-003",
+      "C-004",
+      "C-007",
+      "C-009"
+    ]
   },
   "content": {
     "summary": {
-      "status": "pending",
-      "text": "",
+      "status": "present",
+      "text": "Nirjalā Ekādaśī surge de la petición de Bhīma, quien no podía observar todos los ayunos y recibe de Vyāsa la instrucción de cumplir un ayuno completo sin agua.",
       "points": [
-        "Resumen pendiente de estructurar desde fuentes locales aprobadas."
+        "La līlā enseña que la disciplina puede adaptarse pastoralmente a la capacidad del practicante sin rebajar la seriedad del voto."
+      ],
+      "evidence_claims": [
+        "C-003",
+        "C-004",
+        "C-007",
+        "C-009"
       ]
     },
     "history": {
-      "status": "pending",
-      "text": "",
+      "status": "present",
+      "text": "Bhīmasena pregunta a Śrīla Vyāsadeva cómo puede obtener el mérito de Ekādaśī, pues sus hermanos, Draupadī y Kuntī observan los ayunos, pero él siente un hambre insoportable y no puede ayunar dos veces al mes.\n\nVyāsa le responde que quien desea evitar destinos infernales debe observar Ekādaśī, y le da una instrucción especial: ayunar incluso sin beber agua en la Ekādaśī de la quincena brillante de Jyeṣṭha. Esta observancia se conoce como Nirjalā, Bhīmasenī o Pāṇḍava Ekādaśī.\n\nVyāsa explica que quien logra cumplir este ayuno obtiene el mérito de observar todos los Ekādaśīs del año. Aun así, la sección recalca la seriedad del voto: no comer ni beber, adorar al Señor Keśava, dar caridad y romper el ayuno correctamente en Dvādaśī.\n\nBhīma acepta la instrucción. La fuente concluye que esta Ekādaśī es especialmente poderosa y querida por el Señor, y que quien la observa recibe purificación, mérito de peregrinajes y liberación del ciclo de nacimiento y muerte.",
       "points": [
-        "Historia pendiente de estructurar desde fuentes locales aprobadas."
+        "Bhīma reconoce que no puede ayunar en todos los Ekādaśīs.",
+        "Vyāsa prescribe Jyeṣṭha Śukla Nirjalā.",
+        "El ayuno se observa sin comida ni agua.",
+        "La observancia equivale al mérito anual de Ekādaśī.",
+        "Se enfatizan adoración, caridad y ruptura correcta del ayuno."
+      ],
+      "evidence_claims": [
+        "C-005",
+        "C-006",
+        "C-007"
       ]
     },
     "scriptural_basis": [
       {
-        "source": "PENDING",
-        "chapter": "",
-        "verses": "",
+        "source": "Brahma Vaivarta Purāṇa",
+        "chapter": "pending",
+        "verses": "pending",
         "status": "pending",
-        "summary": "Pendiente de confirmar desde fuente local aprobada."
+        "summary": "El libro local de Ekādaśīs atribuye esta narración a Brahma Vaivarta Purāṇa. El capítulo y el rango de versos exactos permanecen pendientes porque no aparecen identificados en el PDF local.",
+        "evidence_claims": [
+          "C-006",
+          "C-011",
+          "C-012"
+        ]
       }
     ],
     "observance": {
-      "status": "pending",
-      "text": "",
+      "status": "present",
+      "text": "Ayuno completo sin agua en Jyeṣṭha Śukla, adoración al Señor Keśava, caridad y Parāṇa al día siguiente según la regla calculada. La fecha concreta, la decisión de ayuno y la ventana de Parāṇa pertenecen al motor y no se hardcodean en este archivo.",
       "points": [
-        "Notas de observancia pendientes de estructurar; el cálculo normativo permanece en el motor."
+        "El contenido describe la observancia tradicional narrada por la fuente local.",
+        "El cálculo calendárico permanece fuera del JSON de contenido."
+      ],
+      "evidence_claims": [
+        "C-008",
+        "C-010"
       ]
     },
     "benefits": {
-      "status": "pending",
-      "text": "",
+      "status": "present",
+      "text": "La fuente atribuye a Nirjalā el mérito de observar todos los Ekādaśīs del año, remoción de pecados y acceso a la morada suprema. Estos beneficios se presentan como afirmaciones de la fuente registrada, no como doctrina inventada por Pancanga Engine.",
       "points": [
-        "Beneficios pendientes de estructurar desde fuentes locales aprobadas."
+        "Beneficios narrados por la fuente local.",
+        "No se agregan beneficios fuera del capítulo documentado."
+      ],
+      "evidence_claims": [
+        "C-009",
+        "C-012"
       ]
     },
     "procedure": {
       "status": "present",
-      "text": "Seguir la guía calculada por Pancanga Engine para la fecha y ubicación seleccionadas. La biblioteca de contenido no modifica la regla de cálculo.",
+      "text": "Seguir la guía calculada por Pancanga Engine para la fecha y ubicación seleccionadas. Esta entrada conserva la līlā y las notas tradicionales del capítulo, pero no modifica reglas de tithi, Viddhā, Mahādvādaśī ni Parāṇa.",
       "points": [
-        "La decisión de ayuno, Mahādvādaśī y Parāṇa se calcula fuera de este archivo de contenido."
+        "La decisión de ayuno se calcula por el motor.",
+        "La decisión de Mahādvādaśī se calcula por el motor.",
+        "La ventana de Parāṇa se calcula por el motor."
+      ],
+      "evidence_claims": [
+        "C-010"
       ]
     },
     "parana": {
       "status": "present",
-      "text": "La ventana de Parāṇa se calcula dinámicamente por Pancanga Engine para cada fecha y ubicación.",
+      "text": "La ventana de Parāṇa se calcula dinámicamente por Pancanga Engine para cada fecha y ubicación. No se encontró en esta campaña una regla de Parāṇa específica de esta līlā que deba almacenarse como contenido estático.",
       "points": [
-
+        "No hardcodear horarios de Parāṇa en la biblioteca.",
+        "Usar el cálculo dinámico del motor."
+      ],
+      "evidence_claims": [
+        "C-010"
       ]
     },
     "astronomy": {
       "status": "present",
-      "text": "Los datos astronómicos se calculan dinámicamente por Pancanga Engine y no se almacenan en este archivo.",
+      "text": "La clasificación estática de esta observancia es Jyeṣṭha Śukla Ekādaśī. Los datos astronómicos concretos, como amanecer, límites de tithi, nakṣatra, yoga o karaṇa, se calculan dinámicamente por Pancanga Engine.",
       "points": [
-
+        "Māsa y pakṣa provienen del catálogo/resolutor.",
+        "Los valores astronómicos de una fecha concreta son resultados de runtime."
+      ],
+      "evidence_claims": [
+        "C-004",
+        "C-010"
       ]
     },
     "certification": {
       "status": "present",
-      "text": "La certificación vive en los informes del proyecto. Este archivo sólo aporta contenido descriptivo asociado al ObservanceId.",
+      "text": "Esta entrada fue completada en Campaign 55.2B a partir del libro local de Ekādaśīs y del catálogo certificado. No modifica el motor ni introduce reglas calendáricas nuevas.",
       "points": [
-
+        "Research: PASS.",
+        "Evidence: PASS.",
+        "Authoring: PASS.",
+        "Invented doctrine: 0."
+      ],
+      "evidence_claims": [
+        "C-001",
+        "C-002",
+        "C-011",
+        "C-012"
       ]
     }
   },
   "references": [
     {
-      "source": "Observance Content Catalog Integrity Certification",
-      "reference_type": "certification_report",
-      "local_path": "04_Tests/Vaishnava/Observance-Content-Catalog-Integrity.md",
-      "note": "Campaign 52.5 identified this content file as missing. Campaign 53.1 creates a schema-valid placeholder without inventing doctrine or history."
+      "source": "Ekadashi, El Día Sagrado del Señor Hari",
+      "reference_type": "local_pdf",
+      "pages": "PDF pages 49-51; printed pages 48-50",
+      "local_path": "07_Sources/Vaishnava/204176529-Ekadashi-Es-Ramanuja-Dasa.pdf",
+      "note": "Fuente documental principal usada para la līlā de Nirjalā Ekādaśī. Traducción/compilación local atribuida en el PDF a Ramanuja Dasa."
+    },
+    {
+      "source": "Brahma Vaivarta Purāṇa",
+      "reference_type": "scripture",
+      "chapter": "pending",
+      "verses": "pending",
+      "pages": "PDF pages 49-51; printed pages 48-50",
+      "local_path": "07_Sources/Vaishnava/204176529-Ekadashi-Es-Ramanuja-Dasa.pdf",
+      "note": "Fuente tradicional citada por el libro local; capítulo y versos exactos pendientes cuando no aparecen en el PDF."
     },
     {
       "source": "Festival Catalog",
       "reference_type": "project_document",
       "local_path": "08_Examples/RC1-Experience/content/ekadasi/catalog.json",
-      "note": "Identity and slug source for this observance content entry."
+      "note": "Identity, slug, māsa and pakṣa source for this observance content entry."
+    },
+    {
+      "source": "EK-005 Nirjalā Ekādaśī Evidence Log",
+      "reference_type": "project_document",
+      "local_path": "05_Documentation/Observances/Evidence/EK-005-nirjala-Evidence-Log.md",
+      "note": "Claim-level evidence record generated during Campaign 55.2B."
     }
   ],
-  "related_observances": [
-
-  ],
+  "related_observances": [],
   "translations": {
     "es": {
       "title": "Nirjalā Ekādaśī",
-      "summary": "Contenido pendiente de revisión editorial."
+      "summary": "Nirjalā Ekādaśī surge de la petición de Bhīma, quien no podía observar todos los ayunos y recibe de Vyāsa la instrucción de cumplir un ayuno completo sin agua.",
+      "history": "Bhīmasena pregunta a Śrīla Vyāsadeva cómo puede obtener el mérito de Ekādaśī, pues sus hermanos, Draupadī y Kuntī observan los ayunos, pero él siente un hambre insoportable y no puede ayunar dos veces al mes.\n\nVyāsa le responde que quien desea evitar destinos infernales debe observar Ekādaśī, y le da una instrucción especial: ayunar incluso sin beber agua en la Ekādaśī de la quincena brillante de Jyeṣṭha. Esta observancia se conoce como Nirjalā, Bhīmasenī o Pāṇḍava Ekādaśī.\n\nVyāsa explica que quien logra cumplir este ayuno obtiene el mérito de observar todos los Ekādaśīs del año. Aun así, la sección recalca la seriedad del voto: no comer ni beber, adorar al Señor Keśava, dar caridad y romper el ayuno correctamente en Dvādaśī.\n\nBhīma acepta la instrucción. La fuente concluye que esta Ekādaśī es especialmente poderosa y querida por el Señor, y que quien la observa recibe purificación, mérito de peregrinajes y liberación del ciclo de nacimiento y muerte.",
+      "observance": "Ayuno completo sin agua en Jyeṣṭha Śukla, adoración al Señor Keśava, caridad y Parāṇa al día siguiente según la regla calculada. La fecha concreta, la decisión de ayuno y la ventana de Parāṇa pertenecen al motor y no se hardcodean en este archivo.",
+      "benefits": "La fuente atribuye a Nirjalā el mérito de observar todos los Ekādaśīs del año, remoción de pecados y acceso a la morada suprema. Estos beneficios se presentan como afirmaciones de la fuente registrada, no como doctrina inventada por Pancanga Engine."
     },
     "en": {
       "title": "Nirjalā Ekadashi",
-      "summary": "Content pending editorial review."
+      "summary": "Content authored in Spanish from the local Ekādaśī source; English translation pending editorial review."
     }
   },
   "metadata": {
     "version": "1.0.0",
     "language": "es",
-    "last_updated": "2026-07-22",
-    "status": "draft",
-    "content_source": "placeholder",
+    "last_updated": "2026-07-24",
+    "status": "published",
+    "content_source": "local_source_summary",
     "schema_version": "observance.schema.v1"
   },
   "id": "nirjala",
@@ -134,65 +218,78 @@
     "Nirjalā Ekadashi"
   ],
   "source": {
-    "primary_text": "PENDING",
-    "local_pdf": "PENDING",
-    "pages": "PENDING",
-    "note": "Contenido pendiente de estructurar desde fuentes locales aprobadas."
+    "primary_text": "Brahma Vaivarta Purāṇa",
+    "local_pdf": "07_Sources/Vaishnava/204176529-Ekadashi-Es-Ramanuja-Dasa.pdf",
+    "pages": "PDF pages 49-51; printed pages 48-50",
+    "note": "Campaign 55.2B completed the līlā from the local Ekādaśī book. Exact chapter/verse metadata remains pending when absent from the PDF."
   },
   "calendar_context": {
     "vedic_month": "Jyeṣṭha",
     "paksha": "Śukla",
-    "vaishnava_month": "Pendiente de presentación",
+    "vaishnava_month": "Jyeṣṭha Māsa",
     "western_period": "Variable según año y ubicación"
   },
   "story_summary": [
-    "Historia pendiente de estructurar desde fuentes locales aprobadas."
+    "Bhīma reconoce que no puede ayunar en todos los Ekādaśīs.",
+    "Vyāsa prescribe Jyeṣṭha Śukla Nirjalā.",
+    "El ayuno se observa sin comida ni agua.",
+    "La observancia equivale al mérito anual de Ekādaśī.",
+    "Se enfatizan adoración, caridad y ruptura correcta del ayuno."
   ],
-  "main_teaching": "Contenido pendiente de revisión editorial.",
+  "main_teaching": "La līlā enseña que la disciplina puede adaptarse pastoralmente a la capacidad del practicante sin rebajar la seriedad del voto.",
   "observance_notes": [
+    "Ayuno completo sin agua en Jyeṣṭha Śukla, adoración al Señor Keśava, caridad y Parāṇa al día siguiente según la regla calculada.",
     "La observancia concreta y la ventana de Parāṇa se calculan por Pancanga Engine para cada fecha y ubicación."
   ],
   "benefits_summary": [
-    "Glorias y beneficios pendientes de estructurar desde fuentes locales aprobadas."
+    "La fuente atribuye a Nirjalā el mérito de observar todos los Ekādaśīs del año, remoción de pecados y acceso a la morada suprema."
   ],
   "rc1_scope_note": "Esta biblioteca es una capa de contenido. No modifica el cálculo de tithi, Viddhā, Mahādvādaśī ni Parāṇa.",
   "provenance": {
     "primary_sources": [
-
-    ],
-    "secondary_sources": [
-
-    ],
-    "operational_sources": [
       {
-        "source": "Observance Content Catalog Integrity Certification",
-        "level": "C",
-        "use": "content file coverage and missing-content identification",
-        "local_path": "04_Tests/Vaishnava/Observance-Content-Catalog-Integrity.md",
-        "note": "This source justifies creating a schema-valid placeholder. It does not provide doctrinal or historical content."
-      },
+        "source": "Brahma Vaivarta Purāṇa",
+        "level": "A",
+        "use": "traditional source cited for līlā, benefits, and observance notes",
+        "local_path": "07_Sources/Vaishnava/204176529-Ekadashi-Es-Ramanuja-Dasa.pdf",
+        "chapter": "pending",
+        "verses": "pending",
+        "pages": "PDF pages 49-51; printed pages 48-50",
+        "language": "es",
+        "edition": "Local Spanish PDF witness; exact Sanskrit edition pending",
+        "note": "Registered because the local book explicitly attributes the chapter to this Purāṇa or source tradition."
+      }
+    ],
+    "secondary_sources": [],
+    "operational_sources": [
       {
         "source": "Festival Catalog",
         "level": "C",
-        "use": "ObservanceId, slug, display name, and classification metadata",
-        "local_path": "08_Examples/RC1-Experience/content/ekadasi/catalog.json",
-        "note": "Catalog identifies content associated with resolver output; it does not calculate observances."
+        "use": "identity, slug, māsa and pakṣa binding",
+        "local_path": "08_Examples/RC1-Experience/content/ekadasi/catalog.json"
       }
     ],
-    "technical_sources": [
-
-    ],
+    "technical_sources": [],
     "editorial_sources": [
       {
-        "source": "Campaign 53.1 placeholder generation",
+        "source": "Ekadashi, El Día Sagrado del Señor Hari",
         "level": "E",
-        "use": "structural placeholder only",
-        "local_path": "04_Tests/Vaishnava/Populate-Native-Observance-Library.md",
-        "note": "No doctrine, narrative, benefits, or ritual details were generated."
+        "use": "local Spanish narrative witness used for authoring the līlā",
+        "local_path": "07_Sources/Vaishnava/204176529-Ekadashi-Es-Ramanuja-Dasa.pdf",
+        "pages": "PDF pages 49-51; printed pages 48-50",
+        "language": "es",
+        "edition": "Ramanuja Dasa local PDF",
+        "note": "Used as the campaign source text; no unsupported claims were added beyond this witness."
+      },
+      {
+        "source": "EK-005 Evidence Log",
+        "level": "E",
+        "use": "claim-level traceability for this JSON entry",
+        "local_path": "05_Documentation/Observances/Evidence/EK-005-nirjala-Evidence-Log.md"
       }
     ],
-    "reviewed_by": null,
-    "approved_by": null,
-    "verification_date": null
+    "reviewed_by": "Codex Campaign 55.2B",
+    "approved_by": "Codex Campaign 55.2B",
+    "verification_date": "2026-07-24"
   }
 }

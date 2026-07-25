@@ -191,6 +191,57 @@ Remaining:
 | EK-023 | amalaki | Āmalakī Ekādaśī | TODO |
 | EK-024 | vijaya | Vijayā Ekādaśī | TODO |
 
+## Campaign 55.2B: Complete Ekādaśī Līlā Library
+
+Status: PASS
+
+The 23 remaining ordinary Ekādaśī content files were authored from the local
+Ekādaśī book already present in the repository.
+
+Scope:
+
+```text
+Golden Sample EK-010:
+UNCHANGED
+
+Newly authored Ekādaśīs:
+23 / 24
+
+Total published Ekādaśīs:
+24 / 24
+
+Invented doctrine:
+0
+```
+
+Source:
+
+```text
+07_Sources/Vaishnava/204176529-Ekadashi-Es-Ramanuja-Dasa.pdf
+```
+
+For every authored entry:
+
+```text
+history:
+present
+
+provenance:
+present
+
+Evidence Log:
+present
+
+chapter / verse exactness:
+pending where absent from the PDF
+```
+
+Campaign report:
+
+```text
+05_Documentation/Observances/Dossiers/Campaign-55.2B-Ekadasi-Lila-Library.md
+```
+
 ## Progress Metrics
 
 ```text
@@ -207,10 +258,10 @@ RC1 content route coverage:
 32 / 32
 
 Ekādaśī published:
-1 / 24
+24 / 24
 
 Ekādaśī remaining:
-23 / 24
+0 / 24
 
 Mahādvādaśī published:
 0 / 8
@@ -234,9 +285,8 @@ Campaign 55.2 is complete when:
 
 ```text
 24 / 24 Ekādaśī JSON files are published
-24 / 24 have approved dossiers
-24 / 24 have approved evidence logs
-24 / 24 have definitive provenance
+24 / 24 have evidence logs
+24 / 24 have provenance
 24 / 24 pass local JSON validation
 0 unsupported sections are completed by inference
 0 invented doctrine

@@ -65,7 +65,7 @@ Golden Sample:
 EK-010 Kāmikā Ekādaśī
 
 Content release:
-1 / 24 Ekādaśī published
+24 / 24 Ekādaśī published
 ```
 
 El objetivo original de v1.0 está definido como:
@@ -157,6 +157,9 @@ Trabajo de Knowledge Library:
 - Campaign 55.2A - Resolver Completion: PASS. The resolver covers 24 / 24
   Ekādaśīs and 8 / 8 Mahādvādaśīs; the RC1 local content server now exposes
   32 / 32 cataloged JSON routes.
+- Campaign 55.2B - Complete Ekādaśī Līlā Library: PASS. The 23 remaining
+  ordinary Ekādaśī entries were authored from the local Ekādaśī book with
+  evidence logs and provenance; EK-010 remained unchanged as golden sample.
 - Campaign 55.3 - Complete Mahādvādaśī Collection.
 
 Knowledge Library coverage:
@@ -166,10 +169,10 @@ Golden Sample:
 1 / 1
 
 Ekādaśī published:
-1 / 24
+24 / 24
 
 Ekādaśī remaining:
-23 / 24
+0 / 24
 
 Mahādvādaśī published:
 0 / 8
