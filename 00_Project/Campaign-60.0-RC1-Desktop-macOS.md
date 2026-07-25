@@ -1,6 +1,6 @@
 # Campaign 60.0: RC1 Desktop macOS
 
-Status: PACKAGING RC1
+Status: PACKAGING RC1 / NATIVE WINDOW
 
 ## Objective
 
@@ -28,14 +28,15 @@ Campaign 60.0 uses the current RC1 Rust backend and RC1 web interface as-is.
 ```text
 Pancanga Engine.app
 │
-├── stay-open macOS launcher
+├── AppKit/WebKit macOS launcher
 ├── embedded rc1_experience backend
 ├── embedded Observance Library JSON
 ├── local HTTP server
-└── browser-launched RC1 interface
+└── native RC1 desktop window
 ```
 
-The user does not need Terminal or a manually typed localhost URL.
+The user does not need Terminal, a manually typed localhost URL, or an external
+browser window.
 
 ## Deliverables
 
@@ -62,6 +63,12 @@ Terminal required:
 NO
 
 Manual 127.0.0.1 entry:
+NO
+
+External browser opened:
+NO
+
+Address bar / tabs visible:
 NO
 
 Backend shutdown on app exit:
@@ -94,18 +101,15 @@ PASS
 Content route:
 PASS
 
+Native WebKit window:
+PASS
+
 Backend shutdown on macOS quit:
 PASS
 
 DMG:
 PASS
 ```
-
-## Known RC1 Limitation
-
-This package opens the RC1 interface in the default browser. A later Tauri phase
-should host the same interface inside a native WebKit window so the user never
-sees the local URL at all.
 
 ## Product Naming
 
@@ -123,7 +127,7 @@ user-facing desktop product
 
 ```text
 60.1
-Tauri shell with embedded backend and WebKit window
+Native window polish / menu integration
 
 60.2
 Desktop UX: icon, menu, about panel, preferences, theme

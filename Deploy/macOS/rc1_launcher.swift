@@ -1,15 +1,18 @@
 import AppKit
 import Darwin
 import Foundation
+import WebKit
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var backend: Process?
+    private var window: NSWindow?
+    private var webView: WKWebView?
     private let port = ProcessInfo.processInfo.environment["PANCANGA_RC1_PORT"] ?? "7979"
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         do {
             try startBackend()
-            NSWorkspace.shared.open(URL(string: "http://127.0.0.1:\(port)/")!)
+            openNativeWindow()
         } catch {
             showStartupError(error)
             NSApp.terminate(nil)
@@ -19,6 +22,36 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         stopBackend()
         return .terminateNow
+    }
+
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        true
+    }
+
+    private func openNativeWindow() {
+        let configuration = WKWebViewConfiguration()
+        configuration.preferences.javaScriptCanOpenWindowsAutomatically = false
+
+        let webView = WKWebView(frame: .zero, configuration: configuration)
+        webView.autoresizingMask = [.width, .height]
+        webView.setValue(false, forKey: "drawsBackground")
+
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 1160, height: 860),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "Pancanga Engine RC1"
+        window.center()
+        window.contentView = webView
+        window.makeKeyAndOrderFront(nil)
+
+        self.webView = webView
+        self.window = window
+
+        NSApp.activate(ignoringOtherApps: true)
+        webView.load(URLRequest(url: URL(string: "http://127.0.0.1:\(port)/")!))
     }
 
     private func startBackend() throws {

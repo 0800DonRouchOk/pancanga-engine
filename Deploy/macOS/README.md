@@ -27,7 +27,7 @@ When opened by double click, the app:
 
 ```text
 starts the local backend
-opens the RC1 interface automatically
+opens the RC1 interface in a native macOS window
 keeps the server hidden from Terminal
 stops the backend when the app quits
 ```
@@ -61,16 +61,15 @@ Schema
 Parāṇa logic
 ```
 
-## Tauri Roadmap
+## Desktop Roadmap
 
 This script creates a native macOS `.app` bundle for RC1 testing using a small
-AppKit launcher that starts and stops the embedded backend. The next desktop
-phase can replace the browser handoff with a Tauri/WebKit window while keeping
-the same embedded backend and content layout.
+AppKit/WebKit launcher that starts and stops the embedded backend. The user does
+not see browser tabs, an address bar, or localhost.
 
 ```text
 60.1
-Tauri shell with embedded backend
+Native AppKit/WebKit window with embedded backend
 
 60.2
 Desktop UX: icon, menu, preferences, native window polish
