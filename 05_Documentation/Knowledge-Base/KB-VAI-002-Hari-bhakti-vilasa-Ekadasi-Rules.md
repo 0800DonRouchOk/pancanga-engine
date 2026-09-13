@@ -59,12 +59,20 @@ Versos exactos extraídos para HBV-EK-001 a HBV-EK-005.
 
 Fuente primaria localizada:
 
-- Gaudiya Grantha Mandira, `Hari Bhakti Vilasa :: Vilasa 12`
-  (`ekādaśī-nirṇayaḥ`), con mūla y ṭīkā.
-- Gaudiya Grantha Mandira, índice completo de `Hari-bhakti-vilasa`, que lista
-  `Vilasa 13` (`viṣṇu-vratotsavaḥ`).
-- Traducción íntegra de Bhṛgumuni Dāsa con numeración normalizada según la
-  edición Haridāsa Śāstrī.
+- Gopāla Bhaṭṭa Gosvāmī, *Śrī Hari-bhakti-vilāsa*, vols. 1-3, edición de Śrī
+  Haridāsa Śāstrī, Gadādhara-Gaurahari Press, Vṛndāvana, 1986.
+- Vilāsa 12 (`ekādaśī-nirṇayaḥ`), con mūla y Dig-darśinī-ṭīkā.
+- Vilāsa 13 (`viṣṇu-vratotsavaḥ`), con testigo de traducción inglesa de
+  Bhṛgumuni Dāsa basado en esa edición.
+
+Registro bibliográfico e integridad:
+
+```text
+07_Sources/Vaishnava/Hari-bhakti-vilasa/hbv-vilasas-12-13-source-record.md
+```
+
+Gaudiya Grantha Mandira / Jiva Institute fue la ruta de adquisición de los
+archivos. Conforme a KB-REF-001 v2, no forma parte de la autoridad normativa.
 
 Nota de normalización:
 
@@ -106,15 +114,15 @@ No uso:
 
 ### Fuentes secundarias
 
-La fuente secundaria referida `Ramanuja Das / masterhindu.com` puede orientar la
-estructura práctica de las reglas.
+La compilación española de Ramanuja Das, distribuida desde un sitio web, puede
+orientar el descubrimiento de pasajes y la estructura práctica de las reglas.
 
 Estado:
 
 ```text
-Secundaria.
-Provisional.
-No normativa.
+Tier 6 como publicación web.
+Testigo de traducción/compilación solamente.
+Autoridad normativa prohibida.
 ```
 
 ### Oráculo de validación
