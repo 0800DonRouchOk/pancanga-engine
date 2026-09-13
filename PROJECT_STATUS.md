@@ -165,6 +165,9 @@ Trabajo de Knowledge Library:
   AppKit/WebKit window. A local `Pancanga Engine.app` bundle starts the embedded
   RC1 backend and opens the interface without Terminal, manual localhost entry,
   browser tabs, or an address bar.
+- Campaign 61.0 - Vaiṣṇava Festival Engine Foundation: PASS. Added a unified
+  `festival` domain layer that wraps certified Observance Resolver output
+  without adding new festival rules, dates, or Knowledge Base changes.
 
 Knowledge Library coverage:
 
