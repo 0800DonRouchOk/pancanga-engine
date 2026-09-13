@@ -20,11 +20,12 @@ Esta regla no decide pureza, Viddhā, desplazamiento, Mahādvādaśī ni Parā�
 Fuente primaria usada:
 
 ```text
-Hari-bhakti-vilāsa
+Gopāla Bhaṭṭa Gosvāmī
+Śrī Hari-bhakti-vilāsa
 Vilāsa 12 - ekādaśī-nirṇayaḥ
-Gaudiya Grantha Mandira
-Mūla y Digdarśinī-ṭīkā
-Edición Haridāsa Śāstrī
+Mūla y Dig-darśinī-ṭīkā
+Ed. Śrī Haridāsa Śāstrī
+Gadādhara-Gaurahari Press, Vṛndāvana, 1986
 ```
 
 Archivo local de trabajo:
@@ -34,11 +35,15 @@ Archivo local de trabajo:
 07_Sources/Vaishnava/Hari-bhakti-vilasa/raw/hbv-vilasa-12.txt
 ```
 
-Nota: la traducción íntegra de Bhṛgumuni Dāsa queda como numeración oficial de
-referencia del proyecto. El archivo descargado desde Gaudiya Grantha Mandira
-contiene mūla y ṭīkā en sánscrito; las traducciones de esta ficha son
-traducciones técnicas de trabajo y deben cotejarse con Bhṛgumuni Dāsa si se
-incorpora una cita traducida extensa.
+Registro bibliográfico e integridad:
+
+```text
+07_Sources/Vaishnava/Hari-bhakti-vilasa/hbv-vilasas-12-13-source-record.md
+```
+
+Nota: la traducción de Bhṛgumuni Dāsa es un testigo secundario de lectura. Las
+reglas y términos técnicos se revisan contra el mūla y la Dig-darśinī. Gaudiya
+Grantha Mandira fue la ruta de adquisición y no la autoridad normativa.
 
 ## Evidencia
 

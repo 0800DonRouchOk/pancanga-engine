@@ -19,11 +19,32 @@ Mahādvādaśī.
 
 ## Fuente
 
+Autoridad bibliográfica:
+
+```text
+Gopāla Bhaṭṭa Gosvāmī
+Śrī Hari-bhakti-vilāsa
+Vilāsa 13 - viṣṇu-vratotsavaḥ
+Mūla y Dig-darśinī-ṭīkā
+Ed. Śrī Haridāsa Śāstrī
+Gadādhara-Gaurahari Press, Vṛndāvana, 1986
+```
+
 Fuentes locales usadas:
 
 ```text
 07_Sources/Vaishnava/Hari-bhakti-vilasa/raw/hbv-vilasa-13.doc
 07_Sources/Vaishnava/Hari-bhakti-vilasa/raw/hbv-vilasa-13.txt
+```
+
+Los archivos locales de Vilāsa 13 constituyen un testigo de traducción inglesa
+basado en la edición registrada. Ninguna regla crítica nueva debe aprobarse
+desde esa traducción sin revisar el mūla y la Dig-darśinī.
+
+Registro bibliográfico e integridad:
+
+```text
+07_Sources/Vaishnava/Hari-bhakti-vilasa/hbv-vilasas-12-13-source-record.md
 ```
 
 No se usó Internet para definir reglas.
@@ -287,4 +308,3 @@ HBV-EK-005:
 Código:
 NO
 ```
-

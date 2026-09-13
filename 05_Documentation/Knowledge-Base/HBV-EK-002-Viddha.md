@@ -20,11 +20,12 @@ observancia, no clasifica Mahādvādaśī y no calcula Parāṇa.
 Fuente primaria usada:
 
 ```text
-Hari-bhakti-vilāsa
+Gopāla Bhaṭṭa Gosvāmī
+Śrī Hari-bhakti-vilāsa
 Vilāsa 12 - ekādaśī-nirṇayaḥ
-Gaudiya Grantha Mandira
-Mūla y Digdarśinī-ṭīkā
-Edición Haridāsa Śāstrī
+Mūla y Dig-darśinī-ṭīkā
+Ed. Śrī Haridāsa Śāstrī
+Gadādhara-Gaurahari Press, Vṛndāvana, 1986
 ```
 
 Archivo local de trabajo:
@@ -34,9 +35,15 @@ Archivo local de trabajo:
 07_Sources/Vaishnava/Hari-bhakti-vilasa/raw/hbv-vilasa-12.txt
 ```
 
+Registro bibliográfico e integridad:
+
+```text
+07_Sources/Vaishnava/Hari-bhakti-vilasa/hbv-vilasas-12-13-source-record.md
+```
+
 Nota: las traducciones incluidas aquí son traducciones técnicas de trabajo. La
-numeración oficial del proyecto sigue la traducción íntegra de Bhṛgumuni Dāsa
-basada en la edición Haridāsa Śāstrī.
+traducción de Bhṛgumuni Dāsa es un testigo secundario; la autoridad de la regla
+permanece en el mūla y la Dig-darśinī de la edición registrada.
 
 ## Evidencia
 

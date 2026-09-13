@@ -18,6 +18,17 @@ desplazamiento, y no calcula Parāṇa.
 
 ## Fuente
 
+Autoridad bibliográfica:
+
+```text
+Gopāla Bhaṭṭa Gosvāmī
+Śrī Hari-bhakti-vilāsa
+Vilāsas 12-13
+Mūla y Dig-darśinī-ṭīkā
+Ed. Śrī Haridāsa Śāstrī
+Gadādhara-Gaurahari Press, Vṛndāvana, 1986
+```
+
 Fuentes locales usadas:
 
 ```text
@@ -29,10 +40,16 @@ Fuentes locales usadas:
 Nota:
 
 - `hbv-vilasa-12.txt` conserva mūla y Digdarśinī.
-- `hbv-vilasa-13.doc` es la fuente local completa de Bhṛgumuni Dāsa incorporada
-  al repositorio.
+- `hbv-vilasa-13.doc` es un testigo de traducción inglesa de Bhṛgumuni Dāsa,
+  incorporado al repositorio; no reemplaza el mūla para reglas críticas nuevas.
 - `hbv-vilasa-13.txt` es una copia de trabajo generada localmente desde el
   documento Word para extracción textual.
+
+Registro bibliográfico e integridad:
+
+```text
+07_Sources/Vaishnava/Hari-bhakti-vilasa/hbv-vilasas-12-13-source-record.md
+```
 
 No se usó Internet para definir reglas.
 
