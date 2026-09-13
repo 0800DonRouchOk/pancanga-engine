@@ -11,14 +11,20 @@ Verification status: IMPORTED / REVIEW REQUIRED
 | Work (cover) | Śrī Gauḍīya Calendar |
 | Era (cover) | 540–541 Śrī Gaurābda (2026–2027) |
 | Publisher (PDF `/Author`) | Sri Chaitanya Saraswat Math International |
-| Publisher (page 3) | Sri Chaitanya Saraswat International Sangha |
-| Extent | 64 pages |
+| Publisher (page 3) | Sri Chaitanya Saraswat International Sangha — owner-verified from the PDF |
+| Extent | 64 pages — owner-verified from the PDF |
 | PDF `/Title` | `Sri Gaudiya Calendar 2023-2024` (see Open Discrepancies) |
 | PDF `/CreationDate` | 2026-01-29 |
 | PDF `/Creator` | Adobe InDesign 19.5 |
 | Reference location (claimed) | Śrī Chaitanya Sāraswat Maṭh, Nabadwip, India |
 | Coordinates published by the source | NONE — the PDF publishes no numeric latitude or longitude |
 | Format | PDF |
+
+Verification note: the extent (64 pages) and the page 3 attribution naming
+"Sri Chaitanya Saraswat International Sangha" as preparer/publisher were
+verified by the owner from the PDF itself. The three items under Open
+Discrepancies remain open; in particular, which of the two publisher names is
+the publisher of record is not decided by this verification.
 
 ## Acquisition Provenance
 
