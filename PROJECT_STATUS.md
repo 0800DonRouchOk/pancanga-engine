@@ -66,6 +66,10 @@ EK-010 Kāmikā Ekādaśī
 
 Content release:
 24 / 24 Ekādaśī published
+
+Bibliographic authority audit:
+OPEN REMEDIATION - 24 published content records require re-review under
+KB-REF-001 v2; engine rules are unaffected
 ```
 
 El objetivo original de v1.0 está definido como:
@@ -165,9 +169,54 @@ Trabajo de Knowledge Library:
   AppKit/WebKit window. A local `Pancanga Engine.app` bundle starts the embedded
   RC1 backend and opens the interface without Terminal, manual localhost entry,
   browser tabs, or an address bar.
-- Campaign 61.0 - Vaiṣṇava Festival Engine Foundation: PASS. Added a unified
-  `festival` domain layer that wraps certified Observance Resolver output
-  without adding new festival rules, dates, or Knowledge Base changes.
+- Campaign 61.0 - Vaiṣṇava Festival Engine Foundation: PASS. Completed the
+  foundation audit for future Gauḍīya Vaiṣṇava festivals, created the initial
+  Festival Registry, rule taxonomy, Janmāṣṭamī research dossier, evidence log,
+  rule analysis, architecture proposal, and Campaign 61.1 required-change list.
+  No Janmāṣṭamī calculation, new festival rule, date table, motor change, or
+  Knowledge Base reinterpretation was introduced.
+- Campaign 61.0W - Bibliographic Authority Protocol v2: POLICY PASS. Adopted
+  `WEBSITE != SOURCE`, classified the existing normative evidence into six
+  tiers, separated bibliographic identity from online acquisition, and audited
+  Ekādaśī, Mahādvādaśī, Janmāṣṭamī, and the Festival Registry. No implemented
+  date-changing rule is authorized only by web content or operational
+  calendars. The audit opened two bibliographic gates without changing
+  content: mūla/commentary verification for part of HBV-EK-005 and authority
+  remediation for the 24 published Ekādaśī content records derived from the
+  Spanish compilation. Engine and schemas unchanged.
+- Campaign 62.0 - Complete Vaisnava Festival Registry & Coverage Map: PASS.
+  Consolidated 124 discovered labels into 97 canonical non-Ekadasi festival
+  records, linked the existing 24 Ekadasi and 8 Mahadvadasi records without
+  duplicating identities, defined ten product categories and sixteen
+  calculation-capability families, and organized the future research into
+  twelve family-based work packages. The three existing bibliographic and
+  normative gates remain OPEN. No production code, engine rule, Knowledge Base
+  content, or schema was changed.
+
+Festival Engine planning coverage:
+
+```text
+Candidate labels discovered:
+124
+
+Canonical non-Ekadasi festivals:
+97
+
+Priority:
+Tier 1: 10
+Tier 2: 59
+Tier 3: 22
+Tier 4: 6
+
+Existing linked observance domain:
+24 Ekadasis + 8 Mahadvadasis
+
+Rules implemented by Campaign 62.0:
+0
+
+Invented doctrine:
+0
+```
 
 Knowledge Library coverage:
 
