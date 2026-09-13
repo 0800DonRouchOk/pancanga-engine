@@ -4,12 +4,12 @@ Status: FOUNDATION PASS
 
 ## Objective
 
-Create the first foundation layer for a future Vaiṣṇava Festival Engine without
-expanding the certified calendrical scope.
+Prepare Pancanga Engine for a future Gauḍīya Vaiṣṇava Festival Engine without
+changing the certified Ekādaśī, Mahādvādaśī, Parāṇa, astronomy, resolver,
+knowledge-base, or desktop packaging layers.
 
-Campaign 61.0 does not add new festivals, new rules, fixed dates, annual tables,
-or external calendar assumptions. It only creates a unified festival-domain
-output for observances already resolved by Pancanga Engine.
+Campaign 61.0 is a foundation and audit campaign. It does not implement
+Janmāṣṭamī or any other new festival calculation.
 
 ## Scope Boundary
 
@@ -17,118 +17,94 @@ No changes are made to:
 
 ```text
 Astronomy Engine
-Calendar Engine
-Native Vaiṣṇava Māsa
-Ekādaśī rules
-Mahādvādaśī rules
-Parāṇa logic
-Knowledge Base
-Observance JSON content
-Schemas
+Ekādaśī Engine
+Mahādvādaśī logic
+Existing Parāṇa logic
+Stable Observance Resolver
+Published Knowledge Base
+Desktop packaging
 ```
 
-## Architecture
-
-Before:
-
-```text
-Calendar Engine
-        ↓
-Observance Resolver
-        ↓
-ObservanceContent
-        ↓
-RC1 / API / Library
-```
-
-After:
-
-```text
-Calendar Engine
-        ↓
-Observance Resolver
-        ↓
-ObservanceContent
-        ↓
-Festival Engine foundation
-        ↓
-Festival
-        ↓
-RC1 / API / Library / future interfaces
-```
-
-## Implemented
+## Deliverables
 
 Created:
 
 ```text
-03_Source/rust/crates/pancanga-engine/src/festival/mod.rs
+04_Tests/Festivals/Existing-Engine-Audit.md
+05_Documentation/Festivals/Festival-Registry.md
+05_Documentation/Festivals/Festival-Rule-Taxonomy.md
+05_Documentation/Festivals/Dossiers/FEST-001-Janmashtami-Research-Dossier.md
+05_Documentation/Festivals/Evidence/FEST-001-Janmashtami-Evidence-Log.md
+05_Documentation/Festivals/Rule-Analysis/FEST-001-Janmashtami-Rule-Analysis.md
+05_Documentation/Festivals/Festival-Engine-Architecture-Proposal.md
+05_Documentation/Festivals/Campaign-61.1-Required-Changes.md
 ```
 
-The module introduces:
+## Findings
+
+The current engine already exposes or can reuse several foundational inputs:
 
 ```text
-Festival
-FestivalId
-FestivalDomain
-FestivalKind
-FestivalSource
-festival_from_observance()
+Tithi at sunrise
+Sunrise
+Instantaneous tithi
+Pakṣa
+Vaiṣṇava māsa
+Solar longitude
+Lunar longitude
+Location
 ```
 
-In Campaign 61.0, the only supported domain is:
+The following capabilities are not yet exposed as reusable festival-engine APIs:
 
 ```text
-Ekādaśī
+Sunset
+Tithi start/end for arbitrary civil or ritual windows
+Nakṣatra start/end
+Civil timezone model
+Midnight-crossing events
 ```
 
-covering the already implemented:
+## Registry
+
+An initial registry was created with ten festival candidates:
 
 ```text
-24 ordinary Ekādaśīs
-8 Mahādvādaśīs
+FEST-001 Śrī Kṛṣṇa Janmāṣṭamī
+FEST-002 Śrī Rādhāṣṭamī
+FEST-003 Gaura Pūrṇimā
+FEST-004 Nityānanda Trayodaśī
+FEST-005 Nṛsiṁha Caturdaśī
+FEST-006 Rāma Navamī
+FEST-007 Balarāma Pūrṇimā
+FEST-008 Vāmana Dvādaśī
+FEST-009 Govardhana Pūjā
+FEST-010 Jagannātha Ratha-yātrā
 ```
 
-## Design Decision
-
-The Festival Engine foundation wraps certified observance output instead of
-recalculating it.
-
-This preserves the Single Source of Truth:
+Rules not yet documented by local accepted sources are explicitly marked:
 
 ```text
-Observance Resolver
-source of truth for Ekādaśī / Mahādvādaśī identity
-
-Festival Engine
-unified domain surface for festival-like outputs
+RESEARCH_REQUIRED
 ```
 
-## Explicit Non-Goals
+## Golden Sample
 
-Campaign 61.0 does not implement:
+Śrī Kṛṣṇa Janmāṣṭamī was selected as the Golden Sample for the future Festival
+Engine.
+
+Created:
 
 ```text
-Janmāṣṭamī
-Gaura Pūrṇimā
-Nṛsiṁha Caturdaśī
-Rāma Navamī
-Nityānanda Trayodaśī
-Appearance / disappearance days
-Cāturmāsya
-Fixed-date festival tables
+Research Dossier
+Evidence Log
+Rule Analysis
+Required astronomical inputs
+Known conflicts / ambiguities
+Proposed resolver logic
 ```
 
-Those require future documented rules and source-backed specifications.
-
-## Verification
-
-```text
-cargo fmt
-cargo test -p pancanga-engine festival
-cargo check -p pancanga-engine --examples
-git diff --check
-```
+No definitive mathematical implementation was added.
 
 ## Result
 
@@ -138,15 +114,52 @@ Campaign 61.0
 Vaiṣṇava Festival Engine Foundation:
 PASS
 
-New festival rules:
+Existing engine audit:
+PASS
+
+Festival Registry:
+PASS
+
+Rule taxonomy:
+PASS
+
+Janmāṣṭamī dossier:
+PASS
+
+Evidence:
+PASS
+
+Invented doctrine:
 0
 
-Hardcoded dates:
-0
+Ekādaśī Engine:
+UNCHANGED
 
-Motor semantics changed:
-NO
+Astronomy Engine:
+UNCHANGED
 
-Knowledge Base changed:
-NO
+Janmāṣṭamī implementation:
+NOT STARTED
 ```
+
+## Campaign 61.0W Bibliographic Gate
+
+The Festival Engine foundation is governed by
+`KB-REF-001: Bibliographic Authority Protocol v2`.
+
+```text
+WEBSITE != SOURCE
+
+Primary and commentary authority:
+The identified work, edition, passage, and commentary
+
+Operational calendars:
+Tier 5 - validation only
+
+Websites and repositories:
+Tier 6 - discovery and acquisition only
+```
+
+The retroactive audit is recorded in
+`04_Tests/Festivals/Campaign-61.0W-Bibliographic-Authority-Audit.md`. It changed
+no engine behavior and did not authorize any additional festival rule.
