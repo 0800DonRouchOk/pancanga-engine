@@ -182,6 +182,12 @@ mod tests {
         assert_julian_date(sunrise.value(), 2_461_212.958_473_451_4);
     }
 
+    // ORDEN-6 Phase 4, owner-authorized golden correction. The previous
+    // expectation (JD 2_461_396.278_178_977, the 22 December sunrise) encoded
+    // the day-shift defect as specification. Basis: Sydney 2026-12-21 measured
+    // against the Option A reference (Sun-centre true altitude -50'):
+    // corrected - reference = -4.3 s, previous - reference = +86,395.7 s;
+    // Sunrise-Ephemeris-Validation.md, Finding 1.
     #[test]
     fn calculates_mid_southern_latitude_summer_sunrise() {
         let date = date(2026, 12, 21);
@@ -189,7 +195,7 @@ mod tests {
 
         let sunrise = sunrise(date, location).expect("sunrise should exist");
 
-        assert_julian_date(sunrise.value(), 2_461_396.278_178_977);
+        assert_julian_date(sunrise.value(), 2_461_395.278_178_977);
     }
 
     #[test]

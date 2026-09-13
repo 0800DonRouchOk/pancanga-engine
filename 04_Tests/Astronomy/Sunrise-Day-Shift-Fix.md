@@ -2,8 +2,8 @@
 
 Order: ORDEN-6 (day-shift defect in `sunrise()`)
 
-Status: PHASE 2 IMPLEMENTED, PHASE 3 MEASURED — golden expectations NOT
-changed; Phase 4 authorization pending
+Status: PHASE 2 IMPLEMENTED, PHASE 3 MEASURED, PHASE 4 AUTHORIZED AND
+APPLIED — four golden expectations corrected under owner authorization
 
 ## Defect
 
@@ -161,7 +161,45 @@ Unchanged goldens (verified to 9 decimals with the fix): equator 2026-03-20
 `2461119.753038483`, New York 2026-06-21 `2461212.892268492`, Buenos Aires
 2026-06-21 `2461212.958473451`; polar 80N 2026-12-21 → `None`.
 
-**No expected value has been modified. Phase 4 authorization is required.**
+## Phase 4 — golden correction (owner-authorized, by name)
+
+Authorization basis, recorded beside each corrected value in the source:
+the Sydney 2026-12-21 measurement below and
+`Sunrise-Ephemeris-Validation.md § Finding 1`.
+
+Sydney (−33.8688 / 151.2093), civil date 2026-12-21, Option A reference
+(Sun-centre true altitude −50′, local-mean-time day window starting
+2026-12-20 13:55:09 UT; the `sunrise_validation.rs` procedure applied directly
+with swetest 2.10.03 because Sydney is not among the binary's fixed sites):
+
+```text
+engine before fix (previous golden)  2026-12-21 18:40:34.6 UT  JD 2461396.278178977  = 22 Dec local
+engine after fix                     2026-12-20 18:40:34.6 UT  JD 2461395.278178977  = 21 Dec local
+Option A reference                   2026-12-20 18:40:38.9 UT  JD 2461395.278228180
+after  − reference                   −4.3 s
+before − reference                   +86,395.7 s
+(before matches the 22 December reference, 2026-12-21 18:41:07.6 UT, to −33.0 s:
+a correct-magnitude sunrise for the wrong local day)
+swetest -rise default (data only)    2026-12-20 18:40:39.7 UT
+swetest -rise -hindu (data only)     2026-12-20 18:45:13.4 UT
+```
+
+Corrections applied:
+
+| Test | Previous expectation | Corrected expectation |
+| --- | --- | --- |
+| `calendar::sunrise::tests::calculates_mid_southern_latitude_summer_sunrise` | JD `2_461_396.278_178_977` | JD `2_461_395.278_178_977` |
+| `calendar::tithi::tests::finds_transition_after_sydney_summer_sunrise` | JD `2_461_396.871_763_413`, 12 → 13 | JD `2_461_396.005_551_903`, 11 → 12 |
+| `calendar::tithi::tests::describes_presence_for_representative_locations`, Sydney entry | 12, 12 → 13 | 11, 11 → 12 |
+| `calendar::tithi::tests::calculates_tithi_at_sydney_summer_sunrise` | JD `2_461_396.278_178_977`, index 12 | JD `2_461_395.278_178_977`, index 11 |
+
+The previous expectations encoded the day-shift defect as specification:
+each was the sunrise of 22 December 2026 at Sydney, or a quantity derived
+from it, recorded under the label of 21 December. The fourth test hardcoded
+an instant the engine no longer produces, so it was passing without verifying
+anything; it is re-anchored to the 21 December instant (owner rationale).
+
+No other expected value was changed.
 
 ## Separate defect surfaced (not fixed, not in scope)
 

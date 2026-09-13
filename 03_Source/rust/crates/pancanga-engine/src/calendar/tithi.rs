@@ -225,11 +225,19 @@ mod tests {
         assert_eq!(tithi.index(), 7);
     }
 
+    // ORDEN-6 Phase 4, owner-authorized golden correction. The previous
+    // hardcoded instant (JD 2_461_396.278_178_977, index 12) was the
+    // 22 December sunrise produced by the day-shift defect; the engine no
+    // longer produces it, so the test was passing without verifying anything.
+    // Re-anchored to the 21 December sunrise. Basis: Sydney 2026-12-21
+    // measured against the Option A reference: corrected - reference = -4.3 s,
+    // previous - reference = +86,395.7 s; Sunrise-Ephemeris-Validation.md,
+    // Finding 1.
     #[test]
     fn calculates_tithi_at_sydney_summer_sunrise() {
-        let tithi = tithi_at_sunrise(JulianDate::new(2_461_396.278_178_977));
+        let tithi = tithi_at_sunrise(JulianDate::new(2_461_395.278_178_977));
 
-        assert_eq!(tithi.index(), 12);
+        assert_eq!(tithi.index(), 11);
     }
 
     #[test]
@@ -264,6 +272,12 @@ mod tests {
         assert_transition(transition.instant().value(), 2_461_213.924_739_889_3, 7, 8);
     }
 
+    // ORDEN-6 Phase 4, owner-authorized golden correction. The previous
+    // expectation (JD 2_461_396.871_763_413, 12 -> 13) followed from the
+    // day-shifted sunrise interval and encoded the defect as specification.
+    // Basis: Sydney 2026-12-21 measured against the Option A reference:
+    // corrected sunrise - reference = -4.3 s, previous - reference =
+    // +86,395.7 s; Sunrise-Ephemeris-Validation.md, Finding 1.
     #[test]
     fn finds_transition_after_sydney_summer_sunrise() {
         let transition = transition_for(
@@ -273,7 +287,7 @@ mod tests {
         )
         .expect("transition should exist");
 
-        assert_transition(transition.instant().value(), 2_461_396.871_763_413, 12, 13);
+        assert_transition(transition.instant().value(), 2_461_396.005_551_903, 11, 12);
     }
 
     #[test]
@@ -333,12 +347,18 @@ mod tests {
                 7,
                 8,
             ),
+            // ORDEN-6 Phase 4, owner-authorized golden correction: previously
+            // (12, 13), which followed from the day-shifted Sydney interval and
+            // encoded the defect as specification. Basis: Sydney 2026-12-21
+            // measured against the Option A reference (corrected - reference =
+            // -4.3 s, previous - reference = +86,395.7 s);
+            // Sunrise-Ephemeris-Validation.md, Finding 1.
             (
                 date(2026, 12, 21),
                 date(2026, 12, 22),
                 location(-33.8688, 151.2093),
+                11,
                 12,
-                13,
             ),
         ];
 
