@@ -3298,6 +3298,8 @@ mod tests {
         assert_eq!(ten[0], first);
     }
 
+    // The expected values are audited golden oracle expectations; their precision is deliberate.
+    #[allow(clippy::excessive_precision)]
     #[test]
     fn first_ten_elp1_terms_match_independent_oracle_contributions() {
         let evaluations = Elp2000Evaluator::new()
@@ -3332,6 +3334,8 @@ mod tests {
         assert_close(sum, 16_062.905_795_844_736);
     }
 
+    // The checkpoint values are audited golden oracle expectations; their precision is deliberate.
+    #[allow(clippy::excessive_precision)]
     #[test]
     fn elp1_subset_of_one_hundred_terms_matches_independent_oracle_checkpoints() {
         let evaluations = Elp2000Evaluator::new()
