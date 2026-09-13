@@ -8,18 +8,21 @@ use crate::core::math::{
     acos_deg, asin_deg, atan_deg, cos_deg, normalize_360, normalize_hours, sin_deg, tan_deg,
 };
 use crate::core::time::{gregorian_to_jd, CivilDate, CivilDateTime, CivilTime, TimeScale};
-use crate::core::{Degrees, GeoLocation, JulianDate};
+use crate::core::{Degrees, DurationDays, GeoLocation, JulianDate};
 
 const OFFICIAL_ZENITH_DEGREES: f64 = 90.833;
+const HOURS_PER_DAY: f64 = 24.0;
 
 /// Returns the Julian Date of local sunrise for a civil date and location.
 ///
 /// The calculation follows the standard solar-almanac sunrise approximation
 /// using the official sunrise zenith of `90.833°`.
 ///
-/// The input date is interpreted as the local civil date for the requested
-/// location. The returned [`JulianDate`] is the astronomical instant expressed
-/// on the UTC Julian Day scale used by the rest of the project.
+/// The input date is interpreted as the local day at the requested location,
+/// bounded by local mean time: the day starts at `0h UT - longitude / 15h`.
+/// The returned [`JulianDate`] is the astronomical instant expressed on the
+/// UTC Julian Day scale used by the rest of the project; for east longitudes
+/// it may fall on the previous UTC date, and for west longitudes on the next.
 ///
 /// Returns `None` for locations and dates where the Sun does not rise.
 ///
@@ -50,8 +53,12 @@ pub fn sunrise(date: CivilDate, location: GeoLocation) -> Option<JulianDate> {
     let sin_declination = 0.39782 * sin_deg(true_longitude);
     let cos_declination = cos_deg(asin_deg(sin_declination));
     let local_hour_angle = sunrise_local_hour_angle(latitude, sin_declination, cos_declination)?;
-    let local_mean_time = local_hour_angle + right_ascension - (0.06571 * approximate_time) - 6.622;
-    let universal_time = normalize_hours(local_mean_time - longitude_hour);
+    let local_mean_time =
+        normalize_hours(local_hour_angle + right_ascension - (0.06571 * approximate_time) - 6.622);
+    // Local mean time of day on `date`, converted to UT without normalisation:
+    // the offset may be negative or exceed 24 hours, and the carry belongs to
+    // the adjacent UTC date rather than being folded back onto `date`.
+    let universal_time = local_mean_time - longitude_hour;
 
     Some(julian_date_at_universal_hours(date, universal_time))
 }
@@ -96,13 +103,10 @@ fn sunrise_local_hour_angle(
 }
 
 fn julian_date_at_universal_hours(date: CivilDate, universal_time: f64) -> JulianDate {
-    let hour = universal_time.floor() as u8;
-    let minute_fraction = (universal_time - f64::from(hour)) * 60.0;
-    let minute = minute_fraction.floor() as u8;
-    let second = (minute_fraction - f64::from(minute)) * 60.0;
-    let time = CivilTime::new(hour, minute, second).expect("normalized UTC time should be valid");
+    let midnight = CivilTime::new(0, 0, 0.0).expect("midnight is a valid civil time");
+    let day_start = gregorian_to_jd(CivilDateTime::new(date, midnight, TimeScale::Utc));
 
-    gregorian_to_jd(CivilDateTime::new(date, time, TimeScale::Utc))
+    day_start.add_days(DurationDays::new(universal_time / HOURS_PER_DAY))
 }
 
 fn day_of_year(date: CivilDate) -> u16 {
