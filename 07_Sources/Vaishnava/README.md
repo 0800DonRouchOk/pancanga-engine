@@ -22,31 +22,39 @@ Hari-bhakti-vilāsa
 No se implementarán reglas de Ekādaśī hasta extraer y verificar con precisión
 los pasajes normativos primarios.
 
-## Niveles De Fuente
+## Autoridad Según KB-REF-001 v2
 
-### Nivel A - Autoridad Normativa
+### Tier 1 - Texto Primario
 
 - Hari-bhakti-vilāsa: autoridad normativa primaria.
+
+### Tier 2 - Comentario Tradicional
+
 - Digdarśinī-ṭīkā: comentario tradicional atribuido a Sanātana Gosvāmī. Se
   consulta antes que interpretaciones posteriores cuando exista ambigüedad.
 
-### Nivel B - Autoridades De Aplicación
+### Tier 3 - Documento De Linaje
 
-- Navadvīpa Pañjikā: referencia práctica de aplicación Gauḍīya moderna.
 - Tradition-Notes: notas interpretativas de la Nityānanda Vaṁśa; no reemplazan
   la autoridad normativa.
 
-### Nivel C - Confirmación
+### Tier 4 - Bibliografía Académica Y Técnica
 
-- Purāṇas citados por Hari-bhakti-vilāsa: confirmación de citas originales,
-  solo cuando sea necesario.
+- Ediciones críticas, estudios calendáricos y fuentes astronómicas técnicas.
 
-### Contexto Y Validación
+### Tier 5 - Calendarios Operacionales
 
-- Caitanya-caritāmṛta: contexto doctrinal y respaldo tradicional.
-- Interpretaciones: fuentes secundarias, no normativas.
-- GCal: oráculo calendárico de validación, registrado fuera de esta jerarquía
-  normativa cuando corresponda.
+- Navadvīpa Pañjikā, GCal y calendarios institucionales: validación solamente.
+
+### Tier 6 - Contenido Web
+
+- Puede localizar una edición o bibliografía.
+- Su autoridad normativa está prohibida.
+
+Los Purāṇas citados por Hari-bhakti-vilāsa son Tier 1 cuando se verifica una
+edición independiente. Mientras sólo se conozcan a través de una cita en HBV,
+la evidencia se registra como parte de la cadena textual de HBV y no como una
+segunda fuente ya verificada.
 
 ## Precedencia
 
@@ -54,9 +62,9 @@ Cuando dos fuentes discrepen:
 
 1. Hari-bhakti-vilāsa, mūla.
 2. Digdarśinī-ṭīkā.
-3. Navadvīpa Pañjikā.
-4. Tradition Notes.
-5. Purāṇas citados, solo como contexto.
+3. Documento de linaje aprobado para ese alcance.
+4. Bibliografía técnica para definiciones no doctrinales.
+5. Calendarios operacionales sólo para validación.
 
 Si la discrepancia no puede resolverse, no se modifica la regla. Se documenta
 la divergencia y la implementación permanece protegida por protocolo.
