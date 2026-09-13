@@ -31,6 +31,7 @@ proyecto.
 | [KB-CAL-001](KB-CAL-001-Vaishnava-Masa-Specification.md) | Vaiṣṇava Māsa Specification | 🟡 Provisional / validation pending |
 | [KB-CAL-002](KB-CAL-002-HBV-Vaishnava-Masa-Rules.md) | HBV Vaiṣṇava Māsa Rules | 🟡 Provisional hypothesis |
 | [KB-VAI-002](KB-VAI-002-Hari-bhakti-vilasa-Ekadasi-Rules.md) | Hari-bhakti-vilāsa - Ekādaśī Rules | 🔒 v1.0 - congelada |
+| [KB-REF-001](KB-REF-001-Reference-Classification.md) | Bibliographic Authority Protocol v2 | 🔒 Active |
 | [Campaign 39.10](Campaign-39.10-Knowledge-Base-Audit.md) | Knowledge Base Audit | ✅ PASS |
 | [HBV-Protocol](HBV-Extraction-Protocol.md) | HBV Extraction Protocol | 🔒 Activo |
 | [HBV-Citations](HBV-Citation-Normalization.md) | HBV Citation Normalization | 🟡 Activo |
