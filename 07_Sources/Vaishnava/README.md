@@ -45,6 +45,8 @@ los pasajes normativos primarios.
 ### Tier 5 - Calendarios Operacionales
 
 - Navadvīpa Pañjikā, GCal y calendarios institucionales: validación solamente.
+- Registros de fuente de los calendarios operacionales en uso:
+  `Operational-Calendars/`.
 
 ### Tier 6 - Contenido Web
 
