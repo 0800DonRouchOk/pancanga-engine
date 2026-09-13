@@ -38,6 +38,11 @@ Cierre
 
 ## Niveles De Fuente
 
+This table records the original Campaign 39 shorthand. For all new work, its
+authority meaning is superseded by `KB-REF-001: Bibliographic Authority
+Protocol v2`: HBV mūla is Tier 1, Dig-darśinī is Tier 2, lineage documents are
+Tier 3, and operational calendars are Tier 5 validation only.
+
 | Nivel | Fuentes | Función |
 |---|---|---|
 | A - Autoridad normativa | Hari-bhakti-vilāsa; Digdarśinī-ṭīkā | Definir o aclarar reglas normativas |
