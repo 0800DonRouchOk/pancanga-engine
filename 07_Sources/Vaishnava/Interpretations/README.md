@@ -9,14 +9,25 @@ Hari-bhakti-vilāsa como autoridad normativa primaria.
 ## Fuente Secundaria Referida
 
 ```text
-Ramanuja Das / masterhindu.com
+Ramanuja Das
+Ekadashi: El Día Sagrado del Señor Hari
+Local PDF compilation
 ```
 
 Estado:
 
 ```text
-URL verificable pendiente.
-Nivel de evidencia: secundario / provisional.
+KB-REF-001 v2:
+Tier 6 for normative authority
+
+Role:
+Translation and source-discovery witness only
+```
+
+Registro de identidad e integridad:
+
+```text
+07_Sources/Vaishnava/ramanuja-ekadasi-compilation-source-record.md
 ```
 
 Uso permitido:
@@ -24,6 +35,7 @@ Uso permitido:
 - orientar preguntas normativas;
 - identificar datos calendáricos necesarios;
 - preparar casos de investigación.
+- comparar traducciones después de localizar la fuente primaria.
 
 Uso no permitido:
 
