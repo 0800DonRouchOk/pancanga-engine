@@ -16,15 +16,16 @@ Verification status: IMPORTED / REVIEW REQUIRED
 | PDF `/Title` | `Sri Gaudiya Calendar 2023-2024` (see Open Discrepancies) |
 | PDF `/CreationDate` | 2026-01-29 |
 | PDF `/Creator` | Adobe InDesign 19.5 |
-| Reference location (claimed) | Śrī Chaitanya Sāraswat Maṭh, Nabadwip, India |
+| Reference location (published, p. 5) | Śrī Chaitanya Sāraswat Maṭh, Nabadwīp, India — source text: "(Calculated for Śrī Chaitanya Sāraswat Maṭh, Nabadwīp, India)" |
 | Coordinates published by the source | NONE — the PDF publishes no numeric latitude or longitude |
 | Format | PDF |
 
 Verification note: the extent (64 pages) and the page 3 attribution naming
-"Sri Chaitanya Saraswat International Sangha" as preparer/publisher were
-verified by the owner from the PDF itself. The three items under Open
-Discrepancies remain open; in particular, which of the two publisher names is
-the publisher of record is not decided by this verification.
+"Sri Chaitanya Saraswat International Sangha" as preparer/publisher, and the
+page 5 reference-location statement, were verified by the owner from the PDF
+itself. Open Discrepancies 1 and 2 remain open; in particular, which of the
+two publisher names is the publisher of record is not decided by this
+verification. Discrepancy 3 is resolved by the page 5 statement.
 
 ## Acquisition Provenance
 
@@ -76,7 +77,8 @@ reclassification is campaign 46F.2's, not this record's.
 
 ## Open Discrepancies
 
-To resolve before this record is final:
+Items 1 and 2 remain to be resolved before this record is final; item 3 is
+resolved and retained for the record:
 
 1. **Embedded title disagrees with the edition.** The PDF `/Title` metadata
    reads `Sri Gaudiya Calendar 2023-2024`, while the cover and the recorded
@@ -88,19 +90,26 @@ To resolve before this record is final:
    "International Sangha". Determine which is the corporate publisher of
    record and cite that one.
 
-3. **Reference location is a claim, not a publication.** The record states the
-   calendar is calculated for Nabadwip. The PDF does not publish coordinates.
-   The values in the fixtures were supplied by the extractor as validation
-   configuration. Either locate a statement of the reference location in the
-   document, or record explicitly that the location is assumed and mark every
-   fixture dependent on it accordingly.
+3. **Reference location — RESOLVED (owner verification).** Formerly recorded
+   as a claim, not a publication. The source states its reference location
+   explicitly on page 5, quoted verbatim by the owner from the PDF:
 
-Item 3 matters more than it looks: a published calendar is only meaningful for
-the place it was computed for. If the reference location is assumed rather
-than stated, every comparison against this oracle inherits that assumption.
+   ```text
+   (Calculated for Śrī Chaitanya Sāraswat Maṭh, Nabadwīp, India)
+   ```
+
+   Evidence: `02_Research/SCSMath/GaudiyaCalendar_2026-2027.pdf`, page 5.
+   The source names the place, not the coordinates: the PDF still publishes
+   no numeric latitude or longitude, so the fixture values 23.4071 / 88.3679 /
+   `Asia/Kolkata` remain extractor-supplied validation configuration and stay
+   flagged as such.
+
+Item 3 mattered because a published calendar is only meaningful for the place
+it was computed for. With the reference location now published, comparisons
+against this oracle inherit only the coordinate assumption, not the place.
 
 ## Unverified Items
 
 - Whether this source shares a computation lineage with any other Tier 5
   oracle. Not stated by the source. UNVERIFIED.
-- The three discrepancies above.
+- Discrepancies 1 and 2 above (discrepancy 3 is resolved).
