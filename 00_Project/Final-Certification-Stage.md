@@ -226,7 +226,16 @@ Confirmed ENGINE BUG:
 Status:
 
 ```text
-PENDING
+PASS (2026-09-15) — aggregate scope; see CERTIFICATION.md
+§ Deterministic Certification for the scope limitation on per-day
+determinism.
+```
+
+Evidence:
+
+```text
+04_Tests/Stress/Deterministic-Certification.md
+04_Tests/Stress/Campaign-Report-2026-09-15-Determinism.md
 ```
 
 ## Campaign 46BETA - Pancanga Engine RC1 Experience

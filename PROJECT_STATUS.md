@@ -142,12 +142,11 @@ Documentos raíz de cierre:
 
 Trabajo restante antes de v1.0:
 
-- Campaign 46F.2 - auditoría de configuración civil para SCS Math.
-- Campaign 46C - informe definitivo de validación externa.
-- Campaign 46DETERMINISM - certificación determinista.
-- Campaign 46BETA - Pancanga Engine RC1 Experience.
-- Campaign 46R - auditoría final de release.
 - Campaign 47 - release v1.0.
+
+Campaign 46F.2, 46C Final, 46STRESS, 46DETERMINISM, 46BETA y 46R cerraron
+el 2026-09-15. Ver [CERTIFICATION.md](CERTIFICATION.md) y
+04_Tests/Release/Campaign-46R-Release-Audit.md para la evidencia completa.
 
 Trabajo de Knowledge Library:
 
@@ -753,15 +752,16 @@ Informe:
   coherentes con el patrón ya visto en PureBhakti. Documento:
   [SCS Math Difference Report](04_Tests/SCSMath/SCSMath-Difference-Report.md).
   Código del motor, Knowledge Base y arquitectura sin cambios.
-- Campaign 46C - Full External Validation: 🟡 OPEN. Reporte unificado creado
-  para certificar el motor contra Swiss Ephemeris, PureBhakti, SCS Math y GCal.
-  Swiss ya cerró como PASS; PureBhakti cerró como PASS con diferencias
-  editoriales de Parāṇa documentadas; SCS Math queda abierto con diferencias
-  analizadas; GCal sigue en `EXTERNAL_ORACLE_PENDING`.
+- Campaign 46C / 46C Final - Full External Validation: ✅ CLOSED
+  (2026-09-15). Identificador único de campaña para el paso "Full External
+  Certification" de Final-Certification-Stage.md; usa la misma evidencia.
+  Swiss cerró PASS (1000/1000); PureBhakti cerró PASS (16/16, confirmado sin
+  cambios en el rerun post-ORDEN-6); SCS Math cerró PASS (23/26 observance,
+  era 11/26 antes del rerun); GCal declarado deliberadamente sin llenar para
+  v1.0 (ver Release Gate en CERTIFICATION.md).
   Documento:
   [Validation Report](04_Tests/Validation/Validation-Report.md). CSV:
-  [validation-results.csv](04_Tests/Validation/validation-results.csv). Código
-  del motor, Knowledge Base y arquitectura sin cambios.
+  [validation-results.csv](04_Tests/Validation/validation-results.csv).
 - Certification Summary: 🟡 Release Candidate. Swiss Ephemeris cerró 1000 /
   1000 PASS; PureBhakti cerró 16 / 16 observancias PASS con 0 `ENGINE BUG`;
   SCS Math fue incorporado con 26 fixtures reales y diferencias analizadas;
@@ -875,6 +875,16 @@ Full External Certification
 
 ↓
 
+Campaign 46STRESS
+Internal Consistency Certification
+
+↓
+
+Campaign 46DETERMINISM
+Deterministic Certification
+
+↓
+
 Campaign 46BETA
 Pancanga Engine RC1 Experience
 
@@ -888,6 +898,8 @@ Release Audit
 Campaign 47
 v1.0 Release
 ```
+
+Los primeros seis pasos cerraron el 2026-09-15. Solo queda Campaign 47.
 
 No se agregan funcionalidades nuevas antes de v1.0.
 

@@ -1,15 +1,18 @@
 # Pancanga Engine Certification
 
-Status: Release Candidate / External Certification In Progress
+Status: Release Candidate / External Certification Closed for v1.0
 
 ## Summary
 
 Pancanga Engine has completed local implementation and validation for the
 astronomical, calendar, and Vaiṣṇava layers needed for Ekādaśī calculation.
 
-The remaining v1.0 work is external certification against additional Vaiṣṇava
-calendar fixtures. SCS Math is now included as a real oracle with analyzed
-differences; GCal remains pending a real local source.
+External certification against Vaiṣṇava calendar fixtures closed for v1.0 on
+2026-09-15. SCS Math is now a closed PASS oracle with analyzed differences;
+GCal was declared deliberately unfilled for v1.0 (see Release Gate).
+Deterministic Certification closed PASS the same day, at aggregate scope
+(see below). Remaining pre-release work is Campaign 46BETA (RC1 Experience)
+and Campaign 46R (Release Audit).
 
 Current release state:
 
@@ -23,8 +26,14 @@ Open doctrinal issues:
 Confirmed ENGINE BUG:
 0
 
+External Certification:
+CLOSED FOR v1.0 (2026-09-15)
+
+Deterministic Certification:
+PASS (2026-09-15, aggregate scope)
+
 Status:
-READY FOR FINAL CERTIFICATION
+AWAITING RC1 EXPERIENCE, RELEASE AUDIT
 ```
 
 ## Cross-Oracle Pattern
@@ -47,8 +56,9 @@ Confirmed ENGINE BUG:
 Swiss Ephemeris certifies the astronomical layer for the precision required by
 Pancanga Engine. PureBhakti certifies the imported observance decisions with
 Parāṇa differences documented as editorial/rounding differences. SCS Math
-remains open, but Campaign 46F.1 classified every observed difference and found
-no confirmed engine bug.
+closed PASS after Campaign 46C Final's rerun (2026-09-14): observance PASS
+moved from 11/26 to 23/26, with the 3 remaining differences classified and no
+confirmed engine bug.
 
 ## Internal Consistency Certification
 
@@ -137,7 +147,7 @@ Engine bugs: 0
 Status:
 
 ```text
-PENDING
+PASS (2026-09-15) — aggregate scope, see limitation below
 ```
 
 Objective:
@@ -147,19 +157,37 @@ Demonstrate that the same Pancanga Engine version produces identical output
 for the same 73,414-day certification range across repeated executions.
 ```
 
-Expected method:
+Method used:
 
 ```text
-Run the complete 1900-01-01 -> 2100-12-31 internal certification range
-10 consecutive times.
+Built cargo run --release -p pancanga-engine --example internal_stress_test
+once; ran it 10 consecutive times. Hashed (SHA-256) the concatenation of
+stdout, internal-stress-issues.csv, internal-stress-extremes.csv, and
+Internal-Stress-Test.md with its live "Elapsed seconds" line stripped.
 
-Compute a stable output hash for each pass.
+Result: all 10 hashes identical —
+d34bf15753fb566af46b88afd02a18fa14ad8f1d2525958130b1d7d06a3e83c0
+```
 
-PASS only if all 10 hashes are identical.
+Scope limitation:
+
+```text
+This certifies reproducibility of the 14 aggregate stats fields, the 6
+extreme-value rows, and the issues list across 10 runs. It does NOT prove
+bit-for-bit identity of every individual day's computed result — the
+binary emits no per-day trace, only aggregates. A full per-day hash is
+deferred to v1.1 as a certification-instrumentation enhancement.
 ```
 
 This certification is not allowed to redefine any engine behavior. It may only
 confirm reproducibility.
+
+Evidence:
+
+```text
+04_Tests/Stress/Deterministic-Certification.md
+04_Tests/Stress/Campaign-Report-2026-09-15-Determinism.md
+```
 
 ## Astronomy
 
@@ -329,13 +357,13 @@ Fixtures:
 26 real rows
 
 Observance dates:
-11 / 26 PASS
+23 / 26 PASS
 
 Calendar differences:
-15
+3
 
 Parāṇa:
-11 configuration differences among comparable rows
+23 configuration differences among comparable rows
 
 ENGINE BUG:
 0 confirmed
@@ -344,14 +372,21 @@ ENGINE BUG:
 Certification decision:
 
 ```text
-OPEN
+PASS
 ```
 
-SCS Math is a reproducible external oracle, but certification is not closed.
-The observed differences are analyzed in Campaign 46F.1. They currently point
-to calendar/configuration differences and one Vyañjulī tradition-difference
-case, with no confirmed engine bug. ISSUE-VAI-001 was later resolved from the
-HBV/DDT source chain, so Vyañjulī is no longer an open doctrinal blocker.
+SCS Math is a reproducible external oracle. Campaign 46C Final (2026-09-14)
+reran the validator against the ORDEN-6 engine state (commit 2a6d5fd),
+moving observance PASS from 11/26 to 23/26. The 12 rows that changed had a
+prior DOC-001 classification ("configuration/tradition difference, not
+confirmed engine bug") superseded by this measurement; that reconciliation
+is recorded in normative-observance-certification.csv and
+04_Tests/SCSMath/Campaign-Report-2026-09-15-Evidence-Reconciliation.md /
+-Mirror-Sync.md. The 3 remaining differences (SCS-0012 Vyañjulī
+Mahādvādaśī, SCS-0018, SCS-0026) are analyzed in Campaign 46F.1 /
+SCSMath-Difference-Report.md, with no confirmed engine bug. ISSUE-VAI-001
+was resolved from the HBV/DDT source chain, so Vyañjulī is not an open
+doctrinal blocker.
 
 Evidence:
 
@@ -362,6 +397,9 @@ Evidence:
 04_Tests/SCSMath/SCSMath-Difference-Report.md
 04_Tests/SCSMath/scsmath-fixtures.csv
 04_Tests/SCSMath/scsmath-validation.csv
+04_Tests/SCSMath/Campaign-Report-2026-09-15-Evidence-Reconciliation.md
+04_Tests/SCSMath/Campaign-Report-2026-09-15-Mirror-Sync.md
+04_Tests/Vaishnava/normative-observance-certification.csv
 ```
 
 ## GCal
@@ -369,11 +407,12 @@ Evidence:
 Status:
 
 ```text
-EXTERNAL_ORACLE_PENDING
+EXTERNAL_ORACLE_PENDING (deliberately unfilled for v1.0)
 ```
 
 The importer is ready, but a real local GCal source has not yet been added.
-No synthetic fixtures are used.
+No synthetic fixtures are used. Per the Release Gate disposition below, this
+is not a v1.0 release blocker; it remains open as a v1.1 acquisition item.
 
 Evidence:
 
@@ -384,15 +423,36 @@ Evidence:
 
 ## Release Gate
 
-Pancanga Engine v1.0 remains blocked until:
+Owner disposition, 2026-09-15, per `04_Tests/Validation/Oracle-Set-Rationale.md`
+§ 5 and `04_Tests/SCSMath/SCSMath-Civil-Configuration-Audit.md`:
 
 ```text
-GCal fixtures are populated from a real source.
-SCS Math follow-up configuration audit is resolved or documented as
-non-critical.
-GCal certification completes with no critical ENGINE BUG.
-Full external validation is updated.
+1. GCal fixtures populated from a real source.
+   CLOSED for v1.0 — deliberately unfilled. Validation set is PureBhakti
+   + SCS Math: both bibliographically filed under KB-REF-001, and shown
+   to diverge on 6 of 10 overlapping observance dates, so the set is not
+   redundant. GCal stays open as a v1.1 acquisition item.
+
+2. SCS Math follow-up configuration audit resolved or documented as
+   non-critical.
+   CLOSED — non-critical for v1.0. Campaign 46F.2 found two civil-
+   configuration defects (duplicated sunset() day-carry bug; incomplete
+   UTC-offset/DST handling in is_europe_dst), both living in examples/,
+   outside src/. Neither reaches an Ekādaśī date for the three shipped
+   locations (Valencia, Buenos Aires, Nabadwip). Remediation deferred to
+   v1.0.1 / v1.1 under the already-drafted Phase 2 of ORDEN 3A.
+
+3. GCal certification completes with no critical ENGINE BUG.
+   NOT APPLICABLE for v1.0, under disposition 1 above.
+
+4. Full external validation is updated.
+   CLOSED — Campaign 46C Final reran both validation harnesses against
+   the ORDEN-6 engine state (commit 2a6d5fd) on 2026-09-14. SCS Math
+   observance PASS moved 11/26 -> 23/26; PureBhakti confirmed unchanged
+   at 16/16 (0 rows changed). See SCS Math and PureBhakti sections above.
 ```
 
 No engine behavior may be changed to match an external oracle until the
 difference is classified.
+
+Release Gate status: ALL 4 ITEMS CLOSED FOR v1.0.
