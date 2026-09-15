@@ -70,8 +70,35 @@ No se inventaron datos ni resultados.
 | ------- | ------- | ------ |
 | Swiss Ephemeris | `04_Tests/Astronomy/SwissEphemeris/swiss-validation.csv` | PASS |
 | PureBhakti | `04_Tests/PureBhakti/purebhakti-validation.csv` | PASS; 16/16 observance date PASS; Parāṇa editorial differences documented |
-| SCS Math | `04_Tests/SCSMath/scsmath-validation.csv` | OPEN; 26 real fixtures; 11/26 observance date PASS; differences analyzed; 0 confirmed ENGINE BUG |
+| SCS Math | `04_Tests/SCSMath/scsmath-validation.csv` | OPEN; 26 real fixtures; 23/26 observance date PASS (rerun 2026-09-14 post-ORDEN-6, was 11/26); 3 remaining differences; 0 confirmed ENGINE BUG |
 | GCal | `04_Tests/Vaishnava/GCal/gcal-fixtures.csv` | Importador listo; fuente real pendiente |
+
+## Rerun post-ORDEN-6 (2026-09-14)
+
+`ORDEN-6` corrigió un defecto de day-carry en `calendar::sunrise()` (commit
+`2a6d5fd`, goldens corregidos en `ed9450a`). Este campaign 46C Final reejecutó
+los dos validadores de instrumentación (`scsmath_validation.rs`,
+`purebhakti_validation.rs`) contra el engine post-ORDEN-6, sin modificar
+código de motor:
+
+```text
+SCS Math observance PASS: 11 / 26 -> 23 / 26
+PureBhakti observance PASS: 16 / 16 -> 16 / 16 (0 filas cambiadas, salida
+byte-idéntica)
+Swiss Ephemeris: sin rerun — swiss_validation.rs no invoca sunrise() en
+ninguna ruta (confirmado leyendo el binario), por lo que queda fuera de
+alcance de ORDEN-6.
+```
+
+Las 12 filas SCS Math que pasaron de `DIFFERENCE` a `PASS` tienen una
+clasificación estática `DOC-001` registrada en
+`04_Tests/Vaishnava/normative-observance-certification.csv` que ahora queda
+contradicha por la medición. Ese archivo no fue modificado por este campaign;
+la reconciliación es una decisión del owner. Ver el reporte de campaign para
+la lista completa.
+
+Este rerun no cierra ningún ítem del Release Gate en `CERTIFICATION.md`; esa
+decisión pertenece al owner.
 
 ## Clasificación De Diferencias
 

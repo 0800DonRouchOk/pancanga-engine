@@ -116,6 +116,21 @@ PureBhakti queda certificado como oráculo de observancia para este fixture. La
 ventana de Parāṇa permanece documentada como diferencia editorial/redondeo, no
 como error del motor.
 
+## Rerun — Campaign 46C Final (2026-09-14)
+
+Re-executed against engine state at commit `2a6d5fd` (`Fix sunrise() day
+carry: build the instant from the date's 0h UT plus unnormalised UT`, ORDEN-6),
+golden corrections applied in `ed9450a`. No engine code was modified by this
+rerun; only `purebhakti_validation.rs` was re-invoked against the unchanged
+`purebhakti-fixtures.csv`.
+
+Result: **0 of 16 rows changed** — the rerun output is byte-identical to the
+previously committed `purebhakti-validation.csv`. This confirms, rather than
+assumes, the prediction in `04_Tests/Astronomy/Sunrise-Day-Shift-Fix.md §
+Phase 3.3` that Buenos Aires (all 16 fixtures at -34.616667, -58.383333) is
+unaffected by the ORDEN-6 day-carry fix. Observance date remains 16 / 16 PASS;
+Parāṇa remains 1 / 16 PASS, 15 / 16 editorial/rounding differences documented.
+
 ## Mahādvādaśī
 
 El fixture `PB-0009` marca:

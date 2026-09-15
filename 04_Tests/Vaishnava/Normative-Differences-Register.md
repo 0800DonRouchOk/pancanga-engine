@@ -228,19 +228,19 @@ with no confirmed engine bug.
 Observed in:
 
 ```text
-SCS-0003
-SCS-0004
-SCS-0005
-SCS-0006
-SCS-0007
-SCS-0008
-SCS-0009
-SCS-0010
-SCS-0011
+SCS-0003 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
+SCS-0004 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
+SCS-0005 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
+SCS-0006 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
+SCS-0007 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
+SCS-0008 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
+SCS-0009 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
+SCS-0010 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
+SCS-0011 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
 SCS-0012
-SCS-0013
-SCS-0014
-SCS-0015
+SCS-0013 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
+SCS-0014 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
+SCS-0015 -- SUPERSEDED (see normative-observance-certification.csv and SCSMath-Validation.md § Rerun)
 SCS-0018
 SCS-0026
 ```

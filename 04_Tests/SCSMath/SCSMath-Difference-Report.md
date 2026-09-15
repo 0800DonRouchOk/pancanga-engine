@@ -58,7 +58,9 @@ UNKNOWN
 
 ```text
 Total observance date differences:
-15
+15 differences analyzed; 12 superseded by the ORDEN-6 fix (Campaign 46C
+Final rerun, 2026-09-14); 3 remain open: SCS-0012, SCS-0018, SCS-0026.
+See 04_Tests/SCSMath/SCSMath-Validation.md § Rerun.
 
 HBV_CONSISTENT:
 0
@@ -163,6 +165,8 @@ No motor behavior was changed.
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Published SCS civil date and engine local sunrise/tithi date are offset; audit Nabadwip civil-time configuration before changing code |
 
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
+
 ### SCS-0004
 
 | Field | Value |
@@ -178,6 +182,8 @@ No motor behavior was changed.
 | Parāṇa | Not compared because observance date did not match |
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Civil-date alignment/configuration difference for Nabadwip oracle |
+
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
 
 ### SCS-0005
 
@@ -195,6 +201,8 @@ No motor behavior was changed.
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Civil-date alignment/configuration difference for Nabadwip oracle |
 
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
+
 ### SCS-0006
 
 | Field | Value |
@@ -210,6 +218,8 @@ No motor behavior was changed.
 | Parāṇa | Not compared because observance date did not match |
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Civil-date alignment/configuration difference for Nabadwip oracle |
+
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
 
 ### SCS-0007
 
@@ -227,6 +237,8 @@ No motor behavior was changed.
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Civil-date alignment/configuration difference for Nabadwip oracle |
 
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
+
 ### SCS-0008
 
 | Field | Value |
@@ -242,6 +254,8 @@ No motor behavior was changed.
 | Parāṇa | Not compared because observance date did not match |
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Civil-date alignment/configuration difference for Nabadwip oracle |
+
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
 
 ### SCS-0009
 
@@ -259,6 +273,8 @@ No motor behavior was changed.
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | SCS publishes a displaced/no-fast pattern here; validator reports a different engine date path and requires civil-time/configuration audit |
 
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
+
 ### SCS-0010
 
 | Field | Value |
@@ -275,6 +291,8 @@ No motor behavior was changed.
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Civil-date alignment/configuration difference for Nabadwip oracle |
 
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
+
 ### SCS-0011
 
 | Field | Value |
@@ -290,6 +308,8 @@ No motor behavior was changed.
 | Parāṇa | Not compared because observance date did not match |
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Civil-date alignment/configuration difference for Nabadwip oracle |
+
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
 
 ### SCS-0012
 
@@ -323,6 +343,8 @@ No motor behavior was changed.
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Civil-date alignment/configuration difference for Nabadwip oracle |
 
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
+
 ### SCS-0014
 
 | Field | Value |
@@ -339,6 +361,8 @@ No motor behavior was changed.
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Civil-date alignment/configuration difference for Nabadwip oracle |
 
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
+
 ### SCS-0015
 
 | Field | Value |
@@ -354,6 +378,8 @@ No motor behavior was changed.
 | Parāṇa | Not compared because observance date did not match |
 | Classification | CONFIGURATION_DIFFERENCE |
 | Possible cause | Civil-date alignment/configuration difference for Nabadwip oracle |
+
+**SUPERSEDED 2026-09-14** — see `04_Tests/SCSMath/SCSMath-Validation.md § Rerun`; this difference no longer reproduces after ORDEN-6 (observance status flipped to PASS).
 
 ### SCS-0018
 
@@ -389,7 +415,8 @@ No motor behavior was changed.
 
 ## Parāṇa Notes For Matching Observance Dates
 
-The 11 rows with matching observance dates all differ in Parāṇa. These are not
+The 23 rows with matching observance dates (post-Campaign 46C Final rerun,
+2026-09-14; was 11 pre-rerun) all differ in Parāṇa. These are not
 treated as engine bugs because the SCS Math published windows appear to be
 practical morning windows, while Pancanga Engine exposes the HBV-EK-005
 technical interval:
