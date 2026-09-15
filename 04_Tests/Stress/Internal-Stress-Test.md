@@ -37,7 +37,7 @@ Range: 1900-01-01 to 2100-12-31 inclusive
 | Short Dvādaśī contingencies | 497 |
 | Confirmed ENGINE BUG | 0 |
 
-Elapsed seconds: 225.966
+Elapsed seconds: 200.449
 
 ## Invariants Checked
 
