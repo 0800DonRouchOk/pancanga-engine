@@ -98,8 +98,10 @@ Confirmed ENGINE BUG:
 0
 ```
 
-Remaining v1.0 work is limited to final external certification and release
-publication, with the RC1 Experience before the release audit.
+External certification (Swiss Ephemeris, PureBhakti, SCS Math) and
+Deterministic Certification closed 2026-09-15, and the RC1 Experience exit
+criterion has been confirmed. Remaining v1.0 work is limited to the
+Release Audit and v1.0 publication.
 
 The objective exit criterion for v1.0 is documented in
 [Final Certification Stage](00_Project/Final-Certification-Stage.md).
