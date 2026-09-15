@@ -288,7 +288,7 @@ corpus. This cannot establish a historical pattern.
 | Year | Location | Local engine sunrise facts | Published selection | Source | Assessment |
 |---|---|---|---|---|---|
 | 2026 | Buenos Aires | Sep 3: Kṛṣṇa Saptamī; Sep 4: Kṛṣṇa Aṣṭamī; Sep 5: Kṛṣṇa Navamī | Sep 4 | PureBhakti local HTML | Confirms the single pure Aṣṭamī candidate; does not exercise the unresolved dual-clean case. |
-| 2026 | Navadvīpa | Sep 3: Kṛṣṇa Aṣṭamī; Sep 4: Kṛṣṇa Navamī; Sep 5: Kṛṣṇa Daśamī under the current engine | Sep 4, printed as Kṛṣṇa Aṣṭamī | SCS Math local PDF, p. 14 | Operationally selects the later civil label, but the source and engine disagree on the sunrise tithi label. Without the source's transition, Rohiṇī, niśītha, and civil-label method, this is not a controlled two-day policy fixture. |
+| 2026 | Navadvīpa | Sep 3: Kṛṣṇa Saptamī; Sep 4: Kṛṣṇa Aṣṭamī; Sep 5: Kṛṣṇa Navamī (updated 2026-09-15, post-ORDEN-6 sunrise day-shift fix — see Sunrise-Day-Shift-Fix.md and SCSMath-Civil-Configuration-Audit.md § 5b) | Sep 4, printed as Kṛṣṇa Aṣṭamī | SCS Math local PDF, p. 14 | The prior disagreement between source and engine on the sunrise tithi label was traced to the now-fixed sunrise day-carry defect (ORDEN-6); the remeasured engine value matches the SCS Math source exactly (Sep 4 = Kṛṣṇa Aṣṭamī in both). This still does not exercise the unresolved dual-clean case: without the source's transition, Rohiṇī, niśītha, and civil-label method, this remains not a controlled two-day policy fixture. |
 
 Both local calendars publish 4 September 2026, but they refer to different
 locations and the repository has no second year. Their agreement cannot be
