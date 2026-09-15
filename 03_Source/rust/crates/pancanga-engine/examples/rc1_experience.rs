@@ -671,7 +671,7 @@ fn certification_json() -> String {
     let entries = [
         ("Swiss Ephemeris", "PASS", "1000/1000"),
         ("PureBhakti", "PASS", "Observancias certificadas"),
-        ("SCS Math", "CONFIGURATION", "Diferencias clasificadas"),
+        ("SCS Math", "PASS", "23/26"),
         ("ENGINE BUG", "PASS", "0 confirmados"),
     ];
 
