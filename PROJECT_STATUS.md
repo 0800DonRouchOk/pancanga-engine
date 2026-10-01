@@ -1,25 +1,27 @@
 # Project Status
 
-Version: v1.0 RC1
+Version: v1.0.0 (stable)
 
 ## Estado General
 
-Pancanga Engine está en fase de Release Candidate para v1.0.
+Pancanga Engine v1.0.0 fue publicado el 2026-09-15 (tag `v1.0.0`, commit
+`786935f`) y declarado estable por el owner el 2026-09-30, al cerrar la
+ventana de estabilización sin ENGINE BUG nuevo confirmado.
 
-Estado RC1:
+Estado v1.0.0:
 
 ```text
 PANCANGA ENGINE:
-Release Candidate 1 (RC1)
+v1.0.0 STABLE
 
 Development:
-🔒 CLOSED
+🟡 REABIERTO POR CAMPAÑA (ver Freeze post-v1.0)
 
 Certification:
-🟡 FINAL STAGE
+✅ CERRADA para v1.0.0 (ver CERTIFICATION.md)
 
 Release:
-PENDING
+✅ RELEASED 2026-09-15 · STABLE 2026-09-30
 
 Knowledge Base:
 🔒 v1.0 FROZEN
@@ -37,10 +39,10 @@ Open doctrinal issues:
 0
 
 Confirmed ENGINE BUG:
-0
+0 en las ciudades del app; 1 latente documentado (ocaso, Sunset-Day-Shift-Defect.md)
 
 Status:
-READY FOR FINAL CERTIFICATION
+v1.0.0 STABLE — LÍNEA 2 (Festival Engine) abierta
 ```
 
 Knowledge Library phase:
@@ -84,52 +86,33 @@ Sin ENGINE BUG confirmados
 Release Freeze respetado
 ```
 
-Release Freeze:
+Freeze post-v1.0 (vigente desde 2026-09-30, decisión del owner):
 
 ```text
-Knowledge Base:
-🔒 FROZEN
+Ekādaśī Engine:              🔒 FROZEN
+Mahādvādaśī rules:           🔒 FROZEN
+Lógica de Parāṇa validada:   🔒 FROZEN
+Observance Resolver:         🔒 FROZEN
+Knowledge Base:              🔒 FROZEN
+Algoritmos astronómicos
+existentes:                  🔒 FROZEN
+Golden tests y vectores
+de regresión:                🔒 FROZEN
 
-Astronomy:
-🔒 FROZEN
-
-Architecture:
-🔒 FROZEN
-
-API:
-🔒 FROZEN
-
-Scope:
-🔒 FROZEN
+Architecture / API / Scope:  🟡 ABIERTOS POR CAMPAÑA
 ```
 
-Hasta v1.0 solo se aceptan cambios en estas categorías:
+Regla post-v1.0:
 
 ```text
-ENGINE BUG
-DOCUMENTATION
-CERTIFICATION
-UX sin alterar semántica
-RELEASE
-```
+Una campaña puede agregar componentes nuevos solo si nombra
+explícitamente qué abre. Lo que no nombra sigue congelado.
 
-Regla de freeze:
+Ningún cambio puede alterar una fecha de Ekādaśī o Mahādvādaśī
+de v1.0.0 sin autorización del owner por nombre.
 
-```text
-Si una mejora no aumenta la confianza en el motor,
-no pertenece a la v1.0.
-```
-
-Regla RC:
-
-```text
-Una versión RC no incorpora nuevas funcionalidades.
-
-Solo puede:
-- corregir bugs;
-- mejorar documentación;
-- completar certificaciones;
-- preparar el release.
+Ningún golden test cambia sin autorización del owner por nombre
+(CLAUDE.md § 2).
 ```
 
 Documentos raíz de cierre:
@@ -140,12 +123,20 @@ Documentos raíz de cierre:
 - [Final Certification Stage](00_Project/Final-Certification-Stage.md)
 - [Pancanga Engine RC1 Experience](00_Project/RC1-Experience.md)
 
-Trabajo restante antes de v1.0:
+Ruta de release v1.0 (cerrada):
 
-- Campaign 47 - release v1.0.
+- Campaign 46F.2 - auditoría de configuración civil: cerrada el 2026-09-15
+  (Fase 1). Su Fase 2 (consolidación de ocaso y offset/DST en src/) no se
+  ejecutó y pasa a LÍNEA 2.
+- Campaign 46C Final - certificación externa: cerrada el 2026-09-15.
+- Campaign 46STRESS - consistencia interna: cerrada el 2026-09-15.
+- Campaign 46DETERMINISM - PASS a nivel agregado, 2026-09-15; determinismo por
+  día individual no certificado (diferido).
+- Campaign 46BETA - RC1 Experience: cerrada el 2026-09-15.
+- Campaign 46R - auditoría de release: cerrada el 2026-09-15.
+- Campaign 47 - release v1.0: completada, tag v1.0.0.
 
-Campaign 46F.2, 46C Final, 46STRESS, 46DETERMINISM, 46BETA y 46R cerraron
-el 2026-09-15. Ver [CERTIFICATION.md](CERTIFICATION.md) y
+Ver [CERTIFICATION.md](CERTIFICATION.md) y
 04_Tests/Release/Campaign-46R-Release-Audit.md para la evidencia completa.
 
 Trabajo de Knowledge Library:
@@ -859,50 +850,38 @@ Informe:
 
 ## Próximo Enfoque
 
-Pancanga Engine está en RC1. El desarrollo está cerrado. El foco restante es
-exclusivamente certificación final y release.
-
-Ruta final:
+v1.0.0 es estable. Se abre LÍNEA 2 (Festival Engine), una campaña por vez.
 
 ```text
-Campaign 46F.2
-Civil Configuration Audit
+GATE-REG-001
+Migración del esquema del registro de festivales
+(documental; requiere registrar el gate en el Research Backlog)
 
 ↓
 
-Campaign 46C Final
-Full External Certification
+Consolidación del ocaso en src/calendar/
+(corrige Sunset-Day-Shift-Defect.md; sin número asignado)
 
 ↓
 
-Campaign 46STRESS
-Internal Consistency Certification
+Intervalo de niśītha
 
 ↓
 
-Campaign 46DETERMINISM
-Deterministic Certification
-
-↓
-
-Campaign 46BETA
-Pancanga Engine RC1 Experience
-
-↓
-
-Campaign 46R
-Release Audit
-
-↓
-
-Campaign 47
-v1.0 Release
+Diagnóstico de políticas de Janmāṣṭamī (FEST-001)
 ```
 
-Los primeros seis pasos cerraron el 2026-09-15. Solo queda Campaign 47.
+Deuda técnica conocida, no bloqueante para v1.0.0:
 
-No se agregan funcionalidades nuevas antes de v1.0.
+- Ocaso duplicado en examples/ con corrimiento de día (latente para las
+  tres ciudades del app; activo en longitudes oeste).
+- Offset UTC y DST fuera de src/; is_europe_dst incompleto.
+- GCal sin adquisición real de fuente.
+- Determinismo por día individual no probado.
+- Ekādaśī-vṛddhi: RESEARCH_REQUIRED.
+- FEST-001 § 9: elección de OPTION A/B/C pendiente del owner.
+- CI sin paso de doc-tests.
 
-Documento operativo:
+Documento operativo de la ruta de release cerrada:
 
 [Final Certification Stage](00_Project/Final-Certification-Stage.md)
